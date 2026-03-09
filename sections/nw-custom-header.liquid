@@ -1,0 +1,1136 @@
+{% comment %}
+  NW Custom Header — Announcement + Hero with Mega Menu
+  Extracted from nw-landing-page.html design
+{% endcomment %}
+
+{%- style -%}
+  /* ============================================
+     NW CUSTOM HEADER — VARIABLES
+     ============================================ */
+  :root {
+    --nw-color-primary: {{ section.settings.announcement_bg_color }};
+    --nw-color-alternative: {{ section.settings.accent_color }};
+  }
+
+  /* ============================================
+     ANNOUNCEMENT BAR
+     ============================================ */
+  .nw-announcement-bar {
+    background: var(--nw-color-primary);
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nw-announcement-bar p {
+    font-size: 11px;
+    font-weight: 500;
+    color: {{ section.settings.announcement_text_color }};
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+
+  /* ============================================
+     HERO SECTION
+     ============================================ */
+  .nw-hero {
+    position: relative;
+    height: {{ section.settings.hero_height }}px;
+    overflow: hidden;
+  }
+
+  .nw-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .nw-hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nw-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, {{ section.settings.overlay_opacity | divided_by: 100.0 }});
+    z-index: 1;
+  }
+
+  .nw-hero__glow {
+    position: absolute;
+    top: -410px;
+    left: -62px;
+    width: 1543px;
+    height: 820px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.08), transparent 70%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* ============================================
+     NAVIGATION
+     ============================================ */
+  .nw-hero__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 40px;
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .nw-hero__nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 182px;
+    right: 0;
+    width: 1075px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    transition: background 0.25s ease, left 0.25s ease, width 0.25s ease;
+  }
+
+  .nw-hero__logo {
+    position: absolute;
+    top: 7px;
+    left: 15px;
+    width: 80px;
+    height: 80px;
+    z-index: 11;
+    display: block;
+  }
+
+  .nw-hero__logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nw-nav-links {
+    display: flex;
+    gap: 60px;
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+  }
+
+  .nw-nav-links a {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    transition: opacity 0.2s, color 0.25s ease;
+    text-decoration: none;
+  }
+
+  .nw-nav-links a:hover {
+    opacity: 0.75;
+  }
+
+  .nw-nav-shop-btn {
+    position: absolute;
+    right: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 10px 40px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.25s ease;
+    text-decoration: none;
+  }
+
+  .nw-nav-shop-btn:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .nw-nav-cart {
+    position: absolute;
+    right: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    display: block;
+  }
+
+  .nw-nav-cart img {
+    width: 100%;
+    height: 100%;
+    transition: filter 0.25s ease;
+  }
+
+  /* ============================================
+     MOBILE NAV TOGGLE
+     ============================================ */
+  .nw-nav-toggle-checkbox {
+    display: none;
+  }
+
+  .nw-nav-toggle-label {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 20;
+    position: relative;
+    width: 28px;
+    height: 22px;
+  }
+
+  .nw-nav-toggle-label span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  /* X animation when open */
+  .nw-nav-toggle-checkbox:checked ~ .nw-nav-toggle-label span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .nw-nav-toggle-checkbox:checked ~ .nw-nav-toggle-label span:nth-child(2) {
+    opacity: 0;
+  }
+  .nw-nav-toggle-checkbox:checked ~ .nw-nav-toggle-label span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* ============================================
+     MEGA MENU (Pure CSS hover dropdown)
+     ============================================ */
+  .nw-nav-mega-trigger {
+    position: static;
+  }
+
+  .nw-nav-mega-trigger > a {
+    position: relative;
+  }
+
+  /* Green indicator bar under active trigger */
+  .nw-nav-mega-trigger:hover > a::after,
+  .nw-nav-mega-trigger:focus-within > a::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 68px;
+    height: 6px;
+    background: var(--nw-color-alternative);
+    border-radius: 3px;
+  }
+
+  .nw-nav-mega-trigger:hover > a {
+    font-weight: 800;
+  }
+
+  /* Dropdown panel */
+  .nw-mega-menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    z-index: 14;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .nw-nav-mega-trigger:hover .nw-mega-menu,
+  .nw-nav-mega-trigger:focus-within .nw-mega-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* White background on nav bar when mega menu is open */
+  .nw-hero__nav:has(.nw-nav-mega-trigger:hover),
+  .nw-hero__nav:has(.nw-nav-mega-trigger:focus-within) {
+    background: #fff;
+    box-shadow: none;
+  }
+
+  .nw-mega-menu__content {
+    display: flex;
+    align-items: flex-start;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 28px 40px 44px;
+    gap: 40px;
+  }
+
+  .nw-mega-menu__image {
+    width: 280px;
+    height: 254px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .nw-mega-menu__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nw-mega-menu__divider {
+    width: 1px;
+    height: 171px;
+    background: #d9d9d9;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  .nw-mega-menu__col {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .nw-mega-menu__heading {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 24px;
+  }
+
+  .nw-mega-menu__link {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+
+  .nw-mega-menu__link:hover {
+    color: var(--nw-color-alternative);
+  }
+
+  .nw-mega-menu__link--active {
+    color: var(--nw-color-alternative);
+    font-weight: 700;
+  }
+
+  .nw-mega-menu__chevron {
+    width: 24px;
+    height: 24px;
+  }
+
+  .nw-mega-menu__col--secondary {
+    padding-top: 56px;
+  }
+
+  /* Secondary column + divider: hidden by default, shown on hover */
+  .nw-mega-menu__divider--secondary,
+  .nw-mega-menu__col--secondary {
+    opacity: 0;
+    transition: opacity 0.2s ease 0.12s;
+  }
+
+  .nw-mega-menu__content:has(.nw-mega-menu__link--active:hover) .nw-mega-menu__divider--secondary,
+  .nw-mega-menu__content:has(.nw-mega-menu__link--active:hover) .nw-mega-menu__col--secondary,
+  .nw-mega-menu__content:has(.nw-mega-menu__col--secondary:hover) .nw-mega-menu__divider--secondary,
+  .nw-mega-menu__col--secondary:hover {
+    opacity: 1;
+    transition-delay: 0s;
+  }
+
+  /* Nav color changes when mega menu is open */
+  .nw-hero__nav:has(.nw-nav-mega-trigger:hover) .nw-nav-links a,
+  .nw-hero__nav:has(.nw-nav-mega-trigger:focus-within) .nw-nav-links a {
+    color: #000;
+  }
+
+  .nw-hero__nav:has(.nw-nav-mega-trigger:hover) .nw-nav-shop-btn,
+  .nw-hero__nav:has(.nw-nav-mega-trigger:focus-within) .nw-nav-shop-btn {
+    color: #000;
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  .nw-hero__nav:has(.nw-nav-mega-trigger:hover) .nw-nav-cart img,
+  .nw-hero__nav:has(.nw-nav-mega-trigger:focus-within) .nw-nav-cart img {
+    filter: brightness(0);
+  }
+
+  .nw-hero__nav:has(.nw-nav-mega-trigger:hover) .nw-hero__logo img,
+  .nw-hero__nav:has(.nw-nav-mega-trigger:focus-within) .nw-hero__logo img {
+    filter: none;
+  }
+
+  .nw-hero__nav:has(.nw-nav-mega-trigger:hover)::after {
+    background: rgba(0, 0, 0, 0.1);
+    left: 0;
+    width: 100%;
+  }
+
+  /* Hero Content */
+  .nw-hero__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    text-align: center;
+    padding: 0 20px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nw-hero__title {
+    font-family: var(--font-heading-family, 'Georgia', serif);
+    font-size: 60px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 40px;
+  }
+
+  .nw-hero__cta {
+    display: inline-block;
+    padding: 18px 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nw-hero__cta:hover {
+    background: #fff;
+    color: #000;
+  }
+
+  /* ============================================
+     RESPONSIVE: 1200px
+     ============================================ */
+  @media (max-width: 1200px) {
+    .nw-nav-links {
+      gap: 30px;
+    }
+
+    .nw-hero__title {
+      font-size: 50px;
+    }
+  }
+
+  /* ============================================
+     RESPONSIVE: 1024px — Tablet landscape
+     ============================================ */
+  @media (max-width: 1024px) {
+    .nw-hero {
+      height: 620px;
+    }
+
+    .nw-hero__title {
+      font-size: 42px;
+    }
+
+    .nw-hero__content {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .nw-hero__cta {
+      padding: 16px 32px;
+    }
+
+    .nw-nav-links {
+      gap: 22px;
+    }
+
+    .nw-nav-links a {
+      font-size: 14px;
+    }
+
+    .nw-mega-menu__content {
+      padding: 24px 20px 36px;
+      gap: 24px;
+    }
+
+    .nw-mega-menu__image {
+      width: 220px;
+      height: 200px;
+    }
+
+    .nw-mega-menu__heading {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .nw-mega-menu__link {
+      font-size: 14px;
+      padding: 10px 0;
+    }
+
+    .nw-mega-menu__divider {
+      height: 140px;
+    }
+
+    .nw-mega-menu__col--secondary {
+      padding-top: 46px;
+    }
+
+    .nw-nav-shop-btn {
+      padding: 8px 24px;
+      font-size: 14px;
+      right: 80px;
+    }
+  }
+
+  /* ============================================
+     RESPONSIVE: 768px — Tablet / Mobile
+     ============================================ */
+  @media (max-width: 768px) {
+    /* HIDE MEGA MENU ON MOBILE */
+    .nw-mega-menu {
+      display: none !important;
+    }
+
+    /* MOBILE NAV */
+    .nw-nav-toggle-label {
+      display: flex;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .nw-nav-links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 260px;
+      height: 100vh;
+      background: rgba(37, 34, 32, 0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      flex-direction: column;
+      gap: 0;
+      padding: 80px 30px 40px;
+      z-index: 100;
+      transition: right 0.35s ease;
+      margin: 0;
+    }
+
+    .nw-nav-links li {
+      list-style: none;
+    }
+
+    .nw-nav-links a {
+      display: block;
+      padding: 14px 0;
+      font-size: 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+    .nw-nav-toggle-checkbox:checked ~ .nw-nav-links {
+      right: 0;
+    }
+
+    .nw-nav-shop-btn {
+      display: none;
+    }
+
+    .nw-nav-cart {
+      position: absolute;
+      right: 60px;
+      width: 28px;
+      height: 28px;
+    }
+
+    .nw-hero__nav::after {
+      display: none;
+    }
+
+    .nw-hero__logo {
+      width: 60px;
+      height: 60px;
+      top: 5px;
+      left: 10px;
+    }
+
+    .nw-hero {
+      height: 500px;
+    }
+
+    .nw-hero__title {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .nw-hero__title br {
+      display: none;
+    }
+
+    .nw-hero__cta {
+      padding: 14px 28px;
+      font-size: 14px;
+    }
+
+    .nw-announcement-bar p {
+      font-size: 10px;
+    }
+  }
+
+  /* ============================================
+     RESPONSIVE: 480px — Small phones
+     ============================================ */
+  @media (max-width: 480px) {
+    .nw-hero {
+      height: 420px;
+    }
+
+    .nw-hero__title {
+      font-size: 26px;
+      margin-bottom: 24px;
+    }
+
+    .nw-hero__cta {
+      padding: 12px 24px;
+      font-size: 13px;
+    }
+
+    .nw-hero__logo {
+      width: 50px;
+      height: 50px;
+      top: 8px;
+      left: 8px;
+    }
+
+    .nw-announcement-bar p {
+      font-size: 10px;
+    }
+  }
+
+  /* ============================================
+     RESPONSIVE: 375px
+     ============================================ */
+  @media (max-width: 375px) {
+    .nw-hero {
+      height: 380px;
+    }
+
+    .nw-hero__title {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .nw-hero__cta {
+      padding: 10px 20px;
+      font-size: 12px;
+    }
+  }
+{%- endstyle -%}
+
+<!-- ====== ANNOUNCEMENT BAR ====== -->
+{% if section.settings.show_announcement_bar %}
+  <div class="nw-announcement-bar">
+    <p>{{ section.settings.announcement_text }}</p>
+  </div>
+{% endif %}
+
+<!-- ====== HERO WITH NAV ====== -->
+<section class="nw-hero">
+  <!-- Background Image -->
+  <div class="nw-hero__bg">
+    {% if section.settings.hero_image != blank %}
+      <img
+        src="{{ section.settings.hero_image | image_url: width: 2000 }}"
+        alt="{{ section.settings.hero_image.alt | default: section.settings.hero_title }}"
+        loading="eager"
+        fetchpriority="high"
+        width="2000"
+        height="{{ 2000 | divided_by: section.settings.hero_image.aspect_ratio | round }}"
+      >
+    {% else %}
+      <img
+        src="https://www.figma.com/api/mcp/asset/9be15d16-218b-4200-b3e4-5759ed372013"
+        alt="NW Immersion hero — sauna lifestyle"
+        loading="eager"
+      >
+    {% endif %}
+  </div>
+  <div class="nw-hero__overlay"></div>
+  <div class="nw-hero__glow"></div>
+
+  <!-- Logo -->
+  <a href="/" class="nw-hero__logo">
+    {% if section.settings.logo_image != blank %}
+      <img
+        src="{{ section.settings.logo_image | image_url: width: 160 }}"
+        alt="{{ shop.name }}"
+        width="80"
+        height="80"
+        loading="eager"
+      >
+    {% else %}
+      <img
+        src="https://www.figma.com/api/mcp/asset/3cf3d791-7eb3-4f05-a480-c59c2ecb6c99"
+        alt="{{ shop.name }}"
+        loading="eager"
+      >
+    {% endif %}
+  </a>
+
+  <!-- Navigation -->
+  <nav class="nw-hero__nav">
+    <input type="checkbox" id="nw-nav-toggle" class="nw-nav-toggle-checkbox">
+    <label for="nw-nav-toggle" class="nw-nav-toggle-label" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </label>
+
+    <ul class="nw-nav-links">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+
+          {%- when 'mega_menu_item' -%}
+            <li class="nw-nav-mega-trigger" {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.link }}">{{ block.settings.label }}</a>
+              <div class="nw-mega-menu">
+                <div class="nw-mega-menu__content">
+                  <!-- Mega Menu Image -->
+                  <div class="nw-mega-menu__image">
+                    {% if block.settings.mega_image != blank %}
+                      <img
+                        src="{{ block.settings.mega_image | image_url: width: 560 }}"
+                        alt="{{ block.settings.mega_image.alt | default: block.settings.label }}"
+                        loading="lazy"
+                        width="280"
+                        height="254"
+                      >
+                    {% else %}
+                      <img
+                        src="https://www.figma.com/api/mcp/asset/1a61a646-25f1-48ba-b531-9b64d3b2131d"
+                        alt="{{ block.settings.label }}"
+                        loading="lazy"
+                      >
+                    {% endif %}
+                  </div>
+
+                  <div class="nw-mega-menu__divider"></div>
+
+                  <!-- Primary Column -->
+                  <div class="nw-mega-menu__col">
+                    <h3 class="nw-mega-menu__heading">{{ block.settings.mega_heading | default: block.settings.label }}</h3>
+                    {% if block.settings.mega_link_1_label != blank %}
+                      <a href="{{ block.settings.mega_link_1_url }}" class="nw-mega-menu__link nw-mega-menu__link--active">
+                        {{ block.settings.mega_link_1_label }}
+                        <img
+                          src="https://www.figma.com/api/mcp/asset/2a81d6d5-2292-4755-80fc-2fb62b26cae0"
+                          alt=""
+                          class="nw-mega-menu__chevron"
+                          width="24"
+                          height="24"
+                        >
+                      </a>
+                    {% endif %}
+                    {% if block.settings.mega_link_2_label != blank %}
+                      <a href="{{ block.settings.mega_link_2_url }}" class="nw-mega-menu__link">{{ block.settings.mega_link_2_label }}</a>
+                    {% endif %}
+                    {% if block.settings.mega_link_3_label != blank %}
+                      <a href="{{ block.settings.mega_link_3_url }}" class="nw-mega-menu__link">{{ block.settings.mega_link_3_label }}</a>
+                    {% endif %}
+                    {% if block.settings.mega_link_4_label != blank %}
+                      <a href="{{ block.settings.mega_link_4_url }}" class="nw-mega-menu__link">{{ block.settings.mega_link_4_label }}</a>
+                    {% endif %}
+                  </div>
+
+                  <!-- Secondary Divider + Column -->
+                  {% if block.settings.mega_sec_link_1_label != blank or block.settings.mega_sec_link_2_label != blank or block.settings.mega_sec_link_3_label != blank %}
+                    <div class="nw-mega-menu__divider nw-mega-menu__divider--secondary"></div>
+                    <div class="nw-mega-menu__col nw-mega-menu__col--secondary">
+                      {% if block.settings.mega_sec_link_1_label != blank %}
+                        <a href="{{ block.settings.mega_sec_link_1_url }}" class="nw-mega-menu__link">{{ block.settings.mega_sec_link_1_label }}</a>
+                      {% endif %}
+                      {% if block.settings.mega_sec_link_2_label != blank %}
+                        <a href="{{ block.settings.mega_sec_link_2_url }}" class="nw-mega-menu__link">{{ block.settings.mega_sec_link_2_label }}</a>
+                      {% endif %}
+                      {% if block.settings.mega_sec_link_3_label != blank %}
+                        <a href="{{ block.settings.mega_sec_link_3_url }}" class="nw-mega-menu__link">{{ block.settings.mega_sec_link_3_label }}</a>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </li>
+
+          {%- when 'nav_item' -%}
+            <li {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.link }}">{{ block.settings.label }}</a>
+            </li>
+
+        {%- endcase -%}
+      {%- endfor -%}
+    </ul>
+
+    <!-- Shop Button -->
+    <a href="{{ section.settings.shop_button_link }}" class="nw-nav-shop-btn">
+      {{ section.settings.shop_button_text | default: 'SHOP' }}
+    </a>
+
+    <!-- Cart Icon -->
+    <a href="/cart" class="nw-nav-cart" aria-label="Cart">
+      {% if section.settings.cart_icon != blank %}
+        <img
+          src="{{ section.settings.cart_icon | image_url: width: 72 }}"
+          alt="Shopping cart"
+          width="36"
+          height="36"
+          loading="eager"
+        >
+      {% else %}
+        <img
+          src="https://www.figma.com/api/mcp/asset/f6510977-55cc-451b-b5b8-e7219abd429d"
+          alt="Shopping cart"
+          loading="eager"
+        >
+      {% endif %}
+    </a>
+  </nav>
+
+  <!-- Hero Content -->
+  <div class="nw-hero__content">
+    <h1 class="nw-hero__title">
+      {{ section.settings.hero_title }}
+    </h1>
+    {% if section.settings.hero_cta_text != blank %}
+      <a href="{{ section.settings.hero_cta_link }}" class="nw-hero__cta">
+        {{ section.settings.hero_cta_text }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Custom Header",
+  "tag": "header",
+  "class": "nw-custom-header-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Announcement Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement_bar",
+      "label": "Show announcement bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "Free Shipping on all saunas"
+    },
+    {
+      "type": "color",
+      "id": "announcement_bg_color",
+      "label": "Announcement background color",
+      "default": "#1B3A2D"
+    },
+    {
+      "type": "color",
+      "id": "announcement_text_color",
+      "label": "Announcement text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "url",
+      "id": "shop_button_link",
+      "label": "Shop button link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "shop_button_text",
+      "label": "Shop button text",
+      "default": "SHOP"
+    },
+    {
+      "type": "image_picker",
+      "id": "cart_icon",
+      "label": "Cart icon (optional)"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (mega menu highlight)",
+      "default": "#4A7C59"
+    },
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero background image"
+    },
+    {
+      "type": "range",
+      "id": "hero_height",
+      "label": "Hero height (px)",
+      "min": 400,
+      "max": 1000,
+      "step": 10,
+      "default": 780,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 30,
+      "unit": "%"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero title",
+      "default": "Step into a space built<br>for warmth, wellness & Calm"
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_text",
+      "label": "Call to action text",
+      "default": "Shop Saunas and Cold Plunges"
+    },
+    {
+      "type": "url",
+      "id": "hero_cta_link",
+      "label": "Call to action link",
+      "default": "/collections/all"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mega_menu_item",
+      "name": "Mega Menu Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Menu label",
+          "default": "Saunas"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Menu link"
+        },
+        {
+          "type": "header",
+          "content": "Mega Menu Panel"
+        },
+        {
+          "type": "image_picker",
+          "id": "mega_image",
+          "label": "Featured image"
+        },
+        {
+          "type": "text",
+          "id": "mega_heading",
+          "label": "Column heading",
+          "default": "Saunas"
+        },
+        {
+          "type": "header",
+          "content": "Primary Links (Column 1)"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_1_label",
+          "label": "Link 1 label",
+          "default": "Outdoor Saunas"
+        },
+        {
+          "type": "url",
+          "id": "mega_link_1_url",
+          "label": "Link 1 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_2_label",
+          "label": "Link 2 label",
+          "default": "Indoor Saunas"
+        },
+        {
+          "type": "url",
+          "id": "mega_link_2_url",
+          "label": "Link 2 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_3_label",
+          "label": "Link 3 label",
+          "default": "Infrared"
+        },
+        {
+          "type": "url",
+          "id": "mega_link_3_url",
+          "label": "Link 3 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_4_label",
+          "label": "Link 4 label",
+          "default": "Steam & Ice Suite"
+        },
+        {
+          "type": "url",
+          "id": "mega_link_4_url",
+          "label": "Link 4 URL"
+        },
+        {
+          "type": "header",
+          "content": "Secondary Links (Column 2 — appears on hover)"
+        },
+        {
+          "type": "text",
+          "id": "mega_sec_link_1_label",
+          "label": "Secondary link 1 label",
+          "default": "Wood Stove sauna"
+        },
+        {
+          "type": "url",
+          "id": "mega_sec_link_1_url",
+          "label": "Secondary link 1 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_sec_link_2_label",
+          "label": "Secondary link 2 label",
+          "default": "Electric sauna"
+        },
+        {
+          "type": "url",
+          "id": "mega_sec_link_2_url",
+          "label": "Secondary link 2 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_sec_link_3_label",
+          "label": "Secondary link 3 label",
+          "default": "Barrel sauna"
+        },
+        {
+          "type": "url",
+          "id": "mega_sec_link_3_url",
+          "label": "Secondary link 3 URL"
+        }
+      ]
+    },
+    {
+      "type": "nav_item",
+      "name": "Nav Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Link"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Custom Header",
+      "blocks": [
+        {
+          "type": "mega_menu_item",
+          "settings": {
+            "label": "Saunas",
+            "mega_heading": "Saunas",
+            "mega_link_1_label": "Outdoor Saunas",
+            "mega_link_2_label": "Indoor Saunas",
+            "mega_link_3_label": "Infrared",
+            "mega_link_4_label": "Steam & Ice Suite",
+            "mega_sec_link_1_label": "Wood Stove sauna",
+            "mega_sec_link_2_label": "Electric sauna",
+            "mega_sec_link_3_label": "Barrel sauna"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "label": "Plunges & Tubs"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "label": "Signature Saunas"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "label": "Supplies"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "label": "Commercial"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
