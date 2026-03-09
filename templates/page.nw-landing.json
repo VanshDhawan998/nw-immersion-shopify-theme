@@ -4,6 +4,7 @@
       "type": "nw-hero",
       "settings": {
         "heading": "<p>Step into a space built<br>for warmth, wellness & Calm</p>",
+        "background_image_url": "https://www.figma.com/api/mcp/asset/9be15d16-218b-4200-b3e4-5759ed372013",
         "overlay_opacity": 30,
         "show_glow": true,
         "text_color": "#ffffff",
@@ -14,47 +15,370 @@
     },
     "nw_trust_bar": {
       "type": "nw-trust-bar",
-      "settings": {}
+      "settings": {
+        "background_color": "#ffffff",
+        "text_color": "#000000"
+      },
+      "blocks": {
+        "trust_1": {
+          "type": "trust_item",
+          "settings": {
+            "text": "12+ Years of Craftsmanship"
+          }
+        },
+        "trust_2": {
+          "type": "trust_item",
+          "settings": {
+            "text": "Continental US Shipping"
+          }
+        },
+        "trust_3": {
+          "type": "trust_item",
+          "settings": {
+            "text": "Same Day Parts Shipping"
+          }
+        }
+      },
+      "block_order": ["trust_1", "trust_2", "trust_3"]
     },
     "nw_signature_saunas": {
       "type": "nw-signature-saunas",
-      "settings": {}
+      "settings": {
+        "heading": "NW Immersion Signature Saunas",
+        "title_color": "#000000"
+      },
+      "blocks": {
+        "sauna_1": {
+          "type": "sauna_card",
+          "settings": {
+            "label": "Outdoor Saunas",
+            "image_url": "https://www.figma.com/api/mcp/asset/0ef8dc2e-b643-44cb-9c73-5b0e8c4c6c0d"
+          }
+        },
+        "sauna_2": {
+          "type": "sauna_card",
+          "settings": {
+            "label": "Indoor Saunas",
+            "image_url": "https://www.figma.com/api/mcp/asset/d6f1c8a9-43fa-4fd4-902d-74463152633c"
+          }
+        },
+        "sauna_3": {
+          "type": "sauna_card",
+          "settings": {
+            "label": "Tubs & Plunges",
+            "image_url": "https://www.figma.com/api/mcp/asset/46cb5450-2456-472b-b8b9-3188e3b35fa8"
+          }
+        },
+        "sauna_4": {
+          "type": "sauna_card",
+          "settings": {
+            "label": "Steam & Ice Suite",
+            "image_url": "https://www.figma.com/api/mcp/asset/484f9b83-b7c2-4ffc-9803-16aec6635b1d"
+          }
+        }
+      },
+      "block_order": ["sauna_1", "sauna_2", "sauna_3", "sauna_4"]
     },
     "nw_trust_badges": {
       "type": "nw-trust-badges",
-      "settings": {}
+      "settings": {
+        "heading": "We can have your trust",
+        "title_color": "#000000",
+        "badge_border_color": "#000000"
+      },
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "badge_type": "simple",
+            "image_url": "https://www.figma.com/api/mcp/asset/89dc5993-37f5-4137-8cfb-75d6247dfb44",
+            "alt_text": "BBB Accredited"
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "badge_type": "split",
+            "image_url": "https://www.figma.com/api/mcp/asset/ca0dc499-0aed-4944-aa8d-d4f9744b2553",
+            "alt_text": "Accredited Business",
+            "line_1": "ACCREDITED",
+            "line_2": "BUSINESS",
+            "accent_color": "#005a79"
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "badge_type": "flag",
+            "image_url": "https://www.figma.com/api/mcp/asset/7909fc17-d183-4839-b99a-58a9ff1db9f9",
+            "alt_text": "Made in USA",
+            "line_1": "MADE IN",
+            "line_2": "USA",
+            "accent_color": "#002356"
+          }
+        },
+        "badge_4": {
+          "type": "badge",
+          "settings": {
+            "badge_type": "highlight",
+            "image_url": "https://www.figma.com/api/mcp/asset/db99b6fc-49e1-48fe-8846-7b2d17d88f79",
+            "alt_text": "Top Rated",
+            "line_1": "TOP RATED",
+            "accent_color": "#edb41c"
+          }
+        }
+      },
+      "block_order": ["badge_1", "badge_2", "badge_3", "badge_4"]
     },
     "nw_difference": {
       "type": "nw-difference",
-      "settings": {}
+      "settings": {
+        "heading": "What makes NW Immersion different",
+        "background_image_url": "https://www.figma.com/api/mcp/asset/c6da7d4d-dfd5-496b-8470-d3fa6dc0f11b",
+        "text_color": "#ffffff"
+      },
+      "blocks": {
+        "diff_1": {
+          "type": "list_item",
+          "settings": {
+            "text": "Handcrafted in the Pacific Northwest with locally sourced cedar"
+          }
+        },
+        "diff_2": {
+          "type": "list_item",
+          "settings": {
+            "text": "Custom-built designs for homes, spas, and commercial settings"
+          }
+        },
+        "diff_3": {
+          "type": "list_item",
+          "settings": {
+            "text": "Cold plunge options for complete heat + cold therapy"
+          }
+        },
+        "diff_4": {
+          "type": "list_item",
+          "settings": {
+            "text": "Delivered fully assembled and ready to enjoy"
+          }
+        },
+        "diff_5": {
+          "type": "list_item",
+          "settings": {
+            "text": "Durable builds designed to withstand the elements"
+          }
+        },
+        "diff_6": {
+          "type": "list_item",
+          "settings": {
+            "text": "Nationwide shipping so your sauna journey begins wherever you are"
+          }
+        }
+      },
+      "block_order": ["diff_1", "diff_2", "diff_3", "diff_4", "diff_5", "diff_6"]
     },
     "nw_testimonials": {
       "type": "nw-testimonials",
-      "settings": {}
+      "settings": {
+        "heading": "What Our Fans Saying",
+        "title_color": "#000000"
+      },
+      "blocks": {
+        "test_1": {
+          "type": "testimonial_column",
+          "settings": {
+            "layout": "text_top",
+            "name": "Harrison Fraser",
+            "quote": "If you haven't checked this place out already, I suggest you do it soon!",
+            "avatar_url": "https://www.figma.com/api/mcp/asset/08a816e8-a50e-48c6-a126-571fca64cd96",
+            "photo_url": "https://www.figma.com/api/mcp/asset/286804e7-dda2-433f-b467-9f05e0611ee7",
+            "show_play_button": true,
+            "play_icon_url": "https://www.figma.com/api/mcp/asset/a0429549-1b02-4fa2-9842-bc5abeb59593"
+          }
+        },
+        "test_2": {
+          "type": "testimonial_column",
+          "settings": {
+            "layout": "image_top",
+            "name": "Julia Ford",
+            "quote": "I feel a lot of mental clarity and it is awesome",
+            "avatar_url": "https://www.figma.com/api/mcp/asset/592051af-5b3f-4445-80e1-d2442d81acc1",
+            "photo_url": "https://www.figma.com/api/mcp/asset/522ab9af-143c-4737-bf4a-b48bde32a0f6",
+            "show_play_button": true,
+            "play_icon_url": "https://www.figma.com/api/mcp/asset/a0429549-1b02-4fa2-9842-bc5abeb59593"
+          }
+        },
+        "test_3": {
+          "type": "testimonial_column",
+          "settings": {
+            "layout": "text_top",
+            "name": "Kelly Broker",
+            "quote": "I care about quality, a brand I can trust. I think you are going to love it",
+            "avatar_url": "https://www.figma.com/api/mcp/asset/6bd3ff3b-06d0-43e3-bfd4-5e9b2dedc46d",
+            "photo_url": "https://www.figma.com/api/mcp/asset/42c17cbf-d071-47e1-a3f0-f74e31b32a75",
+            "show_play_button": true,
+            "play_icon_url": "https://www.figma.com/api/mcp/asset/a0429549-1b02-4fa2-9842-bc5abeb59593"
+          }
+        },
+        "test_4": {
+          "type": "testimonial_column",
+          "settings": {
+            "layout": "image_top",
+            "name": "Kiev Schiller",
+            "quote": "It's awesome and love this, I hope you enjoy it too",
+            "avatar_url": "https://www.figma.com/api/mcp/asset/62541ce3-3ae5-4061-9a7e-c30a65ffad43",
+            "photo_url": "https://www.figma.com/api/mcp/asset/6a19746c-9cc4-42b1-9d03-b08e9e4b54f7",
+            "show_play_button": true,
+            "play_icon_url": "https://www.figma.com/api/mcp/asset/a0429549-1b02-4fa2-9842-bc5abeb59593"
+          }
+        }
+      },
+      "block_order": ["test_1", "test_2", "test_3", "test_4"]
     },
     "nw_story": {
       "type": "nw-story",
-      "settings": {}
+      "settings": {
+        "heading": "The Story That Sparked NW Immersion",
+        "background_image_url": "https://www.figma.com/api/mcp/asset/720077e1-8bae-471c-8625-2ea9443864c7",
+        "text_color": "#FCFCFC",
+        "button_text": "Our Story",
+        "button_bg": "#546659",
+        "button_text_color": "#ffffff"
+      },
+      "blocks": {
+        "para_1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>NW Immersion began with a personal journey. In 2010, founders Michelle and Eric installed their first home sauna. What started as a wellness practice soon became a way of life. For Eric, the change was transformative.</p>"
+          }
+        },
+        "para_2": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Through regular sauna use, he lost 100 pounds and kept it off \u2013 a lasting reminder of the power of heat and cold immersion. Together, Michelle and Eric built NW Immersion on the belief that wellness should be accessible, enjoyable, and deeply rewarding.</p>"
+          }
+        },
+        "para_3": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Today, every sauna we build carries that same commitment: helping you discover health and renewal one session at a time.</p>"
+          }
+        }
+      },
+      "block_order": ["para_1", "para_2", "para_3"]
     },
     "nw_benefits": {
       "type": "nw-benefits",
-      "settings": {}
+      "settings": {
+        "heading": "Benefits of Products",
+        "title_color": "#000000"
+      },
+      "blocks": {
+        "tab_1": {
+          "type": "benefit_tab",
+          "settings": {
+            "tab_label": "Warranty",
+            "card_title": "Warranty of Saunas",
+            "card_text": "Our saunas are built with premium-quality wood, advanced heating systems, and durable components to ensure long-lasting performance. We stand behind the craftsmanship of our products by offering a comprehensive warranty for your peace of mind.",
+            "image_url": "https://www.figma.com/api/mcp/asset/d6bf860b-6acf-4a31-a066-136cc095c333"
+          }
+        },
+        "tab_2": {
+          "type": "benefit_tab",
+          "settings": {
+            "tab_label": "Support",
+            "card_title": "Customer Support",
+            "card_text": "Our dedicated support team is available to help you every step of the way \u2014 from choosing the right sauna to installation and maintenance.",
+            "image_url": "https://www.figma.com/api/mcp/asset/d6bf860b-6acf-4a31-a066-136cc095c333"
+          }
+        },
+        "tab_3": {
+          "type": "benefit_tab",
+          "settings": {
+            "tab_label": "Simple Care",
+            "card_title": "Simple Care & Maintenance",
+            "card_text": "Our saunas are designed for easy upkeep with minimal maintenance required, so you can focus on enjoying your wellness experience.",
+            "image_url": "https://www.figma.com/api/mcp/asset/d6bf860b-6acf-4a31-a066-136cc095c333"
+          }
+        },
+        "tab_4": {
+          "type": "benefit_tab",
+          "settings": {
+            "tab_label": "Quality Materials",
+            "card_title": "Premium Quality Materials",
+            "card_text": "We use only the finest locally sourced cedar and premium components to ensure your sauna delivers exceptional quality for years to come.",
+            "image_url": "https://www.figma.com/api/mcp/asset/d6bf860b-6acf-4a31-a066-136cc095c333"
+          }
+        }
+      },
+      "block_order": ["tab_1", "tab_2", "tab_3", "tab_4"]
     },
     "nw_customize_experience": {
       "type": "nw-customize-experience",
-      "settings": {}
+      "settings": {
+        "heading": "Customizing Your Experience",
+        "subtext": "Compare features, test color combos, and find the sauna that fits your life best.",
+        "background_image_url": "https://www.figma.com/api/mcp/asset/b4644235-56d1-4ed6-82e0-b642783622ce",
+        "text_color": "#ffffff",
+        "button_text": "Compare Saunas",
+        "button_bg": "#ffffff",
+        "button_text_color": "#000000"
+      }
     },
     "nw_blog": {
       "type": "nw-blog",
-      "settings": {}
+      "settings": {
+        "heading": "Our Blog",
+        "title_color": "#000000",
+        "arrow_icon_url": "https://www.figma.com/api/mcp/asset/2322027e-6126-44ae-8944-72247a865c5a"
+      },
+      "blocks": {
+        "blog_1": {
+          "type": "blog_card",
+          "settings": {
+            "title": "Steven Ogg's Morning Ritual",
+            "image_url": "https://www.figma.com/api/mcp/asset/696a4ac8-6ba8-434e-b2ac-eedaac3c2862"
+          }
+        },
+        "blog_2": {
+          "type": "blog_card",
+          "settings": {
+            "title": "How Kara Transformed Her Evening Routine With a Sauna",
+            "image_url": "https://www.figma.com/api/mcp/asset/3c09303f-be13-4b79-a9c8-1231908cf8ff"
+          }
+        },
+        "blog_3": {
+          "type": "blog_card",
+          "settings": {
+            "title": "The Ultimate guide to Sauna",
+            "image_url": "https://www.figma.com/api/mcp/asset/d18a9a3f-2ff9-4edf-a1b5-baf89deff91d"
+          }
+        }
+      },
+      "block_order": ["blog_1", "blog_2", "blog_3"]
     },
     "nw_newsletter": {
       "type": "nw-newsletter",
-      "settings": {}
+      "settings": {
+        "subtitle": "Subscribe to our newsletter",
+        "heading": "Learn about our latest products, updates and news.",
+        "placeholder": "EMAIL ADDRESS",
+        "button_text": "SIGN UP",
+        "title_color": "#000000",
+        "text_color": "#000000",
+        "button_bg": "#546659",
+        "button_text_color": "#ffffff"
+      }
     },
     "nw_big_quote": {
       "type": "nw-big-quote",
-      "settings": {}
+      "settings": {
+        "quote": "A total game changer. I use it daily \u2014 it keeps me feeling decades younger",
+        "author_name": "Larry S",
+        "author_image_url": "https://www.figma.com/api/mcp/asset/cc3e9b04-3304-4f37-8eaa-e68cdf42046a",
+        "star_count": 5,
+        "star_color": "#000000"
+      }
     }
   },
   "order": [
