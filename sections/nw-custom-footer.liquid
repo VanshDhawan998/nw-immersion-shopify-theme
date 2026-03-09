@@ -1,0 +1,757 @@
+{{ 'https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap' | stylesheet_tag }}
+
+{% style %}
+  /* ============================================
+     NW CUSTOM FOOTER
+     ============================================ */
+  .nw-footer {
+    background: {{ section.settings.bg_color }};
+    padding: 40px 120px 0;
+    color: {{ section.settings.text_color }};
+    font-family: 'Raleway', sans-serif;
+  }
+
+  /* ── Top: Logo + Brand ── */
+  .nw-footer__top {
+    display: flex;
+    align-items: flex-start;
+    gap: 27px;
+    margin-bottom: 30px;
+  }
+
+  .nw-footer__logo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .nw-footer__brand-text {
+    padding-top: 8px;
+  }
+
+  .nw-footer__brand-text h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+    margin-bottom: 8px;
+  }
+
+  .nw-footer__brand-text p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: {{ section.settings.text_color }};
+    line-height: 36px;
+  }
+
+  /* ── Divider ── */
+  .nw-footer__divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 30px;
+  }
+
+  /* ── Navigation row ── */
+  .nw-footer__nav {
+    display: flex;
+    gap: 145px;
+    align-items: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #2c2c2c;
+  }
+
+  .nw-footer__nav a {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fcfcfc;
+    line-height: 28px;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .nw-footer__nav a:hover {
+    opacity: 0.7;
+  }
+
+  .nw-footer__nav .nw-footer__has-arrow {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .nw-footer__nav .nw-footer__has-arrow .nw-footer__arrow {
+    width: 7px;
+    height: 11px;
+  }
+
+  /* ── Middle: Membership (left) + Contact (right) ── */
+  .nw-footer__middle {
+    display: grid;
+    grid-template-columns: 330px 1fr;
+    align-items: start;
+    padding: 40px 0;
+  }
+
+  .nw-footer__membership {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nw-footer__membership .nw-footer__proud-member {
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .nw-footer__membership .nw-footer__bbb-badge {
+    width: 200px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 30px;
+  }
+
+  .nw-footer__cert-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 20px 40px;
+    background: {{ section.settings.accent_color }};
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+  }
+
+  .nw-footer__cert-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    color: #fff;
+  }
+
+  /* ── Contact items ── */
+  .nw-footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .nw-footer__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nw-footer__contact-icon {
+    width: 40px;
+    height: 40px;
+    background: {{ section.settings.accent_color }};
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .nw-footer__contact-icon--email {
+    background: transparent;
+  }
+
+  .nw-footer__contact-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nw-footer__contact-icon--email img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nw-footer__contact-item span {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fcfcfc;
+    line-height: 28px;
+  }
+
+  /* ── Bottom bar ── */
+  .nw-footer__bottom {
+    background: {{ section.settings.bottom_bar_color }};
+    margin: 0 -120px;
+    padding: 30px 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nw-footer__bottom p,
+  .nw-footer__bottom a {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 28px;
+    text-decoration: none;
+  }
+
+  .nw-footer__bottom a:hover {
+    opacity: 0.7;
+  }
+
+  .nw-footer__bottom-links {
+    display: flex;
+    gap: 0;
+  }
+
+  .nw-footer__bottom-links a {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 28px;
+    text-decoration: none;
+  }
+
+  .nw-footer__bottom-separator {
+    margin: 0 24px;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* ============================================
+     RESPONSIVE: 1200px
+     ============================================ */
+  @media (max-width: 1200px) {
+    .nw-footer {
+      padding: 40px 60px 0;
+    }
+
+    .nw-footer__bottom {
+      margin: 0 -60px;
+      padding: 24px 60px;
+    }
+
+    .nw-footer__nav {
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+  }
+
+  /* ============================================
+     RESPONSIVE: 1024px — Tablet landscape
+     ============================================ */
+  @media (max-width: 1024px) {
+    .nw-footer__top {
+      gap: 20px;
+    }
+
+    .nw-footer__nav {
+      gap: 40px;
+    }
+
+    .nw-footer__middle {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .nw-footer__bottom {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+
+    .nw-footer__bottom p {
+      font-size: 14px;
+    }
+
+    .nw-footer__bottom-links a {
+      font-size: 14px;
+    }
+  }
+
+  /* ============================================
+     RESPONSIVE: 768px — Tablet portrait
+     ============================================ */
+  @media (max-width: 768px) {
+    .nw-footer {
+      padding: 30px 20px 0;
+    }
+
+    .nw-footer__top {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .nw-footer__brand-text p {
+      line-height: 26px;
+    }
+
+    .nw-footer__middle {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .nw-footer__nav {
+      flex-wrap: wrap;
+      gap: 16px 30px;
+    }
+
+    .nw-footer__nav a {
+      font-size: 16px;
+    }
+
+    .nw-footer__bottom {
+      margin: 0 -20px;
+      padding: 20px 20px;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+
+    .nw-footer__bottom p {
+      font-size: 13px;
+    }
+
+    .nw-footer__bottom-links a {
+      font-size: 13px;
+    }
+  }
+
+  /* ============================================
+     RESPONSIVE: 480px — Mobile phones
+     ============================================ */
+  @media (max-width: 480px) {
+    .nw-footer__logo {
+      width: 80px;
+      height: 80px;
+    }
+
+    .nw-footer__brand-text h3 {
+      font-size: 20px;
+    }
+
+    .nw-footer__membership .nw-footer__proud-member {
+      font-size: 18px;
+    }
+
+    .nw-footer__membership .nw-footer__bbb-badge {
+      width: 150px;
+      height: 60px;
+    }
+
+    .nw-footer__cert-btn {
+      padding: 14px 30px;
+      font-size: 14px;
+    }
+
+    .nw-footer__contact-item span {
+      font-size: 14px;
+    }
+
+    .nw-footer__nav {
+      gap: 12px 20px;
+    }
+
+    .nw-footer__nav a {
+      font-size: 14px;
+    }
+
+    .nw-footer__bottom p {
+      font-size: 12px;
+    }
+
+    .nw-footer__bottom-links a {
+      font-size: 12px;
+    }
+  }
+{% endstyle %}
+
+<footer class="nw-footer">
+  <!-- ══ Top: Logo + Brand Text ══ -->
+  <div class="nw-footer__top">
+    {% if section.settings.logo != blank %}
+      <img
+        class="nw-footer__logo"
+        src="{{ section.settings.logo | image_url: width: 240 }}"
+        alt="{{ shop.name }}"
+        width="120"
+        height="120"
+        loading="lazy"
+      >
+    {% else %}
+      <img
+        class="nw-footer__logo"
+        src="https://www.figma.com/api/mcp/asset/3cf3d791-7eb3-4f05-a480-c59c2ecb6c99"
+        alt="{{ shop.name }}"
+        width="120"
+        height="120"
+        loading="lazy"
+      >
+    {% endif %}
+
+    <div class="nw-footer__brand-text">
+      <h3>{{ section.settings.brand_name }}</h3>
+      <p>{{ section.settings.brand_description }}</p>
+    </div>
+  </div>
+
+  <!-- ══ Divider ══ -->
+  <div class="nw-footer__divider"></div>
+
+  <!-- ══ Navigation row ══ -->
+  <nav class="nw-footer__nav">
+    {% for block in section.blocks %}
+      {% if block.type == 'nav_link' %}
+        <a href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+          {{ block.settings.label }}
+        </a>
+      {% elsif block.type == 'nav_link_arrow' %}
+        <a href="{{ block.settings.link }}" class="nw-footer__has-arrow" {{ block.shopify_attributes }}>
+          {{ block.settings.label }}
+          <svg class="nw-footer__arrow" width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L5.5 5.5L1 10" stroke="#fcfcfc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  <!-- ══ Middle: Membership (left) + Contact (right) ══ -->
+  <div class="nw-footer__middle">
+    <!-- Membership -->
+    <div class="nw-footer__membership">
+      <p class="nw-footer__proud-member">{{ section.settings.membership_heading }}</p>
+
+      {% if section.settings.badge_image != blank %}
+        <img
+          class="nw-footer__bbb-badge"
+          src="{{ section.settings.badge_image | image_url: width: 400 }}"
+          alt="{{ section.settings.membership_heading }}"
+          width="200"
+          height="80"
+          loading="lazy"
+        >
+      {% else %}
+        <img
+          class="nw-footer__bbb-badge"
+          src="https://www.figma.com/api/mcp/asset/89dc5993-37f5-4137-8cfb-75d6247dfb44"
+          alt="{{ section.settings.membership_heading }}"
+          width="200"
+          height="80"
+          loading="lazy"
+        >
+      {% endif %}
+
+      {% if section.settings.cert_btn_text != blank %}
+        <a href="{{ section.settings.cert_btn_link }}" class="nw-footer__cert-btn">
+          {{ section.settings.cert_btn_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    <!-- Contact -->
+    <div class="nw-footer__contact">
+      {% for block in section.blocks %}
+        {% if block.type == 'contact_item' %}
+          <div class="nw-footer__contact-item" {{ block.shopify_attributes }}>
+            <div class="nw-footer__contact-icon {% if block.settings.icon_transparent %}nw-footer__contact-icon--email{% endif %}">
+              {% if block.settings.icon != blank %}
+                <img
+                  src="{{ block.settings.icon | image_url: width: 80 }}"
+                  alt="{{ block.settings.text }}"
+                  width="20"
+                  height="20"
+                  loading="lazy"
+                >
+              {% endif %}
+            </div>
+            {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}" style="font-family:'Raleway',sans-serif;font-size:18px;font-weight:400;color:#fcfcfc;line-height:28px;text-decoration:none;">
+                {{ block.settings.text }}
+              </a>
+            {% else %}
+              <span>{{ block.settings.text }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- ══ Bottom bar ══ -->
+  <div class="nw-footer__bottom">
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ section.settings.copyright_text }}</p>
+    {% if section.settings.credit_text != blank %}
+      <p>{{ section.settings.credit_text }}</p>
+    {% endif %}
+    <div class="nw-footer__bottom-links">
+      {% if section.settings.terms_link != blank %}
+        <a href="{{ section.settings.terms_link }}">{{ section.settings.terms_text }}</a>
+      {% endif %}
+      {% if section.settings.terms_link != blank and section.settings.privacy_link != blank %}
+        <span class="nw-footer__bottom-separator">|</span>
+      {% endif %}
+      {% if section.settings.privacy_link != blank %}
+        <a href="{{ section.settings.privacy_link }}">{{ section.settings.privacy_text }}</a>
+      {% endif %}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "NW Custom Footer",
+  "tag": "section",
+  "class": "nw-custom-footer-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer logo"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand name",
+      "default": "NW Immersion Co"
+    },
+    {
+      "type": "textarea",
+      "id": "brand_description",
+      "label": "Brand description",
+      "default": "Handcrafted saunas and cold plunges built in Vancouver, Washington for wellness, relaxation, and a lifetime of use."
+    },
+    {
+      "type": "header",
+      "content": "Membership / Badge"
+    },
+    {
+      "type": "text",
+      "id": "membership_heading",
+      "label": "Membership heading",
+      "default": "Proud Member of"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_image",
+      "label": "Badge image (e.g. BBB)"
+    },
+    {
+      "type": "text",
+      "id": "cert_btn_text",
+      "label": "Certificate button text",
+      "default": "View Certificate"
+    },
+    {
+      "type": "url",
+      "id": "cert_btn_link",
+      "label": "Certificate button link"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Bar"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text",
+      "default": "NW Immersion Co. All Rights Reserved"
+    },
+    {
+      "type": "text",
+      "id": "credit_text",
+      "label": "Credit / Design by text",
+      "default": "Design by Couve Creative"
+    },
+    {
+      "type": "text",
+      "id": "terms_text",
+      "label": "Terms link text",
+      "default": "Terms & Conditions"
+    },
+    {
+      "type": "url",
+      "id": "terms_link",
+      "label": "Terms link URL"
+    },
+    {
+      "type": "text",
+      "id": "privacy_text",
+      "label": "Privacy link text",
+      "default": "Privacy Policy"
+    },
+    {
+      "type": "url",
+      "id": "privacy_link",
+      "label": "Privacy link URL"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Footer background",
+      "default": "#201e1f"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FCFCFC"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (buttons & icons)",
+      "default": "#546659"
+    },
+    {
+      "type": "color",
+      "id": "bottom_bar_color",
+      "label": "Bottom bar background",
+      "default": "#191919"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Nav Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Link"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "URL"
+        }
+      ]
+    },
+    {
+      "type": "nav_link_arrow",
+      "name": "Nav Link with Arrow",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Link"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "URL"
+        }
+      ]
+    },
+    {
+      "type": "contact_item",
+      "name": "Contact Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image"
+        },
+        {
+          "type": "checkbox",
+          "id": "icon_transparent",
+          "label": "Transparent icon background (for email)",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Contact info"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Custom Footer",
+      "blocks": [
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "Company Info"
+          }
+        },
+        {
+          "type": "nav_link_arrow",
+          "settings": {
+            "label": "Signature Models"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "Inspiration"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "Articles"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "Contact Us"
+          }
+        },
+        {
+          "type": "contact_item",
+          "settings": {
+            "text": "License #: NWIMMIC751C4",
+            "icon_transparent": false
+          }
+        },
+        {
+          "type": "contact_item",
+          "settings": {
+            "text": "(360) 667-8778",
+            "icon_transparent": false
+          }
+        },
+        {
+          "type": "contact_item",
+          "settings": {
+            "text": "info@nwimmersion.com",
+            "icon_transparent": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
