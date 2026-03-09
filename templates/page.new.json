@@ -48,7 +48,11 @@
           }
         }
       },
-      "block_order": ["trust_1", "trust_2", "trust_3"]
+      "block_order": [
+        "trust_1",
+        "trust_2",
+        "trust_3"
+      ]
     },
     "nw_signature_saunas": {
       "type": "nw-signature-saunas",
@@ -86,7 +90,12 @@
           }
         }
       },
-      "block_order": ["sauna_1", "sauna_2", "sauna_3", "sauna_4"]
+      "block_order": [
+        "sauna_1",
+        "sauna_2",
+        "sauna_3",
+        "sauna_4"
+      ]
     },
     "nw_trust_badges": {
       "type": "nw-trust-badges",
@@ -137,7 +146,12 @@
           }
         }
       },
-      "block_order": ["badge_1", "badge_2", "badge_3", "badge_4"]
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "badge_3",
+        "badge_4"
+      ]
     },
     "nw_difference": {
       "type": "nw-difference",
@@ -184,7 +198,14 @@
           }
         }
       },
-      "block_order": ["diff_1", "diff_2", "diff_3", "diff_4", "diff_5", "diff_6"]
+      "block_order": [
+        "diff_1",
+        "diff_2",
+        "diff_3",
+        "diff_4",
+        "diff_5",
+        "diff_6"
+      ]
     },
     "nw_testimonials": {
       "type": "nw-testimonials",
@@ -242,7 +263,12 @@
           }
         }
       },
-      "block_order": ["test_1", "test_2", "test_3", "test_4"]
+      "block_order": [
+        "test_1",
+        "test_2",
+        "test_3",
+        "test_4"
+      ]
     },
     "nw_story": {
       "type": "nw-story",
@@ -264,7 +290,7 @@
         "para_2": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Through regular sauna use, he lost 100 pounds and kept it off \u2013 a lasting reminder of the power of heat and cold immersion. Together, Michelle and Eric built NW Immersion on the belief that wellness should be accessible, enjoyable, and deeply rewarding.</p>"
+            "text": "<p>Through regular sauna use, he lost 100 pounds and kept it off – a lasting reminder of the power of heat and cold immersion. Together, Michelle and Eric built NW Immersion on the belief that wellness should be accessible, enjoyable, and deeply rewarding.</p>"
           }
         },
         "para_3": {
@@ -274,7 +300,11 @@
           }
         }
       },
-      "block_order": ["para_1", "para_2", "para_3"]
+      "block_order": [
+        "para_1",
+        "para_2",
+        "para_3"
+      ]
     },
     "nw_benefits": {
       "type": "nw-benefits",
@@ -297,7 +327,7 @@
           "settings": {
             "tab_label": "Support",
             "card_title": "Customer Support",
-            "card_text": "Our dedicated support team is available to help you every step of the way \u2014 from choosing the right sauna to installation and maintenance.",
+            "card_text": "Our dedicated support team is available to help you every step of the way — from choosing the right sauna to installation and maintenance.",
             "image_url": "https://www.figma.com/api/mcp/asset/d6bf860b-6acf-4a31-a066-136cc095c333"
           }
         },
@@ -320,7 +350,12 @@
           }
         }
       },
-      "block_order": ["tab_1", "tab_2", "tab_3", "tab_4"]
+      "block_order": [
+        "tab_1",
+        "tab_2",
+        "tab_3",
+        "tab_4"
+      ]
     },
     "nw_customize_experience": {
       "type": "nw-customize-experience",
@@ -364,7 +399,11 @@
           }
         }
       },
-      "block_order": ["blog_1", "blog_2", "blog_3"]
+      "block_order": [
+        "blog_1",
+        "blog_2",
+        "blog_3"
+      ]
     },
     "nw_newsletter": {
       "type": "nw-newsletter",
@@ -382,7 +421,7 @@
     "nw_big_quote": {
       "type": "nw-big-quote",
       "settings": {
-        "quote": "A total game changer. I use it daily \u2014 it keeps me feeling decades younger",
+        "quote": "A total game changer. I use it daily — it keeps me feeling decades younger",
         "author_name": "Larry S",
         "author_image_url": "https://www.figma.com/api/mcp/asset/cc3e9b04-3304-4f37-8eaa-e68cdf42046a",
         "star_count": 5,
