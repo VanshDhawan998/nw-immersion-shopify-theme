@@ -1,0 +1,40 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Archives / zips (don't push these to the repo)
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Shopify CLI
+.shopify/
+
+# Nested duplicate export folder (avoid pushing twice)
+theme_export__nw-immersion-myshopify-com-nw-migration__06MAR2026-1114am/
+
+# Environment / secrets
+.env
+.env.*
+
+# Node modules (if any)
+node_modules/
+
+# Utility scripts (not part of the theme)
+_update_colors.py
+setup-github.sh
+
+# WordPress / public_html (not part of the Shopify theme)
+public_html/

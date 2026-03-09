@@ -1,0 +1,2935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NW Immersion — Saunas & Cold Plunges</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-primary: #252220;
+      --color-white: #FCFCFC;
+      --color-alternative: #546659;
+      --color-black: #000000;
+      --color-dark-bg: #201e1f;
+      --color-footer-bottom: #191919;
+      --color-gray: #acacac;
+      --color-border-light: #f1f1f1;
+      --color-input-bg: #d9d9d9;
+      --font-main: 'Raleway', sans-serif;
+      --max-width: 1440px;
+      --content-padding: 50px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-main);
+      color: var(--color-primary);
+      background: #fff;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .page-wrapper {
+      width: 100%;
+      position: relative;
+      background: #fff;
+    }
+
+    /* Inner content constraint for white-bg sections on ultra-wide screens */
+    .trust-bar,
+    .section-padding,
+    .trust-section,
+    .fans-section,
+    .benefits-section,
+    .blog-section,
+    .newsletter-section {
+      max-width: 1440px;
+      margin-inline: auto;
+    }
+
+    /* ============================================
+       ANNOUNCEMENT BAR
+       ============================================ */
+    .announcement-bar {
+      background: var(--color-primary);
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .announcement-bar p {
+      font-size: 11px;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+    .hero {
+      position: relative;
+      height: 780px;
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .hero__glow {
+      position: absolute;
+      top: -410px;
+      left: -62px;
+      width: 1543px;
+      height: 820px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.08), transparent 70%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Navigation */
+    .hero__nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      height: 60px;
+      padding: 0 40px;
+    }
+
+    .hero__nav::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 182px;
+      right: 0;
+      width: 1075px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .hero__logo {
+      position: absolute;
+      top: 7px;
+      left: 15px;
+      width: 80px;
+      height: 80px;
+      z-index: 11;
+    }
+
+    .hero__logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 60px;
+      list-style: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .nav-links a {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.75;
+    }
+
+    .nav-shop-btn {
+      position: absolute;
+      right: 100px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 10px 40px;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .nav-shop-btn:hover {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-cart {
+      position: absolute;
+      right: 36px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+    }
+
+    .nav-cart img {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Hero Content */
+    .hero__content {
+      position: absolute;
+      z-index: 5;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      margin-top: -30px;
+    }
+
+    .hero__title {
+      font-size: 60px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 50px;
+    }
+
+    .hero__cta {
+      display: inline-block;
+      background: #fff;
+      color: var(--color-black);
+      padding: 20px 40px;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .hero__cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    /* ============================================
+       TRUST BAR (3-column)
+       ============================================ */
+    .trust-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      height: 65px;
+      background: #fff;
+      position: relative;
+    }
+
+    .trust-bar__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-black);
+      position: relative;
+    }
+
+    .trust-bar__item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 44px;
+      background: #d9d9d9;
+    }
+
+    /* ============================================
+       SECTION: SIGNATURE SAUNAS
+       ============================================ */
+    .section-padding {
+      padding: 60px var(--content-padding);
+    }
+
+    .section-title {
+      font-size: 60px;
+      font-weight: 700;
+      color: var(--color-black);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .saunas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 1340px;
+      margin: 0 auto;
+    }
+
+    .sauna-card {
+      position: relative;
+      height: 470px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .sauna-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .sauna-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .sauna-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(0,0,0,0.5));
+      mix-blend-mode: multiply;
+      border-radius: 12px;
+    }
+
+    .sauna-card__label {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 40px;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+
+    /* ============================================
+       SECTION: TRUST / WE CAN HAVE YOUR TRUST
+       ============================================ */
+    .trust-section {
+      padding: 50px var(--content-padding) 30px;
+    }
+
+    .trust-section .section-title {
+      margin-bottom: 40px;
+    }
+
+    .trust-badges {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 33px;
+      max-width: 1340px;
+      margin: 0 auto;
+    }
+
+    .trust-badge {
+      height: 99px;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Badge 1: BBB */
+    .trust-badge--bbb {
+      border: 1px solid #000;
+      background: #fff;
+      justify-content: center;
+    }
+
+    .trust-badge--bbb img {
+      width: 200px;
+      height: 80px;
+      object-fit: cover;
+    }
+
+    /* Badge 2: Accredited */
+    .trust-badge--accredited {
+      border: 1px solid #005a79;
+      background: #fff;
+    }
+
+    .trust-badge--accredited__logo {
+      width: 64px;
+      height: 80px;
+      object-fit: cover;
+      margin-left: 17px;
+    }
+
+    .trust-badge--accredited__text-area {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 208px;
+      height: 99px;
+      background: #005a79;
+      border-radius: 0 8px 8px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 42px;
+    }
+
+    .trust-badge--accredited__text-area span {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+    }
+
+    /* Badge 3: Made in USA */
+    .trust-badge--usa {
+      background: #002356;
+      border-radius: 8px 8px 8px 31px;
+    }
+
+    .trust-badge--usa__flag {
+      width: 116px;
+      height: 99px;
+      object-fit: cover;
+      border-radius: 8px 0 0 31px;
+    }
+
+    .trust-badge--usa__text {
+      margin-left: auto;
+      margin-right: 40px;
+      text-align: left;
+    }
+
+    .trust-badge--usa__text .label {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .trust-badge--usa__text .big {
+      font-size: 40px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+
+    /* Badge 4: Top Rated */
+    .trust-badge--top-rated {
+      background: #edb41c;
+    }
+
+    .trust-badge--top-rated img {
+      width: 99px;
+      height: 99px;
+      object-fit: cover;
+    }
+
+    .trust-badge--top-rated span {
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      margin-left: 10px;
+    }
+
+    /* ============================================
+       SECTION: WHAT MAKES NW IMMERSION DIFFERENT
+       ============================================ */
+    .difference-section {
+      position: relative;
+      min-height: 660px;
+      overflow: hidden;
+    }
+
+    .difference-section__bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .difference-section__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .difference-section__content {
+      position: relative;
+      z-index: 2;
+      padding: 100px var(--content-padding);
+      max-width: 720px;
+    }
+
+    .difference-section__title {
+      font-size: 60px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 60px;
+    }
+
+    .difference-list {
+      list-style: none;
+      padding-left: 8px;
+    }
+
+    .difference-list li {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .difference-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* ============================================
+       SECTION: WHAT OUR FANS SAYING
+       ============================================ */
+    .fans-section {
+      padding: 80px var(--content-padding);
+    }
+
+    .fans-section .section-title {
+      margin-bottom: 50px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1340px;
+      margin: 0 auto;
+    }
+
+    .testimonial-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* alternating pattern: col 1 & 3 = text top, image bottom; col 2 & 4 = image top, text bottom */
+    .testimonial-card {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .testimonial-card--text {
+      background: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      padding: 24px 25px;
+      height: 216px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonial-card--image {
+      height: 550px;
+      position: relative;
+    }
+
+    .testimonial-card--image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-card--image .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90px;
+      height: 90px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .testimonial-card--image .play-btn:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .testimonial-card__avatar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .testimonial-card__avatar img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-card__avatar span {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--color-black);
+    }
+
+    .testimonial-card__quote {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--color-primary);
+      line-height: 28px;
+    }
+
+    /* ============================================
+       SECTION: THE STORY
+       ============================================ */
+    .story-section {
+      position: relative;
+      min-height: 760px;
+      overflow: hidden;
+    }
+
+    .story-section__bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .story-section__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-section__gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,1) 22.766%, rgba(0,0,0,0) 82.611%);
+      z-index: 1;
+    }
+
+    .story-section__content {
+      position: relative;
+      z-index: 2;
+      padding: 116px var(--content-padding);
+      max-width: 764px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .story-section__title {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--color-white);
+      line-height: 1.25;
+    }
+
+    .story-section__text {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--color-white);
+      line-height: 28px;
+    }
+
+    .story-section__text p + p {
+      margin-top: 14px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 40px;
+      background: var(--color-alternative);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: transform 0.2s, box-shadow 0.2s;
+      align-self: flex-start;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ============================================
+       SECTION: BENEFITS OF PRODUCTS
+       ============================================ */
+    .benefits-section {
+      padding: 80px var(--content-padding);
+    }
+
+    .benefits-section .section-title {
+      margin-bottom: 40px;
+    }
+
+    .benefits-tabs {
+      display: flex;
+      align-items: center;
+      gap: 90px;
+      justify-content: center;
+      border-top: 1px solid var(--color-border-light);
+      border-bottom: 1px solid var(--color-border-light);
+      padding: 15px 0;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+    }
+
+    .benefits-tabs a {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-gray);
+      transition: color 0.2s;
+    }
+
+    .benefits-tabs a.active,
+    .benefits-tabs a:hover {
+      color: var(--color-black);
+    }
+
+    .benefits-card {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+      background: #fff;
+    }
+
+    .benefits-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .benefits-card__content {
+      padding: 40px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .benefits-card__content h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-black);
+      margin-bottom: 30px;
+    }
+
+    .benefits-card__content p {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 50px;
+      color: var(--color-black);
+    }
+
+    /* ============================================
+       SECTION: CUSTOMIZING YOUR EXPERIENCE
+       ============================================ */
+    .customize-section {
+      position: relative;
+      min-height: 760px;
+      overflow: hidden;
+    }
+
+    .customize-section__bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .customize-section__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .customize-section__content {
+      position: relative;
+      z-index: 2;
+      padding: 210px var(--content-padding) 210px 50px;
+      max-width: 625px;
+    }
+
+    .customize-section__title {
+      font-size: 60px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 30px;
+    }
+
+    .customize-section__text {
+      font-size: 18px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 50px;
+      margin-bottom: 36px;
+      margin-left: 20px;
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      padding: 20px 40px;
+      background: #fff;
+      color: var(--color-black);
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-left: 20px;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+
+    /* ============================================
+       SECTION: OUR BLOG
+       ============================================ */
+    .blog-section {
+      padding: 80px var(--content-padding);
+    }
+
+    .blog-section .section-title {
+      margin-bottom: 50px;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 33px;
+      max-width: 1340px;
+      margin: 0 auto;
+    }
+
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card__image {
+      position: relative;
+      height: 295px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .blog-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .blog-card:hover .blog-card__image img {
+      transform: scale(1.05);
+    }
+
+    .blog-card__image .arrow-btn {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      transition: transform 0.2s;
+    }
+
+    .blog-card__image .arrow-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .blog-card__title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-black);
+      line-height: 1.3;
+    }
+
+    /* ============================================
+       SECTION: NEWSLETTER
+       ============================================ */
+    .newsletter-section {
+      padding: 50px var(--content-padding) 50px 120px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .newsletter-section__left h4 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--color-black);
+      margin-bottom: 16px;
+    }
+
+    .newsletter-section__left p {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--color-black);
+      line-height: 1.25;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+    }
+
+    .newsletter-form input {
+      width: 504px;
+      padding: 20px 40px;
+      background: var(--color-input-bg);
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-family: var(--font-main);
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+      outline: none;
+    }
+
+    .newsletter-form input::placeholder {
+      color: #acaaaa;
+      font-weight: 700;
+    }
+
+    .newsletter-form button {
+      padding: 20px 40px;
+      background: var(--color-alternative);
+      color: #fff;
+      font-family: var(--font-main);
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .newsletter-form button:hover {
+      background: #475a4c;
+    }
+
+    /* ============================================
+       SECTION: BIG TESTIMONIAL QUOTE
+       ============================================ */
+    .big-quote-section {
+      max-width: 1200px;
+      margin: 30px auto 60px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      padding: 44px 72px;
+      position: relative;
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .big-quote-section__left {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 720px;
+    }
+
+    .big-quote-section__quote {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--color-black);
+      line-height: 1.25;
+      position: relative;
+    }
+
+    .big-quote-section__open-quote {
+      position: absolute;
+      left: -50px;
+      top: -40px;
+      font-size: 240px;
+      font-weight: 700;
+      color: var(--color-black);
+      opacity: 0.1;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .big-quote-section__close-quote {
+      position: absolute;
+      right: 60px;
+      top: -20px;
+      font-size: 240px;
+      font-weight: 700;
+      color: var(--color-black);
+      opacity: 0.1;
+      line-height: 1;
+      pointer-events: none;
+      transform: rotate(180deg);
+    }
+
+    .big-quote-section__author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .big-quote-section__author img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .big-quote-section__author span {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--color-black);
+    }
+
+    .big-quote-section__stars {
+      display: flex;
+      gap: 5px;
+      align-self: center;
+    }
+
+    .big-quote-section__stars img {
+      width: 40px;
+      height: 40px;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background: var(--color-dark-bg);
+      padding: 40px 120px 0;
+      color: var(--color-white);
+    }
+
+    .footer__top {
+      display: flex;
+      align-items: flex-start;
+      gap: 27px;
+      margin-bottom: 30px;
+    }
+
+    .footer__logo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .footer__brand-text {
+      padding-top: 8px;
+    }
+
+    .footer__brand-text h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-white);
+      margin-bottom: 8px;
+    }
+
+    .footer__brand-text p {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-white);
+      line-height: 36px;
+    }
+
+    .footer__divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      margin-bottom: 30px;
+    }
+
+    .footer__nav {
+      display: flex;
+      gap: 145px;
+      align-items: center;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #2c2c2c;
+    }
+
+    .footer__nav a {
+      font-size: 18px;
+      font-weight: 500;
+      color: #fcfcfc;
+      line-height: 28px;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .footer__nav a:hover {
+      opacity: 0.7;
+    }
+
+    .footer__nav .has-arrow {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .footer__nav .has-arrow .arrow {
+      width: 7px;
+      height: 11px;
+    }
+
+    /* Middle section: Membership (left) + Contact (right) */
+    .footer__middle {
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      align-items: start;
+      padding: 40px 0;
+    }
+
+    .footer__membership {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer__membership .proud-member {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .footer__membership .bbb-badge {
+      width: 200px;
+      height: 80px;
+      object-fit: cover;
+      margin-bottom: 30px;
+    }
+
+    .footer__cert-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 20px 40px;
+      background: var(--color-alternative);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .footer__cert-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer__contact {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .footer__contact-item {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .footer__contact-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--color-alternative);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .footer__contact-icon--email {
+      background: transparent;
+    }
+
+    .footer__contact-icon img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .footer__contact-item span {
+      font-size: 18px;
+      font-weight: 400;
+      color: #fcfcfc;
+      line-height: 28px;
+    }
+
+    .footer__bottom {
+      background: var(--color-footer-bottom);
+      margin: 0 -120px;
+      padding: 30px 120px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer__bottom p,
+    .footer__bottom a {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 28px;
+    }
+
+    .footer__bottom a:hover {
+      opacity: 0.7;
+    }
+
+    /* ============================================
+       ANIMATIONS
+       ============================================ */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero entrance */
+    .hero__title {
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+
+    .hero__cta {
+      animation: fadeInUp 0.8s ease 0.5s both;
+    }
+
+    /* ============================================
+       HAMBURGER MENU (pure CSS — hidden on desktop)
+       ============================================ */
+    .nav-toggle-checkbox {
+      display: none;
+    }
+
+    .nav-toggle-label {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 20;
+      position: relative;
+      width: 28px;
+      height: 22px;
+    }
+
+    .nav-toggle-label span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* X animation when open */
+    .nav-toggle-checkbox:checked ~ .nav-toggle-label span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .nav-toggle-checkbox:checked ~ .nav-toggle-label span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle-checkbox:checked ~ .nav-toggle-label span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* ============================================
+       MEGA MENU (Pure CSS hover dropdown)
+       ============================================ */
+    .nav-mega-trigger {
+      position: static;
+    }
+
+    .nav-mega-trigger > a {
+      position: relative;
+    }
+
+    /* Green indicator bar under active trigger */
+    .nav-mega-trigger:hover > a::after,
+    .nav-mega-trigger:focus-within > a::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 68px;
+      height: 6px;
+      background: var(--color-alternative);
+      border-radius: 3px;
+    }
+
+    /* Active trigger text: extra bold */
+    .nav-mega-trigger:hover > a {
+      font-weight: 800;
+    }
+
+    /* Dropdown panel */
+    .mega-menu {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+      z-index: 14;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-mega-trigger:hover .mega-menu,
+    .nav-mega-trigger:focus-within .mega-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    /* White background on nav bar when mega menu is open */
+    .hero__nav:has(.nav-mega-trigger:hover),
+    .hero__nav:has(.nav-mega-trigger:focus-within) {
+      background: #fff;
+      box-shadow: none;
+    }
+
+    .mega-menu__content {
+      display: flex;
+      align-items: flex-start;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 28px 40px 44px;
+      gap: 40px;
+    }
+
+    .mega-menu__image {
+      width: 280px;
+      height: 254px;
+      flex-shrink: 0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .mega-menu__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mega-menu__divider {
+      width: 1px;
+      height: 171px;
+      background: #d9d9d9;
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    .mega-menu__col {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .mega-menu__heading {
+      font-size: 24px;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 24px;
+    }
+
+    .mega-menu__link {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      padding: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+
+    .mega-menu__link:hover {
+      color: var(--color-alternative);
+    }
+
+    .mega-menu__link--active {
+      color: var(--color-alternative);
+      font-weight: 700;
+    }
+
+    .mega-menu__chevron {
+      width: 24px;
+      height: 24px;
+    }
+
+    .mega-menu__col--secondary {
+      padding-top: 56px;
+    }
+
+    /* Secondary column + divider: hidden by default, shown on Outdoor Saunas hover */
+    .mega-menu__divider--secondary,
+    .mega-menu__col--secondary {
+      opacity: 0;
+      transition: opacity 0.2s ease 0.12s;
+    }
+
+    .mega-menu__content:has(.mega-menu__link--active:hover) .mega-menu__divider--secondary,
+    .mega-menu__content:has(.mega-menu__link--active:hover) .mega-menu__col--secondary,
+    .mega-menu__content:has(.mega-menu__col--secondary:hover) .mega-menu__divider--secondary,
+    .mega-menu__col--secondary:hover {
+      opacity: 1;
+      transition-delay: 0s;
+    }
+
+    /* Nav color changes when mega menu is open */
+    .hero__nav:has(.nav-mega-trigger:hover) .nav-links a,
+    .hero__nav:has(.nav-mega-trigger:focus-within) .nav-links a {
+      color: #000;
+    }
+
+    .hero__nav:has(.nav-mega-trigger:hover) .nav-shop-btn,
+    .hero__nav:has(.nav-mega-trigger:focus-within) .nav-shop-btn {
+      color: #000;
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    .hero__nav:has(.nav-mega-trigger:hover) .nav-cart img,
+    .hero__nav:has(.nav-mega-trigger:focus-within) .nav-cart img {
+      filter: brightness(0);
+    }
+
+    /* Logo filter when mega menu is open */
+    .hero__nav:has(.nav-mega-trigger:hover) .hero__logo img,
+    .hero__nav:has(.nav-mega-trigger:focus-within) .hero__logo img {
+      filter: none;
+    }
+
+    .hero__nav:has(.nav-mega-trigger:hover)::after {
+      background: rgba(0, 0, 0, 0.1);
+      left: 0;
+      width: 100%;
+    }
+
+    /* ============================================
+       RESPONSIVE: 1200px — Small desktop / large tablet
+       ============================================ */
+    @media (max-width: 1200px) {
+      :root {
+        --content-padding: 36px;
+      }
+
+      .section-title {
+        font-size: 48px;
+      }
+
+      .hero__title {
+        font-size: 50px;
+      }
+
+      .nav-links {
+        gap: 30px;
+      }
+
+      .newsletter-section {
+        padding-left: var(--content-padding);
+      }
+
+      .newsletter-section__left p {
+        font-size: 32px;
+      }
+
+      .newsletter-form input {
+        width: 360px;
+      }
+
+      .big-quote-section__quote {
+        font-size: 32px;
+      }
+
+      .footer {
+        padding: 40px 60px 0;
+      }
+
+      .footer__bottom {
+        margin: 0 -60px;
+        padding: 24px 60px;
+      }
+
+      .footer__nav {
+        gap: 60px;
+        flex-wrap: wrap;
+      }
+
+      .difference-section__title {
+        font-size: 48px;
+      }
+
+      .customize-section__title {
+        font-size: 48px;
+      }
+
+      .trust-badge--accredited__text-area {
+        width: 160px;
+        padding-left: 20px;
+      }
+
+      .trust-badge--accredited__text-area span {
+        font-size: 16px;
+      }
+
+      .trust-badge--usa__text .big {
+        font-size: 32px;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE: 1024px — Tablet landscape
+       ============================================ */
+    @media (max-width: 1024px) {
+      :root {
+        --content-padding: 30px;
+      }
+
+      .section-title {
+        font-size: 40px;
+      }
+
+      .hero {
+        height: 620px;
+      }
+
+      .hero__title {
+        font-size: 42px;
+      }
+
+      .hero__content {
+        margin-top: 0;
+        width: 90%;
+      }
+
+      .hero__cta {
+        padding: 16px 32px;
+      }
+
+      .nav-links {
+        gap: 22px;
+      }
+
+      .nav-links a {
+        font-size: 14px;
+      }
+
+      /* Mega menu tablet adjustments */
+      .mega-menu__content {
+        padding: 24px 20px 36px;
+        gap: 24px;
+      }
+
+      .mega-menu__image {
+        width: 220px;
+        height: 200px;
+      }
+
+      .mega-menu__heading {
+        font-size: 20px;
+        margin-bottom: 16px;
+      }
+
+      .mega-menu__link {
+        font-size: 14px;
+        padding: 10px 0;
+      }
+
+      .mega-menu__divider {
+        height: 140px;
+      }
+
+      .mega-menu__col--secondary {
+        padding-top: 46px;
+      }
+
+      .nav-shop-btn {
+        padding: 8px 24px;
+        font-size: 14px;
+        right: 80px;
+      }
+
+      .trust-bar__item {
+        font-size: 14px;
+      }
+
+      /* Saunas grid: keep 2-col but smaller aspect */
+      .sauna-card {
+        height: 350px;
+      }
+
+      .sauna-card__label {
+        font-size: 30px;
+        bottom: 40px;
+      }
+
+      /* Trust badges: 2×2 */
+      .trust-badges {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      /* Testimonials: 2 cols */
+      .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .testimonial-card--image {
+        height: 380px;
+      }
+
+      /* Difference section */
+      .difference-section__title {
+        font-size: 40px;
+      }
+
+      .difference-section__content {
+        max-width: 55%;
+      }
+
+      /* Story */
+      .story-section {
+        min-height: 600px;
+      }
+
+      .story-section__title {
+        font-size: 34px;
+      }
+
+      .story-section__content {
+        padding: 80px var(--content-padding);
+        max-width: 55%;
+      }
+
+      /* Benefits */
+      .benefits-tabs {
+        gap: 40px;
+      }
+
+      .benefits-tabs a {
+        font-size: 16px;
+      }
+
+      .benefits-card__content p {
+        line-height: 32px;
+      }
+
+      /* Customize */
+      .customize-section {
+        min-height: 600px;
+      }
+
+      .customize-section__content {
+        padding: 140px var(--content-padding);
+      }
+
+      .customize-section__title {
+        font-size: 42px;
+      }
+
+      .customize-section__text {
+        line-height: 32px;
+        margin-left: 0;
+      }
+
+      .btn-white {
+        margin-left: 0;
+      }
+
+      /* Blog 3-col still */
+      .blog-card__image {
+        height: 230px;
+      }
+
+      .blog-card__title {
+        font-size: 20px;
+      }
+
+      /* Newsletter */
+      .newsletter-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding-left: var(--content-padding);
+      }
+
+      .newsletter-section__left p {
+        font-size: 28px;
+      }
+
+      .newsletter-form input {
+        width: 320px;
+      }
+
+      /* Big Quote */
+      .big-quote-section {
+        padding: 36px 48px;
+        margin-left: var(--content-padding);
+        margin-right: var(--content-padding);
+      }
+
+      .big-quote-section__quote {
+        font-size: 28px;
+      }
+
+      .big-quote-section__open-quote {
+        font-size: 160px;
+        left: -30px;
+        top: -30px;
+      }
+
+      .big-quote-section__close-quote {
+        font-size: 160px;
+        right: 30px;
+        top: -10px;
+      }
+
+      /* Footer */
+      .footer__top {
+        gap: 20px;
+      }
+
+      .footer__nav {
+        gap: 40px;
+      }
+
+      .footer__middle {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer__bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .footer__bottom p {
+        font-size: 14px;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE: 768px — Tablet portrait / Mobile nav
+       ============================================ */
+    @media (max-width: 768px) {
+      :root {
+        --content-padding: 20px;
+      }
+
+      /* === HIDE MEGA MENU ON MOBILE === */
+      .mega-menu {
+        display: none !important;
+      }
+
+      /* === MOBILE NAV === */
+      .nav-toggle-label {
+        display: flex;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 260px;
+        height: 100vh;
+        background: rgba(37, 34, 32, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        gap: 0;
+        padding: 80px 30px 40px;
+        z-index: 100;
+        transition: right 0.35s ease;
+        margin: 0;
+      }
+
+      .nav-links li {
+        list-style: none;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 14px 0;
+        font-size: 18px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .nav-toggle-checkbox:checked ~ .nav-links {
+        right: 0;
+      }
+
+      .nav-shop-btn {
+        display: none;
+      }
+
+      .nav-cart {
+        position: absolute;
+        right: 60px;
+        width: 28px;
+        height: 28px;
+      }
+
+      .hero__nav::after {
+        display: none;
+      }
+
+      .hero__logo {
+        width: 60px;
+        height: 60px;
+        top: 5px;
+        left: 10px;
+      }
+
+      /* === HERO === */
+      .hero {
+        height: 500px;
+      }
+
+      .hero__title {
+        font-size: 32px;
+        margin-bottom: 30px;
+      }
+
+      .hero__title br {
+        display: none;
+      }
+
+      .hero__cta {
+        padding: 14px 28px;
+        font-size: 14px;
+      }
+
+      .hero__glow {
+        display: none;
+      }
+
+      .section-title {
+        font-size: 32px;
+        margin-bottom: 28px;
+      }
+
+      /* === TRUST BAR === */
+      .trust-bar {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .trust-bar__item {
+        font-size: 13px;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .trust-bar__item:not(:last-child)::after {
+        display: none;
+      }
+
+      /* === SAUNAS GRID: single column === */
+      .saunas-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .sauna-card {
+        height: 280px;
+      }
+
+      .sauna-card__label {
+        font-size: 26px;
+        bottom: 30px;
+      }
+
+      /* === TRUST BADGES: stack === */
+      .trust-badges {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .trust-badge {
+        height: 80px;
+      }
+
+      .trust-badge--bbb img {
+        width: 140px;
+        height: 56px;
+      }
+
+      .trust-badge--accredited__logo {
+        width: 48px;
+        height: 60px;
+        margin-left: 10px;
+      }
+
+      .trust-badge--accredited__text-area {
+        width: 120px;
+        padding-left: 14px;
+      }
+
+      .trust-badge--accredited__text-area span {
+        font-size: 13px;
+      }
+
+      .trust-badge--usa__flag {
+        width: 80px;
+        height: 80px;
+      }
+
+      .trust-badge--usa__text {
+        margin-right: 20px;
+      }
+
+      .trust-badge--usa__text .big {
+        font-size: 28px;
+      }
+
+      .trust-badge--usa__text .label {
+        font-size: 13px;
+      }
+
+      .trust-badge--top-rated img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .trust-badge--top-rated span {
+        font-size: 22px;
+      }
+
+      /* === DIFFERENCE SECTION === */
+      .difference-section {
+        min-height: auto;
+      }
+
+      .difference-section__content {
+        max-width: 100%;
+        padding: 60px var(--content-padding);
+      }
+
+      .difference-section__title {
+        font-size: 32px;
+        margin-bottom: 30px;
+      }
+
+      .difference-section__title br {
+        display: none;
+      }
+
+      /* === TESTIMONIALS: 2 cols === */
+      .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .testimonial-card--image {
+        height: 300px;
+      }
+
+      .testimonial-card--text {
+        height: auto;
+        min-height: 180px;
+      }
+
+      .testimonial-card__avatar span {
+        font-size: 16px;
+      }
+
+      .testimonial-card__quote {
+        font-size: 15px;
+        line-height: 24px;
+      }
+
+      /* === STORY === */
+      .story-section {
+        min-height: auto;
+      }
+
+      .story-section__gradient {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+      }
+
+      .story-section__content {
+        max-width: 100%;
+        padding: 60px var(--content-padding);
+      }
+
+      .story-section__title {
+        font-size: 28px;
+      }
+
+      .story-section__text {
+        font-size: 16px;
+        line-height: 26px;
+      }
+
+      /* === BENEFITS === */
+      .benefits-section {
+        padding: 50px var(--content-padding);
+      }
+
+      .benefits-tabs {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .benefits-tabs a {
+        font-size: 14px;
+      }
+
+      .benefits-card {
+        grid-template-columns: 1fr;
+      }
+
+      .benefits-card__image {
+        height: 280px;
+      }
+
+      .benefits-card__image img {
+        height: 280px;
+      }
+
+      .benefits-card__content {
+        padding: 30px;
+      }
+
+      .benefits-card__content h3 {
+        font-size: 20px;
+        margin-bottom: 16px;
+      }
+
+      .benefits-card__content p {
+        font-size: 16px;
+        line-height: 28px;
+      }
+
+      /* === CUSTOMIZE === */
+      .customize-section {
+        min-height: auto;
+      }
+
+      .customize-section__content {
+        max-width: 100%;
+        padding: 80px var(--content-padding);
+      }
+
+      .customize-section__title {
+        font-size: 32px;
+      }
+
+      .customize-section__title br {
+        display: none;
+      }
+
+      .customize-section__text {
+        font-size: 16px;
+        line-height: 28px;
+        margin-left: 0;
+        margin-bottom: 24px;
+      }
+
+      .btn-white {
+        margin-left: 0;
+        padding: 14px 28px;
+      }
+
+      /* === BLOG: 2-column === */
+      .blog-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .blog-card__image {
+        height: 200px;
+      }
+
+      .blog-card__title {
+        font-size: 18px;
+      }
+
+      /* === NEWSLETTER === */
+      .newsletter-section {
+        padding: 40px var(--content-padding);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+      }
+
+      .newsletter-section__left p {
+        font-size: 24px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-form input {
+        width: 100%;
+        border-radius: 4px;
+      }
+
+      .newsletter-form button {
+        border-radius: 4px;
+      }
+
+      /* === BIG QUOTE === */
+      .big-quote-section {
+        flex-direction: column;
+        gap: 24px;
+        padding: 32px 28px;
+        margin: 20px var(--content-padding);
+        text-align: center;
+      }
+
+      .big-quote-section__left {
+        align-items: center;
+      }
+
+      .big-quote-section__quote {
+        font-size: 24px;
+      }
+
+      .big-quote-section__author span {
+        font-size: 18px;
+      }
+
+      .big-quote-section__open-quote {
+        font-size: 120px;
+        left: -10px;
+        top: -20px;
+      }
+
+      .big-quote-section__close-quote {
+        font-size: 120px;
+        right: 10px;
+        top: -10px;
+      }
+
+      .big-quote-section__stars img {
+        width: 28px;
+        height: 28px;
+      }
+
+      /* === FOOTER === */
+      .footer {
+        padding: 30px var(--content-padding) 0;
+      }
+
+      .footer__top {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .footer__brand-text p {
+        line-height: 26px;
+      }
+
+      .footer__middle {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer__nav {
+        flex-wrap: wrap;
+        gap: 16px 30px;
+      }
+
+      .footer__nav a {
+        font-size: 16px;
+      }
+
+      .footer__bottom {
+        margin: 0 calc(-1 * var(--content-padding));
+        padding: 20px var(--content-padding);
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .footer__bottom p {
+        font-size: 13px;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE: 480px — Mobile phones
+       ============================================ */
+    @media (max-width: 480px) {
+      .section-title {
+        font-size: 26px;
+        margin-bottom: 20px;
+      }
+
+      /* Hero */
+      .hero {
+        height: 420px;
+      }
+
+      .hero__title {
+        font-size: 26px;
+        margin-bottom: 24px;
+      }
+
+      .hero__cta {
+        padding: 12px 24px;
+        font-size: 13px;
+      }
+
+      .hero__logo {
+        width: 50px;
+        height: 50px;
+        top: 8px;
+        left: 8px;
+      }
+
+      .announcement-bar p {
+        font-size: 10px;
+      }
+
+      /* Trust bar */
+      .trust-bar__item {
+        font-size: 12px;
+        padding: 8px 0;
+      }
+
+      /* Saunas */
+      .sauna-card {
+        height: 220px;
+      }
+
+      .sauna-card__label {
+        font-size: 22px;
+        bottom: 24px;
+      }
+
+      /* Trust badges: single column */
+      .trust-badges {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .trust-badge {
+        height: 80px;
+      }
+
+      /* Difference */
+      .difference-section__title {
+        font-size: 26px;
+      }
+
+      .difference-list li {
+        font-size: 14px;
+        padding: 12px 0;
+      }
+
+      /* Testimonials: single column */
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .testimonial-card--image {
+        height: 260px;
+      }
+
+      /* Story */
+      .story-section__title {
+        font-size: 24px;
+      }
+
+      .story-section__text {
+        font-size: 14px;
+        line-height: 24px;
+      }
+
+      /* Benefits */
+      .benefits-tabs {
+        gap: 12px;
+      }
+
+      .benefits-tabs a {
+        font-size: 13px;
+      }
+
+      .benefits-card__content {
+        padding: 24px 20px;
+      }
+
+      .benefits-card__content h3 {
+        font-size: 18px;
+      }
+
+      .benefits-card__content p {
+        font-size: 14px;
+        line-height: 24px;
+      }
+
+      /* Customize */
+      .customize-section__content {
+        padding: 60px var(--content-padding);
+      }
+
+      .customize-section__title {
+        font-size: 26px;
+      }
+
+      .customize-section__text {
+        font-size: 14px;
+        line-height: 24px;
+      }
+
+      /* Blog: single column */
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .blog-card__image {
+        height: 220px;
+      }
+
+      .blog-card__title {
+        font-size: 18px;
+      }
+
+      /* Newsletter */
+      .newsletter-section__left h4 {
+        font-size: 18px;
+      }
+
+      .newsletter-section__left p {
+        font-size: 20px;
+      }
+
+      .newsletter-form input {
+        padding: 14px 20px;
+        font-size: 14px;
+      }
+
+      .newsletter-form button {
+        padding: 14px 24px;
+        font-size: 14px;
+      }
+
+      /* Big Quote */
+      .big-quote-section {
+        padding: 24px 20px;
+      }
+
+      .big-quote-section__quote {
+        font-size: 20px;
+      }
+
+      .big-quote-section__author img {
+        width: 44px;
+        height: 44px;
+      }
+
+      .big-quote-section__author span {
+        font-size: 16px;
+      }
+
+      .big-quote-section__open-quote,
+      .big-quote-section__close-quote {
+        font-size: 80px;
+      }
+
+      .big-quote-section__stars img {
+        width: 24px;
+        height: 24px;
+      }
+
+      /* Footer */
+      .footer__logo {
+        width: 80px;
+        height: 80px;
+      }
+
+      .footer__brand-text h3 {
+        font-size: 20px;
+      }
+
+      .footer__membership .proud-member {
+        font-size: 18px;
+      }
+
+      .footer__membership .bbb-badge {
+        width: 150px;
+        height: 60px;
+      }
+
+      .footer__cert-btn {
+        padding: 14px 30px;
+        font-size: 14px;
+      }
+
+      .footer__contact-item span {
+        font-size: 14px;
+      }
+
+      .footer__nav {
+        gap: 12px 20px;
+      }
+
+      .footer__nav a {
+        font-size: 14px;
+      }
+
+      .footer__bottom p {
+        font-size: 12px;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE: 375px — Small phones
+       ============================================ */
+    @media (max-width: 375px) {
+      .hero {
+        height: 380px;
+      }
+
+      .hero__title {
+        font-size: 22px;
+        margin-bottom: 20px;
+      }
+
+      .hero__cta {
+        padding: 10px 20px;
+        font-size: 12px;
+      }
+
+      .section-title {
+        font-size: 22px;
+      }
+
+      .sauna-card {
+        height: 200px;
+      }
+
+      .sauna-card__label {
+        font-size: 20px;
+      }
+
+      .difference-section__title {
+        font-size: 22px;
+      }
+
+      .story-section__title {
+        font-size: 20px;
+      }
+
+      .customize-section__title {
+        font-size: 22px;
+      }
+
+      .big-quote-section__quote {
+        font-size: 18px;
+      }
+
+      .newsletter-section__left p {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <!-- ====== ANNOUNCEMENT BAR ====== -->
+    <div class="announcement-bar">
+      <p>Free Shipping on all saunas</p>
+    </div>
+
+    <!-- ====== HERO ====== -->
+    <section class="hero">
+      <div class="hero__bg">
+        <img src="https://www.figma.com/api/mcp/asset/9be15d16-218b-4200-b3e4-5759ed372013" alt="NW Immersion hero — sauna lifestyle">
+      </div>
+      <div class="hero__overlay"></div>
+      <div class="hero__glow"></div>
+
+      <!-- Logo -->
+      <a href="/" class="hero__logo">
+        <img src="https://www.figma.com/api/mcp/asset/3cf3d791-7eb3-4f05-a480-c59c2ecb6c99" alt="NW Immersion logo">
+      </a>
+
+      <!-- Nav -->
+      <nav class="hero__nav">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+        <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </label>
+        <ul class="nav-links">
+          <li class="nav-mega-trigger">
+            <a href="#">Saunas</a>
+            <div class="mega-menu">
+              <div class="mega-menu__content">
+                <div class="mega-menu__image">
+                  <img src="https://www.figma.com/api/mcp/asset/1a61a646-25f1-48ba-b531-9b64d3b2131d" alt="Barrel Sauna">
+                </div>
+                <div class="mega-menu__divider"></div>
+                <div class="mega-menu__col">
+                  <h3 class="mega-menu__heading">Saunas</h3>
+                  <a href="#" class="mega-menu__link mega-menu__link--active">
+                    Outdoor Saunas
+                    <img src="https://www.figma.com/api/mcp/asset/2a81d6d5-2292-4755-80fc-2fb62b26cae0" alt="" class="mega-menu__chevron">
+                  </a>
+                  <a href="#" class="mega-menu__link">Indoor Saunas</a>
+                  <a href="#" class="mega-menu__link">Infrared</a>
+                  <a href="#" class="mega-menu__link">Steam &amp; Ice Suite</a>
+                </div>
+                <div class="mega-menu__divider mega-menu__divider--secondary"></div>
+                <div class="mega-menu__col mega-menu__col--secondary">
+                  <a href="#" class="mega-menu__link">Wood Stove sauna</a>
+                  <a href="#" class="mega-menu__link">Electric sauna</a>
+                  <a href="#" class="mega-menu__link">Barrel sauna</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="#">Plunges &amp; Tubs</a></li>
+          <li><a href="#">Signature Saunas</a></li>
+          <li><a href="#">Supplies</a></li>
+          <li><a href="#">Commercial</a></li>
+        </ul>
+        <a href="#" class="nav-shop-btn">SHOP</a>
+        <a href="#" class="nav-cart">
+          <img src="https://www.figma.com/api/mcp/asset/f6510977-55cc-451b-b5b8-e7219abd429d" alt="Shopping cart">
+        </a>
+      </nav>
+
+      <!-- Hero Content -->
+      <div class="hero__content">
+        <h1 class="hero__title">
+          Step into a space built<br>for warmth, wellness &amp; Calm
+        </h1>
+        <a href="#" class="hero__cta">Shop Saunas and Cold Plunges</a>
+      </div>
+    </section>
+
+    <!-- ====== TRUST BAR ====== -->
+    <div class="trust-bar">
+      <div class="trust-bar__item">12+ Years of Craftsmanship</div>
+      <div class="trust-bar__item">Continental US Shipping</div>
+      <div class="trust-bar__item">Same Day Parts Shipping</div>
+    </div>
+
+    <!-- ====== SIGNATURE SAUNAS ====== -->
+    <section class="section-padding">
+      <h2 class="section-title animate-on-scroll">NW Immersion Signature Saunas</h2>
+      <div class="saunas-grid">
+        <a href="#" class="sauna-card animate-on-scroll">
+          <img src="https://www.figma.com/api/mcp/asset/0ef8dc2e-b643-44cb-9c73-5b0e8c4c6c0d" alt="Outdoor Saunas">
+          <div class="sauna-card__overlay"></div>
+          <span class="sauna-card__label">Outdoor Saunas</span>
+        </a>
+        <a href="#" class="sauna-card animate-on-scroll">
+          <img src="https://www.figma.com/api/mcp/asset/d6f1c8a9-43fa-4fd4-902d-74463152633c" alt="Indoor Saunas">
+          <div class="sauna-card__overlay"></div>
+          <span class="sauna-card__label">Indoor Saunas</span>
+        </a>
+        <a href="#" class="sauna-card animate-on-scroll">
+          <img src="https://www.figma.com/api/mcp/asset/46cb5450-2456-472b-b8b9-3188e3b35fa8" alt="Tubs & Plunges">
+          <div class="sauna-card__overlay"></div>
+          <span class="sauna-card__label">Tubs &amp; Plunges</span>
+        </a>
+        <a href="#" class="sauna-card animate-on-scroll">
+          <img src="https://www.figma.com/api/mcp/asset/484f9b83-b7c2-4ffc-9803-16aec6635b1d" alt="Steam & Ice Suite">
+          <div class="sauna-card__overlay"></div>
+          <span class="sauna-card__label">Steam &amp; Ice Suite</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ====== WE CAN HAVE YOUR TRUST ====== -->
+    <section class="trust-section">
+      <h2 class="section-title animate-on-scroll">We can have your trust</h2>
+      <div class="trust-badges">
+        <!-- BBB -->
+        <div class="trust-badge trust-badge--bbb animate-on-scroll">
+          <img src="https://www.figma.com/api/mcp/asset/89dc5993-37f5-4137-8cfb-75d6247dfb44" alt="BBB Accredited">
+        </div>
+        <!-- Accredited Business -->
+        <div class="trust-badge trust-badge--accredited animate-on-scroll">
+          <img class="trust-badge--accredited__logo" src="https://www.figma.com/api/mcp/asset/ca0dc499-0aed-4944-aa8d-d4f9744b2553" alt="Accredited">
+          <div class="trust-badge--accredited__text-area">
+            <span>ACCREDITED</span>
+            <span>BUSINESS</span>
+          </div>
+        </div>
+        <!-- Made in USA -->
+        <div class="trust-badge trust-badge--usa animate-on-scroll">
+          <img class="trust-badge--usa__flag" src="https://www.figma.com/api/mcp/asset/7909fc17-d183-4839-b99a-58a9ff1db9f9" alt="Made in USA">
+          <div class="trust-badge--usa__text">
+            <div class="label">MADE IN</div>
+            <div class="big">USA</div>
+          </div>
+        </div>
+        <!-- Top Rated -->
+        <div class="trust-badge trust-badge--top-rated animate-on-scroll">
+          <img src="https://www.figma.com/api/mcp/asset/db99b6fc-49e1-48fe-8846-7b2d17d88f79" alt="Top Rated">
+          <span>TOP RATED</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== WHAT MAKES NW IMMERSION DIFFERENT ====== -->
+    <section class="difference-section">
+      <div class="difference-section__bg">
+        <img src="https://www.figma.com/api/mcp/asset/c6da7d4d-dfd5-496b-8470-d3fa6dc0f11b" alt="NW Immersion craftsmanship">
+      </div>
+      <div class="difference-section__content animate-on-scroll">
+        <h2 class="difference-section__title">What makes<br>NW Immersion different</h2>
+        <ul class="difference-list">
+          <li>Handcrafted in the Pacific Northwest with locally sourced cedar</li>
+          <li>Custom-built designs for homes, spas, and commercial settings</li>
+          <li>Cold plunge options for complete heat + cold therapy</li>
+          <li>Delivered fully assembled and ready to enjoy</li>
+          <li>Durable builds designed to withstand the elements</li>
+          <li>Nationwide shipping so your sauna journey begins wherever you are</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====== WHAT OUR FANS SAYING ====== -->
+    <section class="fans-section">
+      <h2 class="section-title animate-on-scroll">What Our Fans Saying</h2>
+      <div class="testimonials-grid">
+        <!-- Column 1: text top, image bottom -->
+        <div class="testimonial-col animate-on-scroll">
+          <div class="testimonial-card testimonial-card--text">
+            <div class="testimonial-card__avatar">
+              <img src="https://www.figma.com/api/mcp/asset/08a816e8-a50e-48c6-a126-571fca64cd96" alt="Harrison Fraser">
+              <span>Harrison Fraser</span>
+            </div>
+            <p class="testimonial-card__quote">If you haven't checked this place out already, I suggest you do it soon!</p>
+          </div>
+          <div class="testimonial-card testimonial-card--image">
+            <img src="https://www.figma.com/api/mcp/asset/286804e7-dda2-433f-b467-9f05e0611ee7" alt="Sauna experience">
+            <img class="play-btn" src="https://www.figma.com/api/mcp/asset/a0429549-1b02-4fa2-9842-bc5abeb59593" alt="Play">
+          </div>
+        </div>
+
+        <!-- Column 2: image top, text bottom -->
+        <div class="testimonial-col animate-on-scroll">
+          <div class="testimonial-card testimonial-card--image">
+            <img src="https://www.figma.com/api/mcp/asset/522ab9af-143c-4737-bf4a-b48bde32a0f6" alt="Sauna lifestyle">
+            <img class="play-btn" src="https://www.figma.com/api/mcp/asset/a0429549-1b02-4fa2-9842-bc5abeb59593" alt="Play">
+          </div>
+          <div class="testimonial-card testimonial-card--text">
+            <div class="testimonial-card__avatar">
+              <img src="https://www.figma.com/api/mcp/asset/592051af-5b3f-4445-80e1-d2442d81acc1" alt="Julia Ford">
+              <span>Julia Ford</span>
+            </div>
+            <p class="testimonial-card__quote">I feel a lot of mental clarity and it is awesome</p>
+          </div>
+        </div>
+
+        <!-- Column 3: text top, image bottom -->
+        <div class="testimonial-col animate-on-scroll">
+          <div class="testimonial-card testimonial-card--text">
+            <div class="testimonial-card__avatar">
+              <img src="https://www.figma.com/api/mcp/asset/6bd3ff3b-06d0-43e3-bfd4-5e9b2dedc46d" alt="Kelly Broker">
+              <span>Kelly Broker</span>
+            </div>
+            <p class="testimonial-card__quote">I care about quality, a brand I can trust. I think you are going to love it</p>
+          </div>
+          <div class="testimonial-card testimonial-card--image">
+            <img src="https://www.figma.com/api/mcp/asset/42c17cbf-d071-47e1-a3f0-f74e31b32a75" alt="Cold plunge experience">
+            <img class="play-btn" src="https://www.figma.com/api/mcp/asset/a0429549-1b02-4fa2-9842-bc5abeb59593" alt="Play">
+          </div>
+        </div>
+
+        <!-- Column 4: image top, text bottom -->
+        <div class="testimonial-col animate-on-scroll">
+          <div class="testimonial-card testimonial-card--image">
+            <img src="https://www.figma.com/api/mcp/asset/6a19746c-9cc4-42b1-9d03-b08e9e4b54f7" alt="Wellness journey">
+            <img class="play-btn" src="https://www.figma.com/api/mcp/asset/a0429549-1b02-4fa2-9842-bc5abeb59593" alt="Play">
+          </div>
+          <div class="testimonial-card testimonial-card--text">
+            <div class="testimonial-card__avatar">
+              <img src="https://www.figma.com/api/mcp/asset/62541ce3-3ae5-4061-9a7e-c30a65ffad43" alt="Kiev Schiller">
+              <span>Kiev Schiller</span>
+            </div>
+            <p class="testimonial-card__quote">It's awesome and love this, I hope you enjoy it too</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== THE STORY ====== -->
+    <section class="story-section">
+      <div class="story-section__bg">
+        <img src="https://www.figma.com/api/mcp/asset/720077e1-8bae-471c-8625-2ea9443864c7" alt="NW Immersion story background">
+      </div>
+      <div class="story-section__gradient"></div>
+      <div class="story-section__content animate-on-scroll">
+        <h2 class="story-section__title">The Story That Sparked NW Immersion</h2>
+        <div class="story-section__text">
+          <p>NW Immersion began with a personal journey. In 2010, founders Michelle and Eric installed their first home sauna. What started as a wellness practice soon became a way of life. For Eric, the change was transformative.</p>
+          <p>Through regular sauna use, he lost 100 pounds and kept it off – a lasting reminder of the power of heat and cold immersion. Together, Michelle and Eric built NW Immersion on the belief that wellness should be accessible, enjoyable, and deeply rewarding.</p>
+          <p>Today, every sauna we build carries that same commitment: helping you discover health and renewal one session at a time.</p>
+        </div>
+        <a href="#" class="btn-primary">Our Story</a>
+      </div>
+    </section>
+
+    <!-- ====== BENEFITS OF PRODUCTS ====== -->
+    <section class="benefits-section">
+      <h2 class="section-title animate-on-scroll">Benefits of Products</h2>
+      <nav class="benefits-tabs animate-on-scroll">
+        <a href="#" class="active">Warranty</a>
+        <a href="#">Support</a>
+        <a href="#">Simple Care</a>
+        <a href="#">Quality Materials</a>
+      </nav>
+      <div class="benefits-card animate-on-scroll">
+        <div class="benefits-card__image">
+          <img src="https://www.figma.com/api/mcp/asset/d6bf860b-6acf-4a31-a066-136cc095c333" alt="Warranty — sauna quality">
+        </div>
+        <div class="benefits-card__content">
+          <h3>Warranty of Saunas</h3>
+          <p>Our saunas are built with premium-quality wood, advanced heating systems, and durable components to ensure long-lasting performance. We stand behind the craftsmanship of our products by offering a comprehensive warranty for your peace of mind.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CUSTOMIZING YOUR EXPERIENCE ====== -->
+    <section class="customize-section">
+      <div class="customize-section__bg">
+        <img src="https://www.figma.com/api/mcp/asset/b4644235-56d1-4ed6-82e0-b642783622ce" alt="Customize your sauna">
+      </div>
+      <div class="customize-section__content animate-on-scroll">
+        <h2 class="customize-section__title">Customizing Your<br>Experience</h2>
+        <p class="customize-section__text">Compare features, test color combos, and find the sauna that fits your life best.</p>
+        <a href="#" class="btn-white">Compare Saunas</a>
+      </div>
+    </section>
+
+    <!-- ====== OUR BLOG ====== -->
+    <section class="blog-section">
+      <h2 class="section-title animate-on-scroll">Our Blog</h2>
+      <div class="blog-grid">
+        <a href="#" class="blog-card animate-on-scroll">
+          <div class="blog-card__image">
+            <img src="https://www.figma.com/api/mcp/asset/696a4ac8-6ba8-434e-b2ac-eedaac3c2862" alt="Steven Ogg's Morning Ritual">
+            <img class="arrow-btn" src="https://www.figma.com/api/mcp/asset/2322027e-6126-44ae-8944-72247a865c5a" alt="Read more">
+          </div>
+          <h3 class="blog-card__title">Steven Ogg's Morning Ritual</h3>
+        </a>
+        <a href="#" class="blog-card animate-on-scroll">
+          <div class="blog-card__image">
+            <img src="https://www.figma.com/api/mcp/asset/3c09303f-be13-4b79-a9c8-1231908cf8ff" alt="How Kara Transformed Her Evening Routine">
+            <img class="arrow-btn" src="https://www.figma.com/api/mcp/asset/2322027e-6126-44ae-8944-72247a865c5a" alt="Read more">
+          </div>
+          <h3 class="blog-card__title">How Kara Transformed Her Evening Routine With a Sauna</h3>
+        </a>
+        <a href="#" class="blog-card animate-on-scroll">
+          <div class="blog-card__image">
+            <img src="https://www.figma.com/api/mcp/asset/d18a9a3f-2ff9-4edf-a1b5-baf89deff91d" alt="The Ultimate guide to Sauna">
+            <img class="arrow-btn" src="https://www.figma.com/api/mcp/asset/2322027e-6126-44ae-8944-72247a865c5a" alt="Read more">
+          </div>
+          <h3 class="blog-card__title">The Ultimate guide to Sauna</h3>
+        </a>
+      </div>
+    </section>
+
+    <!-- ====== NEWSLETTER ====== -->
+    <div class="newsletter-section">
+      <div class="newsletter-section__left">
+        <h4>Subscribe to our newsletter</h4>
+        <p>Learn about our latest products,<br>updates and news.</p>
+      </div>
+      <form class="newsletter-form" onsubmit="event.preventDefault()">
+        <input type="email" placeholder="EMAIL ADDRESS" required>
+        <button type="submit">SIGN UP</button>
+      </form>
+    </div>
+
+    <!-- ====== BIG TESTIMONIAL QUOTE ====== -->
+    <div class="big-quote-section animate-on-scroll">
+      <span class="big-quote-section__open-quote">&ldquo;</span>
+      <span class="big-quote-section__close-quote">&rdquo;</span>
+      <div class="big-quote-section__left">
+        <blockquote class="big-quote-section__quote">
+          A total game changer. I use it daily — it keeps me feeling decades younger
+        </blockquote>
+        <div class="big-quote-section__author">
+          <img src="https://www.figma.com/api/mcp/asset/cc3e9b04-3304-4f37-8eaa-e68cdf42046a" alt="Larry S">
+          <span>Larry S</span>
+        </div>
+      </div>
+      <div class="big-quote-section__stars">
+        <img src="https://www.figma.com/api/mcp/asset/63ce3c16-bdbc-462c-803d-268cd6104430" alt="★">
+        <img src="https://www.figma.com/api/mcp/asset/63ce3c16-bdbc-462c-803d-268cd6104430" alt="★">
+        <img src="https://www.figma.com/api/mcp/asset/63ce3c16-bdbc-462c-803d-268cd6104430" alt="★">
+        <img src="https://www.figma.com/api/mcp/asset/63ce3c16-bdbc-462c-803d-268cd6104430" alt="★">
+        <img src="https://www.figma.com/api/mcp/asset/63ce3c16-bdbc-462c-803d-268cd6104430" alt="★">
+      </div>
+    </div>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
+      <!-- Top: Logo + Brand Text side by side -->
+      <div class="footer__top">
+        <img class="footer__logo" src="https://www.figma.com/api/mcp/asset/3cf3d791-7eb3-4f05-a480-c59c2ecb6c99" alt="NW Immersion Co">
+        <div class="footer__brand-text">
+          <h3>NW Immersion Co</h3>
+          <p>Handcrafted saunas and cold plunges built in Vancouver, Washington for wellness, relaxation, and a lifetime of use.</p>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="footer__divider"></div>
+
+      <!-- Navigation row -->
+      <nav class="footer__nav">
+        <a href="#">Company Info</a>
+        <a href="#" class="has-arrow">
+          Signature Models
+          <img class="arrow" src="https://www.figma.com/api/mcp/asset/d6333be4-3879-4662-bc5f-0820b2ad5f69" alt="">
+        </a>
+        <a href="#">Inspiration</a>
+        <a href="#">Articles</a>
+        <a href="#">Contact Us</a>
+      </nav>
+
+      <!-- Middle: Membership (left) + Contact (right) -->
+      <div class="footer__middle">
+        <div class="footer__membership">
+          <p class="proud-member">Proud Member of</p>
+          <img class="bbb-badge" src="https://www.figma.com/api/mcp/asset/89dc5993-37f5-4137-8cfb-75d6247dfb44" alt="BBB Accredited Business">
+          <a href="#" class="footer__cert-btn">View Certificate</a>
+        </div>
+        <div class="footer__contact">
+          <div class="footer__contact-item">
+            <div class="footer__contact-icon">
+              <img src="https://www.figma.com/api/mcp/asset/8cef3203-cc89-4f0b-ab9f-9b46bb5bc889" alt="License">
+            </div>
+            <span>License #: NWIMMIC751C4</span>
+          </div>
+          <div class="footer__contact-item">
+            <div class="footer__contact-icon">
+              <img src="https://www.figma.com/api/mcp/asset/632153ca-99ef-461c-9c7f-dd6abb985b4c" alt="Phone">
+            </div>
+            <span>(360) 667-8778</span>
+          </div>
+          <div class="footer__contact-item">
+            <div class="footer__contact-icon footer__contact-icon--email">
+              <img src="https://www.figma.com/api/mcp/asset/226f79e5-c224-470f-b2f7-fd427c52a33f" alt="Email" style="width: 40px; height: 40px;">
+            </div>
+            <span>info@nwimmersion.com</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <p>&copy; 2025 NW Immersion Co. All Rights Reserved</p>
+        <p>Design by Couve Creative</p>
+        <p>Terms &amp; Conditions&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Privacy Policy</p>
+      </div>
+    </footer>
+
+  </div><!-- .page-wrapper -->
+
+  <!-- Scroll Animation Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
