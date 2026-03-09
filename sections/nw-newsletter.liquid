@@ -1,0 +1,190 @@
+{% comment %}
+  NW Newsletter — Email subscription row
+  Extracted from nw-landing-page.html design
+{% endcomment %}
+
+{%- style -%}
+  /* ========== NEWSLETTER ========== */
+  .nw-newsletter {
+    padding: 50px 120px 50px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin-inline: auto;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .nw-newsletter__left h4 {
+    font-size: 24px;
+    font-weight: 600;
+    color: {{ section.settings.title_color }};
+    margin-bottom: 16px;
+  }
+
+  .nw-newsletter__left p {
+    font-size: 40px;
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+    line-height: 1.25;
+  }
+
+  .nw-newsletter__form {
+    display: flex;
+    gap: 0;
+  }
+
+  .nw-newsletter__input {
+    width: 504px;
+    padding: 20px 40px;
+    background: #d9d9d9;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    outline: none;
+  }
+
+  .nw-newsletter__input::placeholder {
+    color: #acaaaa;
+    font-weight: 700;
+  }
+
+  .nw-newsletter__btn {
+    padding: 20px 40px;
+    background: {{ section.settings.button_bg }};
+    color: {{ section.settings.button_text_color }};
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .nw-newsletter__btn:hover {
+    opacity: 0.9;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1024px) {
+    .nw-newsletter {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    .nw-newsletter__left p { font-size: 28px; }
+    .nw-newsletter__input { width: 320px; }
+  }
+
+  @media (max-width: 768px) {
+    .nw-newsletter {
+      padding: 40px 20px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 20px;
+    }
+    .nw-newsletter__left p { font-size: 24px; }
+    .nw-newsletter__form { flex-direction: column; }
+    .nw-newsletter__input { width: 100%; border-radius: 4px; }
+    .nw-newsletter__btn { border-radius: 4px; }
+  }
+
+  @media (max-width: 480px) {
+    .nw-newsletter__left h4 { font-size: 18px; }
+    .nw-newsletter__left p { font-size: 20px; }
+    .nw-newsletter__input { padding: 14px 20px; font-size: 14px; }
+    .nw-newsletter__btn { padding: 14px 24px; font-size: 14px; }
+  }
+
+  @media (max-width: 375px) {
+    .nw-newsletter__left p { font-size: 18px; }
+  }
+{%- endstyle -%}
+
+<div class="nw-newsletter">
+  <div class="nw-newsletter__left">
+    <h4>{{ section.settings.subtitle }}</h4>
+    <p>{{ section.settings.heading }}</p>
+  </div>
+  {%- form 'customer', class: 'nw-newsletter__form' -%}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <input
+      type="email"
+      name="contact[email]"
+      class="nw-newsletter__input"
+      placeholder="{{ section.settings.placeholder }}"
+      required
+      autocomplete="email"
+    >
+    <button type="submit" class="nw-newsletter__btn">{{ section.settings.button_text }}</button>
+  {%- endform -%}
+</div>
+
+{% schema %}
+{
+  "name": "NW Newsletter",
+  "tag": "section",
+  "class": "nw-newsletter-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Subscribe to our newsletter"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Learn about our latest products, updates and news."
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Input placeholder",
+      "default": "EMAIL ADDRESS"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "SIGN UP"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#546659"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Newsletter"
+    }
+  ]
+}
+{% endschema %}

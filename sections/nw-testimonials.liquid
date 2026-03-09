@@ -1,0 +1,328 @@
+{% comment %}
+  NW Testimonials — 4-column alternating text/image grid
+  Extracted from nw-landing-page.html design
+{% endcomment %}
+
+{%- style -%}
+  /* ========== TESTIMONIALS ========== */
+  .nw-testimonials {
+    padding: 80px 50px;
+    max-width: 1440px;
+    margin-inline: auto;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .nw-testimonials__title {
+    font-size: 60px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .nw-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1340px;
+    margin: 0 auto;
+  }
+
+  .nw-testimonial-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .nw-testimonial-card {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .nw-testimonial-card--text {
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 24px 25px;
+    height: 216px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nw-testimonial-card--image {
+    height: 550px;
+    position: relative;
+  }
+
+  .nw-testimonial-card--image img.nw-testimonial-card__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nw-testimonial-card--image .nw-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90px;
+    height: 90px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .nw-testimonial-card--image .nw-play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .nw-testimonial-card__avatar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .nw-testimonial-card__avatar img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .nw-testimonial-card__avatar span {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  .nw-testimonial-card__quote {
+    font-size: 18px;
+    font-weight: 500;
+    color: #252220;
+    line-height: 28px;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1200px) {
+    .nw-testimonials { padding: 80px 36px; }
+    .nw-testimonials__title { font-size: 48px; }
+  }
+
+  @media (max-width: 1024px) {
+    .nw-testimonials { padding: 60px 30px; }
+    .nw-testimonials__title { font-size: 40px; }
+    .nw-testimonials__grid { grid-template-columns: 1fr 1fr; }
+    .nw-testimonial-card--image { height: 380px; }
+  }
+
+  @media (max-width: 768px) {
+    .nw-testimonials { padding: 50px 20px; }
+    .nw-testimonials__title { font-size: 32px; margin-bottom: 28px; }
+    .nw-testimonials__grid { grid-template-columns: 1fr 1fr; }
+    .nw-testimonial-card--image { height: 300px; }
+    .nw-testimonial-card--text { height: auto; min-height: 180px; }
+    .nw-testimonial-card__avatar span { font-size: 16px; }
+    .nw-testimonial-card__quote { font-size: 15px; line-height: 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .nw-testimonials__grid { grid-template-columns: 1fr; gap: 16px; }
+    .nw-testimonials__title { font-size: 26px; margin-bottom: 20px; }
+    .nw-testimonial-card--image { height: 260px; }
+  }
+{%- endstyle -%}
+
+<div class="nw-testimonials">
+  <h2 class="nw-testimonials__title">{{ section.settings.heading }}</h2>
+  <div class="nw-testimonials__grid">
+    {%- for block in section.blocks -%}
+      <div class="nw-testimonial-col" {{ block.shopify_attributes }}>
+        {%- if block.settings.layout == 'text_top' -%}
+          <!-- Text card top -->
+          <div class="nw-testimonial-card nw-testimonial-card--text">
+            <div class="nw-testimonial-card__avatar">
+              {%- if block.settings.avatar != blank -%}
+                <img src="{{ block.settings.avatar | image_url: width: 120 }}" alt="{{ block.settings.name }}" loading="lazy">
+              {%- else -%}
+                <img src="{{ block.settings.avatar_url }}" alt="{{ block.settings.name }}" loading="lazy">
+              {%- endif -%}
+              <span>{{ block.settings.name }}</span>
+            </div>
+            <p class="nw-testimonial-card__quote">{{ block.settings.quote }}</p>
+          </div>
+          <!-- Image card bottom -->
+          <div class="nw-testimonial-card nw-testimonial-card--image">
+            {%- if block.settings.photo != blank -%}
+              <img class="nw-testimonial-card__photo" src="{{ block.settings.photo | image_url: width: 800 }}" alt="{{ block.settings.name }}" loading="lazy">
+            {%- else -%}
+              <img class="nw-testimonial-card__photo" src="{{ block.settings.photo_url }}" alt="{{ block.settings.name }}" loading="lazy">
+            {%- endif -%}
+            {%- if block.settings.show_play_button -%}
+              <img class="nw-play-btn" src="{{ block.settings.play_icon_url }}" alt="Play">
+            {%- endif -%}
+          </div>
+        {%- else -%}
+          <!-- Image card top -->
+          <div class="nw-testimonial-card nw-testimonial-card--image">
+            {%- if block.settings.photo != blank -%}
+              <img class="nw-testimonial-card__photo" src="{{ block.settings.photo | image_url: width: 800 }}" alt="{{ block.settings.name }}" loading="lazy">
+            {%- else -%}
+              <img class="nw-testimonial-card__photo" src="{{ block.settings.photo_url }}" alt="{{ block.settings.name }}" loading="lazy">
+            {%- endif -%}
+            {%- if block.settings.show_play_button -%}
+              <img class="nw-play-btn" src="{{ block.settings.play_icon_url }}" alt="Play">
+            {%- endif -%}
+          </div>
+          <!-- Text card bottom -->
+          <div class="nw-testimonial-card nw-testimonial-card--text">
+            <div class="nw-testimonial-card__avatar">
+              {%- if block.settings.avatar != blank -%}
+                <img src="{{ block.settings.avatar | image_url: width: 120 }}" alt="{{ block.settings.name }}" loading="lazy">
+              {%- else -%}
+                <img src="{{ block.settings.avatar_url }}" alt="{{ block.settings.name }}" loading="lazy">
+              {%- endif -%}
+              <span>{{ block.settings.name }}</span>
+            </div>
+            <p class="nw-testimonial-card__quote">{{ block.settings.quote }}</p>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "NW Testimonials",
+  "tag": "section",
+  "class": "nw-testimonials-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Our Fans Saying"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial_column",
+      "name": "Testimonial Column",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Layout order",
+          "options": [
+            { "value": "text_top", "label": "Text top, Image bottom" },
+            { "value": "image_top", "label": "Image top, Text bottom" }
+          ],
+          "default": "text_top"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Person name",
+          "default": "Harrison Fraser"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote text",
+          "default": "If you haven't checked this place out already, I suggest you do it soon!"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar image"
+        },
+        {
+          "type": "url",
+          "id": "avatar_url",
+          "label": "Avatar URL (fallback)"
+        },
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Large photo"
+        },
+        {
+          "type": "url",
+          "id": "photo_url",
+          "label": "Photo URL (fallback)"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_play_button",
+          "label": "Show play button",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "play_icon_url",
+          "label": "Play icon URL",
+          "default": "https://www.figma.com/api/mcp/asset/a0429549-1b02-4fa2-9842-bc5abeb59593"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial_column",
+          "settings": {
+            "layout": "text_top",
+            "name": "Harrison Fraser",
+            "quote": "If you haven't checked this place out already, I suggest you do it soon!",
+            "avatar_url": "https://www.figma.com/api/mcp/asset/08a816e8-a50e-48c6-a126-571fca64cd96",
+            "photo_url": "https://www.figma.com/api/mcp/asset/286804e7-dda2-433f-b467-9f05e0611ee7",
+            "show_play_button": true
+          }
+        },
+        {
+          "type": "testimonial_column",
+          "settings": {
+            "layout": "image_top",
+            "name": "Julia Ford",
+            "quote": "I feel a lot of mental clarity and it is awesome",
+            "avatar_url": "https://www.figma.com/api/mcp/asset/592051af-5b3f-4445-80e1-d2442d81acc1",
+            "photo_url": "https://www.figma.com/api/mcp/asset/522ab9af-143c-4737-bf4a-b48bde32a0f6",
+            "show_play_button": true
+          }
+        },
+        {
+          "type": "testimonial_column",
+          "settings": {
+            "layout": "text_top",
+            "name": "Kelly Broker",
+            "quote": "I care about quality, a brand I can trust. I think you are going to love it",
+            "avatar_url": "https://www.figma.com/api/mcp/asset/6bd3ff3b-06d0-43e3-bfd4-5e9b2dedc46d",
+            "photo_url": "https://www.figma.com/api/mcp/asset/42c17cbf-d071-47e1-a3f0-f74e31b32a75",
+            "show_play_button": true
+          }
+        },
+        {
+          "type": "testimonial_column",
+          "settings": {
+            "layout": "image_top",
+            "name": "Kiev Schiller",
+            "quote": "It's awesome and love this, I hope you enjoy it too",
+            "avatar_url": "https://www.figma.com/api/mcp/asset/62541ce3-3ae5-4061-9a7e-c30a65ffad43",
+            "photo_url": "https://www.figma.com/api/mcp/asset/6a19746c-9cc4-42b1-9d03-b08e9e4b54f7",
+            "show_play_button": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

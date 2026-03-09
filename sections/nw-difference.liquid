@@ -1,0 +1,165 @@
+{% comment %}
+  NW Difference — Full-width background + list of differentiators
+  Extracted from nw-landing-page.html design
+{% endcomment %}
+
+{%- style -%}
+  /* ========== WHAT MAKES NW DIFFERENT ========== */
+  .nw-difference {
+    position: relative;
+    min-height: 660px;
+    overflow: hidden;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .nw-difference__bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .nw-difference__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nw-difference__content {
+    position: relative;
+    z-index: 2;
+    padding: 100px 50px;
+    max-width: 720px;
+  }
+
+  .nw-difference__title {
+    font-size: 60px;
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+    line-height: 1.15;
+    margin-bottom: 60px;
+  }
+
+  .nw-difference__list {
+    list-style: none;
+    padding-left: 8px;
+  }
+
+  .nw-difference__list li {
+    font-size: 16px;
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .nw-difference__list li:last-child {
+    border-bottom: none;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1200px) {
+    .nw-difference__content { padding: 100px 36px; }
+    .nw-difference__title { font-size: 48px; }
+  }
+
+  @media (max-width: 1024px) {
+    .nw-difference__content { padding: 80px 30px; max-width: 55%; }
+    .nw-difference__title { font-size: 40px; }
+  }
+
+  @media (max-width: 768px) {
+    .nw-difference { min-height: auto; }
+    .nw-difference__content { max-width: 100%; padding: 60px 20px; }
+    .nw-difference__title { font-size: 32px; margin-bottom: 30px; }
+  }
+
+  @media (max-width: 480px) {
+    .nw-difference__title { font-size: 26px; }
+    .nw-difference__list li { font-size: 14px; padding: 12px 0; }
+  }
+
+  @media (max-width: 375px) {
+    .nw-difference__title { font-size: 22px; }
+  }
+{%- endstyle -%}
+
+<section class="nw-difference">
+  <div class="nw-difference__bg">
+    {%- if section.settings.background_image != blank -%}
+      <img src="{{ section.settings.background_image | image_url: width: 1920 }}" alt="{{ section.settings.heading }}" loading="lazy">
+    {%- else -%}
+      <img src="{{ section.settings.background_image_url }}" alt="{{ section.settings.heading }}" loading="lazy">
+    {%- endif -%}
+  </div>
+  <div class="nw-difference__content">
+    <h2 class="nw-difference__title">{{ section.settings.heading }}</h2>
+    <ul class="nw-difference__list">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Difference",
+  "tag": "section",
+  "class": "nw-difference-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What makes NW Immersion different"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "url",
+      "id": "background_image_url",
+      "label": "Background image URL (fallback)"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list_item",
+      "name": "List Item",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Handcrafted in the Pacific Northwest with locally sourced cedar"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Difference",
+      "settings": {
+        "heading": "What makes NW Immersion different",
+        "background_image_url": "https://www.figma.com/api/mcp/asset/c6da7d4d-dfd5-496b-8470-d3fa6dc0f11b"
+      },
+      "blocks": [
+        { "type": "list_item", "settings": { "text": "Handcrafted in the Pacific Northwest with locally sourced cedar" } },
+        { "type": "list_item", "settings": { "text": "Custom-built designs for homes, spas, and commercial settings" } },
+        { "type": "list_item", "settings": { "text": "Cold plunge options for complete heat + cold therapy" } },
+        { "type": "list_item", "settings": { "text": "Delivered fully assembled and ready to enjoy" } },
+        { "type": "list_item", "settings": { "text": "Durable builds designed to withstand the elements" } },
+        { "type": "list_item", "settings": { "text": "Nationwide shipping so your sauna journey begins wherever you are" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

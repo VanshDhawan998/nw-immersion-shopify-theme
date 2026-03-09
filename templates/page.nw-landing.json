@@ -1,0 +1,74 @@
+{
+  "sections": {
+    "nw_hero": {
+      "type": "nw-hero",
+      "settings": {
+        "heading": "<p>Step into a space built<br>for warmth, wellness & Calm</p>",
+        "overlay_opacity": 30,
+        "show_glow": true,
+        "text_color": "#ffffff",
+        "button_text": "Shop Saunas and Cold Plunges",
+        "button_bg": "#ffffff",
+        "button_text_color": "#000000"
+      }
+    },
+    "nw_trust_bar": {
+      "type": "nw-trust-bar",
+      "settings": {}
+    },
+    "nw_signature_saunas": {
+      "type": "nw-signature-saunas",
+      "settings": {}
+    },
+    "nw_trust_badges": {
+      "type": "nw-trust-badges",
+      "settings": {}
+    },
+    "nw_difference": {
+      "type": "nw-difference",
+      "settings": {}
+    },
+    "nw_testimonials": {
+      "type": "nw-testimonials",
+      "settings": {}
+    },
+    "nw_story": {
+      "type": "nw-story",
+      "settings": {}
+    },
+    "nw_benefits": {
+      "type": "nw-benefits",
+      "settings": {}
+    },
+    "nw_customize_experience": {
+      "type": "nw-customize-experience",
+      "settings": {}
+    },
+    "nw_blog": {
+      "type": "nw-blog",
+      "settings": {}
+    },
+    "nw_newsletter": {
+      "type": "nw-newsletter",
+      "settings": {}
+    },
+    "nw_big_quote": {
+      "type": "nw-big-quote",
+      "settings": {}
+    }
+  },
+  "order": [
+    "nw_hero",
+    "nw_trust_bar",
+    "nw_signature_saunas",
+    "nw_trust_badges",
+    "nw_difference",
+    "nw_testimonials",
+    "nw_story",
+    "nw_benefits",
+    "nw_customize_experience",
+    "nw_blog",
+    "nw_newsletter",
+    "nw_big_quote"
+  ]
+}

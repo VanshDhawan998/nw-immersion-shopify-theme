@@ -1,0 +1,124 @@
+{% comment %}
+  NW Trust Bar — 3–column banner with editable items
+  Extracted from nw-landing-page.html design
+{% endcomment %}
+
+{%- style -%}
+  /* ========== TRUST BAR ========== */
+  .nw-trust-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 65px;
+    background: {{ section.settings.background_color }};
+    max-width: 1440px;
+    margin-inline: auto;
+  }
+
+  .nw-trust-bar__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    position: relative;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .nw-trust-bar__item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 44px;
+    background: #d9d9d9;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1024px) {
+    .nw-trust-bar__item {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nw-trust-bar {
+      grid-template-columns: 1fr;
+      height: auto;
+    }
+
+    .nw-trust-bar__item {
+      font-size: 13px;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .nw-trust-bar__item:not(:last-child)::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nw-trust-bar__item {
+      font-size: 12px;
+      padding: 8px 0;
+    }
+  }
+{%- endstyle -%}
+
+<div class="nw-trust-bar">
+  {%- for block in section.blocks -%}
+    <div class="nw-trust-bar__item" {{ block.shopify_attributes }}>
+      {{ block.settings.text }}
+    </div>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "NW Trust Bar",
+  "tag": "section",
+  "class": "nw-trust-bar-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "Trust Item",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "12+ Years of Craftsmanship"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Trust Bar",
+      "blocks": [
+        { "type": "trust_item", "settings": { "text": "12+ Years of Craftsmanship" } },
+        { "type": "trust_item", "settings": { "text": "Continental US Shipping" } },
+        { "type": "trust_item", "settings": { "text": "Same Day Parts Shipping" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

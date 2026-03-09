@@ -1,0 +1,323 @@
+{% comment %}
+  NW Trust Badges — 4 trust badges row
+  Extracted from nw-landing-page.html design
+{% endcomment %}
+
+{%- style -%}
+  /* ========== TRUST BADGES ========== */
+  .nw-trust {
+    padding: 50px 50px 30px;
+    max-width: 1440px;
+    margin-inline: auto;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .nw-trust__title {
+    font-size: 60px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .nw-trust__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 33px;
+    max-width: 1340px;
+    margin: 0 auto;
+  }
+
+  .nw-trust-badge {
+    height: 99px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Badge type: simple (BBB, Top Rated) */
+  .nw-trust-badge--simple {
+    border: 1px solid {{ section.settings.badge_border_color }};
+    background: #fff;
+    justify-content: center;
+  }
+
+  .nw-trust-badge--simple img {
+    max-width: 200px;
+    max-height: 80px;
+    object-fit: contain;
+  }
+
+  /* Badge type: split (accredited) */
+  .nw-trust-badge--split {
+    border: 1px solid var(--nw-badge-accent, #005a79);
+    background: #fff;
+    position: relative;
+  }
+
+  .nw-trust-badge--split__logo {
+    width: 64px;
+    height: 80px;
+    object-fit: cover;
+    margin-left: 17px;
+  }
+
+  .nw-trust-badge--split__text-area {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 208px;
+    height: 99px;
+    background: var(--nw-badge-accent, #005a79);
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 42px;
+  }
+
+  .nw-trust-badge--split__text-area span {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+  }
+
+  /* Badge type: flag (Made in USA) */
+  .nw-trust-badge--flag {
+    background: var(--nw-badge-accent, #002356);
+    border-radius: 8px 8px 8px 31px;
+  }
+
+  .nw-trust-badge--flag__img {
+    width: 116px;
+    height: 99px;
+    object-fit: cover;
+    border-radius: 8px 0 0 31px;
+  }
+
+  .nw-trust-badge--flag__text {
+    margin-left: auto;
+    margin-right: 40px;
+    text-align: left;
+  }
+
+  .nw-trust-badge--flag__text .label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .nw-trust-badge--flag__text .big {
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+
+  /* Badge type: highlight (Top Rated) */
+  .nw-trust-badge--highlight {
+    background: var(--nw-badge-accent, #edb41c);
+  }
+
+  .nw-trust-badge--highlight img {
+    width: 99px;
+    height: 99px;
+    object-fit: cover;
+  }
+
+  .nw-trust-badge--highlight span {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-left: 10px;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1200px) {
+    .nw-trust { padding: 50px 36px 30px; }
+    .nw-trust__title { font-size: 48px; }
+    .nw-trust-badge--split__text-area { width: 160px; padding-left: 20px; }
+    .nw-trust-badge--split__text-area span { font-size: 16px; }
+    .nw-trust-badge--flag__text .big { font-size: 32px; }
+  }
+
+  @media (max-width: 1024px) {
+    .nw-trust { padding: 50px 30px 30px; }
+    .nw-trust__title { font-size: 40px; }
+    .nw-trust__grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  }
+
+  @media (max-width: 768px) {
+    .nw-trust { padding: 40px 20px; }
+    .nw-trust__title { font-size: 32px; margin-bottom: 28px; }
+    .nw-trust__grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .nw-trust-badge { height: 80px; }
+    .nw-trust-badge--simple img { max-width: 140px; max-height: 56px; }
+    .nw-trust-badge--split__logo { width: 48px; height: 60px; margin-left: 10px; }
+    .nw-trust-badge--split__text-area { width: 120px; padding-left: 14px; }
+    .nw-trust-badge--split__text-area span { font-size: 13px; }
+    .nw-trust-badge--flag__img { width: 80px; height: 80px; }
+    .nw-trust-badge--flag__text { margin-right: 20px; }
+    .nw-trust-badge--flag__text .big { font-size: 28px; }
+    .nw-trust-badge--flag__text .label { font-size: 13px; }
+    .nw-trust-badge--highlight img { width: 70px; height: 70px; }
+    .nw-trust-badge--highlight span { font-size: 22px; }
+  }
+
+  @media (max-width: 480px) {
+    .nw-trust__grid { grid-template-columns: 1fr; gap: 12px; }
+    .nw-trust__title { font-size: 26px; margin-bottom: 20px; }
+  }
+{%- endstyle -%}
+
+<div class="nw-trust">
+  <h2 class="nw-trust__title">{{ section.settings.heading }}</h2>
+  <div class="nw-trust__grid">
+    {%- for block in section.blocks -%}
+      {%- case block.settings.badge_type -%}
+
+        {%- when 'simple' -%}
+          <div class="nw-trust-badge nw-trust-badge--simple" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.alt_text }}" loading="lazy">
+            {%- else -%}
+              <img src="{{ block.settings.image_url }}" alt="{{ block.settings.alt_text }}" loading="lazy">
+            {%- endif -%}
+          </div>
+
+        {%- when 'split' -%}
+          <div class="nw-trust-badge nw-trust-badge--split" style="--nw-badge-accent: {{ block.settings.accent_color }}; border-color: {{ block.settings.accent_color }};" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <img class="nw-trust-badge--split__logo" src="{{ block.settings.image | image_url: width: 200 }}" alt="{{ block.settings.alt_text }}" loading="lazy">
+            {%- else -%}
+              <img class="nw-trust-badge--split__logo" src="{{ block.settings.image_url }}" alt="{{ block.settings.alt_text }}" loading="lazy">
+            {%- endif -%}
+            <div class="nw-trust-badge--split__text-area">
+              <span>{{ block.settings.line_1 }}</span>
+              <span>{{ block.settings.line_2 }}</span>
+            </div>
+          </div>
+
+        {%- when 'flag' -%}
+          <div class="nw-trust-badge nw-trust-badge--flag" style="--nw-badge-accent: {{ block.settings.accent_color }};" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <img class="nw-trust-badge--flag__img" src="{{ block.settings.image | image_url: width: 200 }}" alt="{{ block.settings.alt_text }}" loading="lazy">
+            {%- else -%}
+              <img class="nw-trust-badge--flag__img" src="{{ block.settings.image_url }}" alt="{{ block.settings.alt_text }}" loading="lazy">
+            {%- endif -%}
+            <div class="nw-trust-badge--flag__text">
+              <div class="label">{{ block.settings.line_1 }}</div>
+              <div class="big">{{ block.settings.line_2 }}</div>
+            </div>
+          </div>
+
+        {%- when 'highlight' -%}
+          <div class="nw-trust-badge nw-trust-badge--highlight" style="--nw-badge-accent: {{ block.settings.accent_color }};" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <img src="{{ block.settings.image | image_url: width: 200 }}" alt="{{ block.settings.alt_text }}" loading="lazy">
+            {%- else -%}
+              <img src="{{ block.settings.image_url }}" alt="{{ block.settings.alt_text }}" loading="lazy">
+            {%- endif -%}
+            <span>{{ block.settings.line_1 }}</span>
+          </div>
+
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "NW Trust Badges",
+  "tag": "section",
+  "class": "nw-trust-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We can have your trust"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "badge_border_color",
+      "label": "Default badge border",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust Badge",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "select",
+          "id": "badge_type",
+          "label": "Badge layout",
+          "options": [
+            { "value": "simple", "label": "Simple (centered image)" },
+            { "value": "split", "label": "Split (logo + colored text area)" },
+            { "value": "flag", "label": "Flag (image left + big text right)" },
+            { "value": "highlight", "label": "Highlight (colored bg + icon + label)" }
+          ],
+          "default": "simple"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Badge image"
+        },
+        {
+          "type": "url",
+          "id": "image_url",
+          "label": "Image URL (fallback)"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt text",
+          "default": "Trust badge"
+        },
+        {
+          "type": "text",
+          "id": "line_1",
+          "label": "Text line 1",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "line_2",
+          "label": "Text line 2",
+          "default": ""
+        },
+        {
+          "type": "color",
+          "id": "accent_color",
+          "label": "Accent / background color",
+          "default": "#005a79"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Trust Badges",
+      "blocks": [
+        { "type": "badge", "settings": { "badge_type": "simple", "image_url": "https://www.figma.com/api/mcp/asset/89dc5993-37f5-4137-8cfb-75d6247dfb44", "alt_text": "BBB Accredited" } },
+        { "type": "badge", "settings": { "badge_type": "split", "image_url": "https://www.figma.com/api/mcp/asset/ca0dc499-0aed-4944-aa8d-d4f9744b2553", "alt_text": "Accredited Business", "line_1": "ACCREDITED", "line_2": "BUSINESS", "accent_color": "#005a79" } },
+        { "type": "badge", "settings": { "badge_type": "flag", "image_url": "https://www.figma.com/api/mcp/asset/7909fc17-d183-4839-b99a-58a9ff1db9f9", "alt_text": "Made in USA", "line_1": "MADE IN", "line_2": "USA", "accent_color": "#002356" } },
+        { "type": "badge", "settings": { "badge_type": "highlight", "image_url": "https://www.figma.com/api/mcp/asset/db99b6fc-49e1-48fe-8846-7b2d17d88f79", "alt_text": "Top Rated", "line_1": "TOP RATED", "accent_color": "#edb41c" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

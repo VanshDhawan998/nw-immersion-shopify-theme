@@ -1,0 +1,219 @@
+{% comment %}
+  NW Story — Full-width background image with gradient overlay + text
+  Extracted from nw-landing-page.html design
+{% endcomment %}
+
+{%- style -%}
+  /* ========== THE STORY ========== */
+  .nw-story {
+    position: relative;
+    min-height: 760px;
+    overflow: hidden;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .nw-story__bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .nw-story__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nw-story__gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,1) 22.766%, rgba(0,0,0,0) 82.611%);
+    z-index: 1;
+  }
+
+  .nw-story__content {
+    position: relative;
+    z-index: 2;
+    padding: 116px 50px;
+    max-width: 764px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .nw-story__title {
+    font-size: 40px;
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+    line-height: 1.25;
+  }
+
+  .nw-story__text {
+    font-size: 18px;
+    font-weight: 400;
+    color: {{ section.settings.text_color }};
+    line-height: 28px;
+  }
+
+  .nw-story__text p + p {
+    margin-top: 14px;
+  }
+
+  .nw-story__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 40px;
+    background: {{ section.settings.button_bg }};
+    color: {{ section.settings.button_text_color }};
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s, box-shadow 0.2s;
+    align-self: flex-start;
+    text-decoration: none;
+  }
+
+  .nw-story__btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1200px) {
+    .nw-story__content { padding: 116px 36px; }
+  }
+
+  @media (max-width: 1024px) {
+    .nw-story { min-height: 600px; }
+    .nw-story__title { font-size: 34px; }
+    .nw-story__content { padding: 80px 30px; max-width: 55%; }
+  }
+
+  @media (max-width: 768px) {
+    .nw-story { min-height: auto; }
+    .nw-story__gradient { background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4)); }
+    .nw-story__content { max-width: 100%; padding: 60px 20px; }
+    .nw-story__title { font-size: 28px; }
+    .nw-story__text { font-size: 16px; line-height: 26px; }
+  }
+
+  @media (max-width: 480px) {
+    .nw-story__title { font-size: 24px; }
+    .nw-story__text { font-size: 14px; line-height: 24px; }
+  }
+
+  @media (max-width: 375px) {
+    .nw-story__title { font-size: 20px; }
+  }
+{%- endstyle -%}
+
+<section class="nw-story">
+  <div class="nw-story__bg">
+    {%- if section.settings.background_image != blank -%}
+      <img src="{{ section.settings.background_image | image_url: width: 1920 }}" alt="{{ section.settings.heading }}" loading="lazy">
+    {%- else -%}
+      <img src="{{ section.settings.background_image_url }}" alt="{{ section.settings.heading }}" loading="lazy">
+    {%- endif -%}
+  </div>
+  <div class="nw-story__gradient"></div>
+  <div class="nw-story__content">
+    <h2 class="nw-story__title">{{ section.settings.heading }}</h2>
+    <div class="nw-story__text">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'paragraph' -%}
+          <p {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.button_text != blank -%}
+      <a href="{{ section.settings.button_link }}" class="nw-story__btn">{{ section.settings.button_text }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Story",
+  "tag": "section",
+  "class": "nw-story-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Story That Sparked NW Immersion"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "url",
+      "id": "background_image_url",
+      "label": "Background image URL (fallback)"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Our Story"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#556B55"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>NW Immersion began with a personal journey.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Story",
+      "settings": {
+        "heading": "The Story That Sparked NW Immersion",
+        "background_image_url": "https://www.figma.com/api/mcp/asset/720077e1-8bae-471c-8625-2ea9443864c7"
+      },
+      "blocks": [
+        { "type": "paragraph", "settings": { "text": "<p>NW Immersion began with a personal journey. In 2010, founders Michelle and Eric installed their first home sauna. What started as a wellness practice soon became a way of life. For Eric, the change was transformative.</p>" } },
+        { "type": "paragraph", "settings": { "text": "<p>Through regular sauna use, he lost 100 pounds and kept it off – a lasting reminder of the power of heat and cold immersion. Together, Michelle and Eric built NW Immersion on the belief that wellness should be accessible, enjoyable, and deeply rewarding.</p>" } },
+        { "type": "paragraph", "settings": { "text": "<p>Today, every sauna we build carries that same commitment: helping you discover health and renewal one session at a time.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

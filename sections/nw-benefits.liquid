@@ -1,0 +1,256 @@
+{% comment %}
+  NW Benefits — Tabbed content card (Warranty, Support, Simple Care, Quality)
+  Extracted from nw-landing-page.html design
+{% endcomment %}
+
+{%- style -%}
+  /* ========== BENEFITS OF PRODUCTS ========== */
+  .nw-benefits {
+    padding: 80px 50px;
+    max-width: 1440px;
+    margin-inline: auto;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .nw-benefits__title {
+    font-size: 60px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .nw-benefits__tabs {
+    display: flex;
+    align-items: center;
+    gap: 90px;
+    justify-content: center;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 15px 0;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+  }
+
+  .nw-benefits__tab {
+    font-size: 18px;
+    font-weight: 600;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    font-family: inherit;
+  }
+
+  .nw-benefits__tab:hover,
+  .nw-benefits__tab.active {
+    color: #000;
+  }
+
+  .nw-benefits__card {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+    background: #fff;
+  }
+
+  .nw-benefits__card.active {
+    display: grid;
+  }
+
+  .nw-benefits__card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nw-benefits__card-content {
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .nw-benefits__card-content h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 30px;
+  }
+
+  .nw-benefits__card-content p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 50px;
+    color: #000;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1200px) {
+    .nw-benefits { padding: 80px 36px; }
+    .nw-benefits__title { font-size: 48px; }
+  }
+
+  @media (max-width: 1024px) {
+    .nw-benefits { padding: 60px 30px; }
+    .nw-benefits__title { font-size: 40px; }
+    .nw-benefits__tabs { gap: 40px; }
+    .nw-benefits__tab { font-size: 16px; }
+    .nw-benefits__card-content p { line-height: 32px; }
+  }
+
+  @media (max-width: 768px) {
+    .nw-benefits { padding: 50px 20px; }
+    .nw-benefits__title { font-size: 32px; margin-bottom: 28px; }
+    .nw-benefits__tabs { gap: 20px; flex-wrap: wrap; }
+    .nw-benefits__tab { font-size: 14px; }
+    .nw-benefits__card.active { grid-template-columns: 1fr; }
+    .nw-benefits__card-image { height: 280px; }
+    .nw-benefits__card-image img { height: 280px; }
+    .nw-benefits__card-content { padding: 30px; }
+    .nw-benefits__card-content h3 { font-size: 20px; margin-bottom: 16px; }
+    .nw-benefits__card-content p { font-size: 16px; line-height: 28px; }
+  }
+
+  @media (max-width: 480px) {
+    .nw-benefits__title { font-size: 26px; margin-bottom: 20px; }
+    .nw-benefits__tabs { gap: 12px; }
+    .nw-benefits__tab { font-size: 13px; }
+    .nw-benefits__card-content { padding: 24px 20px; }
+    .nw-benefits__card-content h3 { font-size: 18px; }
+    .nw-benefits__card-content p { font-size: 14px; line-height: 24px; }
+  }
+{%- endstyle -%}
+
+<div class="nw-benefits">
+  <h2 class="nw-benefits__title">{{ section.settings.heading }}</h2>
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="nw-benefits__tabs">
+      {%- for block in section.blocks -%}
+        <button
+          class="nw-benefits__tab{% if forloop.first %} active{% endif %}"
+          data-tab-index="{{ forloop.index0 }}"
+          {{ block.shopify_attributes }}
+        >
+          {{ block.settings.tab_label }}
+        </button>
+      {%- endfor -%}
+    </div>
+
+    {%- for block in section.blocks -%}
+      <div class="nw-benefits__card{% if forloop.first %} active{% endif %}" data-card-index="{{ forloop.index0 }}">
+        <div class="nw-benefits__card-image">
+          {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.card_title }}" loading="lazy">
+          {%- else -%}
+            <img src="{{ block.settings.image_url }}" alt="{{ block.settings.card_title }}" loading="lazy">
+          {%- endif -%}
+        </div>
+        <div class="nw-benefits__card-content">
+          <h3>{{ block.settings.card_title }}</h3>
+          <p>{{ block.settings.card_text }}</p>
+        </div>
+      </div>
+    {%- endfor -%}
+  {%- endif -%}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const section = document.querySelector('.nw-benefits');
+    if (!section) return;
+
+    const tabs = section.querySelectorAll('.nw-benefits__tab');
+    const cards = section.querySelectorAll('.nw-benefits__card');
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        const idx = this.getAttribute('data-tab-index');
+
+        tabs.forEach(function (t) { t.classList.remove('active'); });
+        cards.forEach(function (c) { c.classList.remove('active'); });
+
+        this.classList.add('active');
+        const target = section.querySelector('.nw-benefits__card[data-card-index="' + idx + '"]');
+        if (target) target.classList.add('active');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "NW Benefits",
+  "tag": "section",
+  "class": "nw-benefits-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Benefits of Products"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit_tab",
+      "name": "Benefit Tab",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab label",
+          "default": "Warranty"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card title",
+          "default": "Warranty of Saunas"
+        },
+        {
+          "type": "textarea",
+          "id": "card_text",
+          "label": "Card text",
+          "default": "Our saunas are built with premium-quality wood, advanced heating systems, and durable components to ensure long-lasting performance."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card image"
+        },
+        {
+          "type": "url",
+          "id": "image_url",
+          "label": "Image URL (fallback)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Benefits",
+      "blocks": [
+        { "type": "benefit_tab", "settings": { "tab_label": "Warranty", "card_title": "Warranty of Saunas", "card_text": "Our saunas are built with premium-quality wood, advanced heating systems, and durable components to ensure long-lasting performance. We stand behind the craftsmanship of our products by offering a comprehensive warranty for your peace of mind.", "image_url": "https://www.figma.com/api/mcp/asset/d6bf860b-6acf-4a31-a066-136cc095c333" } },
+        { "type": "benefit_tab", "settings": { "tab_label": "Support", "card_title": "Customer Support", "card_text": "Our dedicated support team is available to help you every step of the way — from choosing the right sauna to installation and maintenance.", "image_url": "https://www.figma.com/api/mcp/asset/d6bf860b-6acf-4a31-a066-136cc095c333" } },
+        { "type": "benefit_tab", "settings": { "tab_label": "Simple Care", "card_title": "Simple Care & Maintenance", "card_text": "Our saunas are designed for easy upkeep with minimal maintenance required, so you can focus on enjoying your wellness experience.", "image_url": "https://www.figma.com/api/mcp/asset/d6bf860b-6acf-4a31-a066-136cc095c333" } },
+        { "type": "benefit_tab", "settings": { "tab_label": "Quality Materials", "card_title": "Premium Quality Materials", "card_text": "We use only the finest locally sourced cedar and premium components to ensure your sauna delivers exceptional quality for years to come.", "image_url": "https://www.figma.com/api/mcp/asset/d6bf860b-6acf-4a31-a066-136cc095c333" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
