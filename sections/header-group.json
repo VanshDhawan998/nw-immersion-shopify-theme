@@ -91,7 +91,7 @@
         "announcement_bg_color": "#1b3a2d",
         "announcement_text_color": "#ffffff",
         "shop_page_url": "/pages/shop",
-        "shop_button_link": "/collections/all",
+        "shop_button_link": "shopify://pages/shop",
         "shop_button_text": "SHOP",
         "accent_color": "#4a7c59",
         "enable_transparent_nav": "homepage",
