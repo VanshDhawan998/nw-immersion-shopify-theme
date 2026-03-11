@@ -1,7 +1,14 @@
 {% comment %}
-  NW Custom Header — Announcement + Hero with Mega Menu
+  NW Custom Header — Announcement + Nav + Optional Hero with Mega Menu
   Extracted from nw-landing-page.html design
 {% endcomment %}
+
+{%- liquid
+  assign nav_is_transparent = false
+  if section.settings.show_hero and section.settings.enable_transparent_nav
+    assign nav_is_transparent = true
+  endif
+-%}
 
 {%- style -%}
   /* ============================================
@@ -10,6 +17,53 @@
   :root {
     --nw-color-primary: {{ section.settings.announcement_bg_color }};
     --nw-color-alternative: {{ section.settings.accent_color }};
+    --nw-nav-bg: {{ section.settings.nav_bg_color | default: '#1B3A2D' }};
+    --nw-nav-text: {{ section.settings.nav_text_color_solid | default: '#ffffff' }};
+  }
+
+  /* ============================================
+     HEADER WRAPPER
+     ============================================ */
+  .nw-header-wrapper {
+    position: relative;
+  }
+
+  /* --- Solid (non-transparent) nav --- */
+  .nw-header-wrapper:not(.nw-header-wrapper--transparent) .nw-hero__nav {
+    position: relative;
+    background: var(--nw-nav-bg);
+  }
+
+  .nw-header-wrapper:not(.nw-header-wrapper--transparent) .nw-hero__nav::after {
+    background: rgba(255, 255, 255, 0.15);
+    left: 0;
+    width: 100%;
+  }
+
+  .nw-header-wrapper:not(.nw-header-wrapper--transparent) .nw-nav-links a {
+    color: var(--nw-nav-text);
+  }
+
+  .nw-header-wrapper:not(.nw-header-wrapper--transparent) .nw-nav-shop-btn {
+    color: var(--nw-nav-text);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .nw-header-wrapper:not(.nw-header-wrapper--transparent) .nw-nav-cart img {
+    filter: brightness(0) invert(1);
+  }
+
+  .nw-header-wrapper:not(.nw-header-wrapper--transparent) .nw-nav-toggle-label span {
+    background: var(--nw-nav-text);
+  }
+
+  /* --- Transparent nav (overlays hero) --- */
+  .nw-header-wrapper--transparent .nw-hero__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
   }
 
   /* ============================================
@@ -75,10 +129,6 @@
      NAVIGATION
      ============================================ */
   .nw-hero__nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     z-index: 10;
     display: flex;
     align-items: center;
@@ -661,51 +711,29 @@
   </div>
 {% endif %}
 
-<!-- ====== HERO WITH NAV ====== -->
-<section class="nw-hero">
-  <!-- Background Image -->
-  <div class="nw-hero__bg">
-    {% if section.settings.hero_image != blank %}
-      <img
-        src="{{ section.settings.hero_image | image_url: width: 2000 }}"
-        alt="{{ section.settings.hero_image.alt | default: section.settings.hero_title }}"
-        loading="eager"
-        fetchpriority="high"
-        width="2000"
-        height="{{ 2000 | divided_by: section.settings.hero_image.aspect_ratio | round }}"
-      >
-    {% else %}
-      <img
-        src="https://www.figma.com/api/mcp/asset/9be15d16-218b-4200-b3e4-5759ed372013"
-        alt="NW Immersion hero — sauna lifestyle"
-        loading="eager"
-      >
-    {% endif %}
-  </div>
-  <div class="nw-hero__overlay"></div>
-  <div class="nw-hero__glow"></div>
-
-  <!-- Logo -->
-  <a href="/" class="nw-hero__logo">
-    {% if section.settings.logo_image != blank %}
-      <img
-        src="{{ section.settings.logo_image | image_url: width: 160 }}"
-        alt="{{ shop.name }}"
-        width="80"
-        height="80"
-        loading="eager"
-      >
-    {% else %}
-      <img
-        src="https://www.figma.com/api/mcp/asset/3cf3d791-7eb3-4f05-a480-c59c2ecb6c99"
-        alt="{{ shop.name }}"
-        loading="eager"
-      >
-    {% endif %}
-  </a>
+<!-- ====== HEADER + HERO WRAPPER ====== -->
+<div class="nw-header-wrapper{% if nav_is_transparent %} nw-header-wrapper--transparent{% endif %}">
 
   <!-- Navigation -->
   <nav class="nw-hero__nav">
+    <!-- Logo -->
+    <a href="/" class="nw-hero__logo">
+      {% if section.settings.logo_image != blank %}
+        <img
+          src="{{ section.settings.logo_image | image_url: width: 160 }}"
+          alt="{{ shop.name }}"
+          width="80"
+          height="80"
+          loading="eager"
+        >
+      {% else %}
+        <img
+          src="https://www.figma.com/api/mcp/asset/3cf3d791-7eb3-4f05-a480-c59c2ecb6c99"
+          alt="{{ shop.name }}"
+          loading="eager"
+        >
+      {% endif %}
+    </a>
     <input type="checkbox" id="nw-nav-toggle" class="nw-nav-toggle-checkbox">
     <label for="nw-nav-toggle" class="nw-nav-toggle-label" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
@@ -820,18 +848,46 @@
     </a>
   </nav>
 
-  <!-- Hero Content -->
-  <div class="nw-hero__content">
-    <h1 class="nw-hero__title">
-      {{ section.settings.hero_title }}
-    </h1>
-    {% if section.settings.hero_cta_text != blank %}
-      <a href="{{ section.settings.hero_cta_link }}" class="nw-hero__cta">
-        {{ section.settings.hero_cta_text }}
-      </a>
-    {% endif %}
-  </div>
-</section>
+  <!-- Hero Section (toggleable) -->
+  {% if section.settings.show_hero %}
+  <section class="nw-hero">
+    <!-- Background Image -->
+    <div class="nw-hero__bg">
+      {% if section.settings.hero_image != blank %}
+        <img
+          src="{{ section.settings.hero_image | image_url: width: 2000 }}"
+          alt="{{ section.settings.hero_image.alt | default: section.settings.hero_title }}"
+          loading="eager"
+          fetchpriority="high"
+          width="2000"
+          height="{{ 2000 | divided_by: section.settings.hero_image.aspect_ratio | round }}"
+        >
+      {% else %}
+        <img
+          src="https://www.figma.com/api/mcp/asset/9be15d16-218b-4200-b3e4-5759ed372013"
+          alt="NW Immersion hero — sauna lifestyle"
+          loading="eager"
+        >
+      {% endif %}
+    </div>
+    <div class="nw-hero__overlay"></div>
+    <div class="nw-hero__glow"></div>
+
+    <!-- Hero Content -->
+    <div class="nw-hero__content">
+      <h1 class="nw-hero__title">
+        {{ section.settings.hero_title }}
+      </h1>
+      {% if section.settings.hero_cta_text != blank %}
+        <a href="{{ section.settings.hero_cta_link }}" class="nw-hero__cta">
+          {{ section.settings.hero_cta_text }}
+        </a>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+
+</div><!-- /.nw-header-wrapper -->
 
 {% schema %}
 {
@@ -905,7 +961,39 @@
     },
     {
       "type": "header",
+      "content": "Navigation Appearance"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_transparent_nav",
+      "label": "Transparent navigation",
+      "info": "When ON the nav overlays the hero with no background. Turn OFF to use a solid background color.",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "nav_bg_color",
+      "label": "Navigation background color",
+      "info": "Used when transparent navigation is OFF.",
+      "default": "#1B3A2D"
+    },
+    {
+      "type": "color",
+      "id": "nav_text_color_solid",
+      "label": "Navigation text color",
+      "info": "Used when transparent navigation is OFF.",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
       "content": "Hero Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hero",
+      "label": "Show hero section",
+      "info": "Uncheck to hide the hero. Use the standalone NW Hero section on individual pages instead.",
+      "default": true
     },
     {
       "type": "image_picker",
