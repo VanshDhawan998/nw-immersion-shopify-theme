@@ -96,7 +96,7 @@
         "enable_transparent_nav": "homepage",
         "nav_bg_color": "#1b3a2d",
         "nav_text_color_solid": "#ffffff",
-        "show_hero": true,
+        "show_hero": false,
         "hero_height": 780,
         "overlay_opacity": 30,
         "hero_title": "Step into a space builtfor warmth, wellness & Calm",
