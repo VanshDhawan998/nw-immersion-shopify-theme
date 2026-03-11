@@ -945,6 +945,13 @@
       "content": "Navigation"
     },
     {
+      "type": "text",
+      "id": "shop_page_url",
+      "label": "Shop page URL",
+      "info": "Path to your NW Shop page (e.g. /pages/shop). Menu links with a category filter slug will route here with the filter applied.",
+      "default": "/pages/shop"
+    },
+    {
       "type": "url",
       "id": "shop_button_link",
       "label": "Shop button link",
@@ -1069,6 +1076,12 @@
           "label": "Menu link"
         },
         {
+          "type": "text",
+          "id": "link_filter",
+          "label": "↳ Category filter slug (optional)",
+          "info": "If set, this top-level link goes to the shop page filtered by this category tag instead of the URL above."
+        },
+        {
           "type": "header",
           "content": "Mega Menu Panel"
         },
@@ -1100,6 +1113,12 @@
         },
         {
           "type": "text",
+          "id": "mega_link_1_filter",
+          "label": "↳ Filter slug (optional)",
+          "info": "Routes to shop page with this category filter instead of URL above."
+        },
+        {
+          "type": "text",
           "id": "mega_link_2_label",
           "label": "Link 2 label",
           "default": "Indoor Saunas"
@@ -1108,6 +1127,12 @@
           "type": "url",
           "id": "mega_link_2_url",
           "label": "Link 2 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_2_filter",
+          "label": "↳ Filter slug (optional)",
+          "info": "Routes to shop page with this category filter instead of URL above."
         },
         {
           "type": "text",
@@ -1122,6 +1147,12 @@
         },
         {
           "type": "text",
+          "id": "mega_link_3_filter",
+          "label": "↳ Filter slug (optional)",
+          "info": "Routes to shop page with this category filter instead of URL above."
+        },
+        {
+          "type": "text",
           "id": "mega_link_4_label",
           "label": "Link 4 label",
           "default": "Steam & Ice Suite"
@@ -1130,6 +1161,12 @@
           "type": "url",
           "id": "mega_link_4_url",
           "label": "Link 4 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_4_filter",
+          "label": "↳ Filter slug (optional)",
+          "info": "Routes to shop page with this category filter instead of URL above."
         },
         {
           "type": "header",
@@ -1148,6 +1185,12 @@
         },
         {
           "type": "text",
+          "id": "mega_sec_link_1_filter",
+          "label": "↳ Filter slug (optional)",
+          "info": "Routes to shop page with this category filter instead of URL above."
+        },
+        {
+          "type": "text",
           "id": "mega_sec_link_2_label",
           "label": "Secondary link 2 label",
           "default": "Electric sauna"
@@ -1159,6 +1202,12 @@
         },
         {
           "type": "text",
+          "id": "mega_sec_link_2_filter",
+          "label": "↳ Filter slug (optional)",
+          "info": "Routes to shop page with this category filter instead of URL above."
+        },
+        {
+          "type": "text",
           "id": "mega_sec_link_3_label",
           "label": "Secondary link 3 label",
           "default": "Barrel sauna"
@@ -1167,6 +1216,12 @@
           "type": "url",
           "id": "mega_sec_link_3_url",
           "label": "Secondary link 3 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_sec_link_3_filter",
+          "label": "↳ Filter slug (optional)",
+          "info": "Routes to shop page with this category filter instead of URL above."
         }
       ]
     },
@@ -1184,6 +1239,12 @@
           "type": "url",
           "id": "link",
           "label": "URL"
+        },
+        {
+          "type": "text",
+          "id": "filter_slug",
+          "label": "Category filter slug (optional)",
+          "info": "If set, this link goes to the shop page filtered by this category tag instead of the URL above."
         }
       ]
     }
