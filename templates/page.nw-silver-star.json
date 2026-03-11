@@ -95,14 +95,14 @@
       },
       "blocks": {
         "card_1": {
-          "type": "feature_card",
+          "type": "card",
           "settings": {
             "title": "Weather-Sealed Construction",
             "description": "Tongue-and-groove cedar panels with a galvanized steel roof and sealed foundation create a structure built to withstand rain, snow, and UV exposure year-round."
           }
         },
         "card_2": {
-          "type": "feature_card",
+          "type": "card",
           "settings": {
             "title": "Signature Design Elements",
             "description": "A tinted tempered glass window, custom NW Immersion door handle, and hand-finished roof cap create a look that's distinctly Northwest."
@@ -122,49 +122,49 @@
       },
       "blocks": {
         "acc_1": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "Premium cedar bucket and ladle set"
           }
         },
         "acc_2": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "Thermometer/hygrometer combo"
           }
         },
         "acc_3": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "60 lbs of premium sauna stones"
           }
         },
         "acc_4": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "Sauna headrests (set of 2)"
           }
         },
         "acc_5": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "LED accent lighting package"
           }
         },
         "acc_6": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "Bluetooth speaker system"
           }
         },
         "acc_7": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "Custom window configurations"
           }
         },
         "acc_8": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "Dark-stain or natural cedar finish"
           }

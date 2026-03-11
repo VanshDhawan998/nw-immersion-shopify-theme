@@ -95,14 +95,14 @@
       },
       "blocks": {
         "card_1": {
-          "type": "feature_card",
+          "type": "card",
           "settings": {
             "title": "Patio & Deck-Friendly Footprint",
             "description": "Designed to fit standard residential patios and decks. Compact dimensions means the Loowit goes where larger models can't."
           }
         },
         "card_2": {
-          "type": "feature_card",
+          "type": "card",
           "settings": {
             "title": "Same Premium Build Quality",
             "description": "Tongue-and-groove cedar panels, galvanized steel roof, and hand-finished details — identical construction to the Silver Star."
@@ -122,49 +122,49 @@
       },
       "blocks": {
         "acc_1": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "Premium cedar bucket and ladle set"
           }
         },
         "acc_2": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "Thermometer/hygrometer combo"
           }
         },
         "acc_3": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "Premium sauna stones"
           }
         },
         "acc_4": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "Cedar headrest"
           }
         },
         "acc_5": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "LED accent lighting package"
           }
         },
         "acc_6": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "Bluetooth speaker system"
           }
         },
         "acc_7": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "Custom window upgrade"
           }
         },
         "acc_8": {
-          "type": "accessory",
+          "type": "item",
           "settings": {
             "text": "Dark-stain or natural cedar finish"
           }
