@@ -180,14 +180,13 @@
     margin-left: auto;
     margin-right: auto;
     padding: 0;
-     height: 100%;
+    height: 100%;
     align-items: stretch;
   }
 
   .nw-nav-links > li {
     display: flex;
     align-items: center;
-  }
   }
 
   .nw-nav-links a {
@@ -326,7 +325,8 @@
     background: #fff;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
-/* Invisible bridge — prevents hover gap between trigger and dropdown */
+
+  /* Invisible bridge — prevents hover gap between trigger and dropdown */
   .nw-mega-menu::before {
     content: '';
     position: absolute;
@@ -767,12 +767,20 @@
     </label>
 
     <ul class="nw-nav-links">
+      {%- assign nw_shop_url = section.settings.shop_page_url | default: '/pages/shop' -%}
       {%- for block in section.blocks -%}
         {%- case block.type -%}
 
           {%- when 'mega_menu_item' -%}
+            {%- comment -%} Build top-level mega link href {%- endcomment -%}
+            {%- if block.settings.link_filter != blank -%}
+              {%- assign mega_top_href = nw_shop_url | append: '?category=' | append: block.settings.link_filter -%}
+            {%- else -%}
+              {%- assign mega_top_href = block.settings.link -%}
+            {%- endif -%}
+
             <li class="nw-nav-mega-trigger" {{ block.shopify_attributes }}>
-              <a href="{{ block.settings.link }}">{{ block.settings.label }}</a>
+              <a href="{{ mega_top_href }}">{{ block.settings.label }}</a>
               <div class="nw-mega-menu">
                 <div class="nw-mega-menu__content">
                   <!-- Mega Menu Image -->
@@ -800,40 +808,77 @@
                   <div class="nw-mega-menu__col">
                     <h3 class="nw-mega-menu__heading">{{ block.settings.mega_heading | default: block.settings.label }}</h3>
                     {% if block.settings.mega_link_1_label != blank %}
-                      <a href="{{ block.settings.mega_link_1_url }}" class="nw-mega-menu__link nw-mega-menu__link--active">
+                      {%- if block.settings.mega_link_1_filter != blank -%}
+                        {%- assign ml1_href = nw_shop_url | append: '?category=' | append: block.settings.mega_link_1_filter -%}
+                      {%- else -%}
+                        {%- assign ml1_href = block.settings.mega_link_1_url -%}
+                      {%- endif -%}
+                      <a href="{{ ml1_href }}" class="nw-mega-menu__link{% if block.settings.show_secondary_col %} nw-mega-menu__link--active{% endif %}">
                         {{ block.settings.mega_link_1_label }}
-                        <img
-                          src="https://www.figma.com/api/mcp/asset/2a81d6d5-2292-4755-80fc-2fb62b26cae0"
-                          alt=""
-                          class="nw-mega-menu__chevron"
-                          width="24"
-                          height="24"
-                        >
+                        {% if block.settings.show_secondary_col %}
+                          <img
+                            src="https://www.figma.com/api/mcp/asset/2a81d6d5-2292-4755-80fc-2fb62b26cae0"
+                            alt=""
+                            class="nw-mega-menu__chevron"
+                            width="24"
+                            height="24"
+                          >
+                        {% endif %}
                       </a>
                     {% endif %}
                     {% if block.settings.mega_link_2_label != blank %}
-                      <a href="{{ block.settings.mega_link_2_url }}" class="nw-mega-menu__link">{{ block.settings.mega_link_2_label }}</a>
+                      {%- if block.settings.mega_link_2_filter != blank -%}
+                        {%- assign ml2_href = nw_shop_url | append: '?category=' | append: block.settings.mega_link_2_filter -%}
+                      {%- else -%}
+                        {%- assign ml2_href = block.settings.mega_link_2_url -%}
+                      {%- endif -%}
+                      <a href="{{ ml2_href }}" class="nw-mega-menu__link">{{ block.settings.mega_link_2_label }}</a>
                     {% endif %}
                     {% if block.settings.mega_link_3_label != blank %}
-                      <a href="{{ block.settings.mega_link_3_url }}" class="nw-mega-menu__link">{{ block.settings.mega_link_3_label }}</a>
+                      {%- if block.settings.mega_link_3_filter != blank -%}
+                        {%- assign ml3_href = nw_shop_url | append: '?category=' | append: block.settings.mega_link_3_filter -%}
+                      {%- else -%}
+                        {%- assign ml3_href = block.settings.mega_link_3_url -%}
+                      {%- endif -%}
+                      <a href="{{ ml3_href }}" class="nw-mega-menu__link">{{ block.settings.mega_link_3_label }}</a>
                     {% endif %}
                     {% if block.settings.mega_link_4_label != blank %}
-                      <a href="{{ block.settings.mega_link_4_url }}" class="nw-mega-menu__link">{{ block.settings.mega_link_4_label }}</a>
+                      {%- if block.settings.mega_link_4_filter != blank -%}
+                        {%- assign ml4_href = nw_shop_url | append: '?category=' | append: block.settings.mega_link_4_filter -%}
+                      {%- else -%}
+                        {%- assign ml4_href = block.settings.mega_link_4_url -%}
+                      {%- endif -%}
+                      <a href="{{ ml4_href }}" class="nw-mega-menu__link">{{ block.settings.mega_link_4_label }}</a>
                     {% endif %}
                   </div>
 
                   <!-- Secondary Divider + Column -->
-                  {% if block.settings.mega_sec_link_1_label != blank or block.settings.mega_sec_link_2_label != blank or block.settings.mega_sec_link_3_label != blank %}
+                  {% if block.settings.show_secondary_col and block.settings.mega_sec_link_1_label != blank or block.settings.show_secondary_col and block.settings.mega_sec_link_2_label != blank or block.settings.show_secondary_col and block.settings.mega_sec_link_3_label != blank %}
                     <div class="nw-mega-menu__divider nw-mega-menu__divider--secondary"></div>
                     <div class="nw-mega-menu__col nw-mega-menu__col--secondary">
                       {% if block.settings.mega_sec_link_1_label != blank %}
-                        <a href="{{ block.settings.mega_sec_link_1_url }}" class="nw-mega-menu__link">{{ block.settings.mega_sec_link_1_label }}</a>
+                        {%- if block.settings.mega_sec_link_1_filter != blank -%}
+                          {%- assign ms1_href = nw_shop_url | append: '?category=' | append: block.settings.mega_sec_link_1_filter -%}
+                        {%- else -%}
+                          {%- assign ms1_href = block.settings.mega_sec_link_1_url -%}
+                        {%- endif -%}
+                        <a href="{{ ms1_href }}" class="nw-mega-menu__link">{{ block.settings.mega_sec_link_1_label }}</a>
                       {% endif %}
                       {% if block.settings.mega_sec_link_2_label != blank %}
-                        <a href="{{ block.settings.mega_sec_link_2_url }}" class="nw-mega-menu__link">{{ block.settings.mega_sec_link_2_label }}</a>
+                        {%- if block.settings.mega_sec_link_2_filter != blank -%}
+                          {%- assign ms2_href = nw_shop_url | append: '?category=' | append: block.settings.mega_sec_link_2_filter -%}
+                        {%- else -%}
+                          {%- assign ms2_href = block.settings.mega_sec_link_2_url -%}
+                        {%- endif -%}
+                        <a href="{{ ms2_href }}" class="nw-mega-menu__link">{{ block.settings.mega_sec_link_2_label }}</a>
                       {% endif %}
                       {% if block.settings.mega_sec_link_3_label != blank %}
-                        <a href="{{ block.settings.mega_sec_link_3_url }}" class="nw-mega-menu__link">{{ block.settings.mega_sec_link_3_label }}</a>
+                        {%- if block.settings.mega_sec_link_3_filter != blank -%}
+                          {%- assign ms3_href = nw_shop_url | append: '?category=' | append: block.settings.mega_sec_link_3_filter -%}
+                        {%- else -%}
+                          {%- assign ms3_href = block.settings.mega_sec_link_3_url -%}
+                        {%- endif -%}
+                        <a href="{{ ms3_href }}" class="nw-mega-menu__link">{{ block.settings.mega_sec_link_3_label }}</a>
                       {% endif %}
                     </div>
                   {% endif %}
@@ -842,8 +887,13 @@
             </li>
 
           {%- when 'nav_item' -%}
+            {%- if block.settings.filter_slug != blank -%}
+              {%- assign nav_href = nw_shop_url | append: '?category=' | append: block.settings.filter_slug -%}
+            {%- else -%}
+              {%- assign nav_href = block.settings.link -%}
+            {%- endif -%}
             <li {{ block.shopify_attributes }}>
-              <a href="{{ block.settings.link }}">{{ block.settings.label }}</a>
+              <a href="{{ nav_href }}">{{ block.settings.label }}</a>
             </li>
 
         {%- endcase -%}
@@ -1186,6 +1236,13 @@
           "id": "mega_link_4_filter",
           "label": "↳ Filter slug (optional)",
           "info": "Routes to shop page with this category filter instead of URL above."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_secondary_col",
+          "label": "Show secondary column",
+          "info": "Uncheck to hide the secondary links column and the arrow on the first primary link.",
+          "default": true
         },
         {
           "type": "header",
