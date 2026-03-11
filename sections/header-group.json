@@ -48,7 +48,7 @@
           "type": "nav_item",
           "settings": {
             "label": "Plunges & Tubs",
-            "link": "/collections/plunges-tubs",
+            "link": "#",
             "filter_slug": "indoor-saunas"
           }
         },
