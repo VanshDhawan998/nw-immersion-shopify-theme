@@ -1,0 +1,249 @@
+{% comment %}
+  NW Model Reviews — "Stories from the Steam" testimonial cards
+  3-column grid with star ratings and customer quotes.
+{% endcomment %}
+
+{%- style -%}
+  /* ========== MODEL REVIEWS ========== */
+  .nw-model-reviews {
+    padding: 120px 100px;
+    font-family: 'Articulat CF', 'Raleway', sans-serif;
+    background: {{ section.settings.background_color }};
+  }
+
+  .nw-model-reviews__header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .nw-model-reviews__title {
+    font-family: 'Articulat CF', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    line-height: 50px;
+    margin: 0 0 20px 0;
+  }
+
+  .nw-model-reviews__subtitle {
+    font-family: 'Quando', serif;
+    font-size: 18px;
+    color: {{ section.settings.text_color }};
+    line-height: 28px;
+    margin: 0;
+  }
+
+  .nw-model-reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .nw-model-reviews__card {
+    background: {{ section.settings.card_bg }};
+    border-radius: 15px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .nw-model-reviews__stars {
+    display: flex;
+    gap: 4px;
+  }
+
+  .nw-model-reviews__star {
+    width: 20px;
+    height: 20px;
+    color: {{ section.settings.star_color }};
+  }
+
+  .nw-model-reviews__quote {
+    font-family: 'Quando', serif;
+    font-size: 18px;
+    color: {{ section.settings.card_text_color }};
+    line-height: 28px;
+    margin: 0;
+    flex: 1;
+  }
+
+  .nw-model-reviews__author {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: auto;
+  }
+
+  .nw-model-reviews__author-name {
+    font-family: 'Articulat CF', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: {{ section.settings.card_text_color }};
+    line-height: normal;
+  }
+
+  .nw-model-reviews__author-loc {
+    font-family: 'Quando', serif;
+    font-size: 14px;
+    color: {{ section.settings.card_text_color }};
+    opacity: 0.7;
+    line-height: normal;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1200px) {
+    .nw-model-reviews { padding: 100px 60px; }
+  }
+
+  @media (max-width: 1024px) {
+    .nw-model-reviews { padding: 80px 40px; }
+    .nw-model-reviews__title { font-size: 34px; line-height: 44px; }
+    .nw-model-reviews__grid { grid-template-columns: repeat(2, 1fr); }
+    .nw-model-reviews__card { padding: 30px; }
+  }
+
+  @media (max-width: 768px) {
+    .nw-model-reviews { padding: 60px 20px; }
+    .nw-model-reviews__title { font-size: 28px; line-height: 38px; }
+    .nw-model-reviews__grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .nw-model-reviews__title { font-size: 24px; line-height: 34px; }
+    .nw-model-reviews__quote { font-size: 16px; line-height: 26px; }
+  }
+{%- endstyle -%}
+
+<section class="nw-model-reviews">
+  <div class="nw-model-reviews__header">
+    <h2 class="nw-model-reviews__title">{{ section.settings.heading }}</h2>
+    {%- if section.settings.subtitle != blank -%}
+      <p class="nw-model-reviews__subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="nw-model-reviews__grid">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'review' -%}
+        <div class="nw-model-reviews__card" {{ block.shopify_attributes }}>
+          <div class="nw-model-reviews__stars">
+            {%- assign stars = block.settings.rating | default: 5 -%}
+            {%- for i in (1..stars) -%}
+              <svg class="nw-model-reviews__star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            {%- endfor -%}
+          </div>
+          <p class="nw-model-reviews__quote">{{ block.settings.quote }}</p>
+          <div class="nw-model-reviews__author">
+            <span class="nw-model-reviews__author-name">{{ block.settings.author_name }}</span>
+            {%- if block.settings.author_location != blank -%}
+              <span class="nw-model-reviews__author-loc">{{ block.settings.author_location }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Model Reviews",
+  "tag": "section",
+  "class": "nw-model-reviews-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Stories from the Steam"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FCFCFC"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background",
+      "default": "#fbefdb"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card Text Color",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star Color",
+      "default": "#546659"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review Quote",
+          "default": "We love the sauna! It's been an incredible addition to our property."
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Customer Name"
+        },
+        {
+          "type": "text",
+          "id": "author_location",
+          "label": "Author Location",
+          "default": "Portland, OR"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Model Reviews",
+      "blocks": [
+        { "type": "review", "settings": { "rating": 5, "quote": "We love the sauna! It's been an incredible addition to our backyard. The cedar smells amazing and the craftsmanship is top-notch.", "author_name": "Sarah K.", "author_location": "Portland, OR" } },
+        { "type": "review", "settings": { "rating": 5, "quote": "NW Immersion exceeded our expectations. The team was professional, communicative, and delivered exactly what we envisioned.", "author_name": "Mike T.", "author_location": "Bend, OR" } },
+        { "type": "review", "settings": { "rating": 5, "quote": "Best investment we've made. The sauna has become the centerpiece of our wellness routine and a gathering spot for friends.", "author_name": "Rachel & Tom L.", "author_location": "Vancouver, WA" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

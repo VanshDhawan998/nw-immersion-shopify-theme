@@ -1,0 +1,383 @@
+{
+  "sections": {
+    "nw-model-hero": {
+      "type": "nw-model-hero",
+      "settings": {
+        "heading": "Silver Star Sauna Model – Handcrafted Luxury Saunas",
+        "description": "Spacious, timeless, and built to gather. The Silver Star is our flagship sauna — designed for those who want the full sauna experience without compromise.",
+        "background_image_url": "",
+        "overlay_opacity": 55,
+        "text_color": "#FCFCFC",
+        "button_label": "Request a Quote",
+        "button_link": "",
+        "button_bg": "#546659",
+        "button_text": "#FCFCFC"
+      },
+      "blocks": {
+        "trust_1": {
+          "type": "trust_item",
+          "settings": {
+            "text": "Handcrafted in the Pacific Northwest"
+          }
+        },
+        "trust_2": {
+          "type": "trust_item",
+          "settings": {
+            "text": "Premium Western Red Cedar"
+          }
+        },
+        "trust_3": {
+          "type": "trust_item",
+          "settings": {
+            "text": "Seats 4–6 Comfortably"
+          }
+        },
+        "trust_4": {
+          "type": "trust_item",
+          "settings": {
+            "text": "Full Warranty Included"
+          }
+        }
+      },
+      "block_order": ["trust_1", "trust_2", "trust_3", "trust_4"]
+    },
+    "nw-model-features": {
+      "type": "nw-model-features",
+      "settings": {
+        "heading": "The Silver Star Sauna, Rooted in Northwest Tradition",
+        "description": "Built for space, warmth, and gathering — the Silver Star delivers the full sauna experience.",
+        "background_color": "#FCFCFC",
+        "title_color": "#252220",
+        "text_color": "#252220"
+      },
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "title": "Generous Interior Dimensions",
+            "description": "8'×6' footprint with a 7' ceiling provides comfortable standing room and ample seating for 4–6 people."
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "title": "Dual-Tier Cedar Benches",
+            "description": "Full-length upper and lower benches built with clear western red cedar, offering flexibility for lounging or sitting upright."
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "title": "Harvia Electric Heater System",
+            "description": "Equipped with a Harvia electric heater sized for optimal heat distribution across the Silver Star's generous interior."
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "title": "Integrated Accessories",
+            "description": "Standard kit includes cedar bucket, ladle, thermometer/hygrometer combo, and premium sauna stones."
+          }
+        }
+      },
+      "block_order": ["feature_1", "feature_2", "feature_3", "feature_4"]
+    },
+    "nw-model-exterior": {
+      "type": "nw-model-exterior",
+      "settings": {
+        "heading": "Silver Star Exterior: Enduring Presence, Effortless Style",
+        "description": "The Silver Star makes a statement in any backyard. Clean lines, rich cedar grain, and considered proportions that age beautifully in the Pacific Northwest climate.",
+        "background_color": "#3d3935",
+        "title_color": "#FCFCFC",
+        "text_color": "#FCFCFC",
+        "card_bg": "rgba(252,252,252,0.08)",
+        "overlay_opacity": 60
+      },
+      "blocks": {
+        "card_1": {
+          "type": "feature_card",
+          "settings": {
+            "title": "Weather-Sealed Construction",
+            "description": "Tongue-and-groove cedar panels with a galvanized steel roof and sealed foundation create a structure built to withstand rain, snow, and UV exposure year-round."
+          }
+        },
+        "card_2": {
+          "type": "feature_card",
+          "settings": {
+            "title": "Signature Design Elements",
+            "description": "A tinted tempered glass window, custom NW Immersion door handle, and hand-finished roof cap create a look that's distinctly Northwest."
+          }
+        }
+      },
+      "block_order": ["card_1", "card_2"]
+    },
+    "nw-model-accessories": {
+      "type": "nw-model-accessories",
+      "settings": {
+        "heading": "Sauna Accessories and Bespoke Upgrades",
+        "description": "Every Silver Star comes standard with our curated accessories kit. For those who want more, bespoke upgrades let you tailor the sauna experience to your exact vision.",
+        "background_color": "#FCFCFC",
+        "title_color": "#252220",
+        "text_color": "#252220"
+      },
+      "blocks": {
+        "acc_1": {
+          "type": "accessory",
+          "settings": {
+            "text": "Premium cedar bucket and ladle set"
+          }
+        },
+        "acc_2": {
+          "type": "accessory",
+          "settings": {
+            "text": "Thermometer/hygrometer combo"
+          }
+        },
+        "acc_3": {
+          "type": "accessory",
+          "settings": {
+            "text": "60 lbs of premium sauna stones"
+          }
+        },
+        "acc_4": {
+          "type": "accessory",
+          "settings": {
+            "text": "Sauna headrests (set of 2)"
+          }
+        },
+        "acc_5": {
+          "type": "accessory",
+          "settings": {
+            "text": "LED accent lighting package"
+          }
+        },
+        "acc_6": {
+          "type": "accessory",
+          "settings": {
+            "text": "Bluetooth speaker system"
+          }
+        },
+        "acc_7": {
+          "type": "accessory",
+          "settings": {
+            "text": "Custom window configurations"
+          }
+        },
+        "acc_8": {
+          "type": "accessory",
+          "settings": {
+            "text": "Dark-stain or natural cedar finish"
+          }
+        }
+      },
+      "block_order": ["acc_1", "acc_2", "acc_3", "acc_4", "acc_5", "acc_6", "acc_7", "acc_8"]
+    },
+    "nw-model-process": {
+      "type": "nw-model-process",
+      "settings": {
+        "heading": "Your Journey Into Heat and Stillness",
+        "description": "From your first inquiry through delivery day, we guide you through a seamless, transparent process."
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Initial Consultation",
+            "description": "Tell us about your space, preferences, and vision. We'll help you choose the right model and options."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Custom Quote",
+            "description": "Receive a detailed, no-pressure quote based on your specific selections and site requirements."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Handcrafted Build",
+            "description": "Your sauna is built to order in our Vancouver WA workshop using time-tested joinery techniques."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "number": "04",
+            "title": "Delivery & Install",
+            "description": "We deliver and install your sauna, ensuring it's perfectly leveled and ready for your first session."
+          }
+        },
+        "step_5": {
+          "type": "step",
+          "settings": {
+            "number": "05",
+            "title": "Enjoy & Unwind",
+            "description": "Step in, pour water on the stones, and discover why heat, steam, and cedar change everything."
+          }
+        }
+      },
+      "block_order": ["step_1", "step_2", "step_3", "step_4", "step_5"]
+    },
+    "nw-model-visit": {
+      "type": "nw-model-visit",
+      "settings": {
+        "heading": "Visit Our Vancouver WA Warehouse",
+        "description": "See the craftsmanship in person. Walk through finished saunas, talk to the builders, and feel the cedar.",
+        "phone_number": "(360) 907-8928",
+        "button_label": "Schedule a Visit"
+      }
+    },
+    "nw-model-reviews": {
+      "type": "nw-model-reviews",
+      "settings": {
+        "heading": "Stories from the Steam",
+        "description": "Hear from Silver Star owners who made the commitment to real heat, real wood, and real craft."
+      },
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "The Silver Star exceeded every expectation. The craftsmanship is extraordinary — every joint, every cedar plank is perfect. Our family uses it almost every evening now.",
+            "author": "Mike & Sarah T.",
+            "location": "Portland, OR"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "We visited the workshop before ordering and knew immediately. The attention to detail is something you can't fake. Best purchase we've made for our home.",
+            "author": "David R.",
+            "location": "Seattle, WA"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "quote": "From consultation to delivery, NW Immersion made the entire process effortless. The sauna is a work of art. We couldn't be happier.",
+            "author": "Jennifer & Tom L.",
+            "location": "Bend, OR"
+          }
+        }
+      },
+      "block_order": ["review_1", "review_2", "review_3"]
+    },
+    "nw-model-quote": {
+      "type": "nw-model-quote",
+      "settings": {
+        "heading": "Get a Quote for Your Silver Star Sauna",
+        "description": "Every sauna is built to order. Tell us about your space, and we'll provide a detailed, no-pressure quote tailored to your Silver Star.",
+        "overlay_opacity": 65,
+        "text_color": "#FCFCFC",
+        "button_label": "Request a Quote",
+        "button_link": "",
+        "button_bg": "#546659",
+        "button_text": "#FCFCFC",
+        "phone_number": "(360) 907-8928",
+        "email": "info@nwimmersion.com",
+        "address": "Vancouver, WA"
+      }
+    },
+    "nw-model-faq": {
+      "type": "nw-model-faq",
+      "settings": {
+        "heading": "Frequently Asked Questions (FAQs)",
+        "background_color": "#FCFCFC",
+        "title_color": "#252220",
+        "text_color": "#252220",
+        "accent_color": "#546659",
+        "divider_color": "#f6e8d1"
+      },
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "What are the dimensions of the Silver Star?",
+            "answer": "The Silver Star measures 8' × 6' with a 7' ceiling, comfortably seating 4–6 people across dual-tier benches."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "What type of wood is used?",
+            "answer": "We use clear western red cedar sourced from Pacific Northwest mills. It's naturally resistant to moisture, decay, and insects — ideal for sauna conditions."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does the build process take?",
+            "answer": "Our standard build time is approximately 10 weeks from the date your order is confirmed. Custom options or seasonal demand may adjust the timeline."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "What heater comes with the Silver Star?",
+            "answer": "The Silver Star includes a Harvia electric heater sized for optimal heat distribution across the full 8'×6' interior."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you offer delivery and installation?",
+            "answer": "Yes. We deliver throughout the Pacific Northwest and offer full installation. We'll place and level your sauna so it's ready to use on delivery day."
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I customize the Silver Star?",
+            "answer": "Absolutely. Bespoke options include LED lighting, Bluetooth speakers, custom window configurations, and finish choices."
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the warranty?",
+            "answer": "Every Silver Star comes with a comprehensive warranty covering structural integrity, materials, and craftsmanship."
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "What electrical requirements are needed?",
+            "answer": "The Silver Star requires a dedicated 240V circuit. We provide detailed electrical specifications after your order is placed."
+          }
+        },
+        "faq_9": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I visit the workshop before ordering?",
+            "answer": "Yes! We welcome visitors to our Vancouver WA workshop. Schedule a visit to see saunas being built and speak with our craftsmen."
+          }
+        },
+        "faq_10": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I get a quote?",
+            "answer": "Contact us via phone at (360) 907-8928, email info@nwimmersion.com, or use our online quote request form. We respond within 24 hours."
+          }
+        }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5", "faq_6", "faq_7", "faq_8", "faq_9", "faq_10"]
+    }
+  },
+  "order": [
+    "nw-model-hero",
+    "nw-model-features",
+    "nw-model-exterior",
+    "nw-model-accessories",
+    "nw-model-process",
+    "nw-model-visit",
+    "nw-model-reviews",
+    "nw-model-quote",
+    "nw-model-faq"
+  ]
+}

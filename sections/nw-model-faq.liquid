@@ -1,0 +1,267 @@
+{% comment %}
+  NW Model FAQ — Two-column accordion section
+  "Frequently Asked Questions (FAQs)" with expand/collapse functionality.
+{% endcomment %}
+
+{%- style -%}
+  /* ========== MODEL FAQ ========== */
+  .nw-model-faq {
+    padding: 120px 100px;
+    font-family: 'Articulat CF', 'Raleway', sans-serif;
+    background: {{ section.settings.background_color }};
+  }
+
+  .nw-model-faq__header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .nw-model-faq__title {
+    font-family: 'Articulat CF', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    line-height: 50px;
+    margin: 0 0 20px 0;
+  }
+
+  .nw-model-faq__subtitle {
+    font-family: 'Quando', serif;
+    font-size: 18px;
+    color: {{ section.settings.text_color }};
+    line-height: 28px;
+    margin: 0;
+  }
+
+  .nw-model-faq__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .nw-model-faq__column {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nw-model-faq__item {
+    border-bottom: 1px solid {{ section.settings.divider_color }};
+  }
+
+  .nw-model-faq__item:last-child {
+    border-bottom: none;
+  }
+
+  .nw-model-faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: 'Articulat CF', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    line-height: 24px;
+    text-align: left;
+    gap: 16px;
+  }
+
+  .nw-model-faq__question:hover {
+    color: {{ section.settings.accent_color }};
+  }
+
+  .nw-model-faq__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: {{ section.settings.accent_color }};
+  }
+
+  .nw-model-faq__item[open] .nw-model-faq__icon {
+    transform: rotate(45deg);
+  }
+
+  .nw-model-faq__answer {
+    padding: 0 0 20px 0;
+    font-family: 'Quando', serif;
+    font-size: 16px;
+    color: {{ section.settings.text_color }};
+    line-height: 26px;
+  }
+
+  .nw-model-faq__answer p {
+    margin: 0;
+  }
+
+  /* Details / Summary reset */
+  .nw-model-faq__item summary {
+    list-style: none;
+  }
+  .nw-model-faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1200px) {
+    .nw-model-faq { padding: 100px 60px; }
+  }
+
+  @media (max-width: 1024px) {
+    .nw-model-faq { padding: 80px 40px; }
+    .nw-model-faq__title { font-size: 34px; line-height: 44px; }
+  }
+
+  @media (max-width: 768px) {
+    .nw-model-faq { padding: 60px 20px; }
+    .nw-model-faq__title { font-size: 28px; line-height: 38px; }
+    .nw-model-faq__columns { grid-template-columns: 1fr; gap: 0; }
+    .nw-model-faq__question { font-size: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .nw-model-faq__title { font-size: 24px; line-height: 34px; }
+    .nw-model-faq__answer { font-size: 14px; line-height: 24px; }
+  }
+{%- endstyle -%}
+
+<section class="nw-model-faq">
+  <div class="nw-model-faq__header">
+    <h2 class="nw-model-faq__title">{{ section.settings.heading }}</h2>
+    {%- if section.settings.subtitle != blank -%}
+      <p class="nw-model-faq__subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+  </div>
+
+  {%- assign total_blocks = section.blocks.size -%}
+  {%- assign half = total_blocks | divided_by: 2 -%}
+  {%- if total_blocks | modulo: 2 != 0 -%}
+    {%- assign half = half | plus: 1 -%}
+  {%- endif -%}
+
+  <div class="nw-model-faq__columns">
+    <div class="nw-model-faq__column">
+      {%- for block in section.blocks -%}
+        {%- if forloop.index <= half -%}
+          <details class="nw-model-faq__item" {{ block.shopify_attributes }}>
+            <summary class="nw-model-faq__question">
+              <span>{{ block.settings.question }}</span>
+              <svg class="nw-model-faq__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </summary>
+            <div class="nw-model-faq__answer">
+              <p>{{ block.settings.answer }}</p>
+            </div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    <div class="nw-model-faq__column">
+      {%- for block in section.blocks -%}
+        {%- if forloop.index > half -%}
+          <details class="nw-model-faq__item" {{ block.shopify_attributes }}>
+            <summary class="nw-model-faq__question">
+              <span>{{ block.settings.question }}</span>
+              <svg class="nw-model-faq__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </summary>
+            <div class="nw-model-faq__answer">
+              <p>{{ block.settings.answer }}</p>
+            </div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Model FAQ",
+  "tag": "section",
+  "class": "nw-model-faq-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Asked Questions (FAQs)"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#FCFCFC"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent / Icon Color",
+      "default": "#546659"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider Color",
+      "default": "#f6e8d1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How long does it take to build a sauna?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Our standard build time is approximately 10 weeks from the date your order is confirmed."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Model FAQ",
+      "blocks": [
+        { "type": "faq", "settings": { "question": "How long does it take to build a sauna?", "answer": "Our standard build time is approximately 10 weeks from the date your order is confirmed. Custom options or seasonal demand may slightly adjust the timeline." } },
+        { "type": "faq", "settings": { "question": "What type of wood is used?", "answer": "We use clear western red cedar sourced from the Pacific Northwest. This wood is naturally resistant to moisture, decay, and insects — ideal for sauna conditions." } },
+        { "type": "faq", "settings": { "question": "Can I visit the workshop?", "answer": "Yes! We welcome visitors to our Vancouver WA workshop. Schedule a visit to see saunas being built and talk with our team in person." } },
+        { "type": "faq", "settings": { "question": "Do you offer delivery and installation?", "answer": "We deliver throughout the Pacific Northwest and offer full installation services. We'll place and level your sauna so it's ready to use on delivery day." } },
+        { "type": "faq", "settings": { "question": "What heater options are available?", "answer": "We offer Harvia electric heaters in various sizes to match your sauna dimensions. Wood-burning options are available for select models." } },
+        { "type": "faq", "settings": { "question": "Is there a warranty?", "answer": "Every NW Immersion sauna comes with a comprehensive warranty covering structural integrity, materials, and craftsmanship." } },
+        { "type": "faq", "settings": { "question": "What electrical requirements are needed?", "answer": "Most of our saunas require a dedicated 240V circuit. We provide detailed electrical specifications after your order is placed." } },
+        { "type": "faq", "settings": { "question": "Can I customize my sauna?", "answer": "Absolutely. We offer bespoke upgrades including custom lighting, wood finishes, window configurations, and accessory packages." } },
+        { "type": "faq", "settings": { "question": "How do I maintain my sauna?", "answer": "Saunas require minimal maintenance. We recommend airing it out after use and occasionally wiping down benches. Cedar naturally resists mold and bacteria." } },
+        { "type": "faq", "settings": { "question": "What is the pricing range?", "answer": "Pricing depends on the model and customizations selected. Contact us for a personalized, no-pressure quote tailored to your needs." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

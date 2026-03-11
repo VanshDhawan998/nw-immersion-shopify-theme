@@ -1,0 +1,317 @@
+{% comment %}
+  NW Model Features — Image + text feature list (2-column layout)
+  Used for "The Silver Star Sauna, Rooted in Northwest Tradition" and
+  "Inside the Loowit: Space That Adapts to You" sections.
+{% endcomment %}
+
+{%- style -%}
+  /* ========== MODEL FEATURES ========== */
+  .nw-model-features {
+    padding: 120px 100px;
+    font-family: 'Articulat CF', 'Raleway', sans-serif;
+    background: {{ section.settings.background_color }};
+  }
+
+  .nw-model-features__header {
+    margin-bottom: 50px;
+  }
+
+  .nw-model-features__title {
+    font-family: 'Articulat CF', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    line-height: 50px;
+    margin: 0 0 30px 0;
+  }
+
+  .nw-model-features__intro {
+    font-family: 'Quando', serif;
+    font-size: 18px;
+    color: {{ section.settings.text_color }};
+    line-height: 28px;
+    margin: 0;
+  }
+
+  .nw-model-features__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: start;
+  }
+
+  .nw-model-features__image-wrap {
+    border-radius: 15px;
+    overflow: hidden;
+    aspect-ratio: 789 / 608;
+  }
+
+  .nw-model-features__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nw-model-features__list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .nw-model-features__item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nw-model-features__item-title {
+    font-family: 'Articulat CF', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    line-height: normal;
+    margin: 0;
+  }
+
+  .nw-model-features__item-text {
+    font-family: 'Quando', serif;
+    font-size: 18px;
+    color: {{ section.settings.text_color }};
+    line-height: 28px;
+    margin: 0;
+  }
+
+  /* Checklist variant (for Loowit interior features) */
+  .nw-model-features__checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nw-model-features__check-item {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 15px 0;
+    border-bottom: 1px solid {{ section.settings.divider_color }};
+  }
+
+  .nw-model-features__check-item:last-child {
+    border-bottom: none;
+  }
+
+  .nw-model-features__check-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+  .nw-model-features__check-icon svg {
+    width: 30px;
+    height: 30px;
+    color: {{ section.settings.accent_color }};
+  }
+
+  .nw-model-features__check-text {
+    font-family: 'Quando', serif;
+    font-size: 18px;
+    color: {{ section.settings.text_color }};
+    line-height: 28px;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1200px) {
+    .nw-model-features { padding: 100px 60px; }
+    .nw-model-features__grid { gap: 50px; }
+  }
+
+  @media (max-width: 1024px) {
+    .nw-model-features { padding: 80px 40px; }
+    .nw-model-features__title { font-size: 34px; line-height: 44px; }
+    .nw-model-features__grid { gap: 40px; }
+    .nw-model-features__item-title { font-size: 20px; }
+  }
+
+  @media (max-width: 768px) {
+    .nw-model-features { padding: 60px 20px; }
+    .nw-model-features__title { font-size: 28px; line-height: 38px; }
+    .nw-model-features__grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .nw-model-features__image-wrap { aspect-ratio: 16 / 10; }
+  }
+
+  @media (max-width: 480px) {
+    .nw-model-features__title { font-size: 24px; line-height: 34px; }
+    .nw-model-features__intro { font-size: 16px; line-height: 26px; }
+    .nw-model-features__item-title { font-size: 18px; }
+    .nw-model-features__item-text { font-size: 16px; line-height: 26px; }
+  }
+{%- endstyle -%}
+
+<section class="nw-model-features">
+  {%- if section.settings.heading != blank or section.settings.intro_text != blank -%}
+    <div class="nw-model-features__header">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="nw-model-features__title">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.intro_text != blank -%}
+        <p class="nw-model-features__intro">{{ section.settings.intro_text }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="nw-model-features__grid">
+    {%- if section.settings.feature_image != blank or section.settings.feature_image_url != blank -%}
+      <div class="nw-model-features__image-wrap">
+        {%- if section.settings.feature_image != blank -%}
+          <img src="{{ section.settings.feature_image | image_url: width: 1200 }}" alt="{{ section.settings.heading }}" loading="lazy">
+        {%- elsif section.settings.feature_image_url != blank -%}
+          <img src="{{ section.settings.feature_image_url }}" alt="{{ section.settings.heading }}" loading="lazy">
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="nw-model-features__list">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'feature' -%}
+          <div class="nw-model-features__item" {{ block.shopify_attributes }}>
+            <h3 class="nw-model-features__item-title">{{ block.settings.title }}</h3>
+            <p class="nw-model-features__item-text">{{ block.settings.description }}</p>
+          </div>
+        {%- endif -%}
+
+        {%- if block.type == 'checklist_heading' -%}
+          <h3 class="nw-model-features__item-title" {{ block.shopify_attributes }}>{{ block.settings.title }}</h3>
+        {%- endif -%}
+
+        {%- if block.type == 'checklist_item' -%}
+          <div class="nw-model-features__check-item" {{ block.shopify_attributes }}>
+            <span class="nw-model-features__check-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </span>
+            <span class="nw-model-features__check-text">{{ block.settings.text }}</span>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Model Features",
+  "tag": "section",
+  "class": "nw-model-features-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "The Silver Star Sauna, Rooted in Northwest Tradition"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "label": "Introduction Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_image",
+      "label": "Feature Image"
+    },
+    {
+      "type": "url",
+      "id": "feature_image_url",
+      "label": "Feature Image URL (fallback)"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FCFCFC"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent / Check Icon Color",
+      "default": "#546659"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Checklist Divider Color",
+      "default": "#f6e8d1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "Handcrafted With Local Cedar"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Feature Description",
+          "default": "Each sauna begins with cedar sourced from the Pacific Northwest."
+        }
+      ]
+    },
+    {
+      "type": "checklist_heading",
+      "name": "Checklist Heading",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading Text",
+          "default": "Key Interior Features"
+        }
+      ]
+    },
+    {
+      "type": "checklist_item",
+      "name": "Checklist Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Item Text",
+          "default": "Two 6'2\" clear western red cedar benches, seating up to six"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Model Features",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "Handcrafted With Local Cedar", "description": "Each sauna begins with cedar sourced from the Pacific Northwest." } },
+        { "type": "feature", "settings": { "title": "Built for the Northwest Climate", "description": "Solid construction and natural finishes mean it looks as good years from now." } },
+        { "type": "feature", "settings": { "title": "Personalized With Accessories and Finishes", "description": "Choose details like lighting, heaters, or even a cold tub setup." } },
+        { "type": "feature", "settings": { "title": "Complete Wellness Experience", "description": "Pairing your sauna with a cold plunge transforms the routine into a daily reset." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

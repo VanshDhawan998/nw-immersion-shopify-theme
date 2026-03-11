@@ -1,0 +1,345 @@
+{% comment %}
+  NW Model Quote — CTA overlay banner with contact info
+  "Get a Quote for Your Silver Star Sauna" / "Get a Quote for Your Loowit Sauna"
+{% endcomment %}
+
+{%- style -%}
+  /* ========== MODEL QUOTE CTA ========== */
+  .nw-model-quote {
+    position: relative;
+    overflow: hidden;
+    font-family: 'Articulat CF', 'Raleway', sans-serif;
+    min-height: 550px;
+  }
+
+  .nw-model-quote__bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 30px;
+    overflow: hidden;
+    margin: 0 100px;
+  }
+
+  .nw-model-quote__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nw-model-quote__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(37, 34, 32, {{ section.settings.overlay_opacity | divided_by: 100.0 }});
+    border-radius: 30px;
+    margin: 0 100px;
+    z-index: 1;
+  }
+
+  .nw-model-quote__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 150px;
+    min-height: 550px;
+    gap: 60px;
+  }
+
+  .nw-model-quote__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .nw-model-quote__title {
+    font-family: 'Articulat CF', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+    line-height: 50px;
+    margin: 0;
+  }
+
+  .nw-model-quote__desc {
+    font-family: 'Quando', serif;
+    font-size: 18px;
+    color: {{ section.settings.text_color }};
+    line-height: 28px;
+    margin: 0;
+    max-width: 540px;
+  }
+
+  .nw-model-quote__actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+  }
+
+  .nw-model-quote__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 30px;
+    font-family: 'Articulat CF', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    height: 44px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .nw-model-quote__btn--primary {
+    background: {{ section.settings.button_bg }};
+    color: {{ section.settings.button_text }};
+  }
+
+  .nw-model-quote__btn--secondary {
+    background: transparent;
+    color: {{ section.settings.text_color }};
+    border: 2px solid {{ section.settings.text_color }};
+    padding: 8px 28px;
+  }
+
+  .nw-model-quote__btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .nw-model-quote__right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-end;
+  }
+
+  .nw-model-quote__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Quando', serif;
+    font-size: 18px;
+    color: {{ section.settings.text_color }};
+    text-decoration: none;
+  }
+
+  .nw-model-quote__contact-item:hover {
+    text-decoration: underline;
+  }
+
+  .nw-model-quote__contact-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .nw-model-quote__contact-icon svg {
+    width: 22px;
+    height: 22px;
+    color: {{ section.settings.text_color }};
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1200px) {
+    .nw-model-quote__bg,
+    .nw-model-quote__overlay { margin: 0 60px; }
+    .nw-model-quote__content { padding: 80px 110px; }
+  }
+
+  @media (max-width: 1024px) {
+    .nw-model-quote { min-height: auto; }
+    .nw-model-quote__bg,
+    .nw-model-quote__overlay { margin: 0 40px; border-radius: 20px; }
+    .nw-model-quote__content {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 80px 80px;
+      min-height: auto;
+      gap: 40px;
+    }
+    .nw-model-quote__right { align-items: flex-start; }
+    .nw-model-quote__title { font-size: 34px; line-height: 44px; }
+  }
+
+  @media (max-width: 768px) {
+    .nw-model-quote__bg,
+    .nw-model-quote__overlay { margin: 0 20px; border-radius: 15px; }
+    .nw-model-quote__content { padding: 60px 40px; }
+    .nw-model-quote__title { font-size: 28px; line-height: 38px; }
+    .nw-model-quote__actions { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 480px) {
+    .nw-model-quote__bg,
+    .nw-model-quote__overlay { margin: 0 16px; border-radius: 12px; }
+    .nw-model-quote__content { padding: 40px 28px; }
+    .nw-model-quote__title { font-size: 24px; line-height: 34px; }
+    .nw-model-quote__desc { font-size: 16px; line-height: 26px; }
+  }
+{%- endstyle -%}
+
+<section class="nw-model-quote">
+  <div class="nw-model-quote__bg">
+    {%- if section.settings.background_image != blank -%}
+      <img src="{{ section.settings.background_image | image_url: width: 1920 }}" alt="{{ section.settings.heading }}" loading="lazy">
+    {%- elsif section.settings.background_image_url != blank -%}
+      <img src="{{ section.settings.background_image_url }}" alt="{{ section.settings.heading }}" loading="lazy">
+    {%- endif -%}
+  </div>
+  <div class="nw-model-quote__overlay"></div>
+
+  <div class="nw-model-quote__content">
+    <div class="nw-model-quote__left">
+      <h2 class="nw-model-quote__title">{{ section.settings.heading }}</h2>
+      {%- if section.settings.description != blank -%}
+        <p class="nw-model-quote__desc">{{ section.settings.description }}</p>
+      {%- endif -%}
+
+      <div class="nw-model-quote__actions">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link }}" class="nw-model-quote__btn nw-model-quote__btn--primary">{{ section.settings.button_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.secondary_button_label != blank -%}
+          <a href="{{ section.settings.secondary_button_link }}" class="nw-model-quote__btn nw-model-quote__btn--secondary">{{ section.settings.secondary_button_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="nw-model-quote__right">
+      {%- if section.settings.phone_number != blank -%}
+        <a href="tel:{{ section.settings.phone_number | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}" class="nw-model-quote__contact-item">
+          <span class="nw-model-quote__contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          {{ section.settings.phone_number }}
+        </a>
+      {%- endif -%}
+      {%- if section.settings.email != blank -%}
+        <a href="mailto:{{ section.settings.email }}" class="nw-model-quote__contact-item">
+          <span class="nw-model-quote__contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </span>
+          {{ section.settings.email }}
+        </a>
+      {%- endif -%}
+      {%- if section.settings.address != blank -%}
+        <span class="nw-model-quote__contact-item">
+          <span class="nw-model-quote__contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          {{ section.settings.address }}
+        </span>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Model Quote CTA",
+  "tag": "section",
+  "class": "nw-model-quote-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get a Quote for Your Sauna"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Every sauna is built to order. Tell us about your space, and we'll provide a detailed, no-pressure quote."
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "url",
+      "id": "background_image_url",
+      "label": "Background Image URL (fallback)"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 65,
+      "unit": "%"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FCFCFC"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Primary Button",
+      "default": "Request a Quote"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button Background",
+      "default": "#546659"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Button Text Color",
+      "default": "#FCFCFC"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "label": "Secondary Button"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone",
+      "default": "(360) 907-8928"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "info@nwimmersion.com"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address",
+      "default": "Vancouver, WA"
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Model Quote CTA"
+    }
+  ]
+}
+{% endschema %}
