@@ -1,0 +1,407 @@
+{%- comment -%}
+  ============================================================
+  NW Shop Page — Full-featured shop with filter / sort / search
+  Pixel-perfect replica of https://nwimmersion.com/shop-online/
+  ============================================================
+  FILES:
+    Section:  sections/nw-shop-page.liquid  (this file)
+    CSS:      assets/nw-shop-page.css
+    JS:       assets/nw-shop-page.js
+
+  USAGE:
+    Assign to templates/page.nw-shop.json
+    — OR —
+    The section can also be used standalone via {% section 'nw-shop-page' %}
+
+  The section pulls ALL products from a chosen collection.
+  Category tiles are defined as schema blocks (editable in theme editor).
+  The sidebar filter groups + product types are auto-generated from
+  the collection's tags and product types.
+{%- endcomment -%}
+
+{%- comment -%} Load assets {%- endcomment -%}
+{{ 'nw-shop-page.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Assign the collection — use section setting or fall back to 'all' {%- endcomment -%}
+{%- assign nw_collection_handle = section.settings.collection | default: 'all' -%}
+{%- assign nw_collection = collections[nw_collection_handle] -%}
+
+{%- comment -%}
+  Build category/type data from blocks + collection
+{%- endcomment -%}
+
+{%- comment -%} ── Gather unique product types from the collection ── {%- endcomment -%}
+{%- assign nw_types_raw = '' -%}
+{%- for product in nw_collection.products limit: 1000 -%}
+  {%- if product.type != blank -%}
+    {%- unless nw_types_raw contains product.type -%}
+      {%- if nw_types_raw != '' -%}{%- assign nw_types_raw = nw_types_raw | append: '|||' -%}{%- endif -%}
+      {%- assign nw_types_raw = nw_types_raw | append: product.type -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign nw_types_arr = nw_types_raw | split: '|||' -%}
+
+{%- comment -%} ── Gather unique tags (used as categories in sidebar) ── {%- endcomment -%}
+{%- assign nw_tags_raw = '' -%}
+{%- for product in nw_collection.products limit: 1000 -%}
+  {%- for tag in product.tags -%}
+    {%- unless nw_tags_raw contains tag -%}
+      {%- if nw_tags_raw != '' -%}{%- assign nw_tags_raw = nw_tags_raw | append: '|||' -%}{%- endif -%}
+      {%- assign nw_tags_raw = nw_tags_raw | append: tag -%}
+    {%- endunless -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- assign nw_tags_arr = nw_tags_raw | split: '|||' -%}
+
+<!-- ============================================================
+     NW STORE SECTION
+     ============================================================ -->
+<section class="nw-store-section" data-section-id="{{ section.id }}">
+
+  <!-- ── MAIN FILTER HEADER ── -->
+  <div class="main-filterheader">
+    <div class="nw-headsearch">
+      <h1 class="nw-section-title">{{ section.settings.heading | default: 'Shop Saunas & Supplies' }}</h1>
+      <div class="main-fileter">
+        <div class="nw-search-fields">
+          <!-- Sort Dropdown -->
+          <div class="nw-dropdown-wrapper">
+            <label class="sort-bycl" for="nw-sort">-Sort by-</label>
+            <select id="nw-sort">
+              <option value="" disabled selected>-Select Option-</option>
+              <option value="date">Latest</option>
+              <option value="date_asc">Oldest</option>
+              <option value="popularity">Most Popular</option>
+              <option value="price">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="title">Name: A to Z</option>
+            </select>
+          </div>
+
+          <!-- Search Box -->
+          <div class="nw-search-box" id="nwSearchBox">
+            <input type="text" id="nw-search" placeholder="Search ">
+            <button class="nw-search-btn" type="button" aria-label="Search products">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 2C15.97 2 20 6.03 20 11C20 13.12 19.33 15.07 18.19 16.59L22.71 21.12C23.1 21.51 23.1 22.15 22.71 22.55C22.32 22.94 21.68 22.94 21.29 22.55L16.76 18.02C15.25 19.14 13.28 20 11 20C6.03 20 2 15.97 2 11C2 6.03 6.03 2 11 2ZM11 4C7.13 4 4 7.13 4 11C4 14.87 7.13 18 11 18C14.87 18 18 14.87 18 11C18 7.13 14.87 4 11 4Z" fill="white"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Filter Button (toggles category grid) -->
+          <button class="nw-filter-btn" type="button" id="nwFilterBtn" aria-label="Toggle filters">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+            <span>Filters</span>
+            <span class="nw-filter-count" id="nwFilterCount">0</span>
+          </button>
+
+          <!-- Refine Button (opens sidebar) -->
+          <button class="nw-refine-btn" type="button" id="nwRefineBtn" aria-label="Refine filters">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            Refine
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Filters Display -->
+    <div class="clear-filte">
+      <div class="nw-active-filters" id="nw-active-filters">
+        <button class="nw-clear-all-filters" id="nw-clear-all-filters">Clear all filters</button>
+        <div class="mainfilter-tags">
+          <div class="nw-filter-tags" id="nw-filter-tags"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CATEGORY GRID (hidden by default, shown on Filter click) ── -->
+  {%- if section.blocks.size > 0 -%}
+    <div class="nw-categories-wrap hidden" id="nwCategoriesWrap">
+      <div class="nw-categories-grid">
+
+        {%- comment -%} First block = large left card {%- endcomment -%}
+        {%- assign first_block = section.blocks | first -%}
+        <a class="nw-cat-large" href="#" data-category="{{ first_block.settings.category_slug }}">
+          {%- if first_block.settings.image != blank -%}
+            <div class="nw-bg" style="background-image:url('{{ first_block.settings.image | image_url: width: 800 }}')"></div>
+          {%- elsif first_block.settings.image_url != blank -%}
+            <div class="nw-bg" style="background-image:url('{{ first_block.settings.image_url }}')"></div>
+          {%- else -%}
+            <div class="nw-bg" style="background:#ccc"></div>
+          {%- endif -%}
+          <div class="nw-cat-overlay"></div>
+          <div class="nw-cat-title">{{ first_block.settings.title }}</div>
+        </a>
+
+        {%- comment -%} Remaining blocks = right tile grid {%- endcomment -%}
+        <div class="nw-cat-tiles">
+          {%- for block in section.blocks offset: 1 -%}
+            <a class="nw-tile" href="#" data-category="{{ block.settings.category_slug }}" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                <div class="nw-bg" style="background-image:url('{{ block.settings.image | image_url: width: 600 }}')"></div>
+              {%- elsif block.settings.image_url != blank -%}
+                <div class="nw-bg" style="background-image:url('{{ block.settings.image_url }}')"></div>
+              {%- else -%}
+                <div class="nw-bg" style="background:#ccc"></div>
+              {%- endif -%}
+              <div class="nw-cat-title">{{ block.settings.title }}</div>
+            </a>
+          {%- endfor -%}
+        </div>
+
+      </div>
+    </div>
+  {%- endif -%}
+
+  <!-- ── PRODUCT GRID ── -->
+  <div class="nw-wrapper">
+    <div class="nw-results-info">
+      <span class="nw-results-count" id="nwResultsCount"></span>
+    </div>
+
+    <div id="nw-products-container">
+      <div class="nw-products-grid" id="nwProductsGrid" data-columns="4">
+        {%- comment -%} Products rendered client-side by JS {%- endcomment -%}
+      </div>
+    </div>
+
+    <div class="nw-loading" id="nwLoading">
+      <div class="nw-spinner"></div>
+    </div>
+
+    <div id="nw-no-products">
+      <p>No products found matching your criteria.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SIDEBAR FILTER PANEL ── -->
+<div class="nw-sidebar-overlay" id="nwSidebarOverlay"></div>
+<div class="nw-sidebar" id="nwSidebar">
+  <div class="nw-sidebar-header">
+    <h3>Filter Products</h3>
+    <button class="nw-close-btn" id="nwCloseBtn" aria-label="Close filter panel">&times;</button>
+  </div>
+  <div class="nw-sidebar-body">
+    <!-- Categories (populated by JS from injected data) -->
+    <div class="nw-sidebar-group">
+      <p class="nw-sidebar-group-title">Categories</p>
+      <div id="nwSidebarCategories"></div>
+    </div>
+    <!-- Types (populated by JS from injected data) -->
+    <div class="nw-sidebar-group">
+      <p class="nw-sidebar-group-title">Type</p>
+      <div id="nwSidebarTypes"></div>
+    </div>
+  </div>
+  <div class="nw-sidebar-footer">
+    <button class="nw-sidebar-apply-btn" id="nwApplyFilters">Apply Filters</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="nw-toast" id="nwToast"></div>
+
+<!-- ============================================================
+     DATA INJECTION — Feed real Shopify data to JS
+     ============================================================ -->
+<script>
+  window.NWShopData = {
+    {%- comment -%}
+      CATEGORIES — built from category_card blocks so JS can populate sidebar.
+      We also count how many products match each category slug (by tag).
+    {%- endcomment -%}
+    categories: [
+      {%- for block in section.blocks -%}
+        {%- assign cat_slug = block.settings.category_slug -%}
+        {%- assign cat_count = 0 -%}
+        {%- for product in nw_collection.products limit: 1000 -%}
+          {%- for tag in product.tags -%}
+            {%- if tag == cat_slug -%}
+              {%- assign cat_count = cat_count | plus: 1 -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endfor -%}
+        {
+          id: {{ forloop.index }},
+          slug: {{ cat_slug | json }},
+          name: {{ block.settings.title | json }},
+          count: {{ cat_count }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ],
+
+    {%- comment -%}
+      TYPES — gathered from product.type across the collection
+    {%- endcomment -%}
+    types: [
+      {%- for type_name in nw_types_arr -%}
+        {%- assign type_slug = type_name | handleize -%}
+        {%- assign type_count = 0 -%}
+        {%- for product in nw_collection.products limit: 1000 -%}
+          {%- if product.type == type_name -%}
+            {%- assign type_count = type_count | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {
+          slug: {{ type_slug | json }},
+          name: {{ type_name | json }},
+          count: {{ type_count }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ],
+
+    {%- comment -%}
+      PRODUCTS — full product array for client-side filtering.
+      Paginated to 1000 (Shopify max per-loop).
+      Each product carries tags as categories array for multi-category support.
+    {%- endcomment -%}
+    products: [
+      {%- for product in nw_collection.products limit: 1000 -%}
+        {%- assign first_variant = product.selected_or_first_available_variant -%}
+        {%- assign current_price = first_variant.price | divided_by: 100.0 -%}
+        {%- assign compare_price = first_variant.compare_at_price | default: 0 | divided_by: 100.0 -%}
+        {
+          id: {{ first_variant.id }},
+          productId: {{ product.id }},
+          name: {{ product.title | json }},
+          price: {{ current_price }},
+          originalPrice: {{ compare_price }},
+          category: {{ product.tags | first | default: '' | json }},
+          categories: {{ product.tags | json }},
+          type: {{ product.type | handleize | json }},
+          types: [{{ product.type | handleize | json }}],
+          sku: {{ first_variant.sku | default: '' | json }},
+          image: {{ product.featured_image | image_url: width: 600 | json }},
+          href: {{ product.url | json }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  };
+</script>
+
+<!-- Load shop JS (after data injection) -->
+<script src="{{ 'nw-shop-page.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "NW Shop Page",
+  "tag": "div",
+  "class": "nw-shop-page-section-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Page Heading",
+      "default": "Shop Saunas & Supplies"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Choose the collection whose products to display. Leave blank for 'All'."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category_card",
+      "name": "Category Card",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title",
+          "default": "Saunas"
+        },
+        {
+          "type": "text",
+          "id": "category_slug",
+          "label": "Category Slug (tag)",
+          "info": "Must match a product tag exactly (e.g. 'outdoor-saunas'). Used for filtering."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Category Image"
+        },
+        {
+          "type": "url",
+          "id": "image_url",
+          "label": "Image URL (fallback)",
+          "info": "Used if no image is uploaded above. Paste the full URL."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Shop Page",
+      "settings": {
+        "heading": "Shop Saunas & Supplies"
+      },
+      "blocks": [
+        {
+          "type": "category_card",
+          "settings": {
+            "title": "Supplies & Accessories",
+            "category_slug": "supplies-accessories",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Supplies-Accessories-Category.jpg"
+          }
+        },
+        {
+          "type": "category_card",
+          "settings": {
+            "title": "Indoor Saunas",
+            "category_slug": "indoor-saunas",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Indoor-Saunas-Category.webp"
+          }
+        },
+        {
+          "type": "category_card",
+          "settings": {
+            "title": "Outdoor Saunas",
+            "category_slug": "outdoor-saunas",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Outdoor-Saunas-Category-1024x683.webp"
+          }
+        },
+        {
+          "type": "category_card",
+          "settings": {
+            "title": "Cold Plunge / Hot Tubs",
+            "category_slug": "cold-plunge-hot-tubs",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Cold-Plunge-.jpg"
+          }
+        },
+        {
+          "type": "category_card",
+          "settings": {
+            "title": "Woodstove Heaters",
+            "category_slug": "woodstove-heaters",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Woodstove-Heaters-Category.jpg"
+          }
+        },
+        {
+          "type": "category_card",
+          "settings": {
+            "title": "Electric Heaters",
+            "category_slug": "electric-heaters",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Electric-Heaters-Category.jpg"
+          }
+        },
+        {
+          "type": "category_card",
+          "settings": {
+            "title": "Signature Saunas",
+            "category_slug": "signature-saunas",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Signature-Saunas-Category-1024x768.jpeg"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
