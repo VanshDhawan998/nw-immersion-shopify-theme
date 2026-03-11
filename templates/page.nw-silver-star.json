@@ -1,6 +1,6 @@
 {
   "sections": {
-    "nw-model-hero": {
+    "nw_model_hero": {
       "type": "nw-model-hero",
       "settings": {
         "heading": "Silver Star Sauna Model – Handcrafted Luxury Saunas",
@@ -41,7 +41,7 @@
       },
       "block_order": ["trust_1", "trust_2", "trust_3", "trust_4"]
     },
-    "nw-model-features": {
+    "nw_model_features": {
       "type": "nw-model-features",
       "settings": {
         "heading": "The Silver Star Sauna, Rooted in Northwest Tradition",
@@ -82,7 +82,7 @@
       },
       "block_order": ["feature_1", "feature_2", "feature_3", "feature_4"]
     },
-    "nw-model-exterior": {
+    "nw_model_exterior": {
       "type": "nw-model-exterior",
       "settings": {
         "heading": "Silver Star Exterior: Enduring Presence, Effortless Style",
@@ -111,7 +111,7 @@
       },
       "block_order": ["card_1", "card_2"]
     },
-    "nw-model-accessories": {
+    "nw_model_accessories": {
       "type": "nw-model-accessories",
       "settings": {
         "heading": "Sauna Accessories and Bespoke Upgrades",
@@ -172,7 +172,7 @@
       },
       "block_order": ["acc_1", "acc_2", "acc_3", "acc_4", "acc_5", "acc_6", "acc_7", "acc_8"]
     },
-    "nw-model-process": {
+    "nw_model_process": {
       "type": "nw-model-process",
       "settings": {
         "heading": "Your Journey Into Heat and Stillness",
@@ -222,7 +222,7 @@
       },
       "block_order": ["step_1", "step_2", "step_3", "step_4", "step_5"]
     },
-    "nw-model-visit": {
+    "nw_model_visit": {
       "type": "nw-model-visit",
       "settings": {
         "heading": "Visit Our Vancouver WA Warehouse",
@@ -231,7 +231,7 @@
         "button_label": "Schedule a Visit"
       }
     },
-    "nw-model-reviews": {
+    "nw_model_reviews": {
       "type": "nw-model-reviews",
       "settings": {
         "heading": "Stories from the Steam",
@@ -268,7 +268,7 @@
       },
       "block_order": ["review_1", "review_2", "review_3"]
     },
-    "nw-model-quote": {
+    "nw_model_quote": {
       "type": "nw-model-quote",
       "settings": {
         "heading": "Get a Quote for Your Silver Star Sauna",
@@ -284,7 +284,7 @@
         "address": "Vancouver, WA"
       }
     },
-    "nw-model-faq": {
+    "nw_model_faq": {
       "type": "nw-model-faq",
       "settings": {
         "heading": "Frequently Asked Questions (FAQs)",
@@ -370,14 +370,14 @@
     }
   },
   "order": [
-    "nw-model-hero",
-    "nw-model-features",
-    "nw-model-exterior",
-    "nw-model-accessories",
-    "nw-model-process",
-    "nw-model-visit",
-    "nw-model-reviews",
-    "nw-model-quote",
-    "nw-model-faq"
+    "nw_model_hero",
+    "nw_model_features",
+    "nw_model_exterior",
+    "nw_model_accessories",
+    "nw_model_process",
+    "nw_model_visit",
+    "nw_model_reviews",
+    "nw_model_quote",
+    "nw_model_faq"
   ]
 }
