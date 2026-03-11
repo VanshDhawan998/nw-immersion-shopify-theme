@@ -63,8 +63,8 @@
         "nav_supplies": {
           "type": "nav_item",
           "settings": {
-            "label": "Supplies",
-            "link": "/collections/supplies",
+            "label": "Woodstove Heaters",
+            "link": "https://nw-immersion.myshopify.com/pages/shop?category=woodstove-heaters",
             "filter_slug": ""
           }
         },
