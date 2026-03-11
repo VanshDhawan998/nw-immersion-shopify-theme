@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "main-page",
@@ -54,9 +55,545 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "hero_banner_XEfMtT": {
+      "type": "hero-banner",
+      "blocks": {
+        "feature_XV4AFW": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "12+ Years Of Craftsmanship"
+          }
+        },
+        "feature_J6gp7w": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Continental US Shipping"
+          }
+        },
+        "feature_HHmibJ": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Same-Day Parts Shipping"
+          }
+        }
+      },
+      "block_order": [
+        "feature_XV4AFW",
+        "feature_J6gp7w",
+        "feature_HHmibJ"
+      ],
+      "name": "Hero Banner",
+      "settings": {
+        "bg_image": "shopify://shop_images/lowitsa-suana-hero.webp",
+        "bg_color": "#f3f1ee",
+        "overlay_color": "#000000",
+        "overlay_opacity": 45,
+        "min_height": 380,
+        "padding_top": 100,
+        "padding_bottom": 150,
+        "text_alignment": "center",
+        "title": "Loowit Sauna Model Compact, Versatile, And Handcrafted",
+        "title_color": "#ffffff",
+        "title_font_size": 40,
+        "description": "Built by hand here in Vancouver, Washington, the Loowit sauna model takes a smaller footprint and transforms it into a sanctuary that feels bigger than it looks. With cedar walls, a sliding bench for stretching or yoga, and toxin-free finishes, it's proof that compact design doesn't mean compromise.",
+        "text_color": "#ffffff",
+        "text_font_size": 18,
+        "feature_color": "#ffffff",
+        "feature_font_size": 20,
+        "divider_color": "rgba(255, 255, 255, 0.55)",
+        "show_button": false,
+        "button_text": "Shop Now",
+        "button_url": "",
+        "button_style": "filled",
+        "button_alignment": "center",
+        "button_bg_color": "#ffffff",
+        "button_text_color": "#000000",
+        "button_border_color": "#ffffff",
+        "button_hover_bg_color": "#f0f0f0",
+        "button_hover_text_color": "#000000",
+        "button_font_size": 16,
+        "button_padding_horizontal": 32,
+        "button_padding_vertical": 16,
+        "button_border_radius": 4
+      }
+    },
+    "lowitsasuana_sec2_Upg9KT": {
+      "type": "lowitsasuana-sec2",
+      "name": "Video With Text",
+      "settings": {
+        "heading": "The Loowit Saunas Are Selling Out Quick!",
+        "text": "Each project is handcrafted in limited numbers, so a 25% deposit secures your spot. Order your Loowit Sauna today!",
+        "video_file": "shopify://files/videos/image_picker_A7DE1792-8196-4DA7-B330-C03656D5F6B1-31837-00000F12D053DDA63feb46a1579b439aab9fd44f6a5cf0b4.mov",
+        "button_label": "Order Now",
+        "button_link": "",
+        "heading_size": 32,
+        "text_size": 18,
+        "heading_color": "#111111",
+        "text_color": "#333333",
+        "button_color": "#4A5A4A",
+        "button_text_color": "#ffffff",
+        "button_border_color": "transparent",
+        "button_border_hover": "#000000",
+        "button_hover": "#ffffff",
+        "button_hover_text": "#000000",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
+    "loowit_interior_section_KLQjFJ": {
+      "type": "loowit-interior-section",
+      "blocks": {
+        "feature_MG3j9j": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Two 6'2\" clear western red cedar benches, seating up to six"
+          }
+        },
+        "feature_y3PjLY": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Sliding bottom bench for stretching or yoga practice"
+          }
+        },
+        "feature_jbdgqN": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Subtle warm LED lighting inside"
+          }
+        },
+        "feature_iL74d6": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "HUUM heater, electric or wood-burning"
+          }
+        },
+        "feature_84EkQ9": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Interior and front finished in clear western red cedar"
+          }
+        },
+        "feature_tDCjHa": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "All natural Livos oil finish, no toxins or adhesives"
+          }
+        },
+        "feature_MAHVat": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Full insulation for efficient heat retention"
+          }
+        }
+      },
+      "block_order": [
+        "feature_MG3j9j",
+        "feature_y3PjLY",
+        "feature_jbdgqN",
+        "feature_iL74d6",
+        "feature_84EkQ9",
+        "feature_tDCjHa",
+        "feature_MAHVat"
+      ],
+      "name": "Loowit Interior Features",
+      "settings": {
+        "main_heading": "Inside The Loowit: Space That Adapts To You",
+        "main_description": "Step inside the Loowit and you'll notice how well it balances comfort with efficiency. Two cedar benches stretch nearly the full length, yet the interior feels open thanks to a sliding lower bench that creates room for stretching or yoga. Every board is cedar, treated naturally, with no glues or toxins, only clean, breathable wood for a healthier sanctuary.",
+        "secondary_heading": "A Sanctuary In Every Detail",
+        "secondary_description": "From the warm LED glow to the scent of locally sourced cedar, the Loowit model is designed to calm you the moment you close the door. Full insulation in the walls, ceiling, and floor keeps heat steady, while drainable cedar decking adds durability and easy care.",
+        "features_heading": "Key Interior Features",
+        "pricing_text": "Starting at $24,990 — now accepting HSA/FSA payments for savings of 30–40%.",
+        "button_text": "See The Loowit Interior At Our Showroom",
+        "button_url": "#",
+        "video_url": "",
+        "video_webm_url": "",
+        "video_description": "Loowit Interior Video",
+        "layout_direction": "content_left",
+        "column_gap": 70,
+        "padding_top": 130,
+        "padding_bottom": 0,
+        "padding_horizontal": 50,
+        "main_heading_size": 40,
+        "subheading_size": 24,
+        "text_size": 18,
+        "background_color": "#FCF9F4",
+        "heading_color": "#252220",
+        "text_color": "#252220",
+        "icon_background_color": "#5c6f63",
+        "divider_color": "#F6E8D1",
+        "button_background_color": "#5C6F61",
+        "button_hover_background": "#4a5a52",
+        "button_text_color": "#ffffff",
+        "button_hover_text_color": "#ffffff",
+        "button_font_size": 14,
+        "button_font_weight": "700",
+        "button_font_family": "Roboto, sans-serif",
+        "button_padding_vertical": 12,
+        "button_padding_horizontal": 32,
+        "button_border_radius": 20,
+        "button_border_width": 0,
+        "button_border_color": "#5C6F61",
+        "button_hover_border_color": "#4a5a52",
+        "video_border_radius": 18,
+        "video_max_height": 770
+      }
+    },
+    "upgrade_options_eYJ8ex": {
+      "type": "upgrade-options",
+      "blocks": {
+        "option_Cr3Yhb": {
+          "type": "option",
+          "settings": {
+            "option_text": "Custom exterior paint color",
+            "option_price": "+$500"
+          }
+        },
+        "option_7KmzH4": {
+          "type": "option",
+          "settings": {
+            "option_text": "HUUM WiFi control panel",
+            "option_price": "(+$500)"
+          }
+        },
+        "option_z9ezLk": {
+          "type": "option",
+          "settings": {
+            "option_text": "Cold tub outlet on exterior",
+            "option_price": "(+$500)"
+          }
+        }
+      },
+      "block_order": [
+        "option_Cr3Yhb",
+        "option_7KmzH4",
+        "option_z9ezLk"
+      ],
+      "name": "Upgrade Options",
+      "settings": {
+        "background_color": "#fcf9f4",
+        "max_width": 1800,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "columns_gap": 60,
+        "mobile_padding_vertical": 40,
+        "mobile_padding_horizontal": 20,
+        "padding_left": 50,
+        "padding_right": 50,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_left": 0,
+        "margin_right": 0,
+        "justify_self": "center",
+        "align_self": "auto",
+        "heading": "Personalize Your Loowit With Thoughtful Upgrades",
+        "description": "The Loowit is already versatile, but upgrades let you shape it even more to your lifestyle. From smart controls to cold therapy connections, you can refine the space to reflect how you like to unwind.",
+        "button_text": "Personalize My Sauna",
+        "button_link": "",
+        "card_heading": "Available Options",
+        "heading_color": "#111111",
+        "heading_font_size": 36,
+        "heading_font_weight": "600",
+        "heading_font_family": "articulatcf-bold, sans-serif",
+        "heading_margin_bottom": 18,
+        "text_color": "#5B3023",
+        "text_font_size": 18,
+        "text_font_weight": "400",
+        "text_font_family": "Quando, serif",
+        "text_max_width": 680,
+        "text_margin_bottom": 22,
+        "button_background": "#5C6F61",
+        "button_hover_background": "#4a5a52",
+        "button_text_color": "#ffffff",
+        "button_hover_text_color": "#ffffff",
+        "button_font_size": 14,
+        "button_font_weight": "700",
+        "button_font_family": "articulatcf-bold, sans-serif",
+        "button_padding_vertical": 12,
+        "button_padding_horizontal": 32,
+        "button_border_radius": 20,
+        "button_border_width": 0,
+        "button_border_color": "#5C6F61",
+        "button_hover_border_color": "#4a5a52",
+        "card_background": "#FBEFDB",
+        "card_padding": 28,
+        "mobile_card_padding": 20,
+        "card_border_radius": 14,
+        "card_heading_color": "#111111",
+        "card_heading_size": 20,
+        "card_heading_font_weight": "600",
+        "card_heading_font_family": "articulatcf-bold, sans-serif",
+        "card_heading_margin": 16,
+        "icon_color": "#546659",
+        "option_text_color": "#5B3023",
+        "price_color": "#5B3023",
+        "option_font_size": 18,
+        "option_font_weight": "400",
+        "option_font_family": "Quando, serif",
+        "option_icon_gap": 16,
+        "option_padding_vertical": 14
+      }
+    },
+    "lowitsuana_sec6_dqBgA3": {
+      "type": "lowitsuana-sec6",
+      "blocks": {
+        "step_zAmetA": {
+          "type": "step",
+          "settings": {
+            "step_number": "01",
+            "step_label": "STEP",
+            "title": "Choose Your Loowit Online",
+            "description": "Select the Loowit model and upgrades you'd like. Everything is ready to order online, so your sauna journey can start right away.",
+            "is_tall_card": false,
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "step_49CJXL": {
+          "type": "step",
+          "settings": {
+            "step_number": "02",
+            "step_label": "STEP",
+            "title": "Decide On Your Package Options",
+            "description": "Want a little extra help? We offer virtual and in-person consultations to walk through the options and ensure you're confident about your choice.",
+            "is_tall_card": false,
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "step_FxBeiD": {
+          "type": "step",
+          "settings": {
+            "step_number": "03",
+            "step_label": "STEP",
+            "title": "Secure Your Build With A Deposit",
+            "description": "A 25% deposit locks in your place on our build calendar. From here, your sauna begins to move into production.",
+            "is_tall_card": false,
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "step_A89Jt6": {
+          "type": "step",
+          "settings": {
+            "step_number": "04",
+            "step_label": "STEP",
+            "title": "Watch Your Sauna Take Shape 50% Payment",
+            "description": "As we build, we'll keep you informed at every stage. Cedar is cut, details are added, and your Loowit begins to look more like the retreat you've imagined.",
+            "is_tall_card": false,
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "step_RUWRdp": {
+          "type": "step",
+          "settings": {
+            "step_number": "05",
+            "step_label": "STEP",
+            "title": "Delivery Day, Your Sauna Arrives",
+            "description": "The best part! Once your build is complete and final payment is made, we coordinate delivery and installation support. Soon after, you'll be stepping inside your own Loowit sauna.",
+            "is_tall_card": true,
+            "button_text": "ORDER MY LOOWIT SAUNA",
+            "button_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "step_zAmetA",
+        "step_49CJXL",
+        "step_FxBeiD",
+        "step_A89Jt6",
+        "step_RUWRdp"
+      ],
+      "name": "Journey Steps",
+      "settings": {
+        "section_bg_color": "#f3f1ee",
+        "container_width": 1670,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "title": "Your Journey Into Heat And Stillness",
+        "description": "Bringing a sauna home shouldn't feel complicated. We walk with you through each step so you always know what comes next.",
+        "text_alignment": "center",
+        "title_color": "#252220",
+        "title_font_size": 40,
+        "title_margin_bottom": 18,
+        "description_color": "#2b1c14",
+        "description_font_size": 18,
+        "header_margin_bottom": 50,
+        "card_bg_color": "#efe5d1",
+        "card_border_radius": 12,
+        "grid_gap": 20,
+        "card_padding_vertical": 60,
+        "card_padding_horizontal": 40,
+        "tall_card_padding_top": 180,
+        "tall_card_padding_bottom": 80,
+        "step_number_color": "#546659",
+        "step_number_font_size": 60,
+        "step_label_color": "#546659",
+        "step_label_font_size": 13,
+        "step_title_color": "#252220",
+        "step_title_font_size": 19,
+        "step_title_margin_bottom": 12,
+        "step_desc_color": "#1f1f1f",
+        "step_desc_font_size": 18,
+        "step_desc_line_height": 1.4,
+        "logo_width": 100,
+        "button_bg_color": "#556659",
+        "button_text_color": "#ffffff",
+        "button_min_width": 220,
+        "button_height": 44,
+        "button_padding_horizontal": 32,
+        "button_font_size": 12,
+        "button_border_radius": 25,
+        "button_margin_top": 28
+      }
+    },
+    "warranty_showroom_wxWpzc": {
+      "type": "warranty-showroom",
+      "blocks": {
+        "column_biXkGT": {
+          "type": "column",
+          "settings": {
+            "heading": "Warranty That Gives You Peace of Mind",
+            "text": "Every Loowit sauna includes a 12-month limited warranty covering structural components and workmanship. Handbuilt in the USA and licensed in Washington State, it's backed by local accountability and care.",
+            "button_text": "Learn About Our Warranty",
+            "button_link": "#warranty-details"
+          }
+        },
+        "column_tXxJtJ": {
+          "type": "column",
+          "settings": {
+            "heading": "Visit Our Vancouver WA Showroom",
+            "text": "Nothing compares to stepping inside a sauna before it's yours. Visit our Vancouver showroom to experience the Loowit firsthand, see the sliding bench in action, and feel the cedar that makes this model so unique.",
+            "button_text": "Email Us For Full Details",
+            "button_link": "mailto:info@loowitsauna.com"
+          }
+        }
+      },
+      "block_order": [
+        "column_biXkGT",
+        "column_tXxJtJ"
+      ],
+      "name": "Warranty & Showroom",
+      "settings": {
+        "background_color": "#fcf9f4",
+        "max_width": 1670,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "columns_gap": 50,
+        "heading_color": "#252220",
+        "heading_font_size": 40,
+        "heading_font_weight": "600",
+        "heading_font_family": "articulatcf-bold, sans-serif",
+        "heading_margin_bottom": 20,
+        "text_color": "#252220",
+        "text_font_size": 18,
+        "text_font_weight": "400",
+        "text_font_family": "Quando",
+        "text_margin_bottom": 28,
+        "button_background": "#5C6F61",
+        "button_hover_background": "#5B3023",
+        "button_text_color": "#ffffff",
+        "button_text_color_hover": "#ffffff",
+        "button_font_size": 18,
+        "button_font_weight": "700",
+        "button_font_family": "articulatcf-bold, sans-serif",
+        "button_padding_top": 12,
+        "button_padding_sides": 20,
+        "button_border_radius": 20,
+        "button_border_width": 0,
+        "button_border_color": "#5C6F61",
+        "button_border_color_hover": "#5B3023"
+      }
+    },
+    "loowit_way_features_YzyENf": {
+      "type": "loowit-way-features",
+      "blocks": {
+        "feature_D4L4xX": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Compact Footprint, Spacious Feel",
+            "feature_description": "The Loowit makes the most of its size. With benches that seat six and thoughtful design, it feels bigger inside than its footprint suggests."
+          }
+        },
+        "feature_FMMGbJ": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Sliding Bench Versatility For Yoga & Stretching",
+            "feature_description": "The movable lower bench turns your sauna into a space for stretching or yoga, giving you more ways to use your retreat."
+          }
+        },
+        "feature_QCkE7T": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Crafted From Local Cedar",
+            "feature_description": "Clear western red cedar, sourced locally, provides the durability, warmth, and scent that define the sauna experience."
+          }
+        },
+        "feature_zftHgr": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Toxin-Free Wellness Sanctuary",
+            "feature_description": "Every finish is natural, free of adhesives and synthetics, so you can breathe deeply knowing your space is clean and safe."
+          }
+        },
+        "feature_JDwFBP": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Accessible Price Point, Built To Last",
+            "feature_description": "Starting under $25,000, the Loowit offers lasting craftsmanship and wellness at a price point that makes owning a handcrafted sauna possible for more families."
+          }
+        }
+      },
+      "block_order": [
+        "feature_D4L4xX",
+        "feature_FMMGbJ",
+        "feature_QCkE7T",
+        "feature_zftHgr",
+        "feature_JDwFBP"
+      ],
+      "name": "Loowit Way Features",
+      "settings": {
+        "main_heading": "The Loowit Way: Crafted For Living Well",
+        "main_description": "Our Loowit sauna model is compact but spacious, simple but flexible, and affordable without compromise. For homeowners across the country, it's become a favorite model for daily wellness.",
+        "button_text": "See Who's Behind The Craft",
+        "button_url": "",
+        "image_alt_text": "Loowit Sauna",
+        "image_position": "right",
+        "max_width": 1670,
+        "column_gap": 70,
+        "padding_top": 130,
+        "padding_bottom": 0,
+        "padding_horizontal": 50,
+        "feature_spacing": 0,
+        "main_heading_size": 40,
+        "feature_title_size": 24,
+        "text_size": 18,
+        "background_color": "#FCF9F4",
+        "heading_color": "#252220",
+        "text_color": "#252220",
+        "button_background_color": "#546659",
+        "button_text_color": "#ffffff",
+        "button_hover_background": "#ffffff",
+        "button_hover_text_color": "#546659",
+        "button_text_size": 18,
+        "button_padding_vertical": 6,
+        "button_padding_horizontal": 30,
+        "button_margin_top": 0,
+        "button_border_radius": 20,
+        "image_border_radius": 18,
+        "image_max_height": 600
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "hero_banner_XEfMtT",
+    "lowitsasuana_sec2_Upg9KT",
+    "loowit_interior_section_KLQjFJ",
+    "upgrade_options_eYJ8ex",
+    "lowitsuana_sec6_dqBgA3",
+    "warranty_showroom_wxWpzc",
+    "loowit_way_features_YzyENf"
   ]
 }
