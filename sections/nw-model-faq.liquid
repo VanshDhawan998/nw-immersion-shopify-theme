@@ -140,7 +140,8 @@
 
   {%- assign total_blocks = section.blocks.size -%}
   {%- assign half = total_blocks | divided_by: 2 -%}
-  {%- if total_blocks | modulo: 2 != 0 -%}
+  {%- assign remainder = total_blocks | modulo: 2 -%}
+  {%- if remainder != 0 -%}
     {%- assign half = half | plus: 1 -%}
   {%- endif -%}
 
