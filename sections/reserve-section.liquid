@@ -1,0 +1,542 @@
+<!-- Reserve Section - Shopify Liquid Template -->
+<div class="reserve-section-wrapper" style="background-color: {{ section.settings.background_color }};">
+  <div class="reserve-section" 
+       style="max-width: {{ section.settings.max_width }}px; 
+              padding-top: {{ section.settings.padding_top }}px; 
+              padding-bottom: {{ section.settings.padding_bottom }}px;
+              padding-left: {{ section.settings.padding_horizontal }}px;
+              padding-right: {{ section.settings.padding_horizontal }}px;">
+    
+    <!-- Text Content -->
+    <div class="section-text-content">
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      
+      {% if section.settings.description_1 != blank %}
+        <p>{{ section.settings.description_1 }}</p>
+      {% endif %}
+      
+      {% if section.settings.description_2 != blank %}
+        <p>{{ section.settings.description_2 }}</p>
+      {% endif %}
+      
+      {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+        <a href="{{ section.settings.button_url }}" class="custom-btn medium">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+    
+    <!-- Image Content -->
+    <div class="section-media-content">
+      {% if section.settings.image != blank %}
+        <img src="{{ section.settings.image | img_url: 'master' }}" 
+             alt="{{ section.settings.image.alt | default: section.settings.heading }}" 
+             loading="lazy" />
+      {% else %}
+        <!-- Placeholder image if no image is selected -->
+        <div class="image-placeholder">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+            <rect width="100" height="100" fill="#f0f0f0"/>
+            <text x="50" y="55" text-anchor="middle" font-size="12" fill="#999">Image</text>
+          </svg>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Google Fonts Import */
+  @import url('https://fonts.googleapis.com/css2?family=Quando&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+  /* CSS Reset for this section */
+  .reserve-section-wrapper * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* CSS Variables */
+  .reserve-section-wrapper {
+    --font-heading: sans-serif;
+    --font-body: "Quando", serif;
+    --font-button: "Roboto", sans-serif;
+    --color-dark: rgb(37, 34, 32);
+    --section-heading-size: {{ section.settings.heading_size }}px;
+    --section-heading-weight: 700;
+    --section-heading-line: {{ section.settings.heading_size | times: 1.25 }}px;
+    --section-text-size: {{ section.settings.text_size }}px;
+    --section-text-weight: 400;
+    --section-text-line: {{ section.settings.text_size | times: 1.56 }}px;
+    --gap-size: {{ section.settings.content_gap }}px;
+  }
+
+  .reserve-section-wrapper {
+    font-family: var(--font-body);
+    color: var(--color-dark);
+  }
+
+  .reserve-section {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--gap-size);
+    margin: 0 auto;
+  }
+
+  .section-text-content {
+    width: {{ section.settings.text_width }}%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-text-content h2 {
+    font-family: var(--font-heading);
+    font-size: var(--section-heading-size);
+    font-weight: var(--section-heading-weight);
+    line-height: var(--section-heading-line);
+    margin-bottom: {{ section.settings.heading_margin_bottom }}px;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .section-text-content p {
+    font-family: var(--font-body);
+    font-size: var(--section-text-size);
+    font-weight: var(--section-text-weight);
+    line-height: var(--section-text-line);
+    margin-bottom: {{ section.settings.text_margin_bottom }}px;
+    color: {{ section.settings.text_color }};
+  }
+
+  .section-media-content {
+    width: {{ 100 | minus: section.settings.text_width }}%;
+  }
+
+  .section-media-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: {{ section.settings.image_border_radius }}px;
+  }
+
+  .image-placeholder {
+    width: 100%;
+    height: 300px;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: {{ section.settings.image_border_radius }}px;
+  }
+
+  .custom-btn {
+    display: inline-block;
+    padding: {{ section.settings.button_padding_vertical }}px {{ section.settings.button_padding_horizontal }}px;
+    text-decoration: none;
+    font-weight: {{ section.settings.button_font_weight }};
+    font-size: {{ section.settings.button_font_size }}px;
+    font-family: {{ section.settings.button_font_family }};
+    transition: all 0.3s ease;
+    border: {{ section.settings.button_border_width }}px solid {{ section.settings.button_border_color }};
+    cursor: pointer;
+    background-color: {{ section.settings.button_background }};
+    color: {{ section.settings.button_text_color }};
+    border-radius: {{ section.settings.button_border_radius }}px;
+  }
+
+  .custom-btn:hover {
+    background-color: {{ section.settings.button_hover_background }} !important;
+    color: {{ section.settings.button_hover_text_color }} !important;
+    border-color: {{ section.settings.button_hover_border_color }} !important;
+    transform: translateY(-1px);
+  }
+
+  .custom-btn.medium {
+    font-size: {{ section.settings.button_font_size }}px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .section-text-content h2 {
+      font-size: calc(var(--section-heading-size) * 0.7);
+    }
+    .section-text-content p {
+      font-size: var(--section-text-size);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .reserve-section {
+      max-height: {{ section.settings.max_height_desktop }}px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .reserve-section {
+      flex-direction: column;
+      gap: var(--gap-size);
+    }
+    .section-media-content,
+    .section-text-content {
+      width: 100%;
+    }
+    .section-text-content {
+      align-items: {% if section.settings.mobile_text_center %}center{% else %}flex-start{% endif %};
+      text-align: {% if section.settings.mobile_text_center %}center{% else %}left{% endif %};
+    }
+  }
+
+  @media (max-width: 576px) {
+    .reserve-section {
+      padding-left: {{ section.settings.mobile_padding_horizontal }}px;
+      padding-right: {{ section.settings.mobile_padding_horizontal }}px;
+      padding-top: calc({{ section.settings.padding_top }}px * 0.5);
+      padding-bottom: calc({{ section.settings.padding_bottom }}px * 0.5);
+    }
+    .section-text-content h2 {
+      font-size: calc(var(--section-heading-size) * 0.55);
+    }
+    .section-text-content p {
+      font-size: calc(var(--section-text-size) * 0.9);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Reserve Section",
+  "tag": "section",
+  "class": "section-reserve",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Reserve Your Sauna Today - Selling Out For Mid 2026"
+    },
+    {
+      "type": "textarea",
+      "id": "description_1",
+      "label": "First Description",
+      "default": "Our saunas are built in limited numbers each year, which means availability is already filling fast. We're now scheduling Silver Star builds for mid 2026. To secure your place in line, a 25% non-refundable deposit holds your spot, with 50% due when your build begins and 25% prior to shipping."
+    },
+    {
+      "type": "textarea",
+      "id": "description_2",
+      "label": "Second Description",
+      "default": "Our team will work with you to design your perfect Silver Star sauna and confirm all details; we will send your contract to sign and issue your invoice- signing of contract and completion of 25% down holds your Build Spot. Click 'Reserve My Sauna' below to start designing!"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Section Image"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Reserve My Sauna"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button Background",
+      "default": "#5C6F61"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button Hover Background",
+      "default": "#4a5a52"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Button Hover Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "min": 10,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Font Size",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "button_font_weight",
+      "label": "Button Font Weight",
+      "options": [
+        {"value": "400", "label": "Normal"},
+        {"value": "500", "label": "Medium"},
+        {"value": "600", "label": "Semi-bold"},
+        {"value": "700", "label": "Bold"}
+      ],
+      "default": "700"
+    },
+    {
+      "type": "text",
+      "id": "button_font_family",
+      "label": "Button Font Family",
+      "default": "Roboto, sans-serif"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "min": 10,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Vertical Padding",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "min": 20,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Horizontal Padding",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "button_border_width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Border Width",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button Border Color",
+      "default": "#5C6F61"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_border_color",
+      "label": "Button Hover Border Color",
+      "default": "#4a5a52"
+    },
+    {
+      "type": "header",
+      "content": "Typography Settings"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Font Size",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#252220"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text Font Size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#252220"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max Width",
+      "min": 1000,
+      "max": 1920,
+      "step": 10,
+      "default": 1670,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "text_width",
+      "label": "Text Content Width",
+      "info": "Percentage of total width for text content",
+      "min": 50,
+      "max": 80,
+      "step": 5,
+      "default": 70,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Gap Between Text and Image",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_text_center",
+      "label": "Center text on mobile",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Spacing Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 130,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 130,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal Padding (Desktop)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "default": 50,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_horizontal",
+      "label": "Horizontal Padding (Mobile)",
+      "min": 15,
+      "max": 50,
+      "step": 5,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "label": "Heading Bottom Margin",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "text_margin_bottom",
+      "label": "Text Bottom Margin",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Design Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#fcf9f4"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image Border Radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "max_height_desktop",
+      "label": "Max Height on Desktop (1200px+)",
+      "min": 400,
+      "max": 1000,
+      "step": 10,
+      "default": 750,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reserve Section",
+      "settings": {
+        "heading": "Reserve Your Sauna Today - Selling Out For Mid 2026",
+        "description_1": "Our saunas are built in limited numbers each year, which means availability is already filling fast. We're now scheduling Silver Star builds for mid 2026. To secure your place in line, a 25% non-refundable deposit holds your spot, with 50% due when your build begins and 25% prior to shipping.",
+        "description_2": "Our team will work with you to design your perfect Silver Star sauna and confirm all details; we will send your contract to sign and issue your invoice- signing of contract and completion of 25% down holds your Build Spot. Click 'Reserve My Sauna' below to start designing!",
+        "button_text": "Reserve My Sauna"
+      }
+    }
+  ]
+}
+{% endschema %}
