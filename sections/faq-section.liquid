@@ -1,0 +1,550 @@
+<!-- FAQ Section -->
+<section class="faq-section" 
+         style="
+           background-color: {{ section.settings.background_color }};
+           padding-top: {{ section.settings.padding_top }}px;
+           padding-bottom: {{ section.settings.padding_bottom }}px;
+         ">
+  
+  <div class="faq-wrapper">
+    <!-- Main Heading -->
+    {% if section.settings.main_heading != blank %}
+      <div class="faq-intro">
+        <h2 class="faq-heading">{{ section.settings.main_heading }}</h2>
+      </div>
+    {% endif %}
+
+    <!-- FAQ Items in Two Columns -->
+    {% if section.blocks.size > 0 %}
+      <div class="faq-list">
+        <div class="faq-list-left">
+          {% for block in section.blocks %}
+            {% assign items_per_column = section.blocks.size | divided_by: 2.0 | ceil %}
+            {% if forloop.index0 < items_per_column %}
+              <!-- Left column items -->
+              <div class="faq-item" {{ block.shopify_attributes }}>
+                <button class="faq-question">
+                  <div>{{ block.settings.question }}</div>
+                  <div class="faq-icon"><span>+</span></div>
+                </button>
+                <div class="faq-answer">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        
+        <div class="faq-list-right">
+          {% for block in section.blocks %}
+            {% assign items_per_column = section.blocks.size | divided_by: 2.0 | ceil %}
+            {% if forloop.index0 >= items_per_column %}
+              <!-- Right column items -->
+              <div class="faq-item" {{ block.shopify_attributes }}>
+                <button class="faq-question">
+                  <div>{{ block.settings.question }}</div>
+                  <div class="faq-icon"><span>+</span></div>
+                </button>
+                <div class="faq-answer">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+    
+  </div>
+</section>
+
+<style>
+  /* Import Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Quando&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+  /* FAQ Section Styles */
+  .faq-section {
+    font-family: "Quando", serif;
+    color: {{ section.settings.text_color | default: 'rgb(37, 34, 32)' }};
+    max-width: {{ section.settings.max_width | default: 1670 }}px;
+    margin: 0 auto;
+    padding-left: {{ section.settings.padding_horizontal | default: 50 }}px;
+    padding-right: {{ section.settings.padding_horizontal | default: 50 }}px;
+  }
+
+  .faq-wrapper {
+    width: 100%;
+  }
+
+  .faq-intro {
+    margin-bottom: {{ section.settings.heading_margin_bottom | default: 40 }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .faq-heading {
+    font-family: sans-serif;
+    font-size: {{ section.settings.heading_size | default: 36 }}px;
+    font-weight: {{ section.settings.heading_weight | default: 700 }};
+    color: {{ section.settings.heading_color | default: '#222' }};
+  }
+
+  .faq-list {
+    display: flex;
+    gap: {{ section.settings.columns_gap | default: 20 }}px;
+  }
+
+  .faq-list-right,
+  .faq-list-left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: {{ section.settings.items_gap | default: 20 }}px;
+  }
+
+  .faq-item {
+    border: 1px solid {{ section.settings.item_border_color | default: '#e5e5e5' }};
+    border-radius: {{ section.settings.item_border_radius | default: 8 }}px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    width: 100%;
+    text-align: left;
+    padding: {{ section.settings.question_padding_vertical | default: 16 }}px {{ section.settings.question_padding_horizontal | default: 20 }}px;
+    background: {{ section.settings.question_background_color | default: '#fbefdb' }};
+    border: none;
+    font-size: {{ section.settings.question_font_size | default: 18 }}px;
+    font-weight: {{ section.settings.question_font_weight | default: 700 }};
+    color: {{ section.settings.question_text_color | default: 'inherit' }};
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-family: "Quando", serif;
+  }
+
+  .faq-icon {
+    min-width: 25px;
+    height: 25px;
+    text-align: center;
+    font-weight: bold;
+    background-color: {{ section.settings.icon_background_color | default: '#546659' }};
+    color: {{ section.settings.icon_text_color | default: '#fff' }};
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .faq-answer {
+    border-top: 1px solid {{ section.settings.item_border_color | default: '#e5e5e5' }};
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 {{ section.settings.question_padding_horizontal | default: 20 }}px;
+    background: {{ section.settings.answer_background_color | default: '#fbefdb' }};
+    transition: max-height 0.3s ease;
+    font-size: {{ section.settings.answer_font_size | default: 18 }}px;
+    color: {{ section.settings.answer_text_color | default: 'inherit' }};
+    font-family: "Quando", serif;
+  }
+
+  .faq-answer.open {
+    max-height: 500px;
+    padding: {{ section.settings.question_padding_vertical | default: 16 }}px {{ section.settings.question_padding_horizontal | default: 20 }}px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .faq-list {
+      flex-direction: column;
+    }
+    .faq-list-right,
+    .faq-list-left {
+      width: 100%;
+    }
+    
+    .faq-section {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .faq-heading {
+      font-size: {{ section.settings.heading_size | default: 36 | divided_by: 1.2 | round }}px;
+    }
+    
+    .faq-question {
+      font-size: {{ section.settings.question_font_size | default: 18 | minus: 2 }}px;
+    }
+    
+    .faq-answer {
+      font-size: {{ section.settings.answer_font_size | default: 18 | minus: 2 }}px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item) => {
+      const question = item.querySelector(".faq-question");
+      const answer = item.querySelector(".faq-answer");
+      const icon = item.querySelector(".faq-icon");
+
+      question.addEventListener("click", () => {
+        // Close other items if single_open is enabled
+        {% if section.settings.single_open %}
+        faqItems.forEach((other) => {
+          if (other !== item) {
+            const otherAnswer = other.querySelector(".faq-answer");
+            const otherIcon = other.querySelector(".faq-icon");
+            if (otherAnswer.classList.contains("open")) {
+              otherAnswer.classList.remove("open");
+              otherIcon.textContent = "+";
+            }
+          }
+        });
+        {% endif %}
+
+        const open = answer.classList.toggle("open");
+        icon.textContent = open ? "−" : "+";
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Main Content"
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "Frequently Asked Questions (FAQs)"
+    },
+    {
+      "type": "header",
+      "content": "Behavior Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "single_open",
+      "label": "Only allow one FAQ open at a time",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum Width (px)",
+      "min": 1200,
+      "max": 1800,
+      "step": 10,
+      "default": 1670
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 130
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal Padding (px)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "columns_gap",
+      "label": "Gap Between Columns (px)",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "items_gap",
+      "label": "Gap Between FAQ Items (px)",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "label": "Heading Bottom Margin (px)",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Main Heading Size (px)",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "heading_weight",
+      "label": "Main Heading Weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "question_font_size",
+      "label": "Question Font Size (px)",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "question_font_weight",
+      "label": "Question Font Weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "answer_font_size",
+      "label": "Answer Font Size (px)",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background Color",
+      "default": "#FCF9F4"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Main Heading Color",
+      "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "General Text Color",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "question_background_color",
+      "label": "Question Background Color",
+      "default": "#fbefdb"
+    },
+    {
+      "type": "color",
+      "id": "question_text_color",
+      "label": "Question Text Color",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "answer_background_color",
+      "label": "Answer Background Color",
+      "default": "#fbefdb"
+    },
+    {
+      "type": "color",
+      "id": "answer_text_color",
+      "label": "Answer Text Color",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "item_border_color",
+      "label": "FAQ Item Border Color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "color",
+      "id": "icon_background_color",
+      "label": "Icon Background Color",
+      "default": "#546659"
+    },
+    {
+      "type": "color",
+      "id": "icon_text_color",
+      "label": "Icon Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "FAQ Item Styling"
+    },
+    {
+      "type": "range",
+      "id": "item_border_radius",
+      "label": "FAQ Item Border Radius (px)",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "question_padding_vertical",
+      "label": "Question Vertical Padding (px)",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "question_padding_horizontal",
+      "label": "Question Horizontal Padding (px)",
+      "min": 15,
+      "max": 40,
+      "step": 1,
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Your question here?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Your answer here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How much does a custom sauna cost?",
+            "answer": "Custom saunas vary based on size, features, and upgrades. The Silver Star starts at $39,990, with options like mosaic tile, WiFi controls, and showers available to personalize your build."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I see a sauna before ordering?",
+            "answer": "Yes. We welcome visitors to our Vancouver, WA showroom to step inside a finished Silver Star, see the craftsmanship up close, and talk through options in person."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it cheaper to build a sauna or buy one?",
+            "answer": "It depends on what you value. A DIY sauna kit can sometimes save on labor, but a handcrafted sauna like the Silver Star is built for decades of use with materials and finishes that last. Many customers find the long-term investment pays off in durability and experience."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do saunas cost a lot of electricity?",
+            "answer": "Not as much as you'd think. A typical electric heater runs for short sessions and is designed for efficiency. Wood-burning heaters are also available if you prefer a more traditional option."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the average lifespan of a sauna?",
+            "answer": "A well-built sauna can last 20–30 years or more. With the Silver Star's cedar construction and careful finishing, many customers pass theirs down as part of the home."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you help with delivery and installation?",
+            "answer": "Yes. For local customers, we help coordinate delivery, electrical hookup, and site preparation with trusted subcontractors so the setup is smooth and straightforward."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long is the wait for a new sauna build?",
+            "answer": "We're currently booking into mid 2026. Each sauna is handcrafted, so we schedule builds carefully to make sure every project gets the time and attention it deserves."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do saunas need plumbing?",
+            "answer": "No plumbing is required for a sauna itself. However, you can add upgrades like a cold tub outlet or a shower on the porch if you'd like water features nearby."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I order a pre-built sauna from you?",
+            "answer": "Ordering your sauna is quick and easy! Just click Reserve Now or reach out to us via phone: 360-360-6968 or email: info@nwimmersion.com and we will schedule a discovery consultation to walk through all details. Once that is all set up then we will send your contract to reserve your build spot with 25% nonrefundable deposit."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

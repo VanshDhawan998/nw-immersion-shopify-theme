@@ -1,73 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "nw_model_header": {
-      "type": "nw-model-header",
-      "settings": {
-        "show_announcement": true,
-        "announcement_text": "Free Shipping on all saunas",
-        "announcement_bg": "#252220",
-        "shop_button_text": "SHOP"
-      },
-      "blocks": {
-        "nav_saunas": {
-          "type": "nav_link",
-          "settings": {
-            "link_text": "Saunas",
-            "has_mega_menu": true,
-            "mega_heading": "Saunas",
-            "mega_link_1_text": "Outdoor Saunas",
-            "mega_link_2_text": "Indoor Saunas",
-            "mega_link_3_text": "Infrared",
-            "mega_link_4_text": "Steam & Ice Suite",
-            "mega_link_5_text": "Wood Stove Sauna",
-            "mega_link_6_text": "Electric Sauna",
-            "mega_link_7_text": "Barrel Sauna"
-          }
-        },
-        "nav_plunges": {
-          "type": "nav_link",
-          "settings": {
-            "link_text": "Plunges & Tubs",
-            "has_mega_menu": false
-          }
-        },
-        "nav_signature": {
-          "type": "nav_link",
-          "settings": {
-            "link_text": "Signature Saunas",
-            "has_mega_menu": false
-          }
-        },
-        "nav_supplies": {
-          "type": "nav_link",
-          "settings": {
-            "link_text": "Supplies",
-            "has_mega_menu": false
-          }
-        },
-        "nav_commercial": {
-          "type": "nav_link",
-          "settings": {
-            "link_text": "Commercial",
-            "has_mega_menu": false
-          }
-        }
-      },
-      "block_order": ["nav_saunas", "nav_plunges", "nav_signature", "nav_supplies", "nav_commercial"]
-    },
     "nw_model_hero": {
       "type": "nw-model-hero",
-      "settings": {
-        "heading": "Loowit Sauna Model — Compact, Versatile, and Handcrafted",
-        "description": "Big sauna energy in a smaller footprint. The Loowit is engineered for patios, decks, and tighter spaces — without sacrificing heat, comfort, or character.",
-        "background_image_url": "",
-        "overlay_opacity": 55,
-        "text_color": "#FCFCFC",
-        "button_label": "Request a Quote",
-        "button_link": "",
-        "button_bg": "#546659",
-        "button_text": "#FCFCFC"
-      },
       "blocks": {
         "trust_1": {
           "type": "trust_item",
@@ -94,17 +37,21 @@
           }
         }
       },
-      "block_order": ["trust_1", "trust_2", "trust_3", "trust_4"]
+      "block_order": [
+        "trust_1",
+        "trust_2",
+        "trust_3",
+        "trust_4"
+      ],
+      "settings": {
+        "heading": "Loowit Sauna Model — Compact, Versatile, and Handcrafted",
+        "background_image_url": "",
+        "overlay_opacity": 55,
+        "text_color": "#FCFCFC"
+      }
     },
     "nw_model_features": {
       "type": "nw-model-features",
-      "settings": {
-        "heading": "Inside the Loowit: Space That Adapts to You",
-        "description": "Thoughtfully designed to maximize every square inch. The Loowit's interior is proof that smaller doesn't mean lesser.",
-        "background_color": "#FCFCFC",
-        "title_color": "#252220",
-        "text_color": "#252220"
-      },
       "blocks": {
         "feature_1": {
           "type": "feature",
@@ -135,19 +82,21 @@
           }
         }
       },
-      "block_order": ["feature_1", "feature_2", "feature_3", "feature_4"]
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4"
+      ],
+      "settings": {
+        "heading": "Inside the Loowit: Space That Adapts to You",
+        "background_color": "#FCFCFC",
+        "title_color": "#252220",
+        "text_color": "#252220"
+      }
     },
     "nw_model_exterior": {
       "type": "nw-model-exterior",
-      "settings": {
-        "heading": "Loowit Sauna Exterior: Strong Lines, Lasting Strength",
-        "description": "Compact doesn't mean compromised. The Loowit's exterior is built with the same premium materials and weather-sealed construction as our larger models.",
-        "background_color": "#3d3935",
-        "title_color": "#FCFCFC",
-        "text_color": "#FCFCFC",
-        "card_bg": "rgba(252,252,252,0.08)",
-        "overlay_opacity": 60
-      },
       "blocks": {
         "card_1": {
           "type": "card",
@@ -164,17 +113,20 @@
           }
         }
       },
-      "block_order": ["card_1", "card_2"]
+      "block_order": [
+        "card_1",
+        "card_2"
+      ],
+      "settings": {
+        "heading": "Loowit Sauna Exterior: Strong Lines, Lasting Strength",
+        "description": "Compact doesn't mean compromised. The Loowit's exterior is built with the same premium materials and weather-sealed construction as our larger models.",
+        "overlay_opacity": 60,
+        "text_color": "#FCFCFC",
+        "card_bg": "rgba(252,252,252,0.08)"
+      }
     },
     "nw_model_accessories": {
       "type": "nw-model-accessories",
-      "settings": {
-        "heading": "Loowit Accessories and Bespoke Upgrades",
-        "description": "Every Loowit comes standard with our curated accessories kit. Bespoke upgrades let you build the compact sauna of your dreams.",
-        "background_color": "#FCFCFC",
-        "title_color": "#252220",
-        "text_color": "#252220"
-      },
       "blocks": {
         "acc_1": {
           "type": "item",
@@ -225,19 +177,28 @@
           }
         }
       },
-      "block_order": ["acc_1", "acc_2", "acc_3", "acc_4", "acc_5", "acc_6", "acc_7", "acc_8"]
+      "block_order": [
+        "acc_1",
+        "acc_2",
+        "acc_3",
+        "acc_4",
+        "acc_5",
+        "acc_6",
+        "acc_7",
+        "acc_8"
+      ],
+      "settings": {
+        "heading": "Loowit Accessories and Bespoke Upgrades",
+        "description": "Every Loowit comes standard with our curated accessories kit. Bespoke upgrades let you build the compact sauna of your dreams.",
+        "text_color": "#252220"
+      }
     },
     "nw_model_process": {
       "type": "nw-model-process",
-      "settings": {
-        "heading": "Your Journey Into Heat and Stillness",
-        "description": "From your first inquiry through delivery day, we guide you through a seamless, transparent process."
-      },
       "blocks": {
         "step_1": {
           "type": "step",
           "settings": {
-            "number": "01",
             "title": "Initial Consultation",
             "description": "Tell us about your space, preferences, and vision. We'll help you determine if the Loowit is the right fit."
           }
@@ -245,7 +206,6 @@
         "step_2": {
           "type": "step",
           "settings": {
-            "number": "02",
             "title": "Custom Quote",
             "description": "Receive a detailed, no-pressure quote based on your Loowit configuration and site requirements."
           }
@@ -253,7 +213,6 @@
         "step_3": {
           "type": "step",
           "settings": {
-            "number": "03",
             "title": "Handcrafted Build",
             "description": "Your Loowit is built to order in our Vancouver WA workshop using time-tested joinery techniques."
           }
@@ -261,7 +220,6 @@
         "step_4": {
           "type": "step",
           "settings": {
-            "number": "04",
             "title": "Delivery & Install",
             "description": "We deliver and place your Loowit, ensuring it's perfectly leveled and ready for your first session."
           }
@@ -269,59 +227,61 @@
         "step_5": {
           "type": "step",
           "settings": {
-            "number": "05",
             "title": "Enjoy & Unwind",
             "description": "Step in, pour water on the stones, and discover that compact doesn't mean compromise."
           }
         }
       },
-      "block_order": ["step_1", "step_2", "step_3", "step_4", "step_5"]
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "step_5"
+      ],
+      "settings": {
+        "heading": "Your Journey Into Heat and Stillness"
+      }
     },
     "nw_model_visit": {
       "type": "nw-model-visit",
       "settings": {
         "heading": "Visit Our Vancouver WA Warehouse",
         "description": "See the craftsmanship in person. Walk through finished saunas, compare models side-by-side, and feel the cedar.",
-        "phone_number": "(360) 907-8928",
-        "button_label": "Schedule a Visit"
+        "button_label": "Schedule a Visit",
+        "phone_number": "(360) 907-8928"
       }
     },
     "nw_model_reviews": {
       "type": "nw-model-reviews",
-      "settings": {
-        "heading": "Stories from the Steam",
-        "description": "Hear from Loowit owners who discovered that smaller doesn't mean lesser."
-      },
       "blocks": {
         "review_1": {
           "type": "review",
           "settings": {
-            "stars": 5,
-            "quote": "We have a small patio and thought a quality sauna was out of reach. The Loowit fits perfectly and the heat is incredible. Best decision we've made.",
-            "author": "Rachel & James P.",
-            "location": "Seattle, WA"
+            "quote": "We have a small patio and thought a quality sauna was out of reach. The Loowit fits perfectly and the heat is incredible. Best decision we've made."
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
-            "stars": 5,
-            "quote": "The Loowit punches way above its size. Heats up fast, looks gorgeous, and the cedar smell is amazing. My neighbors are jealous.",
-            "author": "Connor M.",
-            "location": "Portland, OR"
+            "quote": "The Loowit punches way above its size. Heats up fast, looks gorgeous, and the cedar smell is amazing. My neighbors are jealous."
           }
         },
         "review_3": {
           "type": "review",
           "settings": {
-            "stars": 5,
-            "quote": "NW Immersion's team was fantastic from start to finish. The Loowit was delivered and installed in one morning. We use it nearly every day.",
-            "author": "Lisa & Mark W.",
-            "location": "Vancouver, WA"
+            "quote": "NW Immersion's team was fantastic from start to finish. The Loowit was delivered and installed in one morning. We use it nearly every day."
           }
         }
       },
-      "block_order": ["review_1", "review_2", "review_3"]
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
+      "settings": {
+        "heading": "Stories from the Steam"
+      }
     },
     "nw_model_quote": {
       "type": "nw-model-quote",
@@ -341,14 +301,6 @@
     },
     "nw_model_faq": {
       "type": "nw-model-faq",
-      "settings": {
-        "heading": "Frequently Asked Questions (FAQs)",
-        "background_color": "#FCFCFC",
-        "title_color": "#252220",
-        "text_color": "#252220",
-        "accent_color": "#546659",
-        "divider_color": "#f6e8d1"
-      },
       "blocks": {
         "faq_1": {
           "type": "faq",
@@ -414,11 +366,28 @@
           }
         }
       },
-      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5", "faq_6", "faq_7", "faq_8", "faq_9"]
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8",
+        "faq_9"
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions (FAQs)",
+        "background_color": "#FCFCFC",
+        "title_color": "#252220",
+        "text_color": "#252220",
+        "accent_color": "#546659",
+        "divider_color": "#f6e8d1"
+      }
     }
   },
   "order": [
-    "nw_model_header",
     "nw_model_hero",
     "nw_model_features",
     "nw_model_exterior",

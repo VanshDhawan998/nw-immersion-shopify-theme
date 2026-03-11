@@ -1,0 +1,631 @@
+<!-- Loowit Way Feature Section -->
+<section class="loowit-way-section" 
+         style="
+           background-color: {{ section.settings.background_color }};
+           padding-top: {{ section.settings.padding_top }}px;
+           padding-bottom: {{ section.settings.padding_bottom }}px;
+         ">
+  
+  <!-- Main Content Container -->
+  <div class="loowit-container">
+    
+    <!-- Main Heading -->
+    {% if section.settings.main_heading != blank %}
+      <h2 class="main-heading">{{ section.settings.main_heading }}</h2>
+    {% endif %}
+
+    <!-- Main Description -->
+    {% if section.settings.main_description != blank %}
+      <p class="main-description">{{ section.settings.main_description }}</p>
+    {% endif %}
+
+    <!-- Two Column Layout -->
+    <div class="loowit-layout">
+      
+      {% if section.settings.image_position == 'left' %}
+        <!-- Image Column First (Left) -->
+        <div class="image-column">
+          {% if section.settings.image != blank %}
+            {% assign alt_text = section.settings.image_alt_text | default: section.settings.main_heading %}
+            <img src="{{ section.settings.image | img_url: 'master' }}" 
+                 alt="{{ alt_text }}" 
+                 class="loowit-image"
+                 loading="lazy"
+                 width="{{ section.settings.image.width }}"
+                 height="{{ section.settings.image.height }}">
+          {% else %}
+            <!-- Placeholder for Theme Editor -->
+            <div class="placeholder-image">
+              <svg width="100%" height="400" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="400" height="300" fill="#f5f5f5"/>
+                <text x="200" y="150" text-anchor="middle" fill="#999">Image Placeholder</text>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- Content Column Second (Right) -->
+        <div class="content-column">
+          
+          <!-- Dynamic Feature Blocks -->
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              <div class="feature-block" {{ block.shopify_attributes }}>
+                {% if block.settings.feature_title != blank %}
+                  <h3 class="feature-title">{{ block.settings.feature_title }}</h3>
+                {% endif %}
+                {% if block.settings.feature_description != blank %}
+                  <p class="feature-description">{{ block.settings.feature_description }}</p>
+                {% endif %}
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          <!-- Call to Action Button -->
+          {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+            <a href="{{ section.settings.button_url }}" 
+               class="custom-btn medium"
+               style="
+                 background-color: {{ section.settings.button_background_color }};
+                 color: {{ section.settings.button_text_color }};
+                 border-color: {{ section.settings.button_background_color }};
+               ">
+              {{ section.settings.button_text }}
+            </a>
+          {% endif %}
+          
+        </div>
+      {% else %}
+        <!-- Content Column First (Left) -->
+        <div class="content-column">
+          
+          <!-- Dynamic Feature Blocks -->
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              <div class="feature-block" {{ block.shopify_attributes }}>
+                {% if block.settings.feature_title != blank %}
+                  <h3 class="feature-title">{{ block.settings.feature_title }}</h3>
+                {% endif %}
+                {% if block.settings.feature_description != blank %}
+                  <p class="feature-description">{{ block.settings.feature_description }}</p>
+                {% endif %}
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          <!-- Call to Action Button -->
+          {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+            <a href="{{ section.settings.button_url }}" 
+               class="custom-btn medium"
+               style="
+                 background-color: {{ section.settings.button_background_color }};
+                 color: {{ section.settings.button_text_color }};
+                 border-color: {{ section.settings.button_background_color }};
+               ">
+              {{ section.settings.button_text }}
+            </a>
+          {% endif %}
+          
+        </div>
+
+        <!-- Image Column Second (Right) -->
+        <div class="image-column">
+          {% if section.settings.image != blank %}
+            {% assign alt_text = section.settings.image_alt_text | default: section.settings.main_heading %}
+            <img src="{{ section.settings.image | img_url: 'master' }}" 
+                 alt="{{ alt_text }}" 
+                 class="loowit-image"
+                 loading="lazy"
+                 width="{{ section.settings.image.width }}"
+                 height="{{ section.settings.image.height }}">
+          {% else %}
+            <!-- Placeholder for Theme Editor -->
+            <div class="placeholder-image">
+              <svg width="100%" height="400" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="400" height="300" fill="#f5f5f5"/>
+                <text x="200" y="150" text-anchor="middle" fill="#999">Image Placeholder</text>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Import Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Quando&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+  /* Section Styles */
+  .loowit-way-section {
+    font-family: "Quando", serif;
+    color: {{ section.settings.text_color | default: 'rgb(37, 34, 32)' }};
+    max-width: {{ section.settings.max_width | default: 1670 }}px;
+    margin: 0 auto;
+    padding-left: {{ section.settings.padding_horizontal | default: 50 }}px;
+    padding-right: {{ section.settings.padding_horizontal | default: 50 }}px;
+  }
+
+  .loowit-container {
+    width: 100%;
+  }
+
+  /* Typography */
+  .main-heading {
+    font-family: sans-serif;
+    font-size: {{ section.settings.main_heading_size | default: 40 }}px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 30px;
+    color: {{ section.settings.heading_color | default: 'rgb(37, 34, 32)' }};
+  }
+
+  .main-description {
+    font-family: "Quando", serif;
+    font-size: {{ section.settings.text_size | default: 18 }}px;
+    font-weight: 400;
+    line-height: 1.56;
+    margin-bottom: 30px;
+    color: {{ section.settings.text_color | default: 'rgb(37, 34, 32)' }};
+  }
+
+  .feature-title {
+    font-family: sans-serif;
+    font-size: {{ section.settings.feature_title_size | default: 24 }}px;
+    font-weight: 600;
+    line-height: 1.17;
+    margin-bottom: 20px;
+    color: {{ section.settings.heading_color | default: 'rgb(37, 34, 32)' }};
+  }
+
+  .feature-description {
+    font-family: "Quando", serif;
+    font-size: {{ section.settings.text_size | default: 18 }}px;
+    font-weight: 400;
+    line-height: 1.56;
+    margin-bottom: 45px;
+    color: {{ section.settings.text_color | default: 'rgb(37, 34, 32)' }};
+  }
+
+  /* Layout */
+  .loowit-layout {
+    display: flex;
+    gap: {{ section.settings.column_gap | default: 70 }}px;
+    margin-top: 50px;
+  }
+
+  .content-column,
+  .image-column {
+    flex: 1 1 50%;
+  }
+
+  .feature-block {
+    margin-bottom: {{ section.settings.feature_spacing | default: 0 }}px;
+  }
+
+  /* Button Styles */
+  .custom-btn {
+    width: fit-content;
+    background: {{ section.settings.button_background_color | default: '#546659' }};
+    color: {{ section.settings.button_text_color | default: 'white' }};
+    border-radius: {{ section.settings.button_border_radius | default: 20 }}px;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: {{ section.settings.button_text_size | default: 18 }}px;
+    transition: 0.3s ease;
+    display: inline-block;
+    border: 1px solid {{ section.settings.button_background_color | default: '#546659' }};
+    line-height: 1.4;
+    padding: {{ section.settings.button_padding_vertical | default: 15 }}px {{ section.settings.button_padding_horizontal | default: 35 }}px;
+    margin-top: {{ section.settings.button_margin_top | default: 0 }}px;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    vertical-align: middle;
+    box-sizing: border-box;
+  }
+
+  .custom-btn:hover {
+    background: {{ section.settings.button_hover_background | default: '#ffffff' }};
+    color: {{ section.settings.button_hover_text_color | default: '#546659' }};
+    border-color: {{ section.settings.button_background_color | default: '#546659' }};
+  }
+
+  /* Image Styles */
+  .loowit-image {
+    width: 100%;
+    height: 100%;
+    border-radius: {{ section.settings.image_border_radius | default: 18 }}px;
+    object-fit: cover;
+    max-height: {{ section.settings.image_max_height | default: 600 }}px;
+  }
+
+  .placeholder-image svg {
+    border-radius: {{ section.settings.image_border_radius | default: 18 }}px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .loowit-layout {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .loowit-way-section {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .main-heading {
+      font-size: {{ section.settings.main_heading_size | default: 40 | divided_by: 1.2 | round }}px;
+    }
+
+    .content-column,
+    .image-column {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main-heading {
+      font-size: {{ section.settings.main_heading_size | default: 40 | divided_by: 1.4 | round }}px;
+    }
+
+    .main-description,
+    .feature-description {
+      font-size: {{ section.settings.text_size | default: 18 | minus: 2 }}px;
+    }
+
+    .feature-title {
+      font-size: {{ section.settings.feature_title_size | default: 24 | minus: 2 }}px;
+    }
+
+    .loowit-layout {
+      gap: 30px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Loowit Way Features",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Main Content"
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "The Loowit Way: Crafted For Living Well"
+    },
+    {
+      "type": "textarea",
+      "id": "main_description",
+      "label": "Main Description",
+      "default": "Our Loowit sauna model is compact but spacious, simple but flexible, and affordable without compromise. For homeowners across the country, it's become a favorite model for daily wellness."
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "See Who's Behind The Craft"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Section Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt_text",
+      "label": "Image Alt Text",
+      "default": "Loowit Sauna"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "options": [
+        {
+          "value": "right",
+          "label": "Right Side"
+        },
+        {
+          "value": "left",
+          "label": "Left Side"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum Width (px)",
+      "min": 1200,
+      "max": 1800,
+      "step": 10,
+      "default": 1670
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column Gap (px)",
+      "min": 30,
+      "max": 120,
+      "step": 5,
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 130
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal Padding (px)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "feature_spacing",
+      "label": "Feature Block Spacing (px)",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "main_heading_size",
+      "label": "Main Heading Size (px)",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "feature_title_size",
+      "label": "Feature Title Size (px)",
+      "min": 18,
+      "max": 36,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text Size (px)",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FCF9F4"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#252220"
+    },
+    {
+      "type": "header",
+      "content": "Button Styling"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button Background Color",
+      "default": "#546659"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button Hover Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Button Hover Text Color",
+      "default": "#546659"
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "label": "Button Text Size (px)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "label": "Button Vertical Padding (px)",
+      "min": 5,
+      "max": 20,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "label": "Button Horizontal Padding (px)",
+      "min": 15,
+      "max": 50,
+      "step": 1,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "button_margin_top",
+      "label": "Button Top Margin (px)",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button Border Radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Image Styling"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image Border Radius (px)",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "image_max_height",
+      "label": "Image Max Height (px)",
+      "min": 400,
+      "max": 800,
+      "step": 10,
+      "default": 600
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Feature Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_description",
+          "label": "Feature Description",
+          "default": "Add your feature description here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Loowit Way Features",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Compact Footprint, Spacious Feel",
+            "feature_description": "The Loowit makes the most of its size. With benches that seat six and thoughtful design, it feels bigger inside than its footprint suggests."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Sliding Bench Versatility For Yoga & Stretching",
+            "feature_description": "The movable lower bench turns your sauna into a space for stretching or yoga, giving you more ways to use your retreat."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Crafted From Local Cedar",
+            "feature_description": "Clear western red cedar, sourced locally, provides the durability, warmth, and scent that define the sauna experience."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Toxin-Free Wellness Sanctuary",
+            "feature_description": "Every finish is natural, free of adhesives and synthetics, so you can breathe deeply knowing your space is clean and safe."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Accessible Price Point, Built To Last",
+            "feature_description": "Starting under $25,000, the Loowit offers lasting craftsmanship and wellness at a price point that makes owning a handcrafted sauna possible for more families."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

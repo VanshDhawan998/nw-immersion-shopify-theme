@@ -1,0 +1,779 @@
+<!-- Bespoke Section - Shopify Liquid Template -->
+<div class="main-hero-section bespoke-section" 
+     style="padding-top: {{ section.settings.padding_top }}px; 
+            padding-bottom: {{ section.settings.padding_bottom }}px;
+            padding-left: {{ section.settings.padding_horizontal }}px;
+            padding-right: {{ section.settings.padding_horizontal }}px;">
+  
+  <div class="feature-hero" 
+       style="background-image: {% if section.settings.background_image %}url({{ section.settings.background_image | img_url: 'master' }}){% else %}url('./assets/images/bespoke-upgrades-bg.webp'){% endif %};">
+    
+    <div class="feature-section">
+      <!-- Left Content Section -->
+      <div class="feature-left">
+        {% if section.settings.main_heading != blank %}
+          <h2 style="color: {{ section.settings.heading_color }};">{{ section.settings.main_heading }}</h2>
+        {% endif %}
+        
+        {% if section.settings.description_1 != blank %}
+          <p style="color: {{ section.settings.text_color }};">{{ section.settings.description_1 }}</p>
+        {% endif %}
+        
+        {% if section.settings.sub_heading != blank %}
+          <h3 style="color: {{ section.settings.subheading_color }};">{{ section.settings.sub_heading }}</h3>
+        {% endif %}
+        
+        {% if section.settings.description_2 != blank %}
+          <p style="color: {{ section.settings.text_color }};">{{ section.settings.description_2 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Feature Cards Container -->
+      {% if section.blocks.size > 0 %}
+        <div class="feature-container">
+          {% for block in section.blocks %}
+            <div class="feature-card" 
+                 style="background-color: {{ block.settings.card_background | default: '#fbefdb' }};"
+                 {{ block.shopify_attributes }}>
+              
+              {% comment %} Card Title (Optional) {% endcomment %}
+              {% if block.settings.card_title != blank %}
+                <h3>{{ block.settings.card_title }}</h3>
+              {% endif %}
+              
+              {% comment %} Feature List {% endcomment %}
+              <ul class="exterior-features">
+                {% if block.settings.feature_1 != blank %}
+                  <li class="feature-item">
+                    <span class="feature-item-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>
+                    </span>
+                    {{ block.settings.feature_1 }}
+                  </li>
+                {% endif %}
+                
+                {% if block.settings.feature_2 != blank %}
+                  <li class="feature-item">
+                    <span class="feature-item-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>
+                    </span>
+                    {{ block.settings.feature_2 }}
+                  </li>
+                {% endif %}
+                
+                {% if block.settings.feature_3 != blank %}
+                  <li class="feature-item">
+                    <span class="feature-item-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>
+                    </span>
+                    {{ block.settings.feature_3 }}
+                  </li>
+                {% endif %}
+                
+                {% if block.settings.feature_4 != blank %}
+                  <li class="feature-item">
+                    <span class="feature-item-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>
+                    </span>
+                    {{ block.settings.feature_4 }}
+                  </li>
+                {% endif %}
+                
+                {% if block.settings.feature_5 != blank %}
+                  <li class="feature-item">
+                    <span class="feature-item-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>
+                    </span>
+                    {{ block.settings.feature_5 }}
+                  </li>
+                {% endif %}
+              </ul>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+      
+      <!-- Call to Action Button -->
+      {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+        <div class="btn-right">
+          <a href="{{ section.settings.button_url }}" 
+             class="custom-btn medium"
+             style="background-color: {{ section.settings.button_bg_color }}; 
+                    color: {{ section.settings.button_text_color }};
+                    border-color: {{ section.settings.button_bg_color }};">
+            {{ section.settings.button_text }}
+          </a>
+        </div>
+      {% endif %}
+      
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Google Fonts Import */
+  @import url('https://fonts.googleapis.com/css2?family=Quando&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+  /* CSS Variables - Dynamic from Shopify Settings */
+  .main-hero-section.bespoke-section {
+    --font-heading: {{ section.settings.heading_font | default: 'sans-serif' }};
+    --font-body: {{ section.settings.body_font | default: '"Quando", serif' }};
+    --font-button: {{ section.settings.button_font | default: '"Roboto", sans-serif' }};
+    --color-accent: {{ section.settings.accent_color | default: '#546659' }};
+    --section-heading-size: {{ section.settings.main_heading_size }}px;
+    --section-text-size: {{ section.settings.text_size }}px;
+    --small-heading-size: {{ section.settings.subheading_size }}px;
+    --btn-medium-size: {{ section.settings.button_text_size }}px;
+    --card-border-radius: {{ section.settings.card_border_radius }}px;
+    --feature-gap: {{ section.settings.feature_gap }}px;
+  }
+
+  /* Section Styles */
+  .main-hero-section.bespoke-section {
+    width: 100%;
+    padding: 130px 50px 0;
+  }
+
+  .feature-hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 130px 50px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .feature-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    z-index: 2;
+  }
+
+  .feature-left {
+    flex: 1;
+    margin-bottom: {{ section.settings.content_bottom_margin }}px;
+  }
+
+  .feature-left h2 {
+    font-family: var(--font-heading);
+    font-size: var(--section-heading-size);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 30px;
+  }
+
+  .feature-left h3 {
+    font-family: var(--font-heading);
+    font-size: var(--small-heading-size);
+    font-weight: 600;
+    line-height: 1.17;
+    margin-bottom: 15px;
+  }
+
+  .feature-left p {
+    font-family: var(--font-body);
+    font-size: var(--section-text-size);
+    font-weight: 400;
+    line-height: 1.56;
+    margin-bottom: 50px;
+  }
+
+  .feature-left p:nth-of-type(2) {
+    margin-bottom: 30px;
+  }
+
+  .feature-container {
+    display: flex;
+    gap: var(--feature-gap);
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .feature-card {
+    background: #fbefdb;
+    padding: {{ section.settings.card_padding_vertical }}px {{ section.settings.card_padding_horizontal }}px {{ section.settings.card_padding_vertical | minus: 30 }}px;
+    border-radius: var(--card-border-radius);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+    width: 50%;
+  }
+
+  .feature-card h3 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: {{ section.settings.card_heading_color | default: '#252220' }};
+  }
+
+  .btn-right {
+    display: flex;
+    justify-content: {{ section.settings.button_alignment }};
+  }
+
+  /* Feature List Styles */
+  .exterior-features {
+    list-style: none;
+    margin-bottom: 0;
+  }
+
+  .feature-item {
+    margin-bottom: 18px;
+    border-bottom: 1px solid {{ section.settings.feature_border_color | default: '#f6e8d1' }};
+    padding-bottom: 12px;
+    font-size: var(--section-text-size);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.56;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    color: {{ section.settings.feature_text_color | default: '#252220' }};
+  }
+
+  .feature-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .feature-item-icon {
+    background: {{ section.settings.icon_bg_color | default: '#5c6f63' }};
+    color: {{ section.settings.icon_color | default: 'white' }};
+    min-width: 24px;
+    max-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .feature-item-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  /* Button Styles */
+  .custom-btn {
+    width: fit-content;
+    background: var(--color-accent);
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: var(--font-button);
+    font-weight: 700;
+    font-size: var(--btn-medium-size);
+    transition: 0.3s ease;
+    display: inline-block;
+    border: 1px solid var(--color-accent);
+    line-height: 1.22;
+    padding: {{ section.settings.button_padding_vertical }}px {{ section.settings.button_padding_horizontal }}px;
+  }
+
+  .custom-btn:hover {
+    background: {{ section.settings.button_hover_bg | default: '#ffffff' }} !important;
+    color: {{ section.settings.button_hover_text | default: '#546659' }} !important;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .feature-left h2 {
+      font-size: calc(var(--section-heading-size) * 0.9);
+    }
+
+    .feature-left p {
+      font-size: calc(var(--section-text-size) * 1);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .feature-container {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .feature-card {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .main-hero-section.bespoke-section {
+      padding-left: {{ section.settings.mobile_padding_horizontal }}px;
+      padding-right: {{ section.settings.mobile_padding_horizontal }}px;
+    }
+
+    .feature-hero {
+      padding: {{ section.settings.mobile_padding_vertical }}px {{ section.settings.mobile_padding_horizontal }}px;
+      margin: 60px 15px;
+    }
+
+    .feature-left h2 {
+      font-size: calc(var(--section-heading-size) * 0.7);
+    }
+
+    .feature-left p {
+      font-size: calc(var(--section-text-size) * 0.89);
+    }
+
+    .feature-card {
+      padding: {{ section.settings.mobile_card_padding }}px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .btn-right {
+      justify-content: center;
+    }
+
+    .feature-left h2 {
+      font-size: calc(var(--section-heading-size) * 0.6);
+      text-align: center;
+    }
+
+    .feature-left h3 {
+      text-align: center;
+    }
+
+    .feature-left p {
+      text-align: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Bespoke Upgrades Section",
+  "tag": "section",
+  "class": "section-bespoke",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "Bespoke Upgrades"
+    },
+    {
+      "type": "textarea",
+      "id": "description_1",
+      "label": "First Description",
+      "default": "Little touches make a big difference. Add the details that fit your routine and turn the sauna into your own retreat."
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub Heading",
+      "default": "Make Your Silver Star Truly Yours"
+    },
+    {
+      "type": "textarea",
+      "id": "description_2", 
+      "label": "Second Description",
+      "default": "Your sauna can be way more than a space to sit and sweat. It can be a retreat tailored to your lifestyle. Choose from upgrades that add comfort, function, and a touch of luxury:"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "info": "Recommended size: 1920x1080px or larger"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Customize My Sauna"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "select",
+      "id": "button_alignment",
+      "label": "Button Alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center", 
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "flex-end"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#546659"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg",
+      "label": "Button Hover Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color", 
+      "id": "button_hover_text",
+      "label": "Button Hover Text Color", 
+      "default": "#546659"
+    },
+    {
+      "type": "header",
+      "content": "Typography Settings"
+    },
+    {
+      "type": "range",
+      "id": "main_heading_size",
+      "label": "Main Heading Size",
+      "min": 24,
+      "max": 60,
+      "step": 1,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "heading_color", 
+      "label": "Main Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "label": "Sub Heading Size",
+      "min": 18,
+      "max": 36,
+      "step": 1, 
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Sub Heading Color", 
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text Size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "label": "Button Text Size",
+      "min": 14,
+      "max": 24,
+      "step": 1, 
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Card Settings"
+    },
+    {
+      "type": "color",
+      "id": "card_heading_color",
+      "label": "Card Heading Color",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "feature_text_color", 
+      "label": "Feature Text Color",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "feature_border_color",
+      "label": "Feature Border Color",
+      "default": "#f6e8d1"
+    },
+    {
+      "type": "color",
+      "id": "icon_bg_color",
+      "label": "Feature Icon Background",
+      "default": "#5c6f63"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Feature Icon Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card Border Radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "feature_gap",
+      "label": "Gap Between Cards",
+      "min": 15,
+      "max": 60,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range", 
+      "id": "content_bottom_margin",
+      "label": "Content Bottom Margin",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Spacing Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Section Top Padding",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "default": 130,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom", 
+      "label": "Section Bottom Padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal Padding (Desktop)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "default": 50,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card_padding_vertical",
+      "label": "Card Vertical Padding",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "default": 75,
+      "unit": "px"
+    },
+    {
+      "type": "range", 
+      "id": "card_padding_horizontal",
+      "label": "Card Horizontal Padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical", 
+      "label": "Button Vertical Padding",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "label": "Button Horizontal Padding", 
+      "min": 20,
+      "max": 50,
+      "step": 2,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Settings"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_horizontal",
+      "label": "Mobile Horizontal Padding",
+      "min": 15,
+      "max": 40,
+      "step": 1,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_vertical",
+      "label": "Mobile Vertical Padding", 
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_card_padding",
+      "label": "Mobile Card Padding",
+      "min": 15,
+      "max": 40,
+      "step": 1,
+      "default": 25,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#546659"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card Title (Optional)",
+          "info": "Leave blank to hide title"
+        },
+        {
+          "type": "color",
+          "id": "card_background",
+          "label": "Card Background Color",
+          "default": "#fbefdb"
+        },
+        {
+          "type": "text",
+          "id": "feature_1",
+          "label": "Feature 1",
+          "default": "Rock mosaic tile under and behind heater (+$1,500)"
+        },
+        {
+          "type": "text", 
+          "id": "feature_2",
+          "label": "Feature 2",
+          "default": "Shower on the porch (+$750)"
+        },
+        {
+          "type": "text",
+          "id": "feature_3", 
+          "label": "Feature 3",
+          "default": "HUUM WiFi control panel (+$500)"
+        },
+        {
+          "type": "text",
+          "id": "feature_4",
+          "label": "Feature 4 (Optional)",
+          "info": "Leave blank to hide"
+        },
+        {
+          "type": "text",
+          "id": "feature_5",
+          "label": "Feature 5 (Optional)",
+          "info": "Leave blank to hide"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bespoke Upgrades",
+      "blocks": [
+        {
+          "type": "feature_card",
+          "settings": {
+            "feature_1": "Rock mosaic tile under and behind heater (+$1,500)",
+            "feature_2": "Shower on the porch (+$750)", 
+            "feature_3": "HUUM WiFi control panel (+$500)"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "feature_1": "120 outlet for cold tub on porch (+$300)",
+            "feature_2": "Bench face upgrade (+$300)",
+            "feature_3": "Custom exterior paint color (+$500)"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

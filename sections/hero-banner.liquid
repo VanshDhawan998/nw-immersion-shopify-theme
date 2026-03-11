@@ -1,0 +1,680 @@
+{{ 'section-hero-banner.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Hero Banner Section {%- endcomment -%}
+<section class="hero-banner-section" style="
+  {% if section.settings.bg_image %}
+    background-image: url('{{ section.settings.bg_image | image_url: width: 1920 }}');
+  {% endif %}
+  background-color: {{ section.settings.bg_color }};
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  min-height: {{ section.settings.min_height }}px;
+">
+  <div class="hero-banner__overlay" style="background-color: {{ section.settings.overlay_color }}; opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"></div>
+  
+  <div class="hero-banner__content">
+    {% if section.settings.title != blank %}
+      <h1 class="hero-banner__title" style="
+        color: {{ section.settings.title_color }};
+        font-size: {{ section.settings.title_font_size }}px;
+        text-align: {{ section.settings.text_alignment }};
+      ">
+        {{ section.settings.title }}
+      </h1>
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+      <p class="hero-banner__text" style="
+        color: {{ section.settings.text_color }};
+        font-size: {{ section.settings.text_font_size }}px;
+        text-align: {{ section.settings.text_alignment }};
+      ">
+        {{ section.settings.description }}
+      </p>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="hero-banner__features">
+        {% for block in section.blocks %}
+          <span class="hero-banner__feature" {{ block.shopify_attributes }} style="
+            color: {{ section.settings.feature_color }};
+            font-size: {{ section.settings.feature_font_size }}px;
+          ">
+            {{ block.settings.feature_text }}
+          </span>
+          {% unless forloop.last %}
+            <span class="hero-banner__divider" style="background-color: {{ section.settings.divider_color }};"></span>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.show_button and section.settings.button_text != blank %}
+      <div class="hero-banner__button-wrapper" style="text-align: {{ section.settings.button_alignment }};">
+        <a href="{{ section.settings.button_url | default: '#' }}" 
+           class="hero-banner__button hero-banner__button--{{ section.settings.button_style }}" 
+           style="
+             background-color: {{ section.settings.button_bg_color }};
+             color: {{ section.settings.button_text_color }};
+             border-color: {{ section.settings.button_border_color }};
+             font-size: {{ section.settings.button_font_size }}px;
+             padding: {{ section.settings.button_padding_vertical }}px {{ section.settings.button_padding_horizontal }}px;
+             border-radius: {{ section.settings.button_border_radius }}px;
+           "
+           data-hover-bg="{{ section.settings.button_hover_bg_color }}"
+           data-hover-text="{{ section.settings.button_hover_text_color }}">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .hero-banner-section {
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-banner__overlay {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .hero-banner__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 980px;
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .hero-banner__title {
+    line-height: 1.2;
+    font-weight: 700;
+    max-width: 920px;
+    margin: 0 auto 24px;
+  }
+
+  .hero-banner__text {
+    max-width: 980px;
+    margin: 0 auto 36px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .hero-banner__features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-weight: 700;
+  }
+
+  .hero-banner__feature {
+    white-space: nowrap;
+  }
+
+  .hero-banner__divider {
+    width: 1px;
+    height: 22px;
+  }
+
+  /* Button Styles */
+  .hero-banner__button-wrapper {
+    margin-top: 40px;
+  }
+
+  .hero-banner__button {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .hero-banner__button--filled {
+    border: 2px solid transparent;
+  }
+
+  .hero-banner__button--outlined {
+    background-color: transparent !important;
+    border: 2px solid;
+  }
+
+  .hero-banner__button--ghost {
+    background-color: transparent !important;
+    border: 2px solid transparent;
+  }
+
+  .hero-banner__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .hero-banner-section {
+      min-height: 500px !important;
+      padding-top: 60px !important;
+      padding-bottom: 80px !important;
+    }
+
+    .hero-banner__content {
+      padding: 30px 20px;
+    }
+
+    .hero-banner__title {
+      font-size: 32px !important;
+      margin-bottom: 20px;
+    }
+
+    .hero-banner__text {
+      font-size: 16px !important;
+      margin-bottom: 30px;
+    }
+
+    .hero-banner__features {
+      gap: 20px;
+      font-size: 18px !important;
+    }
+
+    .hero-banner__button-wrapper {
+      margin-top: 30px;
+    }
+
+    .hero-banner__button {
+      font-size: 16px !important;
+      padding: 14px 28px !important;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .hero-banner-section {
+      width: 100%;
+      padding-top: 60px !important;
+      padding-bottom: 80px !important;
+    }
+
+    .hero-banner__title {
+      font-size: 32px !important;
+    }
+
+    .hero-banner__text {
+      font-size: 16px !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-banner-section {
+      min-height: 400px !important;
+      width: 100%;
+      padding-top: 50px !important;
+      padding-bottom: 70px !important;
+    }
+
+    .hero-banner__content {
+      padding: 20px 16px;
+    }
+
+    .hero-banner__title {
+      font-size: 28px !important;
+      margin-bottom: 16px;
+    }
+
+    .hero-banner__text {
+      font-size: 16px !important;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .hero-banner__features {
+      flex-direction: column;
+      gap: 12px;
+      font-size: 16px !important;
+    }
+
+    .hero-banner__divider {
+      display: none;
+    }
+
+    .hero-banner__button-wrapper {
+      margin-top: 24px;
+    }
+
+    .hero-banner__button {
+      font-size: 16px !important;
+      padding: 12px 24px !important;
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-banner-section {
+      min-height: 350px !important;
+      padding-top: 40px !important;
+      padding-bottom: 50px !important;
+    }
+
+    .hero-banner__title {
+      font-size: 24px !important;
+    }
+
+    .hero-banner__text {
+      font-size: 15px !important;
+    }
+
+    .hero-banner__features {
+      font-size: 14px !important;
+    }
+
+    .hero-banner__button {
+      font-size: 14px !important;
+      padding: 10px 20px !important;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .hero-banner-section {
+      min-height: 300px !important;
+      padding-top: 30px !important;
+      padding-bottom: 40px !important;
+    }
+
+    .hero-banner__title {
+      font-size: 22px !important;
+    }
+
+    .hero-banner__text {
+      font-size: 14px !important;
+    }
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('.hero-banner__button');
+  
+  buttons.forEach(button => {
+    const hoverBg = button.getAttribute('data-hover-bg');
+    const hoverText = button.getAttribute('data-hover-text');
+    const originalBg = button.style.backgroundColor;
+    const originalText = button.style.color;
+    
+    if (hoverBg && hoverText) {
+      button.addEventListener('mouseenter', function() {
+        if (button.classList.contains('hero-banner__button--filled')) {
+          this.style.backgroundColor = hoverBg;
+        }
+        this.style.color = hoverText;
+      });
+      
+      button.addEventListener('mouseleave', function() {
+        if (button.classList.contains('hero-banner__button--filled')) {
+          this.style.backgroundColor = originalBg;
+        }
+        this.style.color = originalText;
+      });
+    }
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image",
+      "info": "Recommended size: 1920x800px or larger"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f3f1ee",
+      "info": "Used as fallback if no image is selected"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay Color",
+      "default": "#000000",
+      "info": "Color overlay on top of background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity",
+      "default": 45
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "min": 300,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "label": "Minimum Height (Desktop)",
+      "default": 380
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 150
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Title Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Loowit Sauna Model Compact, Versatile, And Handcrafted"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Font Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Description Settings"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Built by hand here in Vancouver, Washington, the Loowit sauna model takes a smaller footprint and transforms it into a sanctuary that feels bigger than it looks. With cedar walls, a sliding bench for stretching or yoga, and toxin-free finishes, it's proof that compact design doesn't mean compromise."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "text_font_size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Font Size",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Features Settings"
+    },
+    {
+      "type": "color",
+      "id": "feature_color",
+      "label": "Features Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "feature_font_size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Features Font Size",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider Color",
+      "default": "rgba(255, 255, 255, 0.55)"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show Button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "options": [
+        {
+          "value": "filled",
+          "label": "Filled"
+        },
+        {
+          "value": "outlined",
+          "label": "Outlined"
+        },
+        {
+          "value": "ghost",
+          "label": "Ghost"
+        }
+      ],
+      "default": "filled"
+    },
+    {
+      "type": "select",
+      "id": "button_alignment",
+      "label": "Button Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button Border Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Button Hover Background Color",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Button Hover Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Font Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Horizontal Padding",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "min": 8,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Vertical Padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_text",
+          "label": "Feature Text",
+          "default": "Feature Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "12+ Years Of Craftsmanship"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Continental US Shipping"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Same-Day Parts Shipping"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
