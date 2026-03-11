@@ -5,8 +5,16 @@
 
 {%- liquid
   assign nav_is_transparent = false
-  if section.settings.show_hero and section.settings.enable_transparent_nav
-    assign nav_is_transparent = true
+  assign transparency_mode = section.settings.enable_transparent_nav
+
+  if section.settings.show_hero
+    if transparency_mode == 'homepage'
+      if request.page_type == 'index'
+        assign nav_is_transparent = true
+      endif
+    elsif transparency_mode == 'all'
+      assign nav_is_transparent = true
+    endif
   endif
 -%}
 
@@ -964,11 +972,16 @@
       "content": "Navigation Appearance"
     },
     {
-      "type": "checkbox",
+      "type": "select",
       "id": "enable_transparent_nav",
       "label": "Transparent navigation",
-      "info": "When ON the nav overlays the hero with no background. Turn OFF to use a solid background color.",
-      "default": true
+      "info": "Controls where the nav overlays the hero with no background. On other pages the solid color is used.",
+      "default": "homepage",
+      "options": [
+        { "value": "homepage", "label": "Homepage only" },
+        { "value": "all", "label": "All pages" },
+        { "value": "never", "label": "Never (always solid)" }
+      ]
     },
     {
       "type": "color",
