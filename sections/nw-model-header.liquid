@@ -1,0 +1,626 @@
+{% comment %}
+  NW Model Header — Announcement bar + floating navigation with mega menu.
+  Matches the nw-landing-page.html header structure exactly.
+  Positioned absolute to overlay hero section below.
+{% endcomment %}
+
+{%- style -%}
+  /* ========== ANNOUNCEMENT BAR ========== */
+  .nw-header-announcement {
+    background: {{ section.settings.announcement_bg | default: '#252220' }};
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 20;
+  }
+
+  .nw-header-announcement p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+
+  /* ========== NAV WRAPPER (floats over hero) ========== */
+  .nw-header-nav {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    z-index: 15;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 40px;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .nw-header-nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 182px;
+    width: calc(100% - 182px);
+    max-width: 1075px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Logo */
+  .nw-header__logo {
+    position: absolute;
+    top: -18px;
+    left: 15px;
+    width: 80px;
+    height: 80px;
+    z-index: 16;
+    display: block;
+  }
+
+  .nw-header__logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Nav links */
+  .nw-header__links {
+    display: flex;
+    gap: 60px;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .nw-header__links li {
+    position: relative;
+  }
+
+  .nw-header__links a {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+    text-decoration: none;
+  }
+
+  .nw-header__links a:hover {
+    opacity: 0.75;
+  }
+
+  /* SHOP button */
+  .nw-header__shop-btn {
+    position: absolute;
+    right: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 10px 40px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+
+  .nw-header__shop-btn:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  /* Cart icon */
+  .nw-header__cart {
+    position: absolute;
+    right: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    display: block;
+  }
+
+  .nw-header__cart img,
+  .nw-header__cart svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ========== MEGA MENU ========== */
+  .nw-header__mega-trigger {
+    position: relative;
+  }
+
+  .nw-header__mega-menu {
+    position: absolute;
+    top: calc(100% + 20px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+    z-index: 100;
+    width: 700px;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 200px 1px 1fr 1px 1fr;
+    gap: 24px;
+  }
+
+  .nw-header__mega-trigger:hover .nw-header__mega-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .nw-header__mega-img {
+    border-radius: 8px;
+    overflow: hidden;
+    height: 200px;
+  }
+
+  .nw-header__mega-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nw-header__mega-divider {
+    width: 1px;
+    background: #e5e5e5;
+  }
+
+  .nw-header__mega-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nw-header__mega-heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: #252220;
+    margin: 0 0 8px 0;
+  }
+
+  .nw-header__mega-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    padding: 6px 0;
+    transition: color 0.2s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nw-header__mega-link:hover,
+  .nw-header__mega-link--active {
+    color: #252220;
+  }
+
+  .nw-header__mega-chevron {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* ========== MOBILE TOGGLE ========== */
+  .nw-header__toggle-checkbox {
+    display: none;
+  }
+
+  .nw-header__toggle-label {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 20;
+    position: absolute;
+    left: 110px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .nw-header__toggle-label span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1200px) {
+    .nw-header__links { gap: 40px; }
+    .nw-header__mega-menu { width: 600px; }
+  }
+
+  @media (max-width: 1024px) {
+    .nw-header__toggle-label {
+      display: flex;
+    }
+
+    .nw-header__links {
+      display: none;
+      position: fixed;
+      top: 85px;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      flex-direction: column;
+      gap: 0;
+      padding: 20px 0;
+      z-index: 99;
+    }
+
+    .nw-header__toggle-checkbox:checked ~ .nw-header__links {
+      display: flex;
+    }
+
+    .nw-header__links li {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nw-header__links a {
+      display: block;
+      padding: 16px 40px;
+      font-size: 18px;
+    }
+
+    .nw-header__mega-menu {
+      display: none;
+    }
+
+    .nw-header__shop-btn {
+      right: 80px;
+      padding: 8px 24px;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nw-header-nav { padding: 0 20px; }
+    .nw-header__logo { width: 60px; height: 60px; top: -10px; left: 10px; }
+    .nw-header__toggle-label { left: 80px; }
+    .nw-header__shop-btn { right: 60px; padding: 6px 16px; font-size: 12px; }
+    .nw-header__cart { right: 20px; width: 28px; height: 28px; }
+  }
+
+  @media (max-width: 480px) {
+    .nw-header-announcement p { font-size: 10px; }
+    .nw-header__logo { width: 50px; height: 50px; top: -5px; }
+    .nw-header__shop-btn { display: none; }
+    .nw-header__cart { right: 16px; }
+  }
+{%- endstyle -%}
+
+<!-- Announcement Bar -->
+{%- if section.settings.show_announcement -%}
+  <div class="nw-header-announcement">
+    <p>{{ section.settings.announcement_text }}</p>
+  </div>
+{%- endif -%}
+
+<!-- Floating Navigation -->
+<nav class="nw-header-nav" role="navigation" aria-label="Main navigation">
+  <!-- Logo -->
+  <a href="{{ section.settings.logo_link | default: '/' }}" class="nw-header__logo">
+    {%- if section.settings.logo_image != blank -%}
+      <img src="{{ section.settings.logo_image | image_url: width: 160 }}" alt="{{ shop.name }}" loading="eager">
+    {%- elsif section.settings.logo_image_url != blank -%}
+      <img src="{{ section.settings.logo_image_url }}" alt="{{ shop.name }}" loading="eager">
+    {%- else -%}
+      <img src="https://www.figma.com/api/mcp/asset/3cf3d791-7eb3-4f05-a480-c59c2ecb6c99" alt="{{ shop.name }}" loading="eager">
+    {%- endif -%}
+  </a>
+
+  <!-- Mobile toggle -->
+  <input type="checkbox" id="nw-nav-toggle" class="nw-header__toggle-checkbox">
+  <label for="nw-nav-toggle" class="nw-header__toggle-label" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </label>
+
+  <!-- Nav links -->
+  <ul class="nw-header__links">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'nav_link' -%}
+        {%- if block.settings.has_mega_menu -%}
+          <li class="nw-header__mega-trigger" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.link_url | default: '#' }}">{{ block.settings.link_text }}</a>
+            <div class="nw-header__mega-menu">
+              {%- if block.settings.mega_image != blank or block.settings.mega_image_url != blank -%}
+                <div class="nw-header__mega-img">
+                  {%- if block.settings.mega_image != blank -%}
+                    <img src="{{ block.settings.mega_image | image_url: width: 400 }}" alt="">
+                  {%- else -%}
+                    <img src="{{ block.settings.mega_image_url }}" alt="">
+                  {%- endif -%}
+                </div>
+                <div class="nw-header__mega-divider"></div>
+              {%- endif -%}
+              <div class="nw-header__mega-col">
+                {%- if block.settings.mega_heading != blank -%}
+                  <h3 class="nw-header__mega-heading">{{ block.settings.mega_heading }}</h3>
+                {%- endif -%}
+                {%- for i in (1..4) -%}
+                  {%- assign link_text_key = 'mega_link_' | append: i | append: '_text' -%}
+                  {%- assign link_url_key = 'mega_link_' | append: i | append: '_url' -%}
+                  {%- if block.settings[link_text_key] != blank -%}
+                    <a href="{{ block.settings[link_url_key] | default: '#' }}" class="nw-header__mega-link">
+                      {{ block.settings[link_text_key] }}
+                    </a>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+              <div class="nw-header__mega-divider"></div>
+              <div class="nw-header__mega-col">
+                {%- for i in (5..8) -%}
+                  {%- assign link_text_key = 'mega_link_' | append: i | append: '_text' -%}
+                  {%- assign link_url_key = 'mega_link_' | append: i | append: '_url' -%}
+                  {%- if block.settings[link_text_key] != blank -%}
+                    <a href="{{ block.settings[link_url_key] | default: '#' }}" class="nw-header__mega-link">
+                      {{ block.settings[link_text_key] }}
+                    </a>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+          </li>
+        {%- else -%}
+          <li {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.link_url | default: '#' }}">{{ block.settings.link_text }}</a>
+          </li>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+
+  <!-- SHOP button -->
+  <a href="{{ section.settings.shop_button_url | default: '/collections/all' }}" class="nw-header__shop-btn">
+    {{ section.settings.shop_button_text | default: 'SHOP' }}
+  </a>
+
+  <!-- Cart icon -->
+  <a href="/cart" class="nw-header__cart" aria-label="Cart">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+    </svg>
+  </a>
+</nav>
+
+{% schema %}
+{
+  "name": "NW Model Header",
+  "tag": "header",
+  "class": "nw-model-header-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Announcement Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show Announcement Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement Text",
+      "default": "Free Shipping on all saunas"
+    },
+    {
+      "type": "color",
+      "id": "announcement_bg",
+      "label": "Announcement Background",
+      "default": "#252220"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo Image"
+    },
+    {
+      "type": "url",
+      "id": "logo_image_url",
+      "label": "Logo Image URL (fallback)"
+    },
+    {
+      "type": "url",
+      "id": "logo_link",
+      "label": "Logo Link",
+      "default": "/"
+    },
+    {
+      "type": "header",
+      "content": "Shop Button"
+    },
+    {
+      "type": "text",
+      "id": "shop_button_text",
+      "label": "Shop Button Text",
+      "default": "SHOP"
+    },
+    {
+      "type": "url",
+      "id": "shop_button_url",
+      "label": "Shop Button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Nav Link",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text",
+          "default": "Saunas"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "has_mega_menu",
+          "label": "Has Mega Menu",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Mega Menu (if enabled)"
+        },
+        {
+          "type": "image_picker",
+          "id": "mega_image",
+          "label": "Mega Menu Image"
+        },
+        {
+          "type": "url",
+          "id": "mega_image_url",
+          "label": "Mega Menu Image URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_heading",
+          "label": "Column 1 Heading",
+          "default": "Saunas"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_1_text",
+          "label": "Link 1 Text"
+        },
+        {
+          "type": "url",
+          "id": "mega_link_1_url",
+          "label": "Link 1 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_2_text",
+          "label": "Link 2 Text"
+        },
+        {
+          "type": "url",
+          "id": "mega_link_2_url",
+          "label": "Link 2 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_3_text",
+          "label": "Link 3 Text"
+        },
+        {
+          "type": "url",
+          "id": "mega_link_3_url",
+          "label": "Link 3 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_4_text",
+          "label": "Link 4 Text"
+        },
+        {
+          "type": "url",
+          "id": "mega_link_4_url",
+          "label": "Link 4 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_5_text",
+          "label": "Link 5 Text (Col 2)"
+        },
+        {
+          "type": "url",
+          "id": "mega_link_5_url",
+          "label": "Link 5 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_6_text",
+          "label": "Link 6 Text"
+        },
+        {
+          "type": "url",
+          "id": "mega_link_6_url",
+          "label": "Link 6 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_7_text",
+          "label": "Link 7 Text"
+        },
+        {
+          "type": "url",
+          "id": "mega_link_7_url",
+          "label": "Link 7 URL"
+        },
+        {
+          "type": "text",
+          "id": "mega_link_8_text",
+          "label": "Link 8 Text"
+        },
+        {
+          "type": "url",
+          "id": "mega_link_8_url",
+          "label": "Link 8 URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Model Header",
+      "blocks": [
+        {
+          "type": "nav_link",
+          "settings": {
+            "link_text": "Saunas",
+            "has_mega_menu": true,
+            "mega_heading": "Saunas",
+            "mega_link_1_text": "Outdoor Saunas",
+            "mega_link_2_text": "Indoor Saunas",
+            "mega_link_3_text": "Infrared",
+            "mega_link_4_text": "Steam & Ice Suite",
+            "mega_link_5_text": "Wood Stove Sauna",
+            "mega_link_6_text": "Electric Sauna",
+            "mega_link_7_text": "Barrel Sauna"
+          }
+        },
+        { "type": "nav_link", "settings": { "link_text": "Plunges & Tubs" } },
+        { "type": "nav_link", "settings": { "link_text": "Signature Saunas" } },
+        { "type": "nav_link", "settings": { "link_text": "Supplies" } },
+        { "type": "nav_link", "settings": { "link_text": "Commercial" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

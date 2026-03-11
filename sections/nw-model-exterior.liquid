@@ -10,13 +10,13 @@
     position: relative;
     min-height: 834px;
     overflow: hidden;
-    font-family: 'Articulat CF', 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif;
   }
 
   .nw-model-exterior__bg {
     position: absolute;
     inset: 0;
-    border-radius: 30px;
+    border-radius: 8px;
     overflow: hidden;
     margin: 0 100px;
   }
@@ -31,7 +31,7 @@
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, {{ section.settings.overlay_opacity | divided_by: 100.0 }});
-    border-radius: 30px;
+    border-radius: 8px;
     margin: 0 100px;
     z-index: 1;
   }
@@ -55,7 +55,7 @@
   }
 
   .nw-model-exterior__title {
-    font-family: 'Articulat CF', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 40px;
     font-weight: 700;
     color: {{ section.settings.text_color }};
@@ -64,7 +64,7 @@
   }
 
   .nw-model-exterior__desc {
-    font-family: 'Quando', serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 18px;
     color: {{ section.settings.text_color }};
     line-height: 28px;
@@ -80,7 +80,7 @@
 
   .nw-model-exterior__card {
     background: {{ section.settings.card_bg }};
-    border-radius: 15px;
+    border-radius: 8px;
     padding: 50px;
     display: flex;
     flex-direction: column;
@@ -88,7 +88,7 @@
   }
 
   .nw-model-exterior__card-title {
-    font-family: 'Articulat CF', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 24px;
     font-weight: 700;
     color: {{ section.settings.card_text_color }};
@@ -97,7 +97,7 @@
   }
 
   .nw-model-exterior__card-text {
-    font-family: 'Quando', serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 18px;
     color: {{ section.settings.card_text_color }};
     line-height: 28px;
@@ -111,7 +111,7 @@
     padding: 10px 30px;
     background: {{ section.settings.button_bg }};
     color: {{ section.settings.button_text_color }};
-    font-family: 'Articulat CF', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 18px;
     font-weight: 700;
     border-radius: 50px;
@@ -150,7 +150,7 @@
 
   @media (max-width: 768px) {
     .nw-model-exterior__bg,
-    .nw-model-exterior__overlay { margin: 0 20px; border-radius: 15px; }
+    .nw-model-exterior__overlay { margin: 0 20px; border-radius: 8px; }
     .nw-model-exterior__content { padding: 60px 40px; gap: 30px; }
     .nw-model-exterior__title { font-size: 28px; line-height: 38px; }
     .nw-model-exterior__card { padding: 30px; gap: 20px; }

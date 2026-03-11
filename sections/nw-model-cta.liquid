@@ -1,0 +1,206 @@
+{% comment %}
+  NW Model CTA — Full-width dark call-to-action banner
+  Final CTA section with centered text and action button.
+{% endcomment %}
+
+{%- style -%}
+  /* ========== MODEL CTA ========== */
+  .nw-model-cta {
+    position: relative;
+    overflow: hidden;
+    font-family: 'Raleway', sans-serif;
+    background: {{ section.settings.background_color }};
+  }
+
+  .nw-model-cta__bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .nw-model-cta__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nw-model-cta__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(37, 34, 32, {{ section.settings.overlay_opacity | divided_by: 100.0 }});
+    z-index: 1;
+  }
+
+  .nw-model-cta__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 50px;
+    max-width: 1440px;
+    margin-inline: auto;
+    min-height: 500px;
+    gap: 24px;
+  }
+
+  .nw-model-cta__title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  .nw-model-cta__subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: {{ section.settings.text_color }};
+    line-height: 30px;
+    margin: 0;
+    max-width: 700px;
+    opacity: 0.9;
+  }
+
+  .nw-model-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 60px;
+    background: #FCFCFC;
+    color: #252220;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .nw-model-cta__btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1024px) {
+    .nw-model-cta__title { font-size: 40px; }
+  }
+
+  @media (max-width: 768px) {
+    .nw-model-cta__content { padding: 80px 30px; min-height: 400px; }
+    .nw-model-cta__title { font-size: 32px; }
+    .nw-model-cta__subtitle { font-size: 18px; line-height: 28px; }
+    .nw-model-cta__btn { padding: 16px 40px; }
+  }
+
+  @media (max-width: 480px) {
+    .nw-model-cta__content { padding: 60px 20px; min-height: 350px; }
+    .nw-model-cta__title { font-size: 26px; }
+    .nw-model-cta__subtitle { font-size: 16px; line-height: 26px; }
+    .nw-model-cta__btn { padding: 14px 32px; }
+  }
+
+  @media (max-width: 375px) {
+    .nw-model-cta__title { font-size: 22px; }
+  }
+{%- endstyle -%}
+
+<section class="nw-model-cta">
+  {%- if section.settings.background_image != blank -%}
+    <div class="nw-model-cta__bg">
+      <img src="{{ section.settings.background_image | image_url: width: 1920 }}" alt="{{ section.settings.heading }}" loading="lazy">
+    </div>
+  {%- elsif section.settings.background_image_url != blank -%}
+    <div class="nw-model-cta__bg">
+      <img src="{{ section.settings.background_image_url }}" alt="{{ section.settings.heading }}" loading="lazy">
+    </div>
+  {%- endif -%}
+  <div class="nw-model-cta__overlay"></div>
+
+  <div class="nw-model-cta__content">
+    <h2 class="nw-model-cta__title">{{ section.settings.heading }}</h2>
+    {%- if section.settings.subtitle != blank -%}
+      <p class="nw-model-cta__subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+    {%- if section.settings.button_text != blank -%}
+      <a href="{{ section.settings.button_link }}" class="nw-model-cta__btn">{{ section.settings.button_text }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Model CTA",
+  "tag": "section",
+  "class": "nw-model-cta-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ready to Build Your Sauna?"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Get in touch with our team for a personalized, no-pressure quote tailored to your space and needs."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Get a Quote"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "url",
+      "id": "background_image_url",
+      "label": "Background Image URL (fallback)"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 70,
+      "unit": "%"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color (no image)",
+      "default": "#252220"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FCFCFC"
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Model CTA"
+    }
+  ]
+}
+{% endschema %}

@@ -6,28 +6,31 @@
 {%- style -%}
   /* ========== MODEL REVIEWS ========== */
   .nw-model-reviews {
-    padding: 120px 100px;
-    font-family: 'Articulat CF', 'Raleway', sans-serif;
+    padding: 80px 50px;
+    font-family: 'Raleway', sans-serif;
     background: {{ section.settings.background_color }};
+    max-width: 1440px;
+    margin-inline: auto;
   }
 
   .nw-model-reviews__header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
   }
 
   .nw-model-reviews__title {
-    font-family: 'Articulat CF', sans-serif;
-    font-size: 40px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 60px;
     font-weight: 700;
     color: {{ section.settings.title_color }};
-    line-height: 50px;
-    margin: 0 0 20px 0;
+    line-height: 1.15;
+    margin: 0 0 16px 0;
   }
 
   .nw-model-reviews__subtitle {
-    font-family: 'Quando', serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 18px;
+    font-weight: 400;
     color: {{ section.settings.text_color }};
     line-height: 28px;
     margin: 0;
@@ -36,21 +39,25 @@
   .nw-model-reviews__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 20px;
+    max-width: 1340px;
+    margin: 0 auto;
   }
 
   .nw-model-reviews__card {
     background: {{ section.settings.card_bg }};
-    border-radius: 15px;
-    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 24px 25px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 0;
   }
 
   .nw-model-reviews__stars {
     display: flex;
     gap: 4px;
+    margin-bottom: 16px;
   }
 
   .nw-model-reviews__star {
@@ -59,59 +66,70 @@
     color: {{ section.settings.star_color }};
   }
 
-  .nw-model-reviews__quote {
-    font-family: 'Quando', serif;
-    font-size: 18px;
-    color: {{ section.settings.card_text_color }};
-    line-height: 28px;
-    margin: 0;
-    flex: 1;
-  }
-
   .nw-model-reviews__author {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-top: auto;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
   }
 
   .nw-model-reviews__author-name {
-    font-family: 'Articulat CF', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
     color: {{ section.settings.card_text_color }};
     line-height: normal;
   }
 
   .nw-model-reviews__author-loc {
-    font-family: 'Quando', serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 14px;
     color: {{ section.settings.card_text_color }};
     opacity: 0.7;
     line-height: normal;
   }
 
+  .nw-model-reviews__quote {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: {{ section.settings.card_text_color }};
+    line-height: 28px;
+    margin: 0;
+    flex: 1;
+  }
+
   /* ===== Responsive ===== */
   @media (max-width: 1200px) {
-    .nw-model-reviews { padding: 100px 60px; }
+    .nw-model-reviews { padding: 80px 36px; }
+    .nw-model-reviews__title { font-size: 48px; }
   }
 
   @media (max-width: 1024px) {
-    .nw-model-reviews { padding: 80px 40px; }
-    .nw-model-reviews__title { font-size: 34px; line-height: 44px; }
+    .nw-model-reviews { padding: 80px 30px; }
+    .nw-model-reviews__title { font-size: 40px; }
     .nw-model-reviews__grid { grid-template-columns: repeat(2, 1fr); }
-    .nw-model-reviews__card { padding: 30px; }
   }
 
   @media (max-width: 768px) {
-    .nw-model-reviews { padding: 60px 20px; }
-    .nw-model-reviews__title { font-size: 28px; line-height: 38px; }
+    .nw-model-reviews { padding: 60px 30px; }
+    .nw-model-reviews__title { font-size: 32px; margin-bottom: 12px; }
+    .nw-model-reviews__header { margin-bottom: 28px; }
     .nw-model-reviews__grid { grid-template-columns: 1fr; }
+    .nw-model-reviews__card { padding: 20px 22px; }
+    .nw-model-reviews__author-name { font-size: 16px; }
+    .nw-model-reviews__quote { font-size: 15px; line-height: 24px; }
   }
 
   @media (max-width: 480px) {
-    .nw-model-reviews__title { font-size: 24px; line-height: 34px; }
-    .nw-model-reviews__quote { font-size: 16px; line-height: 26px; }
+    .nw-model-reviews { padding: 50px 20px; }
+    .nw-model-reviews__title { font-size: 26px; }
+    .nw-model-reviews__header { margin-bottom: 20px; }
+    .nw-model-reviews__subtitle { font-size: 16px; line-height: 24px; }
+  }
+
+  @media (max-width: 375px) {
+    .nw-model-reviews__title { font-size: 22px; }
   }
 {%- endstyle -%}
 

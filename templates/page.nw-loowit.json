@@ -1,5 +1,60 @@
 {
   "sections": {
+    "nw_model_header": {
+      "type": "nw-model-header",
+      "settings": {
+        "show_announcement": true,
+        "announcement_text": "Free Shipping on all saunas",
+        "announcement_bg": "#252220",
+        "shop_button_text": "SHOP"
+      },
+      "blocks": {
+        "nav_saunas": {
+          "type": "nav_link",
+          "settings": {
+            "link_text": "Saunas",
+            "has_mega_menu": true,
+            "mega_heading": "Saunas",
+            "mega_link_1_text": "Outdoor Saunas",
+            "mega_link_2_text": "Indoor Saunas",
+            "mega_link_3_text": "Infrared",
+            "mega_link_4_text": "Steam & Ice Suite",
+            "mega_link_5_text": "Wood Stove Sauna",
+            "mega_link_6_text": "Electric Sauna",
+            "mega_link_7_text": "Barrel Sauna"
+          }
+        },
+        "nav_plunges": {
+          "type": "nav_link",
+          "settings": {
+            "link_text": "Plunges & Tubs",
+            "has_mega_menu": false
+          }
+        },
+        "nav_signature": {
+          "type": "nav_link",
+          "settings": {
+            "link_text": "Signature Saunas",
+            "has_mega_menu": false
+          }
+        },
+        "nav_supplies": {
+          "type": "nav_link",
+          "settings": {
+            "link_text": "Supplies",
+            "has_mega_menu": false
+          }
+        },
+        "nav_commercial": {
+          "type": "nav_link",
+          "settings": {
+            "link_text": "Commercial",
+            "has_mega_menu": false
+          }
+        }
+      },
+      "block_order": ["nav_saunas", "nav_plunges", "nav_signature", "nav_supplies", "nav_commercial"]
+    },
     "nw_model_hero": {
       "type": "nw-model-hero",
       "settings": {
@@ -363,6 +418,7 @@
     }
   },
   "order": [
+    "nw_model_header",
     "nw_model_hero",
     "nw_model_features",
     "nw_model_exterior",

@@ -1,0 +1,265 @@
+{% comment %}
+  NW Model Gallery — Image gallery grid with optional lightbox
+  Used for model photo galleries on product pages.
+{% endcomment %}
+
+{%- style -%}
+  /* ========== MODEL GALLERY ========== */
+  .nw-model-gallery {
+    padding: 80px 50px;
+    font-family: 'Raleway', sans-serif;
+    background: {{ section.settings.background_color }};
+    max-width: 1440px;
+    margin-inline: auto;
+  }
+
+  .nw-model-gallery__header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .nw-model-gallery__title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    line-height: 1.15;
+    margin: 0 0 16px 0;
+  }
+
+  .nw-model-gallery__subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #555;
+    line-height: 28px;
+    margin: 0;
+  }
+
+  .nw-model-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    max-width: 1340px;
+    margin-inline: auto;
+  }
+
+  .nw-model-gallery__item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #f5f5f5;
+  }
+
+  .nw-model-gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .nw-model-gallery__item:hover img {
+    transform: scale(1.05);
+  }
+
+  .nw-model-gallery__item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s ease;
+    pointer-events: none;
+  }
+
+  .nw-model-gallery__item:hover::after {
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  /* Lightbox overlay */
+  .nw-model-gallery__lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .nw-model-gallery__lightbox.is-active {
+    display: flex;
+  }
+
+  .nw-model-gallery__lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .nw-model-gallery__lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1200px) {
+    .nw-model-gallery__title { font-size: 48px; }
+  }
+
+  @media (max-width: 1024px) {
+    .nw-model-gallery__title { font-size: 40px; }
+  }
+
+  @media (max-width: 768px) {
+    .nw-model-gallery { padding: 60px 30px; }
+    .nw-model-gallery__title { font-size: 32px; }
+    .nw-model-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .nw-model-gallery { padding: 50px 20px; }
+    .nw-model-gallery__title { font-size: 26px; }
+    .nw-model-gallery__grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 375px) {
+    .nw-model-gallery__title { font-size: 22px; }
+  }
+{%- endstyle -%}
+
+<section class="nw-model-gallery">
+  {%- if section.settings.heading != blank -%}
+    <div class="nw-model-gallery__header">
+      <h2 class="nw-model-gallery__title">{{ section.settings.heading }}</h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="nw-model-gallery__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="nw-model-gallery__grid">
+    {%- for block in section.blocks -%}
+      <div class="nw-model-gallery__item" {{ block.shopify_attributes }} data-gallery-index="{{ forloop.index0 }}">
+        {%- if block.settings.image != blank -%}
+          <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.alt | default: section.settings.heading }}" loading="lazy">
+        {%- elsif block.settings.image_url != blank -%}
+          <img src="{{ block.settings.image_url }}" alt="{{ block.settings.alt | default: section.settings.heading }}" loading="lazy">
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="nw-model-gallery__lightbox" id="gallery-lightbox">
+    <button class="nw-model-gallery__lightbox-close" aria-label="Close">&times;</button>
+    <img src="" alt="Gallery preview">
+  </div>
+</section>
+
+<script>
+  (function() {
+    const section = document.querySelector('.nw-model-gallery');
+    if (!section) return;
+    const lightbox = section.querySelector('.nw-model-gallery__lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const closeBtn = lightbox.querySelector('.nw-model-gallery__lightbox-close');
+    section.querySelectorAll('.nw-model-gallery__item').forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        if (img) {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.classList.add('is-active');
+        }
+      });
+    });
+    closeBtn.addEventListener('click', () => lightbox.classList.remove('is-active'));
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.classList.remove('is-active');
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "NW Model Gallery",
+  "tag": "section",
+  "class": "nw-model-gallery-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Gallery"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FCFCFC"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#252220"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Gallery Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "image_url",
+          "label": "Image URL (fallback)"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Model Gallery",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}

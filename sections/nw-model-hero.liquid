@@ -8,12 +8,13 @@
   /* ========== MODEL HERO ========== */
   .nw-model-hero {
     position: relative;
-    min-height: 780px;
+    height: 780px;
+    margin-top: -60px; /* nav is position:absolute (60px), let it overlay the hero */
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Articulat CF', 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif;
   }
 
   .nw-model-hero__bg {
@@ -35,12 +36,22 @@
     z-index: 1;
   }
 
+  /* Radial glow effect (matches HTML hero__glow) */
+  .nw-model-hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 80%, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
   .nw-model-hero__content {
     position: relative;
     z-index: 5;
     text-align: center;
     max-width: 1400px;
-    padding: 120px 100px;
+    padding: 120px 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -56,17 +67,17 @@
   }
 
   .nw-model-hero__title {
-    font-family: 'Articulat CF', sans-serif;
-    font-size: 48px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 60px;
     font-weight: 700;
     color: {{ section.settings.text_color }};
-    line-height: 60px;
+    line-height: 1.15;
     text-align: center;
     margin: 0;
   }
 
   .nw-model-hero__subtitle {
-    font-family: 'Quando', serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 18px;
     font-weight: 400;
     color: {{ section.settings.text_color }};
@@ -83,7 +94,7 @@
   }
 
   .nw-model-hero__trust-item {
-    font-family: 'Articulat CF', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 20px;
     font-weight: 700;
     color: {{ section.settings.text_color }};
@@ -93,39 +104,59 @@
   .nw-model-hero__trust-sep {
     width: 0;
     height: 42px;
-    border-left: 1px solid {{ section.settings.text_color }};
-    opacity: 0.4;
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    opacity: 1;
+  }
+
+  /* ===== CTA Button ===== */
+  .nw-model-hero__cta {
+    display: inline-block;
+    background: #fff;
+    color: #000;
+    padding: 20px 40px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .nw-model-hero__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   }
 
   /* ===== Responsive ===== */
   @media (max-width: 1200px) {
-    .nw-model-hero__content { padding: 100px 60px; }
-    .nw-model-hero__title { font-size: 42px; line-height: 54px; }
+    .nw-model-hero__content { padding: 100px 50px; }
+    .nw-model-hero__title { font-size: 48px; }
   }
 
   @media (max-width: 1024px) {
-    .nw-model-hero { min-height: 640px; }
+    .nw-model-hero { height: 640px; }
     .nw-model-hero__content { padding: 80px 40px; gap: 50px; }
-    .nw-model-hero__title { font-size: 36px; line-height: 46px; }
+    .nw-model-hero__title { font-size: 40px; }
     .nw-model-hero__trust-bar { flex-wrap: wrap; justify-content: center; gap: 20px; }
     .nw-model-hero__trust-item { font-size: 16px; }
     .nw-model-hero__trust-sep { height: 30px; }
+    .nw-model-hero__cta { padding: 16px 32px; font-size: 15px; }
   }
 
   @media (max-width: 768px) {
-    .nw-model-hero { min-height: 520px; }
+    .nw-model-hero { height: 520px; margin-top: -60px; }
     .nw-model-hero__content { padding: 60px 20px; gap: 40px; }
-    .nw-model-hero__title { font-size: 30px; line-height: 40px; }
+    .nw-model-hero__title { font-size: 32px; }
     .nw-model-hero__subtitle { font-size: 16px; line-height: 26px; }
     .nw-model-hero__trust-bar { flex-direction: column; gap: 12px; }
     .nw-model-hero__trust-sep { display: none; }
+    .nw-model-hero__cta { padding: 14px 28px; font-size: 14px; }
   }
 
   @media (max-width: 480px) {
-    .nw-model-hero { min-height: 440px; }
-    .nw-model-hero__title { font-size: 26px; line-height: 36px; }
+    .nw-model-hero { height: 440px; }
+    .nw-model-hero__title { font-size: 26px; }
     .nw-model-hero__subtitle { font-size: 14px; line-height: 22px; }
     .nw-model-hero__trust-item { font-size: 14px; }
+    .nw-model-hero__cta { padding: 12px 24px; }
   }
 {%- endstyle -%}
 

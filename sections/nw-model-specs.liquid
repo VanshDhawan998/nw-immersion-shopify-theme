@@ -1,0 +1,214 @@
+{% comment %}
+  NW Model Specs — Two-column specs comparison (image + table)
+  Used for specification/comparison tables on model pages.
+{% endcomment %}
+
+{%- style -%}
+  /* ========== MODEL SPECS ========== */
+  .nw-model-specs {
+    padding: 80px 50px;
+    font-family: 'Raleway', sans-serif;
+    background: {{ section.settings.background_color }};
+    max-width: 1440px;
+    margin-inline: auto;
+  }
+
+  .nw-model-specs__header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .nw-model-specs__title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  .nw-model-specs__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1340px;
+    margin-inline: auto;
+    align-items: start;
+  }
+
+  .nw-model-specs__image-wrap {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .nw-model-specs__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .nw-model-specs__table {
+    max-width: 600px;
+  }
+
+  .nw-model-specs__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+    gap: 20px;
+  }
+
+  .nw-model-specs__row:last-child {
+    border-bottom: none;
+  }
+
+  .nw-model-specs__key {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+    line-height: 1.4;
+    flex-shrink: 0;
+  }
+
+  .nw-model-specs__value {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    line-height: 1.4;
+    text-align: right;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1200px) {
+    .nw-model-specs__title { font-size: 48px; }
+  }
+
+  @media (max-width: 1024px) {
+    .nw-model-specs__title { font-size: 40px; }
+    .nw-model-specs__grid { gap: 30px; }
+  }
+
+  @media (max-width: 768px) {
+    .nw-model-specs { padding: 60px 30px; }
+    .nw-model-specs__title { font-size: 32px; }
+    .nw-model-specs__grid { grid-template-columns: 1fr; }
+    .nw-model-specs__table { max-width: 100%; }
+  }
+
+  @media (max-width: 480px) {
+    .nw-model-specs { padding: 50px 20px; }
+    .nw-model-specs__title { font-size: 26px; }
+    .nw-model-specs__key,
+    .nw-model-specs__value { font-size: 15px; }
+  }
+
+  @media (max-width: 375px) {
+    .nw-model-specs__title { font-size: 22px; }
+  }
+{%- endstyle -%}
+
+<section class="nw-model-specs">
+  {%- if section.settings.heading != blank -%}
+    <div class="nw-model-specs__header">
+      <h2 class="nw-model-specs__title">{{ section.settings.heading }}</h2>
+    </div>
+  {%- endif -%}
+
+  <div class="nw-model-specs__grid">
+    <div class="nw-model-specs__image-wrap">
+      {%- if section.settings.image != blank -%}
+        <img src="{{ section.settings.image | image_url: width: 900 }}" alt="{{ section.settings.heading }}" loading="lazy">
+      {%- elsif section.settings.image_url != blank -%}
+        <img src="{{ section.settings.image_url }}" alt="{{ section.settings.heading }}" loading="lazy">
+      {%- endif -%}
+    </div>
+
+    <div class="nw-model-specs__table">
+      {%- for block in section.blocks -%}
+        <div class="nw-model-specs__row" {{ block.shopify_attributes }}>
+          <span class="nw-model-specs__key">{{ block.settings.label }}</span>
+          <span class="nw-model-specs__value">{{ block.settings.value }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Model Specs",
+  "tag": "section",
+  "class": "nw-model-specs-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Specifications"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product Image"
+    },
+    {
+      "type": "url",
+      "id": "image_url",
+      "label": "Image URL (fallback)"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FCFCFC"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#252220"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Spec Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Dimensions"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "6' x 8' x 7'"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Model Specs",
+      "blocks": [
+        { "type": "spec", "settings": { "label": "Exterior Dimensions", "value": "6' W × 8' D × 7' H" } },
+        { "type": "spec", "settings": { "label": "Interior Dimensions", "value": "5'6\" W × 7'6\" D × 6'8\" H" } },
+        { "type": "spec", "settings": { "label": "Seating Capacity", "value": "4–6 People" } },
+        { "type": "spec", "settings": { "label": "Wood Species", "value": "Clear Western Red Cedar" } },
+        { "type": "spec", "settings": { "label": "Heater", "value": "Harvia 6.0kW Electric" } },
+        { "type": "spec", "settings": { "label": "Electrical", "value": "240V / 30A Dedicated Circuit" } },
+        { "type": "spec", "settings": { "label": "Weight", "value": "~1,200 lbs" } },
+        { "type": "spec", "settings": { "label": "Warranty", "value": "5-Year Structural" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
