@@ -95,12 +95,12 @@
         "shop_button_text": "SHOP",
         "accent_color": "#4a7c59",
         "enable_transparent_nav": "homepage",
-        "nav_bg_color": "#1b3a2d",
+        "nav_bg_color": "#000000",
         "nav_text_color_solid": "#ffffff",
-        "show_hero": true,
+        "show_hero": false,
         "hero_height": 780,
         "overlay_opacity": 30,
-        "hero_title": "Step into a space built<br>for warmth, wellness & Calm",
+        "hero_title": "Step into a space builtfor warmth, wellness & Calm",
         "hero_cta_text": "Shop Saunas and Cold Plunges",
         "hero_cta_link": "/collections/all"
       }
