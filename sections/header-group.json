@@ -56,7 +56,7 @@
           "type": "nav_item",
           "settings": {
             "label": "Outdoor Saunas",
-            "link": "/collections/signature-saunas",
+            "link": "https://nw-immersion.myshopify.com/pages/shop?category=outdoor-saunas",
             "filter_slug": ""
           }
         },
