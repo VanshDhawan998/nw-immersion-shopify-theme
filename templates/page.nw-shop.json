@@ -6,57 +6,85 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+
+{
   "sections": {
-    "main": {
-      "type": "main-page",
+    "nw_shop_page": {
+      "type": "nw-shop-page",
       "blocks": {
-        "heading": {
-          "type": "text",
-          "name": "Title",
+        "cat_1": {
+          "type": "category_card",
           "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "title": "Supplies & Accessories",
+            "category_slug": "supplies-accessories",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Supplies-Accessories-Category.jpg"
+          }
         },
-        "page-content": {
-          "type": "page-content",
-          "settings": {},
-          "blocks": {}
+        "cat_2": {
+          "type": "category_card",
+          "settings": {
+            "title": "Indoor Saunas",
+            "category_slug": "indoor-saunas",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Indoor-Saunas-Category.webp"
+          }
+        },
+        "cat_3": {
+          "type": "category_card",
+          "settings": {
+            "title": "Outdoor Saunas",
+            "category_slug": "outdoor-saunas",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Outdoor-Saunas-Category-1024x683.webp"
+          }
+        },
+        "cat_4": {
+          "type": "category_card",
+          "settings": {
+            "title": "Cold Plunge / Hot Tubs",
+            "category_slug": "cold-plunge-hot-tubs",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Cold-Plunge-.jpg"
+          }
+        },
+        "cat_5": {
+          "type": "category_card",
+          "settings": {
+            "title": "Woodstove Heaters",
+            "category_slug": "woodstove-heaters",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Woodstove-Heaters-Category.jpg"
+          }
+        },
+        "cat_6": {
+          "type": "category_card",
+          "settings": {
+            "title": "Electric Heaters",
+            "category_slug": "electric-heaters",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Electric-Heaters-Category.jpg"
+          }
+        },
+        "cat_7": {
+          "type": "category_card",
+          "settings": {
+            "title": "Signature Saunas",
+            "category_slug": "signature-saunas",
+            "image_url": "https://nwimmersion.com/wp-content/uploads/2025/11/Signature-Saunas-Category-1024x768.jpeg"
+          }
         }
       },
       "block_order": [
-        "heading",
-        "page-content"
+        "cat_1",
+        "cat_2",
+        "cat_3",
+        "cat_4",
+        "cat_5",
+        "cat_6",
+        "cat_7"
       ],
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "color_scheme": "",
-        "padding-block-start": 40,
-        "padding-block-end": 80
+        "heading": "Shop Saunas & Supplies"
       }
     }
   },
   "order": [
-    "main"
+    "nw_shop_page"
   ]
 }
