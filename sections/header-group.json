@@ -48,7 +48,7 @@
           "type": "nav_item",
           "settings": {
             "label": "Plunges & Tubs",
-            "link": "#",
+            "link": "https://nw-immersion.myshopify.com/pages/shop?category=indoor-saunas",
             "filter_slug": "indoor-saunas"
           }
         },
