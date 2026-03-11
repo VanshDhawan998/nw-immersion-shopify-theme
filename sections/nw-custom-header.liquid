@@ -180,6 +180,14 @@
     margin-left: auto;
     margin-right: auto;
     padding: 0;
+     height: 100%;
+    align-items: stretch;
+  }
+
+  .nw-nav-links > li {
+    display: flex;
+    align-items: center;
+  }
   }
 
   .nw-nav-links a {
@@ -278,6 +286,8 @@
      ============================================ */
   .nw-nav-mega-trigger {
     position: static;
+    display: flex;
+    align-items: center;
   }
 
   .nw-nav-mega-trigger > a {
@@ -315,6 +325,15 @@
     z-index: 14;
     background: #fff;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+/* Invisible bridge — prevents hover gap between trigger and dropdown */
+  .nw-mega-menu::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    height: 20px;
   }
 
   .nw-nav-mega-trigger:hover .nw-mega-menu,
