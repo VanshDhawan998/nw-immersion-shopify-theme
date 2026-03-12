@@ -1,0 +1,80 @@
+<section class="nw-pdp-section nw-pdp-quote-section" id="nw-product-quote-{{ section.id }}">
+  <div class="nw-pdp-quote-inner">
+    <div class="nw-pdp-quote-box">
+
+      <!-- Background image + overlay -->
+      {%- if section.settings.background_image != blank -%}
+      <div class="nw-pdp-quote-box__bg" aria-hidden="true">
+        <img
+          src="{{ section.settings.background_image | image_url: width: 1920 }}"
+          alt=""
+          width="1720"
+          height="413"
+          loading="lazy"
+        >
+      </div>
+      {%- endif -%}
+      <div class="nw-pdp-quote-box__overlay" aria-hidden="true"></div>
+
+      <!-- Content -->
+      <div class="nw-pdp-quote-box__content nw-fade-up">
+        <h2 class="nw-pdp-quote-box__title">
+          {{ section.settings.heading | default: 'Get a Custom Quote' }}
+        </h2>
+        {%- if section.settings.text != blank -%}
+        <p class="nw-pdp-quote-box__text">{{ section.settings.text }}</p>
+        {%- endif -%}
+        <a
+          href="{{ section.settings.button_url | default: '/pages/contact' }}"
+          class="nw-pdp-btn-pill"
+        >
+          {{ section.settings.button_text | default: 'Request a Quote' }}
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Custom Quote CTA",
+  "tag": "div",
+  "class": "nw-pdp-section-wrapper",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get a Custom Quote"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description text",
+      "default": "Looking for a custom configuration, commercial order, or bulk pricing? Our team is ready to build the perfect sauna package for your exact needs."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Request a Quote"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Custom Quote CTA"
+    }
+  ]
+}
+{% endschema %}
