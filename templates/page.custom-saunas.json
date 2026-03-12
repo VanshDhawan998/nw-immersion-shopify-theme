@@ -40,12 +40,26 @@
           "settings": {
             "feature_text": "Same-Day Parts Shipping"
           }
+        },
+        "feature_G4KFxL": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Made in the USA"
+          }
+        },
+        "feature_k9RLE7": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Sustainable & Locally Sourced"
+          }
         }
       },
       "block_order": [
         "feature_XV4AFW",
         "feature_J6gp7w",
-        "feature_HHmibJ"
+        "feature_HHmibJ",
+        "feature_G4KFxL",
+        "feature_k9RLE7"
       ],
       "name": "Hero Banner",
       "settings": {
@@ -57,10 +71,10 @@
         "padding_top": 100,
         "padding_bottom": 150,
         "text_alignment": "center",
-        "title": "Loowit Sauna Model Compact, Versatile, And Handcrafted",
+        "title": "Bespoke Sauna Vancouver, WA Your Vision, Handcrafted",
         "title_color": "#ffffff",
         "title_font_size": 40,
-        "description": "Built by hand here in Vancouver, Washington, the Loowit sauna model takes a smaller footprint and transforms it into a sanctuary that feels bigger than it looks. With cedar walls, a sliding bench for stretching or yoga, and toxin-free finishes, it's proof that compact design doesn't mean compromise.",
+        "description": "Our Bespoke Sauna is for those who see their sauna as an extension of their home, their rituals, and their wellness journey. Handcrafted in Vancouver, WA, every custom built sauna project is shaped around your ideas and brought to life with cedar, craftsmanship, and care.",
         "text_color": "#ffffff",
         "text_font_size": 18,
         "feature_color": "#ffffff",
@@ -266,7 +280,7 @@
         "main_heading_size": 40,
         "feature_title_size": 24,
         "text_size": 18,
-        "background_color": "#FCF9F4",
+        "background_color": "#fcf9f4",
         "heading_color": "#252220",
         "text_color": "#252220",
         "button_background_color": "#546659",
