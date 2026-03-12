@@ -554,96 +554,38 @@
         "mobile_highlight_center": false
       }
     },
-    "warranty_showroom_wxWpzc": {
-      "type": "warranty-showroom",
-      "blocks": {
-        "column_biXkGT": {
-          "type": "column",
-          "settings": {
-            "heading": "Warranty That Gives You Peace of Mind",
-            "text": "Every Loowit sauna includes a 12-month limited warranty covering structural components and workmanship. Handbuilt in the USA and licensed in Washington State, it's backed by local accountability and care.",
-            "button_text": "Learn About Our Warranty",
-            "button_link": "#warranty-details"
-          }
-        },
-        "column_tXxJtJ": {
-          "type": "column",
-          "settings": {
-            "heading": "Visit Our Vancouver WA Showroom",
-            "text": "Nothing compares to stepping inside a sauna before it's yours. Visit our Vancouver showroom to experience the Loowit firsthand, see the sliding bench in action, and feel the cedar that makes this model so unique.",
-            "button_text": "Email Us For Full Details",
-            "button_link": "mailto:info@loowitsauna.com"
-          }
-        }
-      },
-      "block_order": [
-        "column_biXkGT",
-        "column_tXxJtJ"
-      ],
-      "name": "Warranty & Showroom",
-      "settings": {
-        "background_color": "#fcf9f4",
-        "max_width": 1670,
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "columns_gap": 50,
-        "heading_color": "#252220",
-        "heading_font_size": 40,
-        "heading_font_weight": "600",
-        "heading_font_family": "articulatcf-bold, sans-serif",
-        "heading_margin_bottom": 20,
-        "text_color": "#252220",
-        "text_font_size": 18,
-        "text_font_weight": "400",
-        "text_font_family": "Quando",
-        "text_margin_bottom": 28,
-        "button_background": "#5c6f61",
-        "button_hover_background": "#5b3023",
-        "button_text_color": "#ffffff",
-        "button_text_color_hover": "#ffffff",
-        "button_font_size": 18,
-        "button_font_weight": "700",
-        "button_font_family": "articulatcf-bold, sans-serif",
-        "button_padding_top": 12,
-        "button_padding_sides": 20,
-        "button_border_radius": 20,
-        "button_border_width": 0,
-        "button_border_color": "#5c6f61",
-        "button_border_color_hover": "#5b3023"
-      }
-    },
-    "loowit_way_features_YzyENf": {
+    "loowit_way_features_XBmUda": {
       "type": "loowit-way-features",
       "blocks": {
-        "feature_D4L4xX": {
+        "feature_RWEp7e": {
           "type": "feature",
           "settings": {
             "feature_title": "Compact Footprint, Spacious Feel",
             "feature_description": "The Loowit makes the most of its size. With benches that seat six and thoughtful design, it feels bigger inside than its footprint suggests."
           }
         },
-        "feature_FMMGbJ": {
+        "feature_wHzgMp": {
           "type": "feature",
           "settings": {
             "feature_title": "Sliding Bench Versatility For Yoga & Stretching",
             "feature_description": "The movable lower bench turns your sauna into a space for stretching or yoga, giving you more ways to use your retreat."
           }
         },
-        "feature_QCkE7T": {
+        "feature_rFFWXk": {
           "type": "feature",
           "settings": {
             "feature_title": "Crafted From Local Cedar",
             "feature_description": "Clear western red cedar, sourced locally, provides the durability, warmth, and scent that define the sauna experience."
           }
         },
-        "feature_zftHgr": {
+        "feature_f3epbi": {
           "type": "feature",
           "settings": {
             "feature_title": "Toxin-Free Wellness Sanctuary",
             "feature_description": "Every finish is natural, free of adhesives and synthetics, so you can breathe deeply knowing your space is clean and safe."
           }
         },
-        "feature_JDwFBP": {
+        "feature_H8M34N": {
           "type": "feature",
           "settings": {
             "feature_title": "Accessible Price Point, Built To Last",
@@ -652,11 +594,11 @@
         }
       },
       "block_order": [
-        "feature_D4L4xX",
-        "feature_FMMGbJ",
-        "feature_QCkE7T",
-        "feature_zftHgr",
-        "feature_JDwFBP"
+        "feature_RWEp7e",
+        "feature_wHzgMp",
+        "feature_rFFWXk",
+        "feature_f3epbi",
+        "feature_H8M34N"
       ],
       "name": "Loowit Way Features",
       "settings": {
@@ -664,7 +606,6 @@
         "main_description": "Our Loowit sauna model is compact but spacious, simple but flexible, and affordable without compromise. For homeowners across the country, it's become a favorite model for daily wellness.",
         "button_text": "See Who's Behind The Craft",
         "button_url": "",
-        "image": "shopify://shop_images/image-1523443.webp",
         "image_alt_text": "Loowit Sauna",
         "image_position": "right",
         "max_width": 1670,
@@ -676,7 +617,7 @@
         "main_heading_size": 40,
         "feature_title_size": 24,
         "text_size": 18,
-        "background_color": "#fcf9f4",
+        "background_color": "#FCF9F4",
         "heading_color": "#252220",
         "text_color": "#252220",
         "button_background_color": "#546659",
@@ -840,7 +781,7 @@
         "text_weight": 400,
         "text_line_height": 29,
         "text_color": "#ffffff",
-        "padding_top": 130,
+        "padding_top": 110,
         "padding_horizontal": 50,
         "section_padding_vertical": 120,
         "section_padding_horizontal": 100,
@@ -862,8 +803,7 @@
     "bespoke_section_yUMFMz",
     "lowitsuana_sec6_dqBgA3",
     "showroom_section_JkHWGQ",
-    "warranty_showroom_wxWpzc",
-    "loowit_way_features_YzyENf",
+    "loowit_way_features_XBmUda",
     "customize_section_QUMXm4",
     "faq_section_gHayjc",
     "showroom_section_copy_4MEmPh"
