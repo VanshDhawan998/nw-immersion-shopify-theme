@@ -1,0 +1,186 @@
+<section class="nw-pdp-section nw-pdp-stories-section" id="nw-product-stories-{{ section.id }}">
+  <div class="nw-pdp-stories-inner">
+
+    <!-- Header row: title + subtitle + navigation arrows -->
+    <div class="nw-pdp-stories__header">
+      <div class="nw-pdp-stories__htext nw-fade-up">
+        <h2 class="nw-pdp-stories__title">
+          {{ section.settings.heading | default: 'Stories from the Steam' }}
+        </h2>
+        {%- if section.settings.subtitle != blank -%}
+        <p class="nw-pdp-stories__subtitle">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+      </div>
+
+      <!-- Prev / Next arrows -->
+      <div class="nw-pdp-stories__nav" aria-label="Testimonial navigation">
+        <button class="nw-pdp-stories__nav-btn" type="button" data-stories-prev aria-label="Previous testimonials">
+          <!-- Circle left arrow -->
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="31" stroke="#252220" stroke-width="2"/>
+            <path d="M36 20L24 32l12 12" stroke="#252220" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="nw-pdp-stories__nav-btn" type="button" data-stories-next aria-label="Next testimonials">
+          <!-- Circle right arrow -->
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="31" stroke="#252220" stroke-width="2"/>
+            <path d="M28 20l12 12-12 12" stroke="#252220" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div><!-- /.nw-pdp-stories__header -->
+
+    <!-- Review Cards Grid -->
+    <div class="nw-pdp-stories__cards" aria-label="Customer testimonials">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'testimonial' -%}
+        <article class="nw-pdp-review-card nw-fade-up nw-fade-up--d{{ forloop.index | modulo: 3 | plus: 1 }}" {{ block.shopify_attributes }}>
+
+          <!-- Opening quote mark -->
+          <div class="nw-pdp-review-card__quote-icon" aria-hidden="true">
+            <svg viewBox="0 0 66 52" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 52V31.333C0 15.926 7.111 6.37 21.333 0L26.222 7.852C18.963 11.185 15.11 15.63 14.519 21.185H28V52H0ZM38 52V31.333C38 15.926 45.111 6.37 59.333 0L64.222 7.852C56.963 11.185 53.11 15.63 52.519 21.185H66V52H38Z"/>
+            </svg>
+          </div>
+
+          <!-- Review text -->
+          <p class="nw-pdp-review-card__text">{{ block.settings.quote }}</p>
+
+          <!-- Footer: author info + stars -->
+          <footer class="nw-pdp-review-card__footer">
+            <div class="nw-pdp-review-card__author">
+              {%- if block.settings.avatar != blank -%}
+              <img
+                class="nw-pdp-review-card__avatar"
+                src="{{ block.settings.avatar | image_url: width: 110, height: 110, crop: 'center' }}"
+                alt="{{ block.settings.name | default: 'Reviewer' | escape }}"
+                width="55"
+                height="55"
+                loading="lazy"
+              >
+              {%- else -%}
+              <div class="nw-pdp-review-card__avatar" aria-hidden="true" style="background:#e0d9d2;"></div>
+              {%- endif -%}
+              <div class="nw-pdp-review-card__author-info">
+                <span class="nw-pdp-review-card__name">{{ block.settings.name | default: 'Happy Customer' }}</span>
+                {%- if block.settings.role != blank -%}
+                <span class="nw-pdp-review-card__role">{{ block.settings.role }}</span>
+                {%- endif -%}
+              </div>
+            </div>
+
+            <!-- Stars -->
+            {%- assign star_count = block.settings.stars | default: 5 | plus: 0 -%}
+            <div class="nw-pdp-review-card__stars" aria-label="{{ star_count }} out of 5 stars" role="img">
+              {%- for i in (1..5) -%}
+              <svg viewBox="0 0 24 24" fill="{% if i <= star_count %}currentColor{% else %}none{% endif %}" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+              {%- endfor -%}
+            </div>
+          </footer>
+
+        </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div><!-- /.nw-pdp-stories__cards -->
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Stories from the Steam",
+  "tag": "div",
+  "class": "nw-pdp-section-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Stories from the Steam"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section subtitle",
+      "default": "Real customers. Real experiences. Hear what sauna owners say about life with NW Immersion."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Author photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Author name",
+          "default": "Sarah M."
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Author role / location",
+          "default": "Verified Buyer"
+        },
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Star rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review text",
+          "default": "This sauna has completely transformed our evenings. We use it 4–5 times a week and the quality is outstanding. Couldn't be happier!"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Stories from the Steam",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "name": "James P.",
+            "role": "Seattle, WA — Verified Buyer",
+            "stars": 5,
+            "quote": "We have had our sauna for over a year now and it has become the favorite spot in the house. The Harvia heater gets it up to temperature incredibly fast and the Canadian Hemlock smells amazing."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "name": "Rachel T.",
+            "role": "Denver, CO — Verified Buyer",
+            "stars": 5,
+            "quote": "I was nervous about assembly but it came together so smoothly with the instructions. The panoramic windows make it feel luxurious. 100% worth every penny."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "name": "Marcus L.",
+            "role": "Portland, OR — Verified Buyer",
+            "stars": 5,
+            "quote": "We got the cold plunge bundle and the contrast therapy combination is next level. Our recovery from training has improved dramatically. Absolutely love it."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
