@@ -11,43 +11,7 @@
   "sections": {
     "main": {
       "type": "main-page",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "name": "Title",
-          "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "page-content": {
-          "type": "page-content",
-          "settings": {},
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "page-content"
-      ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
@@ -101,7 +65,7 @@
         "text_font_size": 18,
         "feature_color": "#ffffff",
         "feature_font_size": 20,
-        "divider_color": "rgba(255, 255, 255, 0.55)",
+        "divider_color": "#ffffff8c",
         "show_button": false,
         "button_text": "Shop Now",
         "button_url": "",
@@ -131,9 +95,9 @@
         "text_size": 18,
         "heading_color": "#111111",
         "text_color": "#333333",
-        "button_color": "#4A5A4A",
+        "button_color": "#4a5a4a",
         "button_text_color": "#ffffff",
-        "button_border_color": "transparent",
+        "button_border_color": "rgba(0,0,0,0)",
         "button_border_hover": "#000000",
         "button_hover": "#ffffff",
         "button_hover_text": "#000000",
@@ -217,12 +181,12 @@
         "main_heading_size": 40,
         "subheading_size": 24,
         "text_size": 18,
-        "background_color": "#FCF9F4",
+        "background_color": "#fcf9f4",
         "heading_color": "#252220",
         "text_color": "#252220",
         "icon_background_color": "#5c6f63",
-        "divider_color": "#F6E8D1",
-        "button_background_color": "#5C6F61",
+        "divider_color": "#f6e8d1",
+        "button_background_color": "#5c6f61",
         "button_hover_background": "#4a5a52",
         "button_text_color": "#ffffff",
         "button_hover_text_color": "#ffffff",
@@ -233,10 +197,62 @@
         "button_padding_horizontal": 32,
         "button_border_radius": 20,
         "button_border_width": 0,
-        "button_border_color": "#5C6F61",
+        "button_border_color": "#5c6f61",
         "button_hover_border_color": "#4a5a52",
         "video_border_radius": 18,
         "video_max_height": 770
+      }
+    },
+    "hero_section_3KyRRJ": {
+      "type": "hero-section",
+      "blocks": {
+        "feature_card_iBNjfe": {
+          "type": "feature_card",
+          "settings": {
+            "card_heading": "Durability Meets Design",
+            "card_description": "A standing seam metal roof and pressure-treated foundation give the Loowit its backbone. Foam insulation beneath the sauna, combined with rockwool insulation in the walls and ceiling, keeps the interior warm and efficient.",
+            "card_button_text": "Learn More",
+            "card_button_url": ""
+          }
+        },
+        "feature_card_tAePhY": {
+          "type": "feature_card",
+          "settings": {
+            "card_heading": "Signature Exterior Features",
+            "card_description": "A wide front window and glass door invite natural light while keeping the structure private and stylish. Exterior LED lighting makes nighttime sessions inviting, while the Behr Carbon Black paint provides a clean, modern finish.",
+            "card_button_text": "View The Exterior In Person",
+            "card_button_url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "feature_card_iBNjfe",
+        "feature_card_tAePhY"
+      ],
+      "name": "Hero Section",
+      "settings": {
+        "hero_heading": "Loowit Sauna Exterior: Strong Lines, Lasting Strength",
+        "hero_description": "Built with the Pacific Northwest climate in mind, the Loowit's exterior is compact, resilient, and modern. With a sleek black finish, cedar deck, and metal roof, it's made to hold its character through rain, snow, and heat.",
+        "background_image": "shopify://shop_images/image-1523443.webp",
+        "background_color": "#fef9f5",
+        "overlay_opacity": 45,
+        "text_color": "#ffffff",
+        "heading_font_size": 44,
+        "description_font_size": 18,
+        "card_background": "#e7dcc8",
+        "card_text_color": "#333333",
+        "card_heading_font_size": 24,
+        "card_text_font_size": 18,
+        "button_color": "#4A5A4A",
+        "button_hover_color": "#ffffff",
+        "button_hover_text_color": "#4A5A4A",
+        "button_font_size": 16,
+        "min_height": 500,
+        "border_radius": 20,
+        "section_padding_top": 140,
+        "section_padding_bottom": 140,
+        "padding_top": 100,
+        "padding_bottom": 100
       }
     },
     "upgrade_options_eYJ8ex": {
@@ -296,13 +312,13 @@
         "heading_font_weight": "600",
         "heading_font_family": "articulatcf-bold, sans-serif",
         "heading_margin_bottom": 18,
-        "text_color": "#5B3023",
+        "text_color": "#5b3023",
         "text_font_size": 18,
         "text_font_weight": "400",
         "text_font_family": "Quando, serif",
         "text_max_width": 680,
         "text_margin_bottom": 22,
-        "button_background": "#5C6F61",
+        "button_background": "#5c6f61",
         "button_hover_background": "#4a5a52",
         "button_text_color": "#ffffff",
         "button_hover_text_color": "#ffffff",
@@ -313,9 +329,9 @@
         "button_padding_horizontal": 32,
         "button_border_radius": 20,
         "button_border_width": 0,
-        "button_border_color": "#5C6F61",
+        "button_border_color": "#5c6f61",
         "button_hover_border_color": "#4a5a52",
-        "card_background": "#FBEFDB",
+        "card_background": "#fbefdb",
         "card_padding": 28,
         "mobile_card_padding": 20,
         "card_border_radius": 14,
@@ -325,8 +341,8 @@
         "card_heading_font_family": "articulatcf-bold, sans-serif",
         "card_heading_margin": 16,
         "icon_color": "#546659",
-        "option_text_color": "#5B3023",
-        "price_color": "#5B3023",
+        "option_text_color": "#5b3023",
+        "price_color": "#5b3023",
         "option_font_size": 18,
         "option_font_weight": "400",
         "option_font_family": "Quando, serif",
@@ -491,8 +507,8 @@
         "text_font_weight": "400",
         "text_font_family": "Quando",
         "text_margin_bottom": 28,
-        "button_background": "#5C6F61",
-        "button_hover_background": "#5B3023",
+        "button_background": "#5c6f61",
+        "button_hover_background": "#5b3023",
         "button_text_color": "#ffffff",
         "button_text_color_hover": "#ffffff",
         "button_font_size": 18,
@@ -502,8 +518,8 @@
         "button_padding_sides": 20,
         "button_border_radius": 20,
         "button_border_width": 0,
-        "button_border_color": "#5C6F61",
-        "button_border_color_hover": "#5B3023"
+        "button_border_color": "#5c6f61",
+        "button_border_color_hover": "#5b3023"
       }
     },
     "loowit_way_features_YzyENf": {
@@ -569,7 +585,7 @@
         "main_heading_size": 40,
         "feature_title_size": 24,
         "text_size": 18,
-        "background_color": "#FCF9F4",
+        "background_color": "#fcf9f4",
         "heading_color": "#252220",
         "text_color": "#252220",
         "button_background_color": "#546659",
@@ -591,6 +607,7 @@
     "hero_banner_XEfMtT",
     "lowitsasuana_sec2_Upg9KT",
     "loowit_interior_section_KLQjFJ",
+    "hero_section_3KyRRJ",
     "upgrade_options_eYJ8ex",
     "lowitsuana_sec6_dqBgA3",
     "warranty_showroom_wxWpzc",
