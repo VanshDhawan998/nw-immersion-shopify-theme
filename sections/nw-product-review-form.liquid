@@ -1,0 +1,157 @@
+<section class="nw-pdp-section nw-pdp-review-form-section" id="nw-product-review-form-{{ section.id }}">
+  <div class="nw-pdp-review-form-inner">
+    <div class="nw-pdp-review-form-box">
+
+      <!-- Background image -->
+      {%- if section.settings.background_image != blank -%}
+      <div class="nw-pdp-review-form-box__bg" aria-hidden="true">
+        <img
+          src="{{ section.settings.background_image | image_url: width: 1920 }}"
+          alt=""
+          width="1720"
+          height="735"
+          loading="lazy"
+        >
+      </div>
+      {%- endif -%}
+      <div class="nw-pdp-review-form-box__overlay" aria-hidden="true"></div>
+
+      <!-- Content -->
+      <div class="nw-pdp-review-form-box__content">
+
+        <!-- Header row: title/subtitle + star interactive rating -->
+        <div class="nw-pdp-review-form-box__header">
+          <div class="nw-pdp-review-form-box__htext nw-fade-up">
+            <h2 class="nw-pdp-review-form-box__title">
+              {{ section.settings.heading | default: 'Stories From the Heat' }}
+            </h2>
+            {%- if section.settings.subtitle != blank -%}
+            <p class="nw-pdp-review-form-box__subtitle">{{ section.settings.subtitle }}</p>
+            {%- endif -%}
+          </div>
+
+          <!-- Interactive star rating -->
+          <div class="nw-pdp-review-form-box__rating nw-fade-up nw-fade-up--d2" aria-label="Select a star rating">
+            <div class="nw-pdp-star-rating-display" role="radiogroup" aria-label="Rating">
+              {%- for i in (1..5) -%}
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                role="radio"
+                aria-checked="false"
+                aria-label="{{ i }} star{% if i > 1 %}s{% endif %}"
+                tabindex="0"
+              >
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+              {%- endfor -%}
+            </div>
+            <span class="nw-pdp-rating-label">Your rating</span>
+          </div>
+        </div>
+
+        <!-- Review form -->
+        {%- form 'contact', class: 'nw-pdp-review-form' -%}
+          <input type="hidden" name="contact[subject]" value="Product Review: {{ product.title | escape }}">
+          <input type="hidden" name="rating" id="nw-rating-input" value="">
+
+          <div class="nw-pdp-review-form__fields">
+            <textarea
+              class="nw-pdp-review-textarea"
+              name="contact[body]"
+              placeholder="{{ section.settings.textarea_placeholder | default: 'Write your review here…' }}"
+              rows="6"
+              required
+              aria-label="Your review"
+            ></textarea>
+
+            <div class="nw-pdp-review-form__row">
+              <input
+                type="text"
+                class="nw-pdp-review-input"
+                name="contact[name]"
+                placeholder="{{ section.settings.name_placeholder | default: 'Your name' }}"
+                required
+                autocomplete="name"
+                aria-label="Your name"
+              >
+              <input
+                type="email"
+                class="nw-pdp-review-input"
+                name="contact[email]"
+                placeholder="{{ section.settings.email_placeholder | default: 'Your email' }}"
+                required
+                autocomplete="email"
+                aria-label="Your email"
+              >
+            </div>
+          </div>
+
+          <button type="submit" class="nw-pdp-review-submit">
+            {{ section.settings.button_text | default: 'Submit Review' }}
+          </button>
+
+        {%- endform -%}
+
+      </div><!-- /.nw-pdp-review-form-box__content -->
+    </div><!-- /.nw-pdp-review-form-box -->
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Review Form",
+  "tag": "div",
+  "class": "nw-pdp-section-wrapper",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image (sauna interior)"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Stories From the Heat"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section subtitle",
+      "default": "Share your sauna experience and help others discover the transformation."
+    },
+    {
+      "type": "text",
+      "id": "textarea_placeholder",
+      "label": "Review textarea placeholder",
+      "default": "Write your review here…"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Name field placeholder",
+      "default": "Your name"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email field placeholder",
+      "default": "Your email"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Submit button text",
+      "default": "Submit Review"
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Review Form"
+    }
+  ]
+}
+{% endschema %}
