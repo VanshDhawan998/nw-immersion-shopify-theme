@@ -1,0 +1,847 @@
+<!-- Shopify Liquid Section: Showroom Contact -->
+<section class="showroom-section" id="showroom-section-{{ section.id }}">
+  <div class="contact-section">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="contact-content">
+      <div class="timing-text">
+        {% comment %} Render schedule blocks {% endcomment %}
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'schedule_item' %}
+              <span {{ block.shopify_attributes }}>
+                {{ block.settings.schedule_text }}
+              </span>
+            {% when 'address' %}
+              <span class="address-info" {{ block.shopify_attributes }}>
+                {% if block.settings.phone_number != blank %}
+                  <a href="tel:{{ block.settings.phone_number | replace: ' ', '' | replace: '-', '' | replace: '(', '' | replace: ')', '' }}">
+                    {{ block.settings.phone_number }}
+                  </a>
+                  {% if block.settings.phone_text != blank %}
+                    {{ block.settings.phone_text }}
+                  {% endif %}
+                  <br>
+                {% endif %}
+                {% if block.settings.address_line_1 != blank %}
+                  {{ block.settings.address_line_1 }}
+                  {% if block.settings.address_line_2 != blank %}
+                    <br>{{ block.settings.address_line_2 }}
+                  {% endif %}
+                {% endif %}
+              </span>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #showroom-section-{{ section.id }} {
+    /* CSS Variables from Shopify Settings */
+    --section-bg-color: {{ section.settings.section_bg_color }};
+    --heading-color: {{ section.settings.heading_color }};
+    --text-color: {{ section.settings.text_color }};
+    --link-color: {{ section.settings.link_color }};
+    --link-hover-color: {{ section.settings.link_hover_color }};
+    
+    --heading-font-family: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+    --heading-font-weight: {{ section.settings.heading_font.weight }};
+    --heading-font-size: {{ section.settings.heading_font_size }}px;
+    --heading-line-height: {{ section.settings.heading_line_height }};
+    
+    --text-font-family: {{ section.settings.text_font.family }}, {{ section.settings.text_font.fallback_families }};
+    --text-font-weight: {{ section.settings.text_font.weight }};
+    --text-font-size: {{ section.settings.text_font_size }}px;
+    --text-line-height: {{ section.settings.text_line_height }};
+    
+    --section-padding-top: {{ section.settings.section_padding_top }}px;
+    --section-padding-bottom: {{ section.settings.section_padding_bottom }}px;
+    --section-padding-left: {{ section.settings.section_padding_horizontal }}px;
+    --section-padding-right: {{ section.settings.section_padding_horizontal }}px;
+    
+    --contact-padding-top: {{ section.settings.contact_padding_top }}px;
+    --contact-padding-bottom: {{ section.settings.contact_padding_bottom }}px;
+    --contact-padding-left: {{ section.settings.contact_padding_horizontal }}px;
+    --contact-padding-right: {{ section.settings.contact_padding_horizontal }}px;
+    
+    --border-radius: {{ section.settings.border_radius }}px;
+    --content-max-width: {{ section.settings.content_max_width }}%;
+    
+    /* Overlay settings */
+    --overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --overlay-color-start: {{ section.settings.overlay_color_start | color_modify: 'alpha', section.settings.overlay_opacity | divided_by: 100.0 }};
+    --overlay-color-middle: {{ section.settings.overlay_color_middle | color_modify: 'alpha', section.settings.overlay_middle_opacity | divided_by: 100.0 }};
+    --overlay-color-end: {{ section.settings.overlay_color_end | color_modify: 'alpha', section.settings.overlay_end_opacity | divided_by: 100.0 }};
+  }
+
+  /* CSS Reset */
+  #showroom-section-{{ section.id }} * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Section Styles */
+  .showroom-section {
+    width: 100%;
+    background-color: var(--section-bg-color);
+    padding: var(--section-padding-top) var(--section-padding-right) var(--section-padding-bottom) var(--section-padding-left);
+  }
+
+  .contact-section {
+    width: 100%;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    {% if section.settings.background_image != blank %}
+      background: linear-gradient(to right, var(--overlay-color-start) 0%, var(--overlay-color-middle) 70%, var(--overlay-color-end) 100%), 
+                  url('{{ section.settings.background_image | image_url: width: 1920 }}');
+      background-size: cover;
+      background-position: {{ section.settings.background_position }};
+      background-repeat: no-repeat;
+    {% else %}
+      background: var(--overlay-color-middle);
+    {% endif %}
+    padding: var(--contact-padding-top) var(--contact-padding-right) var(--contact-padding-bottom) var(--contact-padding-left);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--text-color);
+  }
+
+  .contact-section h2 {
+    font-family: var(--heading-font-family);
+    font-size: var(--heading-font-size);
+    font-weight: var(--heading-font-weight);
+    line-height: var(--heading-line-height);
+    color: var(--heading-color);
+    margin-bottom: {{ section.settings.heading_margin_bottom }}px;
+    {% if section.settings.heading_text_align != 'left' %}
+      text-align: {{ section.settings.heading_text_align }};
+    {% endif %}
+  }
+
+  .contact-content {
+    width: var(--content-max-width);
+    display: flex;
+    flex-direction: column;
+    gap: {{ section.settings.content_gap }}px;
+  }
+
+  .timing-text {
+    width: 100%;
+  }
+
+  .timing-text span {
+    padding-left: {{ section.settings.text_indent }}px;
+    display: block;
+    font-family: var(--text-font-family);
+    font-size: var(--text-font-size);
+    font-weight: var(--text-font-weight);
+    line-height: var(--text-line-height);
+    color: var(--text-color);
+    margin: {{ section.settings.text_margin_vertical }}px 0;
+  }
+
+  .timing-text span:last-child {
+    margin-top: {{ section.settings.last_item_margin_top }}px;
+  }
+
+  /* Address and phone link styling */
+  .address-info a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .address-info a:hover {
+    color: var(--link-hover-color);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1670px) {
+    .contact-section {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .contact-section {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: {{ section.settings.tablet_padding_vertical }}px {{ section.settings.tablet_padding_horizontal }}px;
+    }
+
+    .contact-content {
+      width: 100%;
+    }
+
+    .contact-section h2 {
+      font-size: calc(var(--heading-font-size) * {{ section.settings.tablet_heading_scale | divided_by: 100.0 }});
+    }
+
+    .timing-text span {
+      font-size: calc(var(--text-font-size) * {{ section.settings.tablet_text_scale | divided_by: 100.0 }});
+    }
+  }
+
+  @media (max-width: 768px) {
+    .showroom-section {
+      padding: calc(var(--section-padding-top) * {{ section.settings.mobile_section_padding_scale | divided_by: 100.0 }}) 
+               calc(var(--section-padding-right) * {{ section.settings.mobile_section_padding_scale | divided_by: 100.0 }}) 
+               calc(var(--section-padding-bottom) * {{ section.settings.mobile_section_padding_scale | divided_by: 100.0 }}) 
+               calc(var(--section-padding-left) * {{ section.settings.mobile_section_padding_scale | divided_by: 100.0 }});
+    }
+
+    .contact-section {
+      padding: {{ section.settings.mobile_padding_vertical }}px {{ section.settings.mobile_padding_horizontal }}px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .contact-section h2 {
+      font-size: calc(var(--heading-font-size) * {{ section.settings.small_mobile_heading_scale | divided_by: 100.0 }});
+    }
+
+    .timing-text span {
+      font-size: calc(var(--text-font-size) * {{ section.settings.small_mobile_text_scale | divided_by: 100.0 }});
+      padding-left: calc({{ section.settings.text_indent }}px * 0.5);
+    }
+
+    .contact-section {
+      padding: {{ section.settings.small_mobile_padding_vertical }}px {{ section.settings.small_mobile_padding_horizontal }}px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-section h2 {
+      font-size: calc(var(--heading-font-size) * {{ section.settings.extra_small_heading_scale | divided_by: 100.0 }});
+      {% if section.settings.mobile_center_heading %}
+        text-align: center;
+      {% endif %}
+    }
+
+    .timing-text {
+      {% if section.settings.mobile_center_text %}
+        text-align: center;
+      {% endif %}
+    }
+
+    .timing-text span {
+      {% if section.settings.mobile_center_text %}
+        padding-left: 0;
+      {% endif %}
+      font-size: calc(var(--text-font-size) * {{ section.settings.extra_small_text_scale | divided_by: 100.0 }});
+    }
+  }
+
+  /* Custom icon support */
+  {% if section.settings.custom_icon != blank %}
+    .timing-text span:before {
+      content: '';
+      display: inline-block;
+      width: {{ section.settings.icon_size }}px;
+      height: {{ section.settings.icon_size }}px;
+      background: url('{{ section.settings.custom_icon | image_url: width: section.settings.icon_size }}') no-repeat center;
+      background-size: contain;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+  {% endif %}
+</style>
+
+{% schema %}
+{
+  "name": "Showroom Contact Section",
+  "tag": "section",
+  "class": "showroom-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Come Visit Our Showroom in Vancouver, WA"
+    },
+    {
+      "type": "select",
+      "id": "heading_text_align",
+      "label": "Heading Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Background & Overlay"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "select",
+      "id": "background_position",
+      "label": "Background Position",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" },
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color_start",
+      "label": "Overlay Start Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Start Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20,
+      "unit": "%"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color_middle",
+      "label": "Overlay Middle Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_middle_opacity",
+      "label": "Overlay Middle Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 45,
+      "unit": "%"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color_end",
+      "label": "Overlay End Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_end_opacity",
+      "label": "Overlay End Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 30,
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#FCF9F4"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Phone Link Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Phone Link Hover Color",
+      "default": "#CCCCCC"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading Font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading Font Size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "heading_line_height",
+      "label": "Heading Line Height",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "1.1", "label": "1.1" },
+        { "value": "1.2", "label": "1.2" },
+        { "value": "1.25", "label": "1.25" },
+        { "value": "1.3", "label": "1.3" },
+        { "value": "1.4", "label": "1.4" },
+        { "value": "1.5", "label": "1.5" }
+      ],
+      "default": "1.25"
+    },
+    {
+      "type": "font_picker",
+      "id": "text_font",
+      "label": "Text Font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "range",
+      "id": "text_font_size",
+      "label": "Text Font Size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "text_line_height",
+      "label": "Text Line Height",
+      "options": [
+        { "value": "1.2", "label": "1.2" },
+        { "value": "1.3", "label": "1.3" },
+        { "value": "1.4", "label": "1.4" },
+        { "value": "1.5", "label": "1.5" },
+        { "value": "1.6", "label": "1.6" },
+        { "value": "1.7", "label": "1.7" }
+      ],
+      "default": "1.6"
+    },
+    {
+      "type": "header",
+      "content": "Layout & Spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section Top Padding",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 130,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section Bottom Padding",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_horizontal",
+      "label": "Section Horizontal Padding",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "default": 50,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "contact_padding_top",
+      "label": "Contact Box Top Padding",
+      "min": 40,
+      "max": 200,
+      "step": 10,
+      "default": 120,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "contact_padding_bottom",
+      "label": "Contact Box Bottom Padding",
+      "min": 40,
+      "max": 200,
+      "step": 10,
+      "default": 120,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "contact_padding_horizontal",
+      "label": "Contact Box Horizontal Padding",
+      "min": 30,
+      "max": 150,
+      "step": 10,
+      "default": 100,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Contact Box Border Radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "default": 22,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content Max Width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "default": 70,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "label": "Heading Bottom Margin",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Content Items Gap",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "text_indent",
+      "label": "Text Left Indent",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "text_margin_vertical",
+      "label": "Text Vertical Margin",
+      "min": 6,
+      "max": 30,
+      "step": 2,
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "last_item_margin_top",
+      "label": "Last Item Top Margin",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Custom Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_icon",
+      "label": "Custom Icon (appears before each text item)"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon Size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Responsive - Tablet (992px and below)"
+    },
+    {
+      "type": "range",
+      "id": "tablet_padding_vertical",
+      "label": "Tablet Contact Vertical Padding",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "tablet_padding_horizontal",
+      "label": "Tablet Contact Horizontal Padding",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "default": 50,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "tablet_heading_scale",
+      "label": "Tablet Heading Scale",
+      "min": 70,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "tablet_text_scale",
+      "label": "Tablet Text Scale",
+      "min": 80,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Responsive - Mobile (768px and below)"
+    },
+    {
+      "type": "range",
+      "id": "mobile_section_padding_scale",
+      "label": "Mobile Section Padding Scale",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "default": 70,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_vertical",
+      "label": "Mobile Contact Vertical Padding",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_horizontal",
+      "label": "Mobile Contact Horizontal Padding",
+      "min": 20,
+      "max": 50,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Responsive - Small Mobile (576px and below)"
+    },
+    {
+      "type": "range",
+      "id": "small_mobile_heading_scale",
+      "label": "Small Mobile Heading Scale",
+      "min": 60,
+      "max": 90,
+      "step": 5,
+      "default": 80,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "small_mobile_text_scale",
+      "label": "Small Mobile Text Scale",
+      "min": 80,
+      "max": 100,
+      "step": 5,
+      "default": 90,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "small_mobile_padding_vertical",
+      "label": "Small Mobile Contact Vertical Padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "small_mobile_padding_horizontal",
+      "label": "Small Mobile Contact Horizontal Padding",
+      "min": 15,
+      "max": 40,
+      "step": 5,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Responsive - Extra Small (480px and below)"
+    },
+    {
+      "type": "range",
+      "id": "extra_small_heading_scale",
+      "label": "Extra Small Heading Scale",
+      "min": 50,
+      "max": 80,
+      "step": 5,
+      "default": 65,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "extra_small_text_scale",
+      "label": "Extra Small Text Scale",
+      "min": 70,
+      "max": 95,
+      "step": 5,
+      "default": 85,
+      "unit": "%"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_center_heading",
+      "label": "Center Heading on Mobile",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_center_text",
+      "label": "Center Text on Mobile",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "schedule_item",
+      "name": "Schedule Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "schedule_text",
+          "label": "Schedule Text",
+          "default": "Mon-Fri: 9 AM – 5 PM"
+        }
+      ]
+    },
+    {
+      "type": "address",
+      "name": "Contact Information",
+      "settings": [
+        {
+          "type": "text",
+          "id": "phone_number",
+          "label": "Phone Number",
+          "default": "360-360-6968",
+          "info": "Include formatting (e.g., 360-360-6968). Will be linked for calling."
+        },
+        {
+          "type": "text",
+          "id": "phone_text",
+          "label": "Phone Additional Text",
+          "default": "to schedule",
+          "info": "Text that appears after the phone number"
+        },
+        {
+          "type": "text",
+          "id": "address_line_1",
+          "label": "Address Line 1",
+          "default": "5305 NE 121st Ave, Ste 216"
+        },
+        {
+          "type": "text",
+          "id": "address_line_2",
+          "label": "Address Line 2",
+          "default": "Vancouver, WA 98682"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Showroom Contact Section",
+      "blocks": [
+        {
+          "type": "schedule_item",
+          "settings": {
+            "schedule_text": "Thurs – Sat: 10 AM – 6 PM"
+          }
+        },
+        {
+          "type": "schedule_item",
+          "settings": {
+            "schedule_text": "Sun: 11 AM- 5 PM"
+          }
+        },
+        {
+          "type": "schedule_item",
+          "settings": {
+            "schedule_text": "Mon-Wed: By Appointment – call/text: 360-360-6968 to schedule"
+          }
+        },
+        {
+          "type": "address",
+          "settings": {
+            "phone_number": "360-360-6968",
+            "phone_text": " to schedule",
+            "address_line_1": "5305 NE 121st Ave, Ste 216",
+            "address_line_2": "Vancouver, WA 98682"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
