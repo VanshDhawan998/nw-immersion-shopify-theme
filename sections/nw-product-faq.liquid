@@ -1,0 +1,163 @@
+<section class="nw-pdp-section nw-pdp-faq-section" id="nw-product-faq-{{ section.id }}">
+  <div class="nw-pdp-faq-inner">
+
+    <h2 class="nw-pdp-faq__title nw-fade-up">
+      {{ section.settings.heading | default: 'Frequently Asked Questions' }}
+    </h2>
+
+    {%- liquid
+      assign faq_blocks = section.blocks | where: 'type', 'faq_item'
+      assign col1_size  = faq_blocks.size | divided_by: 2 | ceil
+    -%}
+
+    <div class="nw-pdp-faq__cols nw-pdp-faq">
+      <!-- Column 1 -->
+      <div class="nw-pdp-faq__col">
+        {%- for block in faq_blocks limit: col1_size -%}
+        <div class="nw-pdp-faq__item nw-fade-up nw-fade-up--d1" {{ block.shopify_attributes }}>
+          <button
+            class="nw-pdp-faq__question"
+            type="button"
+            aria-expanded="false"
+            aria-controls="faq-ans-{{ block.id }}"
+            id="faq-q-{{ block.id }}"
+          >
+            <span class="nw-pdp-faq__q-text">{{ block.settings.question }}</span>
+            <span class="nw-pdp-faq__toggle" aria-hidden="true">
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                <line x1="7" y1="1" x2="7" y2="13"/>
+                <line x1="1" y1="7" x2="13" y2="7"/>
+              </svg>
+            </span>
+          </button>
+          <div
+            class="nw-pdp-faq__answer"
+            id="faq-ans-{{ block.id }}"
+            role="region"
+            aria-labelledby="faq-q-{{ block.id }}"
+          >
+            <div class="nw-pdp-faq__a-text">{{ block.settings.answer }}</div>
+          </div>
+        </div>
+        {%- endfor -%}
+      </div>
+
+      <!-- Column 2 -->
+      <div class="nw-pdp-faq__col">
+        {%- for block in faq_blocks offset: col1_size -%}
+        <div class="nw-pdp-faq__item nw-fade-up nw-fade-up--d2" {{ block.shopify_attributes }}>
+          <button
+            class="nw-pdp-faq__question"
+            type="button"
+            aria-expanded="false"
+            aria-controls="faq-ans-{{ block.id }}"
+            id="faq-q-{{ block.id }}"
+          >
+            <span class="nw-pdp-faq__q-text">{{ block.settings.question }}</span>
+            <span class="nw-pdp-faq__toggle" aria-hidden="true">
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                <line x1="7" y1="1" x2="7" y2="13"/>
+                <line x1="1" y1="7" x2="13" y2="7"/>
+              </svg>
+            </span>
+          </button>
+          <div
+            class="nw-pdp-faq__answer"
+            id="faq-ans-{{ block.id }}"
+            role="region"
+            aria-labelledby="faq-q-{{ block.id }}"
+          >
+            <div class="nw-pdp-faq__a-text">{{ block.settings.answer }}</div>
+          </div>
+        </div>
+        {%- endfor -%}
+      </div>
+    </div><!-- /.nw-pdp-faq__cols -->
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Product FAQ",
+  "tag": "div",
+  "class": "nw-pdp-section-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How long does assembly take?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Most customers complete assembly in 4–6 hours with 2 people and basic tools.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Product FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What size electrical connection does the sauna need?",
+            "answer": "<p>The sauna requires a dedicated 240V / 60A circuit with a GFCI breaker. We recommend having a licensed electrician handle the wiring.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can the sauna be used in cold winter climates?",
+            "answer": "<p>Yes! The 2×6 tongue-and-groove Canadian Hemlock construction provides excellent insulation, and the Harvia heater is powerful enough to warm the sauna even in sub-zero temperatures.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Most orders ship within 2–4 weeks. You will receive a tracking number and the freight carrier will contact you to schedule your delivery appointment.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do I need a foundation or concrete pad?",
+            "answer": "<p>A level surface is required. Options include a concrete pad, pavers, compacted gravel, or a deck — as long as it is flat and well-drained.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the warranty on this sauna?",
+            "answer": "<p>We offer a 5-year structural warranty on the wood frame, 2-year warranty on the Harvia heater, and 1-year parts warranty. As an authorized dealer, we fully support all warranty claims.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I use HSA or FSA funds to purchase?",
+            "answer": "<p>Yes! Saunas qualify as a medical expense in many cases. We accept HSA/FSA payments — contact us and we can assist with documentation if needed.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
