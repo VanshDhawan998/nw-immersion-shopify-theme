@@ -1,529 +1,154 @@
-<!-- Hero Section - Shopify Liquid Section -->
-<div class="main-hero-section hero-section-{{ section.id }}">
-    <div class="feature-hero">
-        <!-- Background overlay -->
-        <div class="feature-overlay"></div>
+{{ 'customize-section.css' | asset_url | stylesheet_tag }}
 
-        <div class="feature-container">
-            <!-- Left Content -->
-            <div class="feature-left">
-                {% if section.settings.hero_heading != blank %}
-                    <h2>{{ section.settings.hero_heading }}</h2>
-                {% endif %}
-                
-                {% if section.settings.hero_description != blank %}
-                    <p>{{ section.settings.hero_description }}</p>
-                {% endif %}
-            </div>
-
-            <!-- Right Cards (Dynamic Blocks) -->
-            <div class="feature-right">
-                {% for block in section.blocks %}
-                    {% case block.type %}
-                        {% when 'feature_card' %}
-                            <div class="feature-card" {{ block.shopify_attributes }}>
-                                {% if block.settings.card_heading != blank %}
-                                    <h3>{{ block.settings.card_heading }}</h3>
-                                {% endif %}
-                                
-                                {% if block.settings.card_description != blank %}
-                                    <p>{{ block.settings.card_description }}</p>
-                                {% endif %}
-                                
-                                {% if block.settings.card_button_text != blank and block.settings.card_button_url != blank %}
-                                    <a href="{{ block.settings.card_button_url }}" class="hero-section-btn">
-                                        {{ block.settings.card_button_text }}
-                                    </a>
-                                {% endif %}
-                            </div>
-                    {% endcase %}
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Section Styles -->
 <style>
-    /* Hero Section Component - Shopify Optimized */
-    .hero-section-{{ section.id }} {
-        --hero-bg-color: {{ section.settings.background_color | default: '#fef9f5' }};
-        --hero-text-color: {{ section.settings.text_color | default: '#ffffff' }};
-        --hero-card-bg: {{ section.settings.card_background | default: '#e7dcc8' }};
-        --hero-card-text: {{ section.settings.card_text_color | default: '#333333' }};
-        --hero-btn-bg: {{ section.settings.button_color | default: '#4A5A4A' }};
-        --hero-btn-hover-bg: {{ section.settings.button_hover_color | default: '#ffffff' }};
-        --hero-btn-hover-text: {{ section.settings.button_hover_text_color | default: '#4A5A4A' }};
-        --hero-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 | default: 0.45 }};
-        --hero-border-radius: {{ section.settings.border_radius | default: 20 }}px;
-        --hero-padding-top: {{ section.settings.padding_top | default: 100 }}px;
-        --hero-padding-bottom: {{ section.settings.padding_bottom | default: 100 }}px;
-    }
-
-    /* Reset and Base Styles */
-    .hero-section-{{ section.id }} * {
-        box-sizing: border-box;
-    }
-
-    /* Main Hero Container */
-    .hero-section-{{ section.id }} .main-hero-section {
-        padding: 0 50px;
-        max-width: 1670px;
-        margin: 0 auto;
-    }
-
-    /* Hero Section */
-    .hero-section-{{ section.id }} .feature-hero {
-        position: relative;
-        background: 
-            {% if section.settings.background_image != blank %}
-                url('{{ section.settings.background_image | image_url: width: 1920 }}') center/cover no-repeat
-            {% else %}
-                linear-gradient(135deg, #667eea 0%, #764ba2 100%)
-            {% endif %};
-        padding: {{ section.settings.section_padding_top | default: 140 }}px 60px {{ section.settings.section_padding_bottom | default: 140 }}px;
-        border-radius: var(--hero-border-radius);
-        margin: var(--hero-padding-top) 40px var(--hero-padding-bottom);
-        overflow: hidden;
-        min-height: {{ section.settings.min_height | default: 500 }}px;
-    }
-
-    /* Overlay */
-    .hero-section-{{ section.id }} .feature-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, var(--hero-overlay-opacity));
-        z-index: 1;
-    }
-
-    /* Content Container */
-    .hero-section-{{ section.id }} .feature-container {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 60px;
-        margin: 0 auto;
-        z-index: 2;
-        max-width: 1200px;
-    }
-
-    /* Left Content */
-    .hero-section-{{ section.id }} .feature-left {
-        flex: 1;
-        color: var(--hero-text-color);
-    }
-
-    .hero-section-{{ section.id }} .feature-left h2 {
-        font-size: clamp(28px, 5vw, {{ section.settings.heading_font_size | default: 44 }}px);
-        margin: 0 0 25px;
-        font-weight: 700;
-        line-height: 1.2;
-    }
-
-    .hero-section-{{ section.id }} .feature-left p {
-        font-size: clamp(16px, 2vw, {{ section.settings.description_font_size | default: 18 }}px);
-        line-height: 1.6;
-        margin: 0;
-        opacity: 0.95;
-    }
-
-    /* Right Cards */
-    .hero-section-{{ section.id }} .feature-right {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    /* Feature Cards */
-    .hero-section-{{ section.id }} .feature-card {
-        background: var(--hero-card-bg);
-        padding: 24px 30px;
-        border-radius: var(--hero-border-radius);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        color: var(--hero-card-text);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .hero-section-{{ section.id }} .feature-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero-section-{{ section.id }} .feature-card h3 {
-        margin: 0 0 15px;
-        font-size: clamp(20px, 3vw, {{ section.settings.card_heading_font_size | default: 24 }}px);
-        font-weight: 600;
-        line-height: 1.3;
-    }
-
-    .hero-section-{{ section.id }} .feature-card p {
-        font-size: clamp(16px, 2vw, {{ section.settings.card_text_font_size | default: 18 }}px);
-        line-height: 1.6;
-        margin: 0;
-    }
-
-    /* Hero Button */
-    .hero-section-{{ section.id }} .hero-section-btn {
-        display: inline-block;
-        padding: 12px 25px;
-        background-color: var(--hero-btn-bg);
-        color: var(--hero-text-color);
-        text-decoration: none;
-        border-radius: var(--hero-border-radius);
-        border: 2px solid transparent;
-        font-weight: 600;
-        margin-top: 20px;
-        transition: all 0.3s ease;
-        font-size: {{ section.settings.button_font_size | default: 16 }}px;
-    }
-
-    .hero-section-{{ section.id }} .hero-section-btn:hover {
-        background-color: var(--hero-btn-hover-bg);
-        color: var(--hero-btn-hover-text);
-        border-color: var(--hero-btn-bg);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1200px) {
-        .hero-section-{{ section.id }} .main-hero-section {
-            padding: 0 30px;
-        }
-        
-        .hero-section-{{ section.id }} .feature-hero {
-            margin: 60px 20px;
-            padding: 100px 40px;
-        }
-    }
-
-    @media (max-width: 1024px) {
-        .hero-section-{{ section.id }} .feature-container {
-            flex-direction: column;
-            gap: 40px;
-        }
-        
-        .hero-section-{{ section.id }} .feature-left {
-            text-align: center;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .hero-section-{{ section.id }} .feature-hero {
-            padding: 80px 30px;
-            margin: 40px 10px;
-        }
-        
-        .hero-section-{{ section.id }} .feature-container {
-            gap: 30px;
-        }
-        
-        .hero-section-{{ section.id }} .feature-card {
-            padding: 20px 25px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .hero-section-{{ section.id }} .main-hero-section {
-            padding: 0;
-        }
-        
-        .hero-section-{{ section.id }} .feature-hero {
-            margin: 20px 5px;
-            padding: 60px 20px;
-            border-radius: 15px;
-        }
-        
-        .hero-section-{{ section.id }} .feature-container {
-            gap: 25px;
-        }
-        
-        .hero-section-{{ section.id }} .hero-section-btn {
-            padding: 14px 30px;
-            font-size: 15px;
-        }
-    }
-
-    /* Accessibility Improvements */
-    @media (prefers-reduced-motion: reduce) {
-        .hero-section-{{ section.id }} .feature-card,
-        .hero-section-{{ section.id }} .hero-section-btn {
-            transition: none;
-        }
-        
-        .hero-section-{{ section.id }} .feature-card:hover {
-            transform: none;
-        }
-        
-        .hero-section-{{ section.id }} .hero-section-btn:hover {
-            transform: none;
-        }
-    }
-
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-        .hero-section-{{ section.id }} .feature-overlay {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        
-        .hero-section-{{ section.id }} .feature-card {
-            border: 2px solid var(--hero-card-text);
-        }
-    }
+  .customize-section {
+    padding-top: {{ section.settings.section_padding_top | default: 130 }}px;
+    padding-bottom: {{ section.settings.section_padding_bottom | default: 0 }}px;
+  }
+  
+  .custom-btn,
+  .contact-icon {
+    background: {{ section.settings.accent_color | default: '#546659' }};
+    border-color: {{ section.settings.accent_color | default: '#546659' }};
+  }
+  
+  .custom-btn:hover {
+    color: {{ section.settings.accent_color | default: '#546659' }};
+  }
 </style>
+
+<div class="customize-section">
+  <div class="contact-section" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.45) 70%, rgba(0, 0, 0, 0.3) 100%), url('{{ section.settings.background_image | image_url }}');">
+    <h2>{{ section.settings.section_title | default: "Customize Your Silver Star Sauna" }}</h2>
+    <p>{{ section.settings.section_description }}</p>
+
+    <div class="contact-content">
+      <div class="contact-text">
+        {% if section.settings.phone_number != blank %}
+        <a href="tel:{{ section.settings.phone_number | replace: ' ', '' | replace: '(', '' | replace: ')', '' | replace: '-', '' }}" class="contact-item">
+          <div class="contact-icon">
+            <!-- Phone SVG Icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.11.37 2.3.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.28.2 2.47.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
+            </svg>
+          </div>
+          <span>{{ section.settings.phone_number }}</span>
+        </a>
+        {% endif %}
+
+        {% if section.settings.email_address != blank %}
+        <a href="mailto:{{ section.settings.email_address }}" class="contact-item">
+          <div class="contact-icon">
+            <!-- Mail SVG Icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+              <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </div>
+          <span>{{ section.settings.email_address }}</span>
+        </a>
+        {% endif %}
+
+        {% if section.settings.button_text != blank %}
+        <div class="button-wrapper">
+          <a href="{{ section.settings.button_link | default: '#' }}" class="custom-btn medium">
+            {{ section.settings.button_text }}
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
 
 {% schema %}
 {
-  "name": "Hero Section",
+  "name": "Customize Section",
   "tag": "section",
-  "class": "hero-section",
+  "class": "section",
   "settings": [
-    {
-      "type": "header",
-      "content": "Content Settings"
-    },
-    {
-      "type": "text",
-      "id": "hero_heading",
-      "label": "Main Heading",
-      "default": "Loowit Sauna Exterior: Strong Lines, Lasting Strength"
-    },
-    {
-      "type": "textarea",
-      "id": "hero_description",
-      "label": "Description",
-      "default": "Built with the Pacific Northwest climate in mind, the Loowit's exterior is compact, resilient, and modern. With a sleek black finish, cedar deck, and metal roof, it's made to hold its character through rain, snow, and heat."
-    },
-    {
-      "type": "header",
-      "content": "Background Settings"
-    },
     {
       "type": "image_picker",
       "id": "background_image",
-      "label": "Background Image"
+      "label": "Background Image",
+      "info": "Recommended size: 1920x600px"
     },
     {
-      "type": "color",
-      "id": "background_color",
-      "label": "Background Color",
-      "default": "#fef9f5"
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Customize Your Silver Star Sauna"
     },
     {
-      "type": "range",
-      "id": "overlay_opacity",
-      "label": "Overlay Opacity (%)",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "default": 45
-    },
-    {
-      "type": "header",
-      "content": "Typography Settings"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text Color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "range",
-      "id": "heading_font_size",
-      "label": "Main Heading Font Size (px)",
-      "min": 24,
-      "max": 60,
-      "step": 2,
-      "default": 44
-    },
-    {
-      "type": "range",
-      "id": "description_font_size",
-      "label": "Description Font Size (px)",
-      "min": 14,
-      "max": 24,
-      "step": 1,
-      "default": 18
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Description",
+      "default": "Whether you already have a vision in mind or you're just beginning to explore, we're here to help shape the project. Contact us to discuss your ideas, request pricing, or plan a consultation."
     },
     {
       "type": "header",
-      "content": "Card Settings"
+      "content": "Contact Information"
     },
     {
-      "type": "color",
-      "id": "card_background",
-      "label": "Card Background Color",
-      "default": "#e7dcc8"
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone Number",
+      "default": "(360) 360-6968"
     },
     {
-      "type": "color",
-      "id": "card_text_color",
-      "label": "Card Text Color",
-      "default": "#333333"
-    },
-    {
-      "type": "range",
-      "id": "card_heading_font_size",
-      "label": "Card Heading Font Size (px)",
-      "min": 18,
-      "max": 32,
-      "step": 1,
-      "default": 24
-    },
-    {
-      "type": "range",
-      "id": "card_text_font_size",
-      "label": "Card Text Font Size (px)",
-      "min": 14,
-      "max": 22,
-      "step": 1,
-      "default": 18
+      "type": "text",
+      "id": "email_address",
+      "label": "Email Address",
+      "default": "info@nwimmersion.com"
     },
     {
       "type": "header",
-      "content": "Button Settings"
+      "content": "Call-to-Action Button"
     },
     {
-      "type": "color",
-      "id": "button_color",
-      "label": "Button Color",
-      "default": "#4A5A4A"
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Send Me My Silver Star Quote"
     },
     {
-      "type": "color",
-      "id": "button_hover_color",
-      "label": "Button Hover Color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "button_hover_text_color",
-      "label": "Button Hover Text Color",
-      "default": "#4A5A4A"
-    },
-    {
-      "type": "range",
-      "id": "button_font_size",
-      "label": "Button Font Size (px)",
-      "min": 12,
-      "max": 20,
-      "step": 1,
-      "default": 16
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
     },
     {
       "type": "header",
-      "content": "Layout Settings"
+      "content": "Section Settings"
     },
     {
-      "type": "range",
-      "id": "min_height",
-      "label": "Minimum Height (px)",
-      "min": 300,
-      "max": 800,
-      "step": 25,
-      "default": 500
-    },
-    {
-      "type": "range",
-      "id": "border_radius",
-      "label": "Border Radius (px)",
-      "min": 0,
-      "max": 40,
-      "step": 2,
-      "default": 20
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#546659"
     },
     {
       "type": "range",
       "id": "section_padding_top",
-      "label": "Section Top Padding (px)",
-      "min": 60,
-      "max": 200,
+      "min": 0,
+      "max": 150,
       "step": 10,
-      "default": 140
+      "unit": "px",
+      "label": "Section Padding Top",
+      "default": 130
     },
     {
       "type": "range",
       "id": "section_padding_bottom",
-      "label": "Section Bottom Padding (px)",
-      "min": 60,
-      "max": 200,
-      "step": 10,
-      "default": 140
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Top Margin (px)",
       "min": 0,
-      "max": 200,
+      "max": 150,
       "step": 10,
-      "default": 100
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Bottom Margin (px)",
-      "min": 0,
-      "max": 200,
-      "step": 10,
-      "default": 100
-    }
-  ],
-  "blocks": [
-    {
-      "type": "feature_card",
-      "name": "Feature Card",
-      "settings": [
-        {
-          "type": "text",
-          "id": "card_heading",
-          "label": "Card Heading",
-          "default": "Feature Heading"
-        },
-        {
-          "type": "textarea",
-          "id": "card_description",
-          "label": "Card Description",
-          "default": "Add your feature description here. This text will appear in the card."
-        },
-        {
-          "type": "text",
-          "id": "card_button_text",
-          "label": "Button Text",
-          "default": "Learn More"
-        },
-        {
-          "type": "url",
-          "id": "card_button_url",
-          "label": "Button Link"
-        }
-      ]
+      "unit": "px",
+      "label": "Section Padding Bottom",
+      "default": 0
     }
   ],
   "presets": [
     {
-      "name": "Hero Section",
-      "blocks": [
-        {
-          "type": "feature_card",
-          "settings": {
-            "card_heading": "Durability Meets Design",
-            "card_description": "A standing seam metal roof and pressure-treated foundation give the Loowit its backbone. Foam insulation beneath the sauna, combined with rockwool insulation in the walls and ceiling, keeps the interior warm and efficient."
-          }
-        },
-        {
-          "type": "feature_card",
-          "settings": {
-            "card_heading": "Signature Exterior Features",
-            "card_description": "A wide front window and glass door invite natural light while keeping the structure private and stylish. Exterior LED lighting makes nighttime sessions inviting, while the Behr Carbon Black paint provides a clean, modern finish.",
-            "card_button_text": "View The Exterior In Person",
-            "card_button_url": "#"
-          }
-        }
-      ]
+      "name": "Customize Section"
     }
   ]
 }
