@@ -20,272 +20,10 @@
         "padding-block-end": 80
       }
     },
-    "hero_banner_XEfMtT": {
-      "type": "hero-banner",
-      "blocks": {
-        "feature_XV4AFW": {
-          "type": "feature",
-          "settings": {
-            "feature_text": "12+ Years Of Craftsmanship"
-          }
-        },
-        "feature_J6gp7w": {
-          "type": "feature",
-          "settings": {
-            "feature_text": "Continental US Shipping"
-          }
-        },
-        "feature_HHmibJ": {
-          "type": "feature",
-          "settings": {
-            "feature_text": "Same-Day Parts Shipping"
-          }
-        }
-      },
-      "block_order": [
-        "feature_XV4AFW",
-        "feature_J6gp7w",
-        "feature_HHmibJ"
-      ],
-      "name": "Hero Banner",
-      "settings": {
-        "bg_image": "shopify://shop_images/lowitsa-suana-hero.webp",
-        "bg_color": "#f3f1ee",
-        "overlay_color": "#000000",
-        "overlay_opacity": 45,
-        "min_height": 380,
-        "padding_top": 100,
-        "padding_bottom": 150,
-        "text_alignment": "center",
-        "title": "Loowit Sauna Model Compact, Versatile, And Handcrafted",
-        "title_color": "#ffffff",
-        "title_font_size": 40,
-        "description": "Built by hand here in Vancouver, Washington, the Loowit sauna model takes a smaller footprint and transforms it into a sanctuary that feels bigger than it looks. With cedar walls, a sliding bench for stretching or yoga, and toxin-free finishes, it's proof that compact design doesn't mean compromise.",
-        "text_color": "#ffffff",
-        "text_font_size": 18,
-        "feature_color": "#ffffff",
-        "feature_font_size": 20,
-        "divider_color": "#ffffff8c",
-        "show_button": false,
-        "button_text": "Shop Now",
-        "button_url": "",
-        "button_style": "filled",
-        "button_alignment": "center",
-        "button_bg_color": "#ffffff",
-        "button_text_color": "#000000",
-        "button_border_color": "#ffffff",
-        "button_hover_bg_color": "#f0f0f0",
-        "button_hover_text_color": "#000000",
-        "button_font_size": 16,
-        "button_padding_horizontal": 32,
-        "button_padding_vertical": 16,
-        "button_border_radius": 4
-      }
-    },
-    "lowitsasuana_sec2_Upg9KT": {
-      "type": "lowitsasuana-sec2",
-      "name": "Video With Text",
-      "settings": {
-        "heading": "The Loowit Saunas Are Selling Out Quick!",
-        "text": "Each project is handcrafted in limited numbers, so a 25% deposit secures your spot. Order your Loowit Sauna today!",
-        "video_file": "shopify://files/videos/image_picker_A7DE1792-8196-4DA7-B330-C03656D5F6B1-31837-00000F12D053DDA63feb46a1579b439aab9fd44f6a5cf0b4.mov",
-        "button_label": "Order Now",
-        "button_link": "",
-        "heading_size": 32,
-        "text_size": 18,
-        "heading_color": "#111111",
-        "text_color": "#333333",
-        "button_color": "#4a5a4a",
-        "button_text_color": "#ffffff",
-        "button_border_color": "rgba(0,0,0,0)",
-        "button_border_hover": "#000000",
-        "button_hover": "#ffffff",
-        "button_hover_text": "#000000",
-        "padding_top": 120,
-        "padding_bottom": 120
-      }
-    },
-    "loowit_interior_section_KLQjFJ": {
-      "type": "loowit-interior-section",
-      "blocks": {
-        "feature_MG3j9j": {
-          "type": "feature",
-          "settings": {
-            "feature_text": "Two 6'2\" clear western red cedar benches, seating up to six"
-          }
-        },
-        "feature_y3PjLY": {
-          "type": "feature",
-          "settings": {
-            "feature_text": "Sliding bottom bench for stretching or yoga practice"
-          }
-        },
-        "feature_jbdgqN": {
-          "type": "feature",
-          "settings": {
-            "feature_text": "Subtle warm LED lighting inside"
-          }
-        },
-        "feature_iL74d6": {
-          "type": "feature",
-          "settings": {
-            "feature_text": "HUUM heater, electric or wood-burning"
-          }
-        },
-        "feature_84EkQ9": {
-          "type": "feature",
-          "settings": {
-            "feature_text": "Interior and front finished in clear western red cedar"
-          }
-        },
-        "feature_tDCjHa": {
-          "type": "feature",
-          "settings": {
-            "feature_text": "All natural Livos oil finish, no toxins or adhesives"
-          }
-        },
-        "feature_MAHVat": {
-          "type": "feature",
-          "settings": {
-            "feature_text": "Full insulation for efficient heat retention"
-          }
-        }
-      },
-      "block_order": [
-        "feature_MG3j9j",
-        "feature_y3PjLY",
-        "feature_jbdgqN",
-        "feature_iL74d6",
-        "feature_84EkQ9",
-        "feature_tDCjHa",
-        "feature_MAHVat"
-      ],
-      "name": "Loowit Interior Features",
-      "settings": {
-        "main_heading": "Inside The Loowit: Space That Adapts To You",
-        "main_description": "Step inside the Loowit and you'll notice how well it balances comfort with efficiency. Two cedar benches stretch nearly the full length, yet the interior feels open thanks to a sliding lower bench that creates room for stretching or yoga. Every board is cedar, treated naturally, with no glues or toxins, only clean, breathable wood for a healthier sanctuary.",
-        "secondary_heading": "A Sanctuary In Every Detail",
-        "secondary_description": "From the warm LED glow to the scent of locally sourced cedar, the Loowit model is designed to calm you the moment you close the door. Full insulation in the walls, ceiling, and floor keeps heat steady, while drainable cedar decking adds durability and easy care.",
-        "features_heading": "Key Interior Features",
-        "pricing_text": "Starting at $24,990 — now accepting HSA/FSA payments for savings of 30–40%.",
-        "button_text": "See The Loowit Interior At Our Showroom",
-        "button_url": "#",
-        "video_url": "",
-        "video_webm_url": "",
-        "video_description": "Loowit Interior Video",
-        "layout_direction": "video_left",
-        "column_gap": 70,
-        "padding_top": 130,
-        "padding_bottom": 0,
-        "padding_horizontal": 50,
-        "main_heading_size": 40,
-        "subheading_size": 24,
-        "text_size": 18,
-        "background_color": "#fcf9f4",
-        "heading_color": "#252220",
-        "text_color": "#252220",
-        "icon_background_color": "#5c6f63",
-        "divider_color": "#f6e8d1",
-        "button_background_color": "#5c6f61",
-        "button_hover_background": "#4a5a52",
-        "button_text_color": "#ffffff",
-        "button_hover_text_color": "#ffffff",
-        "button_font_size": 14,
-        "button_font_weight": "700",
-        "button_font_family": "Roboto, sans-serif",
-        "button_padding_vertical": 12,
-        "button_padding_horizontal": 32,
-        "button_border_radius": 20,
-        "button_border_width": 0,
-        "button_border_color": "#5c6f61",
-        "button_hover_border_color": "#4a5a52",
-        "video_border_radius": 18,
-        "video_max_height": 770
-      }
-    },
-    "loowit_way_features_n4qrGR": {
-      "type": "loowit-way-features",
-      "blocks": {
-        "feature_RCNLDx": {
-          "type": "feature",
-          "settings": {
-            "feature_title": "Compact Footprint, Spacious Feel",
-            "feature_description": "The Loowit makes the most of its size. With benches that seat six and thoughtful design, it feels bigger inside than its footprint suggests."
-          }
-        },
-        "feature_pNmFca": {
-          "type": "feature",
-          "settings": {
-            "feature_title": "Sliding Bench Versatility For Yoga & Stretching",
-            "feature_description": "The movable lower bench turns your sauna into a space for stretching or yoga, giving you more ways to use your retreat."
-          }
-        },
-        "feature_CiXqAH": {
-          "type": "feature",
-          "settings": {
-            "feature_title": "Crafted From Local Cedar",
-            "feature_description": "Clear western red cedar, sourced locally, provides the durability, warmth, and scent that define the sauna experience."
-          }
-        },
-        "feature_EC4AQc": {
-          "type": "feature",
-          "settings": {
-            "feature_title": "Toxin-Free Wellness Sanctuary",
-            "feature_description": "Every finish is natural, free of adhesives and synthetics, so you can breathe deeply knowing your space is clean and safe."
-          }
-        },
-        "feature_T8P9xL": {
-          "type": "feature",
-          "settings": {
-            "feature_title": "Accessible Price Point, Built To Last",
-            "feature_description": "Starting under $25,000, the Loowit offers lasting craftsmanship and wellness at a price point that makes owning a handcrafted sauna possible for more families."
-          }
-        }
-      },
-      "block_order": [
-        "feature_RCNLDx",
-        "feature_pNmFca",
-        "feature_CiXqAH",
-        "feature_EC4AQc",
-        "feature_T8P9xL"
-      ],
-      "name": "Loowit Way Features",
-      "settings": {
-        "main_heading": "The Loowit Way: Crafted For Living Well",
-        "main_description": "Our Loowit sauna model is compact but spacious, simple but flexible, and affordable without compromise. For homeowners across the country, it's become a favorite model for daily wellness.",
-        "button_text": "See Who's Behind The Craft",
-        "button_url": "",
-        "image_alt_text": "Loowit Sauna",
-        "image_position": "right",
-        "max_width": 1670,
-        "column_gap": 70,
-        "padding_top": 130,
-        "padding_bottom": 0,
-        "padding_horizontal": 50,
-        "feature_spacing": 0,
-        "main_heading_size": 40,
-        "feature_title_size": 24,
-        "text_size": 18,
-        "background_color": "#FCF9F4",
-        "heading_color": "#252220",
-        "text_color": "#252220",
-        "button_background_color": "#546659",
-        "button_text_color": "#ffffff",
-        "button_hover_background": "#ffffff",
-        "button_hover_text_color": "#546659",
-        "button_text_size": 18,
-        "button_padding_vertical": 6,
-        "button_padding_horizontal": 30,
-        "button_margin_top": 0,
-        "button_border_radius": 20,
-        "image_border_radius": 18,
-        "image_max_height": 600
-      }
-    },
-    "bespoke_section_yUMFMz": {
+    "bespoke_section_WyWDtY": {
       "type": "bespoke-section",
       "blocks": {
-        "feature_card_PXVLEr": {
+        "feature_card_TB6pfg": {
           "type": "feature_card",
           "settings": {
             "card_title": "",
@@ -297,7 +35,7 @@
             "feature_5": ""
           }
         },
-        "feature_card_MnWyTD": {
+        "feature_card_Rqx3Bt": {
           "type": "feature_card",
           "settings": {
             "card_title": "",
@@ -311,8 +49,8 @@
         }
       },
       "block_order": [
-        "feature_card_PXVLEr",
-        "feature_card_MnWyTD"
+        "feature_card_TB6pfg",
+        "feature_card_Rqx3Bt"
       ],
       "name": "Bespoke Upgrades",
       "settings": {
@@ -320,7 +58,6 @@
         "description_1": "Little touches make a big difference. Add the details that fit your routine and turn the sauna into your own retreat.",
         "sub_heading": "Make Your Silver Star Truly Yours",
         "description_2": "Your sauna can be way more than a space to sit and sweat. It can be a retreat tailored to your lifestyle. Choose from upgrades that add comfort, function, and a touch of luxury:",
-        "background_image": "shopify://shop_images/sec-1.png",
         "button_text": "Customize My Sauna",
         "button_url": "",
         "button_alignment": "flex-end",
@@ -356,10 +93,246 @@
         "accent_color": "#546659"
       }
     },
-    "lowitsuana_sec6_dqBgA3": {
+    "customize_section_BeLWYq": {
+      "type": "customize-section",
+      "name": "Customize Section",
+      "settings": {
+        "section_title": "Customize Your Silver Star Sauna",
+        "section_description": "Whether you already have a vision in mind or you're just beginning to explore, we're here to help shape the project. Contact us to discuss your ideas, request pricing, or plan a consultation.",
+        "phone_number": "(360) 360-6968",
+        "email_address": "info@nwimmersion.com",
+        "button_text": "Send Me My Silver Star Quote",
+        "button_link": "",
+        "accent_color": "#546659",
+        "section_padding_top": 130,
+        "section_padding_bottom": 0
+      }
+    },
+    "faq_section_rCjknb": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_item_78UAqX": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How much does a custom sauna cost?",
+            "answer": "Custom saunas vary based on size, features, and upgrades. The Silver Star starts at $39,990, with options like mosaic tile, WiFi controls, and showers available to personalize your build."
+          }
+        },
+        "faq_item_9zybMz": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I see a sauna before ordering?",
+            "answer": "Yes. We welcome visitors to our Vancouver, WA showroom to step inside a finished Silver Star, see the craftsmanship up close, and talk through options in person."
+          }
+        },
+        "faq_item_K4TeAC": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it cheaper to build a sauna or buy one?",
+            "answer": "It depends on what you value. A DIY sauna kit can sometimes save on labor, but a handcrafted sauna like the Silver Star is built for decades of use with materials and finishes that last. Many customers find the long-term investment pays off in durability and experience."
+          }
+        },
+        "faq_item_iWGG4M": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do saunas cost a lot of electricity?",
+            "answer": "Not as much as you'd think. A typical electric heater runs for short sessions and is designed for efficiency. Wood-burning heaters are also available if you prefer a more traditional option."
+          }
+        },
+        "faq_item_yYBLkd": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the average lifespan of a sauna?",
+            "answer": "A well-built sauna can last 20–30 years or more. With the Silver Star's cedar construction and careful finishing, many customers pass theirs down as part of the home."
+          }
+        },
+        "faq_item_9UCR6B": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you help with delivery and installation?",
+            "answer": "Yes. For local customers, we help coordinate delivery, electrical hookup, and site preparation with trusted subcontractors so the setup is smooth and straightforward."
+          }
+        },
+        "faq_item_gKfNMt": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long is the wait for a new sauna build?",
+            "answer": "We're currently booking into mid 2026. Each sauna is handcrafted, so we schedule builds carefully to make sure every project gets the time and attention it deserves."
+          }
+        },
+        "faq_item_fQWmRR": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do saunas need plumbing?",
+            "answer": "No plumbing is required for a sauna itself. However, you can add upgrades like a cold tub outlet or a shower on the porch if you'd like water features nearby."
+          }
+        },
+        "faq_item_XarKMg": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I order a pre-built sauna from you?",
+            "answer": "Ordering your sauna is quick and easy! Just click Reserve Now or reach out to us via phone: 360-360-6968 or email: info@nwimmersion.com and we will schedule a discovery consultation to walk through all details. Once that is all set up then we will send your contract to reserve your build spot with 25% nonrefundable deposit."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_78UAqX",
+        "faq_item_9zybMz",
+        "faq_item_K4TeAC",
+        "faq_item_iWGG4M",
+        "faq_item_yYBLkd",
+        "faq_item_9UCR6B",
+        "faq_item_gKfNMt",
+        "faq_item_fQWmRR",
+        "faq_item_XarKMg"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "main_heading": "Frequently Asked Questions (FAQs)",
+        "single_open": true,
+        "max_width": 1670,
+        "padding_top": 130,
+        "padding_bottom": 0,
+        "padding_horizontal": 50,
+        "columns_gap": 20,
+        "items_gap": 20,
+        "heading_margin_bottom": 40,
+        "heading_size": 36,
+        "heading_weight": 700,
+        "question_font_size": 18,
+        "question_font_weight": 700,
+        "answer_font_size": 18,
+        "background_color": "#FCF9F4",
+        "heading_color": "#222222",
+        "text_color": "#252220",
+        "question_background_color": "#fbefdb",
+        "question_text_color": "#252220",
+        "answer_background_color": "#fbefdb",
+        "answer_text_color": "#252220",
+        "item_border_color": "#e5e5e5",
+        "icon_background_color": "#546659",
+        "icon_text_color": "#ffffff",
+        "item_border_radius": 8,
+        "question_padding_vertical": 16,
+        "question_padding_horizontal": 20
+      }
+    },
+    "hero_banner_RiJyiE": {
+      "type": "hero-banner",
+      "blocks": {
+        "feature_RXhPdC": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "12+ Years Of Craftsmanship"
+          }
+        },
+        "feature_whWyMm": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Continental US Shipping"
+          }
+        },
+        "feature_p6YPc8": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Same-Day Parts Shipping"
+          }
+        }
+      },
+      "block_order": [
+        "feature_RXhPdC",
+        "feature_whWyMm",
+        "feature_p6YPc8"
+      ],
+      "name": "Hero Banner",
+      "settings": {
+        "bg_color": "#f3f1ee",
+        "overlay_color": "#000000",
+        "overlay_opacity": 45,
+        "min_height": 380,
+        "padding_top": 100,
+        "padding_bottom": 150,
+        "text_alignment": "center",
+        "title": "Loowit Sauna Model Compact, Versatile, And Handcrafted",
+        "title_color": "#ffffff",
+        "title_font_size": 40,
+        "description": "Built by hand here in Vancouver, Washington, the Loowit sauna model takes a smaller footprint and transforms it into a sanctuary that feels bigger than it looks. With cedar walls, a sliding bench for stretching or yoga, and toxin-free finishes, it's proof that compact design doesn't mean compromise.",
+        "text_color": "#ffffff",
+        "text_font_size": 18,
+        "feature_color": "#ffffff",
+        "feature_font_size": 20,
+        "divider_color": "rgba(255, 255, 255, 0.55)",
+        "show_button": true,
+        "button_text": "Shop Now",
+        "button_url": "",
+        "button_style": "filled",
+        "button_alignment": "center",
+        "button_bg_color": "#ffffff",
+        "button_text_color": "#000000",
+        "button_border_color": "#ffffff",
+        "button_hover_bg_color": "#f0f0f0",
+        "button_hover_text_color": "#000000",
+        "button_font_size": 16,
+        "button_padding_horizontal": 32,
+        "button_padding_vertical": 16,
+        "button_border_radius": 4
+      }
+    },
+    "hero_section_KQaD9p": {
+      "type": "hero-section",
+      "blocks": {
+        "feature_card_9BtjiE": {
+          "type": "feature_card",
+          "settings": {
+            "card_heading": "Durability Meets Design",
+            "card_description": "A standing seam metal roof and pressure-treated foundation give the Loowit its backbone. Foam insulation beneath the sauna, combined with rockwool insulation in the walls and ceiling, keeps the interior warm and efficient.",
+            "card_button_text": "Learn More",
+            "card_button_url": ""
+          }
+        },
+        "feature_card_AzPHxG": {
+          "type": "feature_card",
+          "settings": {
+            "card_heading": "Signature Exterior Features",
+            "card_description": "A wide front window and glass door invite natural light while keeping the structure private and stylish. Exterior LED lighting makes nighttime sessions inviting, while the Behr Carbon Black paint provides a clean, modern finish.",
+            "card_button_text": "View The Exterior In Person",
+            "card_button_url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "feature_card_9BtjiE",
+        "feature_card_AzPHxG"
+      ],
+      "name": "Hero Section",
+      "settings": {
+        "hero_heading": "Loowit Sauna Exterior: Strong Lines, Lasting Strength",
+        "hero_description": "Built with the Pacific Northwest climate in mind, the Loowit's exterior is compact, resilient, and modern. With a sleek black finish, cedar deck, and metal roof, it's made to hold its character through rain, snow, and heat.",
+        "background_color": "#fef9f5",
+        "overlay_opacity": 45,
+        "text_color": "#ffffff",
+        "heading_font_size": 44,
+        "description_font_size": 18,
+        "card_background": "#e7dcc8",
+        "card_text_color": "#333333",
+        "card_heading_font_size": 24,
+        "card_text_font_size": 18,
+        "button_color": "#4A5A4A",
+        "button_hover_color": "#ffffff",
+        "button_hover_text_color": "#4A5A4A",
+        "button_font_size": 16,
+        "min_height": 500,
+        "border_radius": 20,
+        "section_padding_top": 140,
+        "section_padding_bottom": 140,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "lowitsuana_sec6_FWrCWT": {
       "type": "lowitsuana-sec6",
       "blocks": {
-        "step_zAmetA": {
+        "step_GXMM7j": {
           "type": "step",
           "settings": {
             "step_number": "01",
@@ -371,7 +344,7 @@
             "button_link": ""
           }
         },
-        "step_49CJXL": {
+        "step_pgLxK7": {
           "type": "step",
           "settings": {
             "step_number": "02",
@@ -383,7 +356,7 @@
             "button_link": ""
           }
         },
-        "step_FxBeiD": {
+        "step_zNKK6E": {
           "type": "step",
           "settings": {
             "step_number": "03",
@@ -395,7 +368,7 @@
             "button_link": ""
           }
         },
-        "step_A89Jt6": {
+        "step_9Fqpqk": {
           "type": "step",
           "settings": {
             "step_number": "04",
@@ -406,26 +379,13 @@
             "button_text": "",
             "button_link": ""
           }
-        },
-        "step_RUWRdp": {
-          "type": "step",
-          "settings": {
-            "step_number": "05",
-            "step_label": "STEP",
-            "title": "Delivery Day, Your Sauna Arrives",
-            "description": "The best part! Once your build is complete and final payment is made, we coordinate delivery and installation support. Soon after, you'll be stepping inside your own Loowit sauna.",
-            "is_tall_card": true,
-            "button_text": "ORDER MY LOOWIT SAUNA",
-            "button_link": "#"
-          }
         }
       },
       "block_order": [
-        "step_zAmetA",
-        "step_49CJXL",
-        "step_FxBeiD",
-        "step_A89Jt6",
-        "step_RUWRdp"
+        "step_GXMM7j",
+        "step_pgLxK7",
+        "step_zNKK6E",
+        "step_9Fqpqk"
       ],
       "name": "Journey Steps",
       "settings": {
@@ -470,93 +430,188 @@
         "button_margin_top": 28
       }
     },
-    "showroom_section_JkHWGQ": {
-      "type": "showroom-section",
+    "loowit_interior_section_7FyhHN": {
+      "type": "loowit-interior-section",
       "blocks": {
-        "schedule_item_LPmRzx": {
-          "type": "schedule_item",
+        "feature_YpCycw": {
+          "type": "feature",
           "settings": {
-            "schedule_text": "Thur-Sat 10am-6pm"
+            "feature_text": "Two 6'2\" clear western red cedar benches, seating up to six"
           }
         },
-        "schedule_item_zCz4rQ": {
-          "type": "schedule_item",
+        "feature_LcNDbD": {
+          "type": "feature",
           "settings": {
-            "schedule_text": "Sundays 11am-5pm"
+            "feature_text": "Sliding bottom bench for stretching or yoga practice"
           }
         },
-        "address_HrawiY": {
-          "type": "address",
+        "feature_DntMVi": {
+          "type": "feature",
           "settings": {
-            "address_text": "5305 NE 121st Ave Ste 216 Vancouver, WA 98682",
-            "address_weight": 400
+            "feature_text": "Subtle warm LED lighting inside"
+          }
+        },
+        "feature_XTPWBK": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "HUUM heater, electric or wood-burning"
+          }
+        },
+        "feature_kYE6Nn": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Interior and front finished in clear western red cedar"
+          }
+        },
+        "feature_cKdKHU": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "All natural Livos oil finish, no toxins or adhesives"
+          }
+        },
+        "feature_jxGgCC": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Full insulation for efficient heat retention"
           }
         }
       },
       "block_order": [
-        "schedule_item_LPmRzx",
-        "schedule_item_zCz4rQ",
-        "address_HrawiY"
+        "feature_YpCycw",
+        "feature_LcNDbD",
+        "feature_DntMVi",
+        "feature_XTPWBK",
+        "feature_kYE6Nn",
+        "feature_cKdKHU",
+        "feature_jxGgCC"
       ],
-      "name": "Showroom Visit Section",
+      "name": "Loowit Interior Features",
       "settings": {
-        "heading": "Visit Our Vancouver, WA Showroom",
-        "description": "There's no substitute for stepping into a sauna and feeling the warmth for yourself. If you're local, come experience the craftsmanship firsthand!!",
-        "button_text": "View Our Warranty",
+        "main_heading": "Inside The Loowit: Space That Adapts To You",
+        "main_description": "Step inside the Loowit and you'll notice how well it balances comfort with efficiency. Two cedar benches stretch nearly the full length, yet the interior feels open thanks to a sliding lower bench that creates room for stretching or yoga. Every board is cedar, treated naturally, with no glues or toxins, only clean, breathable wood for a healthier sanctuary.",
+        "secondary_heading": "A Sanctuary In Every Detail",
+        "secondary_description": "From the warm LED glow to the scent of locally sourced cedar, the Loowit model is designed to calm you the moment you close the door. Full insulation in the walls, ceiling, and floor keeps heat steady, while drainable cedar decking adds durability and easy care.",
+        "features_heading": "Key Interior Features",
+        "pricing_text": "Starting at $24,990 — now accepting HSA/FSA payments for savings of 30–40%.",
+        "button_text": "See The Loowit Interior At Our Showroom",
         "button_url": "",
-        "button_alignment": "center",
-        "button_bg_color": "#546659",
-        "button_text_color": "#ffffff",
-        "button_hover_bg": "#ffffff",
-        "button_hover_text": "#546659",
-        "button_border_radius": 50,
-        "show_phone_highlight": true,
-        "highlight_title": "Call Or Text",
-        "phone_number": "(360) 360-6968",
-        "phone_clickable": true,
-        "highlight_description": "to schedule your appointment.",
-        "heading_size": 40,
-        "heading_color": "#252220",
-        "text_size": 16,
-        "text_color": "#252220",
-        "button_text_size": 18,
-        "highlight_text_size": 16,
-        "background_color": "#fbefdb",
-        "highlight_title_color": "#252220",
-        "highlight_text_color": "#252220",
-        "phone_number_color": "#546659",
-        "icon_bg_color": "#5f7468",
-        "icon_color": "#ffffff",
-        "content_width": 70,
-        "border_radius": 22,
-        "icon_size": 56,
-        "highlight_max_width": 600,
+        "video_url": "",
+        "video_webm_url": "",
+        "video_poster": "shopify://shop_images/silver-star-suana_-hero-bg.webp",
+        "video_description": "Loowit Interior Video",
+        "layout_direction": "content_left",
+        "column_gap": 70,
         "padding_top": 130,
         "padding_bottom": 0,
         "padding_horizontal": 50,
-        "card_padding_vertical": 80,
-        "card_padding_horizontal": 50,
-        "button_padding_vertical": 10,
-        "button_padding_horizontal": 30,
-        "heading_margin_bottom": 12,
-        "text_margin_vertical": 32,
-        "highlight_margin_top": 20,
-        "highlight_title_margin": 20,
-        "mobile_gap": 30,
-        "mobile_padding_vertical": 60,
-        "mobile_padding_horizontal": 25,
-        "mobile_padding_vertical_small": 40,
-        "mobile_padding_horizontal_small": 20,
-        "mobile_text_size": 14,
-        "mobile_heading_center": false,
-        "mobile_text_center": false,
-        "mobile_highlight_center": false
+        "main_heading_size": 40,
+        "subheading_size": 24,
+        "text_size": 18,
+        "background_color": "#FCF9F4",
+        "heading_color": "#252220",
+        "text_color": "#252220",
+        "icon_background_color": "#5c6f63",
+        "divider_color": "#F6E8D1",
+        "button_background_color": "#5C6F61",
+        "button_hover_background": "#4a5a52",
+        "button_text_color": "#ffffff",
+        "button_hover_text_color": "#ffffff",
+        "button_font_size": 14,
+        "button_font_weight": "700",
+        "button_font_family": "Roboto, sans-serif",
+        "button_padding_vertical": 12,
+        "button_padding_horizontal": 32,
+        "button_border_radius": 20,
+        "button_border_width": 0,
+        "button_border_color": "#5C6F61",
+        "button_hover_border_color": "#4a5a52",
+        "video_border_radius": 18,
+        "video_max_height": 770
       }
     },
-    "warranty_showroom_wxWpzc": {
+    "loowit_way_features_43F47w": {
+      "type": "loowit-way-features",
+      "blocks": {
+        "feature_qHdNPT": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Compact Footprint, Spacious Feel",
+            "feature_description": "The Loowit makes the most of its size. With benches that seat six and thoughtful design, it feels bigger inside than its footprint suggests."
+          }
+        },
+        "feature_yApabn": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Sliding Bench Versatility For Yoga & Stretching",
+            "feature_description": "The movable lower bench turns your sauna into a space for stretching or yoga, giving you more ways to use your retreat."
+          }
+        },
+        "feature_DBhNyC": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Crafted From Local Cedar",
+            "feature_description": "Clear western red cedar, sourced locally, provides the durability, warmth, and scent that define the sauna experience."
+          }
+        },
+        "feature_bQqLDL": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Toxin-Free Wellness Sanctuary",
+            "feature_description": "Every finish is natural, free of adhesives and synthetics, so you can breathe deeply knowing your space is clean and safe."
+          }
+        },
+        "feature_tt3rBw": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Accessible Price Point, Built To Last",
+            "feature_description": "Starting under $25,000, the Loowit offers lasting craftsmanship and wellness at a price point that makes owning a handcrafted sauna possible for more families."
+          }
+        }
+      },
+      "block_order": [
+        "feature_qHdNPT",
+        "feature_yApabn",
+        "feature_DBhNyC",
+        "feature_bQqLDL",
+        "feature_tt3rBw"
+      ],
+      "name": "Loowit Way Features",
+      "settings": {
+        "main_heading": "The Loowit Way: Crafted For Living Well",
+        "main_description": "Our Loowit sauna model is compact but spacious, simple but flexible, and affordable without compromise. For homeowners across the country, it's become a favorite model for daily wellness.",
+        "button_text": "See Who's Behind The Craft",
+        "button_url": "",
+        "image_alt_text": "Loowit Sauna",
+        "image_position": "right",
+        "max_width": 1670,
+        "column_gap": 70,
+        "padding_top": 130,
+        "padding_bottom": 0,
+        "padding_horizontal": 50,
+        "feature_spacing": 0,
+        "main_heading_size": 40,
+        "feature_title_size": 24,
+        "text_size": 18,
+        "background_color": "#FCF9F4",
+        "heading_color": "#252220",
+        "text_color": "#252220",
+        "button_background_color": "#546659",
+        "button_text_color": "#ffffff",
+        "button_hover_background": "#ffffff",
+        "button_hover_text_color": "#546659",
+        "button_text_size": 18,
+        "button_padding_vertical": 6,
+        "button_padding_horizontal": 30,
+        "button_margin_top": 0,
+        "button_border_radius": 20,
+        "image_border_radius": 18,
+        "image_max_height": 600
+      }
+    },
+    "warranty_showroom_TdnnQj": {
       "type": "warranty-showroom",
       "blocks": {
-        "column_biXkGT": {
+        "column_6dNzHW": {
           "type": "column",
           "settings": {
             "heading": "Warranty That Gives You Peace of Mind",
@@ -565,7 +620,7 @@
             "button_link": "#warranty-details"
           }
         },
-        "column_tXxJtJ": {
+        "column_QPmqww": {
           "type": "column",
           "settings": {
             "heading": "Visit Our Vancouver WA Showroom",
@@ -576,8 +631,8 @@
         }
       },
       "block_order": [
-        "column_biXkGT",
-        "column_tXxJtJ"
+        "column_6dNzHW",
+        "column_QPmqww"
       ],
       "name": "Warranty & Showroom",
       "settings": {
@@ -596,8 +651,8 @@
         "text_font_weight": "400",
         "text_font_family": "Quando",
         "text_margin_bottom": 28,
-        "button_background": "#5c6f61",
-        "button_hover_background": "#5b3023",
+        "button_background": "#5C6F61",
+        "button_hover_background": "#5B3023",
         "button_text_color": "#ffffff",
         "button_text_color_hover": "#ffffff",
         "button_font_size": 18,
@@ -607,264 +662,125 @@
         "button_padding_sides": 20,
         "button_border_radius": 20,
         "button_border_width": 0,
-        "button_border_color": "#5c6f61",
-        "button_border_color_hover": "#5b3023"
+        "button_border_color": "#5C6F61",
+        "button_border_color_hover": "#5B3023"
       }
     },
-    "loowit_way_features_YzyENf": {
-      "type": "loowit-way-features",
+    "warranty_showroom_bg_wF3DDi": {
+      "type": "warranty-showroom-bg",
       "blocks": {
-        "feature_D4L4xX": {
-          "type": "feature",
+        "column_4tLQhW": {
+          "type": "column",
           "settings": {
-            "feature_title": "Compact Footprint, Spacious Feel",
-            "feature_description": "The Loowit makes the most of its size. With benches that seat six and thoughtful design, it feels bigger inside than its footprint suggests."
+            "heading": "Warranty That Gives",
+            "description": "Your Bespoke  is built to last, and our 12-month limited warranty covers structural components and workmanship. For full details, we're always here to share exactly what's included.",
+            "button_text": "Learn About Our Warranty",
+            "button_link": "#warranty-details"
           }
         },
-        "feature_FMMGbJ": {
-          "type": "feature",
+        "column_zw9XFz": {
+          "type": "column",
           "settings": {
-            "feature_title": "Sliding Bench Versatility For Yoga & Stretching",
-            "feature_description": "The movable lower bench turns your sauna into a space for stretching or yoga, giving you more ways to use your retreat."
-          }
-        },
-        "feature_QCkE7T": {
-          "type": "feature",
-          "settings": {
-            "feature_title": "Crafted From Local Cedar",
-            "feature_description": "Clear western red cedar, sourced locally, provides the durability, warmth, and scent that define the sauna experience."
-          }
-        },
-        "feature_zftHgr": {
-          "type": "feature",
-          "settings": {
-            "feature_title": "Toxin-Free Wellness Sanctuary",
-            "feature_description": "Every finish is natural, free of adhesives and synthetics, so you can breathe deeply knowing your space is clean and safe."
-          }
-        },
-        "feature_JDwFBP": {
-          "type": "feature",
-          "settings": {
-            "feature_title": "Accessible Price Point, Built To Last",
-            "feature_description": "Starting under $25,000, the Loowit offers lasting craftsmanship and wellness at a price point that makes owning a handcrafted sauna possible for more families."
+            "heading": "Visit Our Vancouver Showroom",
+            "description": "Before you commit, come and see what's possible. Step into a sauna, test the materials, and start imagining your own Bespoke retreat.",
+            "button_text": "Visit Today!",
+            "button_link": "#showroom-visit"
           }
         }
       },
       "block_order": [
-        "feature_D4L4xX",
-        "feature_FMMGbJ",
-        "feature_QCkE7T",
-        "feature_zftHgr",
-        "feature_JDwFBP"
+        "column_4tLQhW",
+        "column_zw9XFz"
       ],
-      "name": "Loowit Way Features",
+      "name": "Warranty & Showroom",
       "settings": {
-        "main_heading": "The Loowit Way: Crafted For Living Well",
-        "main_description": "Our Loowit sauna model is compact but spacious, simple but flexible, and affordable without compromise. For homeowners across the country, it's become a favorite model for daily wellness.",
-        "button_text": "See Who's Behind The Craft",
-        "button_url": "",
-        "image": "shopify://shop_images/image-1523443.webp",
-        "image_alt_text": "Loowit Sauna",
-        "image_position": "right",
+        "section_label": "Sauna Warranty and Showroom",
+        "background_color": "#f0f0f0",
+        "background_image_alt": "Background image",
         "max_width": 1670,
-        "column_gap": 70,
-        "padding_top": 130,
-        "padding_bottom": 0,
-        "padding_horizontal": 50,
-        "feature_spacing": 0,
-        "main_heading_size": 40,
-        "feature_title_size": 24,
-        "text_size": 18,
-        "background_color": "#fcf9f4",
-        "heading_color": "#252220",
-        "text_color": "#252220",
-        "button_background_color": "#546659",
-        "button_text_color": "#ffffff",
-        "button_hover_background": "#ffffff",
-        "button_hover_text_color": "#546659",
-        "button_text_size": 18,
-        "button_padding_vertical": 6,
-        "button_padding_horizontal": 30,
-        "button_margin_top": 0,
-        "button_border_radius": 20,
-        "image_border_radius": 18,
-        "image_max_height": 600
-      }
-    },
-    "customize_section_QUMXm4": {
-      "type": "customize-section",
-      "name": "Customize Section",
-      "settings": {
-        "background_image": "shopify://shop_images/Frame-7545.webp",
-        "section_title": "Customize Your Silver Star Sauna",
-        "section_description": "Whether you already have a vision in mind or you're just beginning to explore, we're here to help shape the project. Contact us to discuss your ideas, request pricing, or plan a consultation.",
-        "phone_number": "(360) 360-6968",
-        "email_address": "info@nwimmersion.com",
-        "button_text": "Send Me My Silver Star Quote",
-        "button_link": "",
-        "accent_color": "#546659",
-        "section_padding_top": 130,
-        "section_padding_bottom": 0
-      }
-    },
-    "faq_section_gHayjc": {
-      "type": "faq-section",
-      "blocks": {
-        "faq_item_AdwWGL": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How much does a custom sauna cost?",
-            "answer": "Custom saunas vary based on size, features, and upgrades. The Silver Star starts at $39,990, with options like mosaic tile, WiFi controls, and showers available to personalize your build."
-          }
-        },
-        "faq_item_YzkWpT": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Can I see a sauna before ordering?",
-            "answer": "Yes. We welcome visitors to our Vancouver, WA showroom to step inside a finished Silver Star, see the craftsmanship up close, and talk through options in person."
-          }
-        },
-        "faq_item_z3TVrA": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Is it cheaper to build a sauna or buy one?",
-            "answer": "It depends on what you value. A DIY sauna kit can sometimes save on labor, but a handcrafted sauna like the Silver Star is built for decades of use with materials and finishes that last. Many customers find the long-term investment pays off in durability and experience."
-          }
-        },
-        "faq_item_QBEcBL": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Do saunas cost a lot of electricity?",
-            "answer": "Not as much as you'd think. A typical electric heater runs for short sessions and is designed for efficiency. Wood-burning heaters are also available if you prefer a more traditional option."
-          }
-        },
-        "faq_item_qUbHCw": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What is the average lifespan of a sauna?",
-            "answer": "A well-built sauna can last 20–30 years or more. With the Silver Star's cedar construction and careful finishing, many customers pass theirs down as part of the home."
-          }
-        },
-        "faq_item_Nmz6qM": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Do you help with delivery and installation?",
-            "answer": "Yes. For local customers, we help coordinate delivery, electrical hookup, and site preparation with trusted subcontractors so the setup is smooth and straightforward."
-          }
-        },
-        "faq_item_yECy3i": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How long is the wait for a new sauna build?",
-            "answer": "We're currently booking into mid 2026. Each sauna is handcrafted, so we schedule builds carefully to make sure every project gets the time and attention it deserves."
-          }
-        },
-        "faq_item_7qXYFf": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Do saunas need plumbing?",
-            "answer": "No plumbing is required for a sauna itself. However, you can add upgrades like a cold tub outlet or a shower on the porch if you'd like water features nearby."
-          }
-        },
-        "faq_item_K6jQhT": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How do I order a pre-built sauna from you?",
-            "answer": "Ordering your sauna is quick and easy! Just click Reserve Now or reach out to us via phone: 360-360-6968 or email: info@nwimmersion.com and we will schedule a discovery consultation to walk through all details. Once that is all set up then we will send your contract to reserve your build spot with 25% nonrefundable deposit."
-          }
-        }
-      },
-      "block_order": [
-        "faq_item_AdwWGL",
-        "faq_item_YzkWpT",
-        "faq_item_z3TVrA",
-        "faq_item_QBEcBL",
-        "faq_item_qUbHCw",
-        "faq_item_Nmz6qM",
-        "faq_item_yECy3i",
-        "faq_item_7qXYFf",
-        "faq_item_K6jQhT"
-      ],
-      "name": "FAQ Section",
-      "settings": {
-        "main_heading": "Frequently Asked Questions (FAQs)",
-        "single_open": true,
-        "max_width": 1670,
-        "padding_top": 130,
-        "padding_bottom": 0,
-        "padding_horizontal": 50,
-        "columns_gap": 20,
-        "items_gap": 20,
-        "heading_margin_bottom": 40,
-        "heading_size": 36,
-        "heading_weight": 700,
-        "question_font_size": 18,
-        "question_font_weight": 700,
-        "answer_font_size": 18,
-        "background_color": "#fcf9f4",
-        "heading_color": "#222222",
-        "text_color": "#252220",
-        "question_background_color": "#fbefdb",
-        "question_text_color": "#252220",
-        "answer_background_color": "#fbefdb",
-        "answer_text_color": "#252220",
-        "item_border_color": "#e5e5e5",
-        "icon_background_color": "#546659",
-        "icon_text_color": "#ffffff",
-        "item_border_radius": 8,
-        "question_padding_vertical": 16,
-        "question_padding_horizontal": 20
-      }
-    },
-    "showroom_section_copy_4MEmPh": {
-      "type": "showroom-section-copy",
-      "name": "Showroom Section",
-      "settings": {
-        "heading": "Come Visit Our Showroom in Vancouver, WA",
-        "thursday_friday_saturday": "Thurs – Sat: 10 AM – 6 PM",
-        "sunday_hours": "Sun: 11 AM- 5 PM",
-        "monday_wednesday": "Mon-Wed: By Appointment – call/text: 360-360-6968 to schedule",
-        "address": "5305 NE 121st Ave, Ste 216<br>Vancouver, WA 98682",
-        "background_image": "shopify://shop_images/Frame-7545.webp",
-        "background_color": "#252220",
-        "overlay_opacity": 20,
-        "border_radius": 22,
-        "heading_font": "sans-serif",
-        "heading_size": 40,
-        "heading_weight": 700,
-        "heading_line_height": 50,
+        "min_height": 400,
+        "border_radius": 15,
+        "font_family": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif",
+        "padding_top": 250,
+        "padding_bottom": 250,
+        "padding_left": 50,
+        "padding_right": 50,
+        "margin_top": 50,
+        "margin_bottom": 50,
+        "margin_left": 0,
+        "margin_right": 0,
+        "show_overlay": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 40,
+        "columns_gap": 0,
+        "column_padding": 32,
         "heading_color": "#ffffff",
-        "body_font": "\"Roboto\", sans-serif",
-        "text_size": 18,
-        "text_weight": 400,
-        "text_line_height": 29,
+        "heading_font_size": 32,
+        "heading_font_weight": "600",
+        "heading_line_height": 115,
+        "heading_margin_bottom": 18,
         "text_color": "#ffffff",
-        "padding_top": 130,
-        "padding_horizontal": 50,
-        "section_padding_vertical": 120,
-        "section_padding_horizontal": 100,
-        "content_width": 70,
-        "text_indent": 30,
-        "text_margin": 17,
-        "address_margin_top": 60,
-        "mobile_heading_alignment": "center",
-        "mobile_text_alignment": "center"
+        "text_font_size": 18,
+        "text_font_weight": "500",
+        "text_line_height": 150,
+        "text_margin_bottom": 28,
+        "button_background": "#5B6D5B",
+        "button_hover_background": "#ffffff",
+        "button_text_color": "#ffffff",
+        "button_hover_text_color": "#5B6D5B",
+        "button_font_size": 16,
+        "button_font_weight": "700",
+        "button_padding_vertical": 12,
+        "button_padding_horizontal": 26,
+        "button_border_radius": 26,
+        "button_box_shadow": "0 2px 8px rgba(91,109,91,0.15)",
+        "button_hover_box_shadow": "0 2px 8px rgba(91,109,91,0.15)",
+        "mobile_max_width": 340,
+        "mobile_margin_vertical": 0,
+        "mobile_padding_vertical": 32,
+        "mobile_padding_horizontal": 16,
+        "mobile_border_radius": 20,
+        "mobile_box_shadow": "0 2px 16px rgba(0,0,0,0.18)",
+        "mobile_overlay_opacity": 35,
+        "mobile_column_spacing": 32
+      }
+    },
+    "lowitsasuana_sec2_rx8WPY": {
+      "type": "lowitsasuana-sec2",
+      "name": "Video With Text",
+      "settings": {
+        "heading": "The Loowit Saunas Are Selling Out Quick!",
+        "text": "Each project is handcrafted in limited numbers, so a 25% deposit secures your spot. Order your Loowit Sauna today!",
+        "upload_image": "shopify://shop_images/silver-star-suana_-hero-bg.webp",
+        "button_label": "Order Now",
+        "button_link": "",
+        "heading_size": 32,
+        "text_size": 18,
+        "heading_color": "#111111",
+        "text_color": "#333333",
+        "button_color": "#4A5A4A",
+        "button_text_color": "#ffffff",
+        "button_border_color": "transparent",
+        "button_border_hover": "#000000",
+        "button_hover": "#ffffff",
+        "button_hover_text": "#000000",
+        "padding_top": 120,
+        "padding_bottom": 120
       }
     }
   },
   "order": [
     "main",
-    "hero_banner_XEfMtT",
-    "lowitsasuana_sec2_Upg9KT",
-    "loowit_interior_section_KLQjFJ",
-    "loowit_way_features_n4qrGR",
-    "bespoke_section_yUMFMz",
-    "lowitsuana_sec6_dqBgA3",
-    "showroom_section_JkHWGQ",
-    "warranty_showroom_wxWpzc",
-    "loowit_way_features_YzyENf",
-    "customize_section_QUMXm4",
-    "faq_section_gHayjc",
-    "showroom_section_copy_4MEmPh"
+    "bespoke_section_WyWDtY",
+    "customize_section_BeLWYq",
+    "faq_section_rCjknb",
+    "hero_banner_RiJyiE",
+    "hero_section_KQaD9p",
+    "lowitsuana_sec6_FWrCWT",
+    "loowit_interior_section_7FyhHN",
+    "loowit_way_features_43F47w",
+    "warranty_showroom_TdnnQj",
+    "warranty_showroom_bg_wF3DDi",
+    "lowitsasuana_sec2_rx8WPY"
   ]
 }
