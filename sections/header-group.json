@@ -72,8 +72,8 @@
         "nav_commercial": {
           "type": "nav_item",
           "settings": {
-            "label": "Commercial",
-            "link": "/pages/commercial",
+            "label": "Parts & Supplies",
+            "link": "https://nw-immersion.myshopify.com/pages/shop?category=supplies-accessories",
             "filter_slug": ""
           }
         }
