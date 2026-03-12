@@ -574,6 +574,7 @@
         "main_description": "Our Loowit sauna model is compact but spacious, simple but flexible, and affordable without compromise. For homeowners across the country, it's become a favorite model for daily wellness.",
         "button_text": "See Who's Behind The Craft",
         "button_url": "",
+        "image": "shopify://shop_images/image-1523443.webp",
         "image_alt_text": "Loowit Sauna",
         "image_position": "right",
         "max_width": 1670,
@@ -600,6 +601,115 @@
         "image_border_radius": 18,
         "image_max_height": 600
       }
+    },
+    "faq_section_gHayjc": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_item_AdwWGL": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How much does a custom sauna cost?",
+            "answer": "Custom saunas vary based on size, features, and upgrades. The Silver Star starts at $39,990, with options like mosaic tile, WiFi controls, and showers available to personalize your build."
+          }
+        },
+        "faq_item_YzkWpT": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I see a sauna before ordering?",
+            "answer": "Yes. We welcome visitors to our Vancouver, WA showroom to step inside a finished Silver Star, see the craftsmanship up close, and talk through options in person."
+          }
+        },
+        "faq_item_z3TVrA": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it cheaper to build a sauna or buy one?",
+            "answer": "It depends on what you value. A DIY sauna kit can sometimes save on labor, but a handcrafted sauna like the Silver Star is built for decades of use with materials and finishes that last. Many customers find the long-term investment pays off in durability and experience."
+          }
+        },
+        "faq_item_QBEcBL": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do saunas cost a lot of electricity?",
+            "answer": "Not as much as you'd think. A typical electric heater runs for short sessions and is designed for efficiency. Wood-burning heaters are also available if you prefer a more traditional option."
+          }
+        },
+        "faq_item_qUbHCw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the average lifespan of a sauna?",
+            "answer": "A well-built sauna can last 20–30 years or more. With the Silver Star's cedar construction and careful finishing, many customers pass theirs down as part of the home."
+          }
+        },
+        "faq_item_Nmz6qM": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you help with delivery and installation?",
+            "answer": "Yes. For local customers, we help coordinate delivery, electrical hookup, and site preparation with trusted subcontractors so the setup is smooth and straightforward."
+          }
+        },
+        "faq_item_yECy3i": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long is the wait for a new sauna build?",
+            "answer": "We're currently booking into mid 2026. Each sauna is handcrafted, so we schedule builds carefully to make sure every project gets the time and attention it deserves."
+          }
+        },
+        "faq_item_7qXYFf": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do saunas need plumbing?",
+            "answer": "No plumbing is required for a sauna itself. However, you can add upgrades like a cold tub outlet or a shower on the porch if you'd like water features nearby."
+          }
+        },
+        "faq_item_K6jQhT": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I order a pre-built sauna from you?",
+            "answer": "Ordering your sauna is quick and easy! Just click Reserve Now or reach out to us via phone: 360-360-6968 or email: info@nwimmersion.com and we will schedule a discovery consultation to walk through all details. Once that is all set up then we will send your contract to reserve your build spot with 25% nonrefundable deposit."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_AdwWGL",
+        "faq_item_YzkWpT",
+        "faq_item_z3TVrA",
+        "faq_item_QBEcBL",
+        "faq_item_qUbHCw",
+        "faq_item_Nmz6qM",
+        "faq_item_yECy3i",
+        "faq_item_7qXYFf",
+        "faq_item_K6jQhT"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "main_heading": "Frequently Asked Questions (FAQs)",
+        "single_open": true,
+        "max_width": 1670,
+        "padding_top": 130,
+        "padding_bottom": 0,
+        "padding_horizontal": 50,
+        "columns_gap": 20,
+        "items_gap": 20,
+        "heading_margin_bottom": 40,
+        "heading_size": 36,
+        "heading_weight": 700,
+        "question_font_size": 18,
+        "question_font_weight": 700,
+        "answer_font_size": 18,
+        "background_color": "#FCF9F4",
+        "heading_color": "#222222",
+        "text_color": "#252220",
+        "question_background_color": "#fbefdb",
+        "question_text_color": "#252220",
+        "answer_background_color": "#fbefdb",
+        "answer_text_color": "#252220",
+        "item_border_color": "#e5e5e5",
+        "icon_background_color": "#546659",
+        "icon_text_color": "#ffffff",
+        "item_border_radius": 8,
+        "question_padding_vertical": 16,
+        "question_padding_horizontal": 20
+      }
     }
   },
   "order": [
@@ -611,6 +721,7 @@
     "upgrade_options_eYJ8ex",
     "lowitsuana_sec6_dqBgA3",
     "warranty_showroom_wxWpzc",
-    "loowit_way_features_YzyENf"
+    "loowit_way_features_YzyENf",
+    "faq_section_gHayjc"
   ]
 }
