@@ -726,6 +726,41 @@
         "question_padding_vertical": 16,
         "question_padding_horizontal": 20
       }
+    },
+    "showroom_section_copy_4MEmPh": {
+      "type": "showroom-section-copy",
+      "name": "Showroom Section",
+      "settings": {
+        "heading": "Come Visit Our Showroom in Vancouver, WA",
+        "thursday_friday_saturday": "Thurs – Sat: 10 AM – 6 PM",
+        "sunday_hours": "Sun: 11 AM- 5 PM",
+        "monday_wednesday": "Mon-Wed: By Appointment – call/text: 360-360-6968 to schedule",
+        "address": "5305 NE 121st Ave, Ste 216<br>Vancouver, WA 98682",
+        "background_image": "shopify://shop_images/Frame-7545.webp",
+        "background_color": "#252220",
+        "overlay_opacity": 20,
+        "border_radius": 22,
+        "heading_font": "sans-serif",
+        "heading_size": 40,
+        "heading_weight": 700,
+        "heading_line_height": 50,
+        "heading_color": "#ffffff",
+        "body_font": "\"Roboto\", sans-serif",
+        "text_size": 18,
+        "text_weight": 400,
+        "text_line_height": 29,
+        "text_color": "#ffffff",
+        "padding_top": 130,
+        "padding_horizontal": 50,
+        "section_padding_vertical": 120,
+        "section_padding_horizontal": 100,
+        "content_width": 70,
+        "text_indent": 30,
+        "text_margin": 17,
+        "address_margin_top": 60,
+        "mobile_heading_alignment": "center",
+        "mobile_text_alignment": "center"
+      }
     }
   },
   "order": [
@@ -739,6 +774,7 @@
     "warranty_showroom_wxWpzc",
     "loowit_way_features_YzyENf",
     "customize_section_QUMXm4",
-    "faq_section_gHayjc"
+    "faq_section_gHayjc",
+    "showroom_section_copy_4MEmPh"
   ]
 }
