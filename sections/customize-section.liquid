@@ -1,0 +1,155 @@
+{{ 'customize-section.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .customize-section {
+    padding-top: {{ section.settings.section_padding_top | default: 130 }}px;
+    padding-bottom: {{ section.settings.section_padding_bottom | default: 0 }}px;
+  }
+  
+  .custom-btn,
+  .contact-icon {
+    background: {{ section.settings.accent_color | default: '#546659' }};
+    border-color: {{ section.settings.accent_color | default: '#546659' }};
+  }
+  
+  .custom-btn:hover {
+    color: {{ section.settings.accent_color | default: '#546659' }};
+  }
+</style>
+
+<div class="customize-section">
+  <div class="contact-section" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.45) 70%, rgba(0, 0, 0, 0.3) 100%), url('{{ section.settings.background_image | image_url }}');">
+    <h2>{{ section.settings.section_title | default: "Customize Your Silver Star Sauna" }}</h2>
+    <p>{{ section.settings.section_description }}</p>
+
+    <div class="contact-content">
+      <div class="contact-text">
+        {% if section.settings.phone_number != blank %}
+        <a href="tel:{{ section.settings.phone_number | replace: ' ', '' | replace: '(', '' | replace: ')', '' | replace: '-', '' }}" class="contact-item">
+          <div class="contact-icon">
+            <!-- Phone SVG Icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.11.37 2.3.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.28.2 2.47.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
+            </svg>
+          </div>
+          <span>{{ section.settings.phone_number }}</span>
+        </a>
+        {% endif %}
+
+        {% if section.settings.email_address != blank %}
+        <a href="mailto:{{ section.settings.email_address }}" class="contact-item">
+          <div class="contact-icon">
+            <!-- Mail SVG Icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+              <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </div>
+          <span>{{ section.settings.email_address }}</span>
+        </a>
+        {% endif %}
+      </div>
+
+      {% if section.settings.button_text != blank %}
+      <div>
+        <a href="{{ section.settings.button_link | default: '#' }}" class="custom-btn medium">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Customize Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "info": "Recommended size: 1920x600px"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Customize Your Silver Star Sauna"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Description",
+      "default": "Whether you already have a vision in mind or you're just beginning to explore, we're here to help shape the project. Contact us to discuss your ideas, request pricing, or plan a consultation."
+    },
+    {
+      "type": "header",
+      "content": "Contact Information"
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone Number",
+      "default": "(360) 360-6968"
+    },
+    {
+      "type": "text",
+      "id": "email_address",
+      "label": "Email Address",
+      "default": "info@nwimmersion.com"
+    },
+    {
+      "type": "header",
+      "content": "Call-to-Action Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Send Me My Silver Star Quote"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#546659"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Padding Top",
+      "default": 130
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Padding Bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customize Section"
+    }
+  ]
+}
+{% endschema %}
