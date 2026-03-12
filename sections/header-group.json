@@ -48,8 +48,8 @@
         "nav_plunges": {
           "type": "nav_item",
           "settings": {
-            "label": "Plunges & Tubs",
-            "link": "/collections/plunges-tubs",
+            "label": "Indoor Saunas",
+            "link": "https://nw-immersion.myshopify.com/pages/shop?category=indoor-saunas",
             "filter_slug": "cold-plunge-hot-tubs"
           }
         },
