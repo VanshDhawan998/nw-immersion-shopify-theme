@@ -47,15 +47,15 @@
           <span>{{ section.settings.email_address }}</span>
         </a>
         {% endif %}
-      </div>
 
-      {% if section.settings.button_text != blank %}
-      <div>
-        <a href="{{ section.settings.button_link | default: '#' }}" class="custom-btn medium">
-          {{ section.settings.button_text }}
-        </a>
+        {% if section.settings.button_text != blank %}
+        <div class="button-wrapper">
+          <a href="{{ section.settings.button_link | default: '#' }}" class="custom-btn medium">
+            {{ section.settings.button_text }}
+          </a>
+        </div>
+        {% endif %}
       </div>
-      {% endif %}
     </div>
   </div>
 </div>
