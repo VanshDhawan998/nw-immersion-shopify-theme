@@ -243,9 +243,9 @@
         "card_text_color": "#333333",
         "card_heading_font_size": 24,
         "card_text_font_size": 18,
-        "button_color": "#4A5A4A",
+        "button_color": "#4a5a4a",
         "button_hover_color": "#ffffff",
-        "button_hover_text_color": "#4A5A4A",
+        "button_hover_text_color": "#4a5a4a",
         "button_font_size": 16,
         "min_height": 500,
         "border_radius": 20,
@@ -602,6 +602,22 @@
         "image_max_height": 600
       }
     },
+    "customize_section_QUMXm4": {
+      "type": "customize-section",
+      "name": "Customize Section",
+      "settings": {
+        "background_image": "shopify://shop_images/Frame-7545.webp",
+        "section_title": "Customize Your Silver Star Sauna",
+        "section_description": "Whether you already have a vision in mind or you're just beginning to explore, we're here to help shape the project. Contact us to discuss your ideas, request pricing, or plan a consultation.",
+        "phone_number": "(360) 360-6968",
+        "email_address": "info@nwimmersion.com",
+        "button_text": "Send Me My Silver Star Quote",
+        "button_link": "",
+        "accent_color": "#546659",
+        "section_padding_top": 130,
+        "section_padding_bottom": 0
+      }
+    },
     "faq_section_gHayjc": {
       "type": "faq-section",
       "blocks": {
@@ -696,7 +712,7 @@
         "question_font_size": 18,
         "question_font_weight": 700,
         "answer_font_size": 18,
-        "background_color": "#FCF9F4",
+        "background_color": "#fcf9f4",
         "heading_color": "#222222",
         "text_color": "#252220",
         "question_background_color": "#fbefdb",
@@ -722,6 +738,7 @@
     "lowitsuana_sec6_dqBgA3",
     "warranty_showroom_wxWpzc",
     "loowit_way_features_YzyENf",
+    "customize_section_QUMXm4",
     "faq_section_gHayjc"
   ]
 }
