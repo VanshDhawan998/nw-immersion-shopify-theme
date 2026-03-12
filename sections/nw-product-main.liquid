@@ -1,0 +1,426 @@
+{{ 'nw-product-page.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_image   = current_variant.featured_image | default: product.featured_image
+-%}
+
+<section class="nw-pdp-section nw-pdp-main" id="nw-product-main-{{ section.id }}">
+  <div class="nw-pdp-main__inner">
+
+    <!-- ═══════════════════════════════════════
+         GALLERY COLUMN
+    ════════════════════════════════════════ -->
+    <div class="nw-pdp-gallery">
+      <div class="nw-pdp-gallery__main" role="img" aria-label="{{ product.title | escape }}">
+        <img
+          class="nw-pdp-gallery__main-img"
+          src="{{ product_image | image_url: width: 1400 }}"
+          alt="{{ product_image.alt | default: product.title | escape }}"
+          width="923"
+          height="914"
+          loading="eager"
+          fetchpriority="high"
+        >
+
+        <!-- Zoom button -->
+        <button class="nw-pdp-gallery__zoom" aria-label="Zoom image" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+          </svg>
+        </button>
+
+        <!-- Prev / Next nav inside main image -->
+        {%- if product.images.size > 1 -%}
+        <div class="nw-pdp-gallery__nav">
+          <button class="nw-pdp-gallery__nav-btn nw-pdp-gallery__prev" aria-label="Previous image" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+          <button class="nw-pdp-gallery__nav-btn nw-pdp-gallery__next" aria-label="Next image" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+        </div>
+        {%- endif -%}
+      </div><!-- /.nw-pdp-gallery__main -->
+
+      <!-- Thumbnails -->
+      {%- if product.images.size > 1 -%}
+      <div class="nw-pdp-gallery__thumbs" role="list" aria-label="Product images">
+        {%- for image in product.images limit: 8 -%}
+        <button
+          class="nw-pdp-gallery__thumb{% if forloop.first %} is-active{% endif %}"
+          type="button"
+          role="listitem"
+          aria-label="{{ image.alt | default: product.title | escape }} – image {{ forloop.index }}"
+          data-index="{{ forloop.index0 }}"
+        >
+          <img
+            src="{{ image | image_url: width: 200 }}"
+            alt="{{ image.alt | default: product.title | escape }}"
+            width="168"
+            height="147"
+            loading="lazy"
+          >
+        </button>
+        {%- endfor -%}
+      </div>
+      {%- endif -%}
+    </div><!-- /.nw-pdp-gallery -->
+
+
+    <!-- ═══════════════════════════════════════
+         DETAILS COLUMN
+    ════════════════════════════════════════ -->
+    <div class="nw-pdp-details">
+
+      <!-- Breadcrumb -->
+      <nav class="nw-pdp-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> /
+        {%- if collection -%}
+          <a href="{{ collection.url }}">{{ collection.title }}</a> /
+        {%- endif -%}
+        <span>{{ product.title }}</span>
+      </nav>
+
+      <!-- Meta block -->
+      <div class="nw-pdp-meta">
+        <div class="nw-pdp-meta__top">
+          <!-- Title -->
+          <h1 class="nw-pdp-title">{{ product.title }}</h1>
+
+          <!-- Price -->
+          <div class="nw-pdp-price-wrap">
+            <span class="nw-pdp-price-current" id="nw-price-current">
+              {{ current_variant.price | money }}
+            </span>
+            {%- if current_variant.compare_at_price > current_variant.price -%}
+            <span class="nw-pdp-price-compare" id="nw-price-compare">
+              {{ current_variant.compare_at_price | money }}
+            </span>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="nw-pdp-trust">
+          {%- if section.settings.show_shipping -%}
+          <div class="nw-pdp-shipping-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M1 3h15v13H1zM16 8h3.5L23 12.5V16h-7V8z"/>
+              <circle cx="5.5"  cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+            <span>{{ section.settings.shipping_text | default: 'Free Shipping' }}</span>
+          </div>
+          {%- endif -%}
+
+          {%- if section.settings.show_hsa -%}
+          <p class="nw-pdp-hsa-line">{{ section.settings.hsa_text | default: 'Pay with HSA or FSA' }}</p>
+          {%- endif -%}
+        </div>
+
+        <!-- Description -->
+        {%- if product.description != blank -%}
+        <div class="nw-pdp-description">{{ product.description }}</div>
+        {%- endif -%}
+      </div><!-- /.nw-pdp-meta -->
+
+      <!-- Dealer badge -->
+      {%- if section.settings.dealer_logo != blank or section.settings.dealer_text != blank -%}
+      <div class="nw-pdp-dealer">
+        {%- if section.settings.dealer_logo != blank -%}
+        <img
+          class="nw-pdp-dealer-logo"
+          src="{{ section.settings.dealer_logo | image_url: height: 160 }}"
+          alt="{{ section.settings.dealer_logo.alt | default: 'Brand logo' }}"
+          width="134"
+          height="78"
+          loading="lazy"
+        >
+        {%- endif -%}
+        {%- if section.settings.dealer_text != blank -%}
+        <p class="nw-pdp-dealer-text">{{ section.settings.dealer_text }}</p>
+        {%- endif -%}
+      </div>
+      {%- endif -%}
+
+      <!-- Features list (blocks) -->
+      {%- if section.blocks.size > 0 -%}
+      <ul class="nw-pdp-features" role="list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'feature_item' -%}
+          <li class="nw-pdp-feature" {{ block.shopify_attributes }}>
+            <svg viewBox="0 0 30 30" fill="none" aria-hidden="true">
+              <circle cx="15" cy="15" r="15" fill="#546659"/>
+              <path d="M8.5 15.5l4.5 4.5 8.5-8.5" stroke="#FCFCFC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>{{ block.settings.text }}</span>
+          </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+      {%- endif -%}
+
+      <!-- Financing line -->
+      {%- if section.settings.show_financing and section.settings.financing_text != blank -%}
+      <p class="nw-pdp-financing">
+        {{ section.settings.financing_text }}
+        {%- if section.settings.financing_logo != blank -%}
+        <img
+          src="{{ section.settings.financing_logo | image_url: height: 56 }}"
+          alt="{{ section.settings.financing_logo.alt | default: 'Financing provider' }}"
+          height="28"
+          loading="lazy"
+        >
+        {%- endif -%}
+        {%- if section.settings.financing_link != blank -%}
+        <a href="{{ section.settings.financing_link }}">Learn more</a>
+        {%- endif -%}
+      </p>
+      {%- endif -%}
+
+      <!-- ────────────────────────────────── -->
+      <!-- PRODUCT FORM                       -->
+      <!-- ────────────────────────────────── -->
+      {%- form 'product', product, id: 'nw-product-form', class: 'nw-product-form' -%}
+        <input type="hidden" name="id" id="nw-variant-id" value="{{ current_variant.id }}">
+        <input type="hidden" name="quantity" id="nw-qty-input" value="1">
+
+        <!-- Variants as image swatches -->
+        {%- unless product.has_only_default_variant -%}
+        <div class="nw-pdp-options">
+          {%- for option in product.options_with_values -%}
+          <div class="nw-pdp-option" {{ block.shopify_attributes }}>
+            <p class="nw-pdp-option__label">{{ option.name }}</p>
+            <div class="nw-pdp-swatches" role="radiogroup" aria-label="{{ option.name }}">
+              {%- for value in option.values -%}
+                {%- liquid
+                  assign option_index = 'option' | append: option.position
+                  assign swatch_variant = nil
+                  for v in product.variants
+                    if v[option_index] == value
+                      assign swatch_variant = v
+                      break
+                    endif
+                  endfor
+                -%}
+                {%- assign is_selected = false -%}
+                {%- if option.selected_value == value -%}
+                  {%- assign is_selected = true -%}
+                {%- endif -%}
+                <button
+                  class="nw-pdp-swatch{% if is_selected %} is-selected{% endif %}"
+                  type="button"
+                  role="radio"
+                  aria-checked="{{ is_selected }}"
+                  aria-label="{{ value | escape }}"
+                  data-option-pos="{{ option.position }}"
+                  data-option-val="{{ value | escape }}"
+                  title="{{ value | escape }}"
+                >
+                  {%- if swatch_variant.featured_image != blank -%}
+                    <img
+                      src="{{ swatch_variant.featured_image | image_url: width: 200 }}"
+                      alt="{{ value | escape }}"
+                      width="100"
+                      height="100"
+                      loading="lazy"
+                    >
+                  {%- else -%}
+                    <span class="nw-pdp-swatch__text">{{ value }}</span>
+                  {%- endif -%}
+                </button>
+              {%- endfor -%}
+            </div>
+          </div>
+          {%- endfor -%}
+        </div>
+        {%- endunless -%}
+
+        <!-- Variants JSON for JS -->
+        <script type="application/json" id="nw-variants-json">
+          {{ product.variants | json }}
+        </script>
+
+        <!-- ATC Row -->
+        <div class="nw-pdp-atc-row">
+          <!-- Qty -->
+          <div class="nw-pdp-qty" role="group" aria-label="Quantity">
+            <button class="nw-pdp-qty__btn" type="button" data-qty-minus aria-label="Decrease quantity">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+            <span class="nw-pdp-qty__val" data-min="1" data-max="99">1</span>
+            <button class="nw-pdp-qty__btn" type="button" data-qty-plus aria-label="Increase quantity">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Add to Cart -->
+          <button
+            class="nw-pdp-atc-btn"
+            type="submit"
+            {% unless current_variant.available %}disabled{% endunless %}
+            aria-label="Add {{ product.title | escape }} to cart"
+          >
+            {%- if current_variant.available -%}
+              {{ section.settings.atc_text | default: 'Add to Cart' }}
+            {%- else -%}
+              Sold Out
+            {%- endif -%}
+          </button>
+
+          <!-- Wishlist -->
+          {%- if section.settings.show_wishlist -%}
+          <button class="nw-pdp-wishlist" type="button" aria-label="Add to wishlist">
+            <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 30.6S4 22.5 4 13.4a7.8 7.8 0 0115.6 0h-3.2A4.6 4.6 0 0118 12a4.6 4.6 0 018.4 1.4C26.4 22.5 18 30.6 18 30.6z"/>
+            </svg>
+            <span class="nw-pdp-wishlist-text">{{ section.settings.wishlist_text | default: 'Add to Wishlist' }}</span>
+          </button>
+          {%- endif -%}
+        </div>
+
+      {%- endform -%}
+
+    </div><!-- /.nw-pdp-details -->
+  </div><!-- /.nw-pdp-main__inner -->
+</section>
+
+<script src="{{ 'nw-product-page.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "NW Product Main",
+  "tag": "div",
+  "class": "nw-pdp-section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Shipping & Trust"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping",
+      "label": "Show free shipping badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "shipping_text",
+      "label": "Shipping badge text",
+      "default": "Free Shipping"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hsa",
+      "label": "Show HSA/FSA line",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "hsa_text",
+      "label": "HSA/FSA text",
+      "default": "Pay with HSA or FSA"
+    },
+    {
+      "type": "header",
+      "content": "Dealer Badge"
+    },
+    {
+      "type": "image_picker",
+      "id": "dealer_logo",
+      "label": "Dealer / Brand logo"
+    },
+    {
+      "type": "text",
+      "id": "dealer_text",
+      "label": "Dealer badge text",
+      "default": "Authorized Dealer — Full Warranty"
+    },
+    {
+      "type": "header",
+      "content": "Financing"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_financing",
+      "label": "Show financing line",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "financing_text",
+      "label": "Financing text",
+      "default": "Starting at $681/mo or 0% APR with"
+    },
+    {
+      "type": "image_picker",
+      "id": "financing_logo",
+      "label": "Financing provider logo (e.g. Affirm)"
+    },
+    {
+      "type": "url",
+      "id": "financing_link",
+      "label": "Financing 'Learn more' link"
+    },
+    {
+      "type": "header",
+      "content": "Add to Cart"
+    },
+    {
+      "type": "text",
+      "id": "atc_text",
+      "label": "Add to Cart button text",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wishlist",
+      "label": "Show Wishlist button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "wishlist_text",
+      "label": "Wishlist button text",
+      "default": "Add to Wishlist"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_item",
+      "name": "Feature / Bullet Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature text",
+          "default": "Premium feature included"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Product Main",
+      "blocks": [
+        { "type": "feature_item", "settings": { "text": "Canadian Hemlock — naturally resistant to heat and moisture" } },
+        { "type": "feature_item", "settings": { "text": "Harvia Heater — industry-leading performance" } },
+        { "type": "feature_item", "settings": { "text": "2x6 tongue-and-groove construction for insulation" } },
+        { "type": "feature_item", "settings": { "text": "Pre-cut, pre-drilled — easy assembly" } },
+        { "type": "feature_item", "settings": { "text": "Tempered glass door and panoramic windows" } },
+        { "type": "feature_item", "settings": { "text": "Ships direct to your door — included" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
