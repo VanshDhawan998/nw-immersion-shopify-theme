@@ -96,6 +96,83 @@
         "button_border_radius": 4
       }
     },
+    "two_cards_section_ezbMtb": {
+      "type": "two-cards-section",
+      "blocks": {
+        "card_cDhrEB": {
+          "type": "card",
+          "settings": {
+            "heading": "Bookings For Mid 2026 Now Open",
+            "text": "We're now scheduling Bespoke sauna builds into mid 2026. With only a limited number taken on each year, reserving early ensures your project is secured. A 25% non-refundable deposit holds your spot, with 50% due when your build begins and the remaining 25% prior to shipping. Place your order online and our team will follow up to confirm every detail, provide your contract for signature, and issue your invoice.",
+            "button_text": "Reserve My Bespoke Build",
+            "button_link": ""
+          }
+        },
+        "card_7mjddL": {
+          "type": "card",
+          "settings": {
+            "heading": "What A Bespoke Sauna Feels Like",
+            "text": "A Bespoke sauna is a space designed around you. The scent of cedar as you step inside, the way the benches fit your posture, the glow of light that sets the tone. Every detail reflects your vision. Pair it with cold immersion for contrast, and you'll create a wellness routine that feels both grounding and transformative.",
+            "button_text": "Start Designing My Sauna",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_cDhrEB",
+        "card_7mjddL"
+      ],
+      "name": "Two Cards Section",
+      "settings": {
+        "max_width": 1650,
+        "card_gap": 30,
+        "content_gap": 24,
+        "section_bg_color": "#ffffff",
+        "card_bg_color": "#F5F0E8",
+        "text_color": "#252220",
+        "button_bg_color": "#546659",
+        "button_text_color": "#ffffff",
+        "button_hover_bg_color": "#ffffff",
+        "button_hover_text_color": "#546659",
+        "heading_font": "assistant_n4",
+        "heading_font_size": 36,
+        "heading_font_weight": 700,
+        "heading_line_height": "1.25",
+        "body_font": "assistant_n4",
+        "text_font_size": 16,
+        "text_font_weight": 400,
+        "text_line_height": "1.5",
+        "button_font": "assistant_n4",
+        "button_font_size": 16,
+        "button_font_weight": 700,
+        "button_line_height": "1.2",
+        "section_padding_top": 80,
+        "section_padding_bottom": 80,
+        "section_padding_horizontal": 50,
+        "card_padding": 45,
+        "card_border_radius": 20,
+        "button_padding_vertical": 16,
+        "button_padding_horizontal": 24,
+        "button_border_radius": 50,
+        "button_margin_top": 8,
+        "button_hover_lift": true,
+        "mobile_card_gap": 25,
+        "tablet_heading_scale": 85,
+        "mobile_padding_scale": 75,
+        "mobile_card_padding_scale": 80,
+        "mobile_heading_scale": 75,
+        "mobile_text_scale": 90,
+        "small_mobile_heading_scale": 65,
+        "small_mobile_text_scale": 85,
+        "mobile_center_heading": true,
+        "mobile_center_text": true,
+        "mobile_full_width_button": true,
+        "mobile_button_padding_vertical": 14,
+        "mobile_button_padding_horizontal": 20,
+        "extra_small_heading_scale": 55,
+        "extra_small_card_padding_scale": 60
+      }
+    },
     "lowitsasuana_sec2_Upg9KT": {
       "type": "lowitsasuana-sec2",
       "name": "Video With Text",
@@ -869,6 +946,7 @@
   "order": [
     "main",
     "hero_banner_XEfMtT",
+    "two_cards_section_ezbMtb",
     "lowitsasuana_sec2_Upg9KT",
     "loowit_interior_section_KLQjFJ",
     "loowit_way_features_n4qrGR",
