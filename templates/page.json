@@ -726,6 +726,97 @@
         "question_padding_vertical": 16,
         "question_padding_horizontal": 20
       }
+    },
+    "showroom_section_copy_tVyDUK": {
+      "type": "showroom-section-copy",
+      "blocks": {
+        "schedule_item_4UmAYA": {
+          "type": "schedule_item",
+          "settings": {
+            "schedule_text": "Thurs – Sat: 10 AM – 6 PM"
+          }
+        },
+        "schedule_item_9cFKUj": {
+          "type": "schedule_item",
+          "settings": {
+            "schedule_text": "Sun: 11 AM- 5 PM"
+          }
+        },
+        "schedule_item_gbcJLw": {
+          "type": "schedule_item",
+          "settings": {
+            "schedule_text": "Mon-Wed: By Appointment – call/text: 360-360-6968 to schedule"
+          }
+        },
+        "address_iJdJP8": {
+          "type": "address",
+          "settings": {
+            "phone_number": "360-360-6968",
+            "phone_text": "to schedule",
+            "address_line_1": "5305 NE 121st Ave, Ste 216",
+            "address_line_2": "Vancouver, WA 98682"
+          }
+        }
+      },
+      "block_order": [
+        "schedule_item_4UmAYA",
+        "schedule_item_9cFKUj",
+        "schedule_item_gbcJLw",
+        "address_iJdJP8"
+      ],
+      "name": "Showroom Contact Section",
+      "settings": {
+        "heading": "Come Visit Our Showroom in Vancouver, WA",
+        "heading_text_align": "left",
+        "background_image": "shopify://shop_images/Frame-7545.webp",
+        "background_position": "center",
+        "overlay_color_start": "#000000",
+        "overlay_opacity": 20,
+        "overlay_color_middle": "#000000",
+        "overlay_middle_opacity": 45,
+        "overlay_color_end": "#000000",
+        "overlay_end_opacity": 30,
+        "section_bg_color": "#FCF9F4",
+        "heading_color": "#FFFFFF",
+        "text_color": "#FFFFFF",
+        "link_color": "#FFFFFF",
+        "link_hover_color": "#CCCCCC",
+        "heading_font": "assistant_n4",
+        "heading_font_size": 40,
+        "heading_line_height": "1.25",
+        "text_font": "assistant_n4",
+        "text_font_size": 18,
+        "text_line_height": "1.6",
+        "section_padding_top": 130,
+        "section_padding_bottom": 0,
+        "section_padding_horizontal": 50,
+        "contact_padding_top": 120,
+        "contact_padding_bottom": 120,
+        "contact_padding_horizontal": 100,
+        "border_radius": 22,
+        "content_max_width": 70,
+        "heading_margin_bottom": 30,
+        "content_gap": 20,
+        "text_indent": 30,
+        "text_margin_vertical": 18,
+        "last_item_margin_top": 60,
+        "icon_size": 24,
+        "tablet_padding_vertical": 80,
+        "tablet_padding_horizontal": 50,
+        "tablet_heading_scale": 100,
+        "tablet_text_scale": 100,
+        "mobile_section_padding_scale": 70,
+        "mobile_padding_vertical": 60,
+        "mobile_padding_horizontal": 30,
+        "small_mobile_heading_scale": 80,
+        "small_mobile_text_scale": 90,
+        "small_mobile_padding_vertical": 40,
+        "small_mobile_padding_horizontal": 20,
+        "extra_small_heading_scale": 65,
+        "extra_small_text_scale": 85,
+        "mobile_center_heading": false,
+        "mobile_center_text": false
+      }
     }
   },
   "order": [
@@ -739,6 +830,7 @@
     "warranty_showroom_wxWpzc",
     "loowit_way_features_YzyENf",
     "customize_section_QUMXm4",
-    "faq_section_gHayjc"
+    "faq_section_gHayjc",
+    "showroom_section_copy_tVyDUK"
   ]
 }
