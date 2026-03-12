@@ -1,0 +1,181 @@
+<section class="nw-pdp-section nw-pdp-related-section" id="nw-product-related-{{ section.id }}">
+  <div class="nw-pdp-related-inner">
+
+    <!-- Header row: title + nav arrows -->
+    <div class="nw-pdp-related__header">
+      <h2 class="nw-pdp-related__title nw-fade-up">
+        {{ section.settings.heading | default: 'Related / Recommended Products' }}
+      </h2>
+      <div class="nw-pdp-related__nav" aria-label="Related products navigation">
+        <button class="nw-pdp-related__nav-btn" type="button" data-related-prev aria-label="Previous products">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="31" stroke="#252220" stroke-width="2"/>
+            <path d="M36 20L24 32l12 12" stroke="#252220" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="nw-pdp-related__nav-btn" type="button" data-related-next aria-label="Next products">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="31" stroke="#252220" stroke-width="2"/>
+            <path d="M28 20l12 12-12 12" stroke="#252220" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Product grid -->
+    <div class="nw-pdp-related__grid">
+
+      {%- if section.settings.use_recommendations -%}
+        {%- comment -%}
+          Shopify product recommendations are injected via recommendations API.
+          The div below is the target rendered server-side on product pages.
+        {%- endcomment -%}
+        {%- assign recommendations = product.recommendations -%}
+        {%- if recommendations.products_count > 0 -%}
+          {%- for rec in recommendations.products limit: section.settings.products_count -%}
+          <a
+            href="{{ rec.url }}"
+            class="nw-pdp-product-card nw-fade-up nw-fade-up--d{{ forloop.index }}"
+            aria-label="{{ rec.title | escape }}"
+          >
+            <div class="nw-pdp-product-card__img-wrap">
+              <img
+                src="{{ rec.featured_image | image_url: width: 600 }}"
+                alt="{{ rec.featured_image.alt | default: rec.title | escape }}"
+                width="560"
+                height="350"
+                loading="lazy"
+              >
+            </div>
+            <div class="nw-pdp-product-card__info">
+              <p class="nw-pdp-product-card__title">{{ rec.title }}</p>
+              <div class="nw-pdp-product-card__price-row">
+                {%- if rec.compare_at_price > rec.price -%}
+                <span class="nw-pdp-product-card__price-compare">{{ rec.compare_at_price | money }}</span>
+                {%- endif -%}
+                <span class="nw-pdp-product-card__price-current">{{ rec.price | money }}</span>
+              </div>
+            </div>
+          </a>
+          {%- endfor -%}
+        {%- else -%}
+          {%- comment -%} Fallback to manually curated blocks {%- endcomment -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'product_card' and block.settings.product != blank -%}
+            {%- assign rec = block.settings.product -%}
+            <a
+              href="{{ rec.url }}"
+              class="nw-pdp-product-card nw-fade-up nw-fade-up--d{{ forloop.index }}"
+              aria-label="{{ rec.title | escape }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="nw-pdp-product-card__img-wrap">
+                <img
+                  src="{{ rec.featured_image | image_url: width: 600 }}"
+                  alt="{{ rec.featured_image.alt | default: rec.title | escape }}"
+                  width="560"
+                  height="350"
+                  loading="lazy"
+                >
+              </div>
+              <div class="nw-pdp-product-card__info">
+                <p class="nw-pdp-product-card__title">{{ rec.title }}</p>
+                <div class="nw-pdp-product-card__price-row">
+                  {%- if rec.compare_at_price > rec.price -%}
+                  <span class="nw-pdp-product-card__price-compare">{{ rec.compare_at_price | money }}</span>
+                  {%- endif -%}
+                  <span class="nw-pdp-product-card__price-current">{{ rec.price | money }}</span>
+                </div>
+              </div>
+            </a>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+
+      {%- else -%}
+        {%- comment -%} Manual product curation via blocks {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'product_card' and block.settings.product != blank -%}
+          {%- assign rec = block.settings.product -%}
+          <a
+            href="{{ rec.url }}"
+            class="nw-pdp-product-card nw-fade-up nw-fade-up--d{{ forloop.index }}"
+            aria-label="{{ rec.title | escape }}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="nw-pdp-product-card__img-wrap">
+              <img
+                src="{{ rec.featured_image | image_url: width: 600 }}"
+                alt="{{ rec.featured_image.alt | default: rec.title | escape }}"
+                width="560"
+                height="350"
+                loading="lazy"
+              >
+            </div>
+            <div class="nw-pdp-product-card__info">
+              <p class="nw-pdp-product-card__title">{{ rec.title }}</p>
+              <div class="nw-pdp-product-card__price-row">
+                {%- if rec.compare_at_price > rec.price -%}
+                <span class="nw-pdp-product-card__price-compare">{{ rec.compare_at_price | money }}</span>
+                {%- endif -%}
+                <span class="nw-pdp-product-card__price-current">{{ rec.price | money }}</span>
+              </div>
+            </div>
+          </a>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+    </div><!-- /.nw-pdp-related__grid -->
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Related Products",
+  "tag": "div",
+  "class": "nw-pdp-section-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Related \/ Recommended Products"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_recommendations",
+      "label": "Use Shopify product recommendations (AI-powered)",
+      "default": true,
+      "info": "When enabled, Shopify automatically populates products. Add manual blocks as fallback."
+    },
+    {
+      "type": "range",
+      "id": "products_count",
+      "label": "Number of recommended products",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product (manual)",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Related Products"
+    }
+  ]
+}
+{% endschema %}
