@@ -1,0 +1,132 @@
+<section class="nw-pdp-section nw-pdp-accordion-section" id="nw-product-accordion-{{ section.id }}">
+  <div class="nw-pdp-accordion-inner">
+    <div class="nw-pdp-accordion" role="list" aria-label="Product information">
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'accordion_item' -%}
+        <div class="nw-pdp-accordion__item nw-fade-up nw-fade-up--d{{ forloop.index | modulo: 5 | plus: 1 }}" role="listitem" {{ block.shopify_attributes }}>
+          <button
+            class="nw-pdp-accordion__trigger"
+            type="button"
+            aria-expanded="false"
+            aria-controls="acc-content-{{ block.id }}"
+            id="acc-trigger-{{ block.id }}"
+          >
+            <span class="nw-pdp-accordion__name">{{ block.settings.title }}</span>
+            <span class="nw-pdp-accordion__icon" aria-hidden="true">
+              <!-- Plus icon — rotates to × when open -->
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                <line x1="7" y1="1" x2="7" y2="13"/>
+                <line x1="1" y1="7" x2="13" y2="7"/>
+              </svg>
+            </span>
+          </button>
+          <div
+            class="nw-pdp-accordion__content"
+            id="acc-content-{{ block.id }}"
+            role="region"
+            aria-labelledby="acc-trigger-{{ block.id }}"
+          >
+            <div class="nw-pdp-accordion__body">
+              {{ block.settings.content }}
+            </div>
+          </div>
+        </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NW Product Accordion",
+  "tag": "div",
+  "class": "nw-pdp-section-wrapper",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "accordion_item",
+      "name": "Accordion Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Section title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Accordion content goes here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NW Product Accordion",
+      "blocks": [
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Product Overview",
+            "content": "<p>This premium outdoor sauna combines Canadian Hemlock wood with industry-leading Harvia heating technology. Built for year-round use, it delivers a superior sauna experience from your own backyard.</p>"
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Why This Product Stands Out",
+            "content": "<p>Unlike mass-produced saunas, every unit is built with thick 2×6 tongue-and-groove wall panels for superior insulation, tempered glass doors, and a roof designed to handle heavy snow loads.</p>"
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "What's Included",
+            "content": "<p>Complete sauna kit with pre-cut, pre-drilled wall panels, tempered glass door, bench system, roof panels, Harvia heater, and all necessary hardware and fasteners.</p>"
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Specifications",
+            "content": "<p>Capacity: 4 persons | Exterior: 8'×8' | Interior: 7'×7' | Ceiling height: 7' | Wall thickness: 1.75\" | Wood: Canadian Hemlock | Power: 240V / 6kW Harvia heater</p>"
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Assembly & Installation",
+            "content": "<p>The sauna ships 90% pre-assembled and can typically be assembled by 2 people in 4–6 hours. No specialized tools required. Full illustrated assembly guide included.</p>"
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Upgrades & Add-Ons",
+            "content": "<p>Customize your sauna with optional LED chromotherapy lighting, decorative hexagon wall panels, and premium cold plunge bundles for the ultimate recovery setup.</p>"
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Shipping and Delivery",
+            "content": "<p>Ships free via LTL freight directly to your home in 2–4 weeks. You will be contacted by the carrier to schedule a delivery appointment. Liftgate service included.</p>"
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Warranty",
+            "content": "<p>5-year structural warranty on the wood frame, 2-year warranty on the heater, and 1-year parts warranty. As an Authorized Dealer, we fully support all warranty claims.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
