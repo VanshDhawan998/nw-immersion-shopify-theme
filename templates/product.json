@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -24,6 +25,7 @@
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "right",
             "thumbnail_width": 44,
+            "thumbnail_radius": 0,
             "aspect_ratio": "adapt",
             "constrain_to_viewport": true,
             "media_fit": "contain",
@@ -70,7 +72,6 @@
               "type": "group",
               "name": "Header",
               "settings": {
-                "open_in_new_tab": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -98,6 +99,9 @@
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -188,6 +192,7 @@
               "settings": {
                 "stacking": true,
                 "show_pickup_availability": false,
+                "gift_card_form": true,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -253,12 +258,14 @@
           ]
         }
       },
+      "disabled": true,
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
+        "enable_sticky_add_to_cart": true,
         "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -404,10 +411,74 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "nw_product_main_nWbqhd": {
+      "type": "nw-product-main",
+      "blocks": {
+        "feature_item_HCFddA": {
+          "type": "feature_item",
+          "settings": {
+            "text": "Canadian Hemlock — naturally resistant to heat and moisture"
+          }
+        },
+        "feature_item_jhDjYX": {
+          "type": "feature_item",
+          "settings": {
+            "text": "Harvia Heater — industry-leading performance"
+          }
+        },
+        "feature_item_E3diFH": {
+          "type": "feature_item",
+          "settings": {
+            "text": "2x6 tongue-and-groove construction for insulation"
+          }
+        },
+        "feature_item_xUfcGj": {
+          "type": "feature_item",
+          "settings": {
+            "text": "Pre-cut, pre-drilled — easy assembly"
+          }
+        },
+        "feature_item_xyPbhQ": {
+          "type": "feature_item",
+          "settings": {
+            "text": "Tempered glass door and panoramic windows"
+          }
+        },
+        "feature_item_ma3xdj": {
+          "type": "feature_item",
+          "settings": {
+            "text": "Ships direct to your door — included"
+          }
+        }
+      },
+      "block_order": [
+        "feature_item_HCFddA",
+        "feature_item_jhDjYX",
+        "feature_item_E3diFH",
+        "feature_item_xUfcGj",
+        "feature_item_xyPbhQ",
+        "feature_item_ma3xdj"
+      ],
+      "name": "NW Product Main",
+      "settings": {
+        "show_shipping": true,
+        "shipping_text": "Free Shipping",
+        "show_hsa": true,
+        "hsa_text": "Pay with HSA or FSA",
+        "dealer_text": "Authorized Dealer — Full Warranty",
+        "show_financing": true,
+        "financing_text": "Starting at $681/mo or 0% APR with",
+        "financing_link": "",
+        "atc_text": "Add to Cart",
+        "show_wishlist": true,
+        "wishlist_text": "Add to Wishlist"
+      }
     }
   },
   "order": [
     "main",
+    "nw_product_main_nWbqhd",
     "product_recommendations_qggXJq"
   ]
 }
