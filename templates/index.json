@@ -209,6 +209,7 @@
       "name": "NW Hero",
       "settings": {
         "heading": "<p>Step into a space built<br/>for warmth, wellness & Calm</p>",
+        "background_image": "shopify://shop_images/Imag.png",
         "background_image_url": "",
         "overlay_opacity": 30,
         "show_glow": true,
