@@ -9,272 +9,476 @@
  */
 {
   "sections": {
-    "nw_pdp_main": {
+    "main": {
+      "type": "product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_product-media-gallery",
+          "static": true,
+          "settings": {
+            "media_presentation": "grid",
+            "media_columns": "two",
+            "image_gap": 4,
+            "large_first_image": false,
+            "icons_style": "none",
+            "slideshow_controls_style": "counter",
+            "slideshow_mobile_controls_style": "dots",
+            "thumbnail_position": "right",
+            "thumbnail_width": 44,
+            "thumbnail_radius": 0,
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": true,
+            "media_fit": "contain",
+            "media_radius": 0,
+            "extend_media": false,
+            "zoom": true,
+            "video_loop": false,
+            "hide_variants": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 28,
+            "sticky_details_desktop": true,
+            "inherit_color_scheme": true,
+            "color_scheme": "scheme-1",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "group_icgrde": {
+              "type": "group",
+              "name": "Header",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_xrnftG": {
+                  "type": "text",
+                  "name": "Product title",
+                  "settings": {
+                    "text": "<h1>{{ closest.product.title }}</h1>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h3",
+                    "font": "var(--font-primary--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "price_tVjtKg": {
+                  "type": "price",
+                  "settings": {
+                    "show_sale_price_first": true,
+                    "show_installments": false,
+                    "show_tax_info": false,
+                    "type_preset": "paragraph",
+                    "width": "100%",
+                    "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "color": "var(--color-foreground)",
+                    "padding-block-start": 4,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_xrnftG",
+                "price_tVjtKg"
+              ]
+            },
+            "divider_VJhene": {
+              "type": "_divider",
+              "name": "t:names.divider",
+              "settings": {
+                "thickness": 1,
+                "corner_radius": "square",
+                "width_percent": 100,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "variant_picker_R3rGDr": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": false,
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "buy_buttons_eYQEYi": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": true,
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "text_aEtTtq": {
+              "type": "text",
+              "name": "Product description",
+              "settings": {
+                "text": "{{ closest.product.description }}",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-primary--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "group_icgrde",
+            "divider_VJhene",
+            "variant_picker_R3rGDr",
+            "buy_buttons_eYQEYi",
+            "text_aEtTtq"
+          ]
+        }
+      },
+      "disabled": true,
+      "settings": {
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": false,
+        "limit_details_width": false,
+        "gap": 48,
+        "enable_sticky_add_to_cart": true,
+        "color_scheme": "",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "product_recommendations_qggXJq": {
+      "type": "product-recommendations",
+      "blocks": {
+        "text_cbcgyb": {
+          "type": "text",
+          "name": "t:names.header",
+          "settings": {
+            "text": "<h3>You may also like </h3>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h4",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 8,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_DNizbJ": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_M7MJkb": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_gLWgA6": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_DNizbJ",
+            "product_title_M7MJkb",
+            "price_gLWgA6"
+          ]
+        }
+      },
+      "block_order": [
+        "text_cbcgyb"
+      ],
+      "name": "t:names.product_recommendations",
+      "settings": {
+        "product": "{{ closest.product }}",
+        "recommendation_type": "related",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 4,
+        "columns": 4,
+        "mobile_columns": "2",
+        "columns_gap": 12,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "nw_product_main_nWbqhd": {
       "type": "nw-product-main",
       "blocks": {
-        "feat_1": {
+        "feature_item_HCFddA": {
           "type": "feature_item",
           "settings": {
             "text": "Canadian Hemlock — naturally resistant to heat and moisture"
           }
         },
-        "feat_2": {
+        "feature_item_jhDjYX": {
           "type": "feature_item",
           "settings": {
-            "text": "Harvia Heater — industry-leading performance and reliability"
+            "text": "Harvia Heater — industry-leading performance"
           }
         },
-        "feat_3": {
+        "feature_item_E3diFH": {
           "type": "feature_item",
           "settings": {
-            "text": "2×6 tongue-and-groove construction for superior insulation"
+            "text": "2x6 tongue-and-groove construction for insulation"
           }
         },
-        "feat_4": {
+        "feature_item_xUfcGj": {
           "type": "feature_item",
           "settings": {
-            "text": "Pre-cut, pre-drilled panels — easy 4–6 hour assembly"
+            "text": "Pre-cut, pre-drilled — easy assembly"
           }
         },
-        "feat_5": {
+        "feature_item_xyPbhQ": {
           "type": "feature_item",
           "settings": {
-            "text": "Tempered glass door and panoramic side windows"
+            "text": "Tempered glass door and panoramic windows"
           }
         },
-        "feat_6": {
+        "feature_item_ma3xdj": {
           "type": "feature_item",
           "settings": {
-            "text": "Free liftgate freight shipping direct to your door"
+            "text": "Ships direct to your door — included"
           }
         }
       },
       "block_order": [
-        "feat_1",
-        "feat_2",
-        "feat_3",
-        "feat_4",
-        "feat_5",
-        "feat_6"
+        "feature_item_HCFddA",
+        "feature_item_jhDjYX",
+        "feature_item_E3diFH",
+        "feature_item_xUfcGj",
+        "feature_item_xyPbhQ",
+        "feature_item_ma3xdj"
       ],
+      "name": "NW Product Main",
       "settings": {
         "show_shipping": true,
         "shipping_text": "Free Shipping",
         "show_hsa": true,
-        "hsa_text": "Pay with HSA or FSA — sauna therapy is HSA/FSA eligible",
+        "hsa_text": "Pay with HSA or FSA",
         "dealer_text": "Authorized Dealer — Full Warranty",
         "show_financing": true,
         "financing_text": "Starting at $681/mo or 0% APR with",
+        "financing_link": "",
         "atc_text": "Add to Cart",
         "show_wishlist": true,
         "wishlist_text": "Add to Wishlist"
       }
-    },
-    "nw_pdp_accordion": {
-      "type": "nw-product-accordion",
-      "blocks": {
-        "acc_1": {
-          "type": "accordion_item",
-          "settings": {
-            "title": "Product Overview",
-            "content": "<p>This premium outdoor sauna combines Canadian Hemlock wood with industry-leading Harvia heating technology. Designed for 4 persons and built for year-round use, it delivers a superior sauna experience from the comfort of your own backyard. Heavy-duty construction, full insulation, and thoughtful design details make this one of the finest outdoor saunas available.</p>"
-          }
-        },
-        "acc_2": {
-          "type": "accordion_item",
-          "settings": {
-            "title": "Why This Product Stands Out",
-            "content": "<p>Unlike mass-produced saunas, every unit is crafted with thick 2×6 tongue-and-groove wall panels for superior insulation, a tempered glass door and panoramic windows, and a roof structure engineered to handle heavy snow loads. The result is a sauna that performs beautifully in every climate, looks stunning in any backyard, and is built to last decades.</p>"
-          }
-        },
-        "acc_3": {
-          "type": "accordion_item",
-          "settings": {
-            "title": "What’s Included",
-            "content": "<p>Your sauna kit includes: pre-cut and pre-drilled tongue-and-groove wall panels, a tempered glass entry door, panoramic tempered glass side windows, a two-tier bench system, roof panels and shingles, a Harvia 6kW heater, all mounting hardware and fasteners, an illustrated assembly guide, and a sauna stone set.</p>"
-          }
-        },
-        "acc_4": {
-          "type": "accordion_item",
-          "settings": {
-            "title": "Specifications",
-            "content": "<p><strong>Capacity:</strong> 4 persons<br><strong>Exterior dimensions:</strong> 96″ W × 96″ D × 96″ H<br><strong>Interior dimensions:</strong> 84″ W × 84″ D × 84″ H<br><strong>Ceiling height:</strong> 7’ (84″)<br><strong>Wall thickness:</strong> 1.75″<br><strong>Wood species:</strong> Canadian Hemlock<br><strong>Heater power:</strong> 240V / 60A / 6kW Harvia Vega<br><strong>Sauna stones weight:</strong> 20 lbs included<br><strong>Shipping weight:</strong> approx. 1,200 lbs</p>"
-          }
-        },
-        "acc_5": {
-          "type": "accordion_item",
-          "settings": {
-            "title": "Assembly & Installation",
-            "content": "<p>The sauna ships approximately 90% pre-assembled and can typically be set up by 2 adults in 4–6 hours using basic tools (drill, level, wrench). A flat, level surface is required — concrete pad, pavers, compacted gravel, or a deck all work great. The heater requires a dedicated 240V / 60A GFCI circuit, installed by a licensed electrician.</p>"
-          }
-        },
-        "acc_6": {
-          "type": "accordion_item",
-          "settings": {
-            "title": "Upgrades & Add-Ons",
-            "content": "<p>Personalize your sauna experience with available upgrades: LED chromotherapy lighting strips (under-bench and behind backrest), decorative hexagon panels for the back wall, and premium cold plunge bundles for post-sauna cold therapy. Select your preferred options at the top of this page using the swatch pickers.</p>"
-          }
-        },
-        "acc_7": {
-          "type": "accordion_item",
-          "settings": {
-            "title": "Shipping and Delivery",
-            "content": "<p>Ships free nationwide via LTL freight directly to your home. Estimated delivery is 2–4 weeks from order date. You will receive a tracking number once your order ships, and the freight carrier will call to schedule a delivery appointment at a time that works for you. Liftgate service is included.</p>"
-          }
-        },
-        "acc_8": {
-          "type": "accordion_item",
-          "settings": {
-            "title": "Warranty",
-            "content": "<p>As an Authorized Dealer, we fully back every unit sold:<br><strong>5-year</strong> structural warranty on the wood frame<br><strong>2-year</strong> warranty on the Harvia heater<br><strong>1-year</strong> parts and hardware warranty<br>We handle all warranty claims directly — no runaround, no hassle. Contact our team at any time and we will make it right.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "acc_1",
-        "acc_2",
-        "acc_3",
-        "acc_4",
-        "acc_5",
-        "acc_6",
-        "acc_7",
-        "acc_8"
-      ],
-      "settings": {}
-    },
-    "nw_pdp_faq": {
-      "type": "nw-product-faq",
-      "blocks": {
-        "faq_1": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What size electrical connection does the sauna need?",
-            "answer": "<p>The Harvia 6kW heater requires a dedicated 240V / 60A circuit with a GFCI breaker. We strongly recommend having a licensed electrician install the wiring before delivery.</p>"
-          }
-        },
-        "faq_2": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Can the sauna be used in cold winter climates?",
-            "answer": "<p>Yes. The 2×6 Canadian Hemlock construction provides excellent thermal insulation, and the Harvia heater is powerful enough to bring the sauna to temperature even in sub-zero winter conditions, typically within 30–45 minutes.</p>"
-          }
-        },
-        "faq_3": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How long does shipping take?",
-            "answer": "<p>Most orders ship within 2–4 weeks. You will receive a tracking number once your order is picked up by the freight carrier. The carrier will contact you to schedule your delivery appointment at your convenience.</p>"
-          }
-        },
-        "faq_4": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Do I need a foundation or concrete pad?",
-            "answer": "<p>A level, stable surface is required. A poured concrete pad is ideal, but compacted gravel, pavers, or a well-built deck all work. The surface must be flat to within ¼ inch and properly drained to prevent moisture buildup.</p>"
-          }
-        },
-        "faq_5": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What is the warranty on this sauna?",
-            "answer": "<p>5-year structural warranty on the wood frame, 2-year warranty on the Harvia heater, and 1-year parts warranty. As an Authorized Dealer we handle all claims directly and quickly.</p>"
-          }
-        },
-        "faq_6": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How long does assembly take, and do I need professional help?",
-            "answer": "<p>Most customers complete assembly in 4–6 hours with 2 people and standard tools (drill, level, wrench). No specialized skills are needed. A licensed electrician is required only for the heater wiring.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_1",
-        "faq_2",
-        "faq_3",
-        "faq_4",
-        "faq_5",
-        "faq_6"
-      ],
-      "settings": {
-        "heading": "Frequently Asked Questions"
-      }
-    },
-    "nw_pdp_stories": {
-      "type": "nw-product-stories",
-      "blocks": {
-        "rev_1": {
-          "type": "testimonial",
-          "settings": {
-            "stars": 5,
-            "quote": "We deliberated for months before pulling the trigger on the Leil Viva 250. Best decision we’ve ever made. The assembly took us a Saturday afternoon and our backyard now feels like a five-star spa retreat. The cedar-and-steam smell is pure therapy."
-          }
-        },
-        "rev_2": {
-          "type": "testimonial",
-          "settings": {
-            "stars": 5,
-            "quote": "As a sports medicine physician I was already a believer in sauna therapy before buying this. What surprised me was the build quality. This is not a flimsy kit — the panels are solid, the Harvia heater is excellent, and it heats up so fast. Three sessions a week has transformed my recovery."
-          }
-        },
-        "rev_3": {
-          "type": "testimonial",
-          "settings": {
-            "stars": 5,
-            "quote": "Winters here are brutal. I use this sauna 5 nights a week from November through March. It’s rock solid, handles the cold flawlessly, and the customer service from NW Immersion was genuinely outstanding. They answered every question I had before and after purchase."
-          }
-        }
-      },
-      "block_order": [
-        "rev_1",
-        "rev_2",
-        "rev_3"
-      ],
-      "settings": {
-        "heading": "Stories from the Steam",
-        "subtitle": "Real experiences from real sauna owners. See why thousands of customers trust NW Immersion for their home wellness journey."
-      }
-    },
-    "nw_pdp_review_form": {
-      "type": "nw-product-review-form",
-      "settings": {
-        "heading": "Stories From the Heat",
-        "subtitle": "Have you experienced the transformative power of your sauna? Share your story and help others discover their path to wellness.",
-        "textarea_placeholder": "Tell us about your experience…",
-        "name_placeholder": "Your name",
-        "email_placeholder": "Your email address"
-      }
-    },
-    "nw_pdp_related": {
-      "type": "nw-product-related",
-      "settings": {
-        "heading": "Related / Recommended Products",
-        "use_recommendations": true,
-        "products_count": 3
-      }
-    },
-    "nw_pdp_quote": {
-      "type": "nw-product-quote",
-      "settings": {
-        "heading": "Get a Custom Quote",
-        "text": "Looking for a custom configuration, commercial order, multiple units, or a bulk pricing package? Our team of sauna specialists will build you the perfect solution.",
-        "button_text": "Request a Quote",
-        "button_url": "/pages/contact"
-      }
-    },
-    "nw_pdp_cta": {
-      "type": "nw-product-cta",
-      "settings": {}
     }
   },
   "order": [
-    "nw_pdp_main",
-    "nw_pdp_accordion",
-    "nw_pdp_faq",
-    "nw_pdp_stories",
-    "nw_pdp_review_form",
-    "nw_pdp_related",
-    "nw_pdp_quote",
-    "nw_pdp_cta"
+    "main",
+    "nw_product_main_nWbqhd",
+    "product_recommendations_qggXJq"
   ]
 }
