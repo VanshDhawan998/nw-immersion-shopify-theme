@@ -17,7 +17,7 @@
         "mega_saunas": {
           "type": "mega_menu_item",
           "settings": {
-            "label": "Saunas",
+            "label": "Signature Saunas",
             "link": "/collections/saunas",
             "link_filter": "",
             "mega_heading": "Saunas",
