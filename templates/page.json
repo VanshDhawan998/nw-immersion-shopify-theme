@@ -173,7 +173,7 @@
         "video_url": "",
         "video_webm_url": "",
         "video_description": "Loowit Interior Video",
-        "layout_direction": "content_left",
+        "layout_direction": "video_left",
         "column_gap": 70,
         "padding_top": 130,
         "padding_bottom": 0,
@@ -203,151 +203,157 @@
         "video_max_height": 770
       }
     },
-    "hero_section_3KyRRJ": {
-      "type": "hero-section",
+    "loowit_way_features_n4qrGR": {
+      "type": "loowit-way-features",
       "blocks": {
-        "feature_card_iBNjfe": {
-          "type": "feature_card",
+        "feature_RCNLDx": {
+          "type": "feature",
           "settings": {
-            "card_heading": "Durability Meets Design",
-            "card_description": "A standing seam metal roof and pressure-treated foundation give the Loowit its backbone. Foam insulation beneath the sauna, combined with rockwool insulation in the walls and ceiling, keeps the interior warm and efficient.",
-            "card_button_text": "Learn More",
-            "card_button_url": ""
+            "feature_title": "Compact Footprint, Spacious Feel",
+            "feature_description": "The Loowit makes the most of its size. With benches that seat six and thoughtful design, it feels bigger inside than its footprint suggests."
           }
         },
-        "feature_card_tAePhY": {
-          "type": "feature_card",
+        "feature_pNmFca": {
+          "type": "feature",
           "settings": {
-            "card_heading": "Signature Exterior Features",
-            "card_description": "A wide front window and glass door invite natural light while keeping the structure private and stylish. Exterior LED lighting makes nighttime sessions inviting, while the Behr Carbon Black paint provides a clean, modern finish.",
-            "card_button_text": "View The Exterior In Person",
-            "card_button_url": "#"
+            "feature_title": "Sliding Bench Versatility For Yoga & Stretching",
+            "feature_description": "The movable lower bench turns your sauna into a space for stretching or yoga, giving you more ways to use your retreat."
+          }
+        },
+        "feature_CiXqAH": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Crafted From Local Cedar",
+            "feature_description": "Clear western red cedar, sourced locally, provides the durability, warmth, and scent that define the sauna experience."
+          }
+        },
+        "feature_EC4AQc": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Toxin-Free Wellness Sanctuary",
+            "feature_description": "Every finish is natural, free of adhesives and synthetics, so you can breathe deeply knowing your space is clean and safe."
+          }
+        },
+        "feature_T8P9xL": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Accessible Price Point, Built To Last",
+            "feature_description": "Starting under $25,000, the Loowit offers lasting craftsmanship and wellness at a price point that makes owning a handcrafted sauna possible for more families."
           }
         }
       },
       "block_order": [
-        "feature_card_iBNjfe",
-        "feature_card_tAePhY"
+        "feature_RCNLDx",
+        "feature_pNmFca",
+        "feature_CiXqAH",
+        "feature_EC4AQc",
+        "feature_T8P9xL"
       ],
-      "name": "Hero Section",
+      "name": "Loowit Way Features",
       "settings": {
-        "hero_heading": "Loowit Sauna Exterior: Strong Lines, Lasting Strength",
-        "hero_description": "Built with the Pacific Northwest climate in mind, the Loowit's exterior is compact, resilient, and modern. With a sleek black finish, cedar deck, and metal roof, it's made to hold its character through rain, snow, and heat.",
-        "background_image": "shopify://shop_images/image-1523443.webp",
-        "background_color": "#fef9f5",
-        "overlay_opacity": 45,
-        "text_color": "#ffffff",
-        "heading_font_size": 44,
-        "description_font_size": 18,
-        "card_background": "#e7dcc8",
-        "card_text_color": "#333333",
-        "card_heading_font_size": 24,
-        "card_text_font_size": 18,
-        "button_color": "#4a5a4a",
-        "button_hover_color": "#ffffff",
-        "button_hover_text_color": "#4a5a4a",
-        "button_font_size": 16,
-        "min_height": 500,
-        "border_radius": 20,
-        "section_padding_top": 140,
-        "section_padding_bottom": 140,
-        "padding_top": 100,
-        "padding_bottom": 100
+        "main_heading": "The Loowit Way: Crafted For Living Well",
+        "main_description": "Our Loowit sauna model is compact but spacious, simple but flexible, and affordable without compromise. For homeowners across the country, it's become a favorite model for daily wellness.",
+        "button_text": "See Who's Behind The Craft",
+        "button_url": "",
+        "image_alt_text": "Loowit Sauna",
+        "image_position": "right",
+        "max_width": 1670,
+        "column_gap": 70,
+        "padding_top": 130,
+        "padding_bottom": 0,
+        "padding_horizontal": 50,
+        "feature_spacing": 0,
+        "main_heading_size": 40,
+        "feature_title_size": 24,
+        "text_size": 18,
+        "background_color": "#FCF9F4",
+        "heading_color": "#252220",
+        "text_color": "#252220",
+        "button_background_color": "#546659",
+        "button_text_color": "#ffffff",
+        "button_hover_background": "#ffffff",
+        "button_hover_text_color": "#546659",
+        "button_text_size": 18,
+        "button_padding_vertical": 6,
+        "button_padding_horizontal": 30,
+        "button_margin_top": 0,
+        "button_border_radius": 20,
+        "image_border_radius": 18,
+        "image_max_height": 600
       }
     },
-    "upgrade_options_eYJ8ex": {
-      "type": "upgrade-options",
+    "bespoke_section_yUMFMz": {
+      "type": "bespoke-section",
       "blocks": {
-        "option_Cr3Yhb": {
-          "type": "option",
+        "feature_card_PXVLEr": {
+          "type": "feature_card",
           "settings": {
-            "option_text": "Custom exterior paint color",
-            "option_price": "+$500"
+            "card_title": "",
+            "card_background": "#fbefdb",
+            "feature_1": "Rock mosaic tile under and behind heater (+$1,500)",
+            "feature_2": "Shower on the porch (+$750)",
+            "feature_3": "HUUM WiFi control panel (+$500)",
+            "feature_4": "",
+            "feature_5": ""
           }
         },
-        "option_7KmzH4": {
-          "type": "option",
+        "feature_card_MnWyTD": {
+          "type": "feature_card",
           "settings": {
-            "option_text": "HUUM WiFi control panel",
-            "option_price": "(+$500)"
-          }
-        },
-        "option_z9ezLk": {
-          "type": "option",
-          "settings": {
-            "option_text": "Cold tub outlet on exterior",
-            "option_price": "(+$500)"
+            "card_title": "",
+            "card_background": "#fbefdb",
+            "feature_1": "120 outlet for cold tub on porch (+$300)",
+            "feature_2": "Bench face upgrade (+$300)",
+            "feature_3": "Custom exterior paint color (+$500)",
+            "feature_4": "",
+            "feature_5": ""
           }
         }
       },
       "block_order": [
-        "option_Cr3Yhb",
-        "option_7KmzH4",
-        "option_z9ezLk"
+        "feature_card_PXVLEr",
+        "feature_card_MnWyTD"
       ],
-      "name": "Upgrade Options",
+      "name": "Bespoke Upgrades",
       "settings": {
-        "background_color": "#fcf9f4",
-        "max_width": 1800,
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "columns_gap": 60,
-        "mobile_padding_vertical": 40,
-        "mobile_padding_horizontal": 20,
-        "padding_left": 50,
-        "padding_right": 50,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_left": 0,
-        "margin_right": 0,
-        "justify_self": "center",
-        "align_self": "auto",
-        "heading": "Personalize Your Loowit With Thoughtful Upgrades",
-        "description": "The Loowit is already versatile, but upgrades let you shape it even more to your lifestyle. From smart controls to cold therapy connections, you can refine the space to reflect how you like to unwind.",
-        "button_text": "Personalize My Sauna",
-        "button_link": "",
-        "card_heading": "Available Options",
-        "heading_color": "#111111",
-        "heading_font_size": 36,
-        "heading_font_weight": "600",
-        "heading_font_family": "articulatcf-bold, sans-serif",
-        "heading_margin_bottom": 18,
-        "text_color": "#5b3023",
-        "text_font_size": 18,
-        "text_font_weight": "400",
-        "text_font_family": "Quando, serif",
-        "text_max_width": 680,
-        "text_margin_bottom": 22,
-        "button_background": "#5c6f61",
-        "button_hover_background": "#4a5a52",
+        "main_heading": "Bespoke Upgrades",
+        "description_1": "Little touches make a big difference. Add the details that fit your routine and turn the sauna into your own retreat.",
+        "sub_heading": "Make Your Silver Star Truly Yours",
+        "description_2": "Your sauna can be way more than a space to sit and sweat. It can be a retreat tailored to your lifestyle. Choose from upgrades that add comfort, function, and a touch of luxury:",
+        "background_image": "shopify://shop_images/sec-1.png",
+        "button_text": "Customize My Sauna",
+        "button_url": "",
+        "button_alignment": "flex-end",
+        "button_bg_color": "#546659",
         "button_text_color": "#ffffff",
-        "button_hover_text_color": "#ffffff",
-        "button_font_size": 14,
-        "button_font_weight": "700",
-        "button_font_family": "articulatcf-bold, sans-serif",
-        "button_padding_vertical": 12,
-        "button_padding_horizontal": 32,
-        "button_border_radius": 20,
-        "button_border_width": 0,
-        "button_border_color": "#5c6f61",
-        "button_hover_border_color": "#4a5a52",
-        "card_background": "#fbefdb",
-        "card_padding": 28,
-        "mobile_card_padding": 20,
-        "card_border_radius": 14,
-        "card_heading_color": "#111111",
-        "card_heading_size": 20,
-        "card_heading_font_weight": "600",
-        "card_heading_font_family": "articulatcf-bold, sans-serif",
-        "card_heading_margin": 16,
-        "icon_color": "#546659",
-        "option_text_color": "#5b3023",
-        "price_color": "#5b3023",
-        "option_font_size": 18,
-        "option_font_weight": "400",
-        "option_font_family": "Quando, serif",
-        "option_icon_gap": 16,
-        "option_padding_vertical": 14
+        "button_hover_bg": "#ffffff",
+        "button_hover_text": "#546659",
+        "main_heading_size": 40,
+        "heading_color": "#ffffff",
+        "subheading_size": 24,
+        "subheading_color": "#ffffff",
+        "text_size": 18,
+        "text_color": "#ffffff",
+        "button_text_size": 18,
+        "card_heading_color": "#252220",
+        "feature_text_color": "#252220",
+        "feature_border_color": "#f6e8d1",
+        "icon_bg_color": "#5c6f63",
+        "icon_color": "#ffffff",
+        "card_border_radius": 20,
+        "feature_gap": 30,
+        "content_bottom_margin": 30,
+        "padding_top": 130,
+        "padding_bottom": 0,
+        "padding_horizontal": 50,
+        "card_padding_vertical": 75,
+        "card_padding_horizontal": 40,
+        "button_padding_vertical": 10,
+        "button_padding_horizontal": 30,
+        "mobile_padding_horizontal": 20,
+        "mobile_padding_vertical": 80,
+        "mobile_card_padding": 25,
+        "accent_color": "#546659"
       }
     },
     "lowitsuana_sec6_dqBgA3": {
@@ -462,6 +468,89 @@
         "button_font_size": 12,
         "button_border_radius": 25,
         "button_margin_top": 28
+      }
+    },
+    "showroom_section_JkHWGQ": {
+      "type": "showroom-section",
+      "blocks": {
+        "schedule_item_LPmRzx": {
+          "type": "schedule_item",
+          "settings": {
+            "schedule_text": "Thur-Sat 10am-6pm"
+          }
+        },
+        "schedule_item_zCz4rQ": {
+          "type": "schedule_item",
+          "settings": {
+            "schedule_text": "Sundays 11am-5pm"
+          }
+        },
+        "address_HrawiY": {
+          "type": "address",
+          "settings": {
+            "address_text": "5305 NE 121st Ave Ste 216 Vancouver, WA 98682",
+            "address_weight": 400
+          }
+        }
+      },
+      "block_order": [
+        "schedule_item_LPmRzx",
+        "schedule_item_zCz4rQ",
+        "address_HrawiY"
+      ],
+      "name": "Showroom Visit Section",
+      "settings": {
+        "heading": "Visit Our Vancouver, WA Showroom",
+        "description": "There's no substitute for stepping into a sauna and feeling the warmth for yourself. If you're local, come experience the craftsmanship firsthand!!",
+        "button_text": "View Our Warranty",
+        "button_url": "",
+        "button_alignment": "center",
+        "button_bg_color": "#546659",
+        "button_text_color": "#ffffff",
+        "button_hover_bg": "#ffffff",
+        "button_hover_text": "#546659",
+        "button_border_radius": 50,
+        "show_phone_highlight": true,
+        "highlight_title": "Call Or Text",
+        "phone_number": "(360) 360-6968",
+        "phone_clickable": true,
+        "highlight_description": "to schedule your appointment.",
+        "heading_size": 40,
+        "heading_color": "#252220",
+        "text_size": 16,
+        "text_color": "#252220",
+        "button_text_size": 18,
+        "highlight_text_size": 16,
+        "background_color": "#fbefdb",
+        "highlight_title_color": "#252220",
+        "highlight_text_color": "#252220",
+        "phone_number_color": "#546659",
+        "icon_bg_color": "#5f7468",
+        "icon_color": "#ffffff",
+        "content_width": 70,
+        "border_radius": 22,
+        "icon_size": 56,
+        "highlight_max_width": 600,
+        "padding_top": 130,
+        "padding_bottom": 0,
+        "padding_horizontal": 50,
+        "card_padding_vertical": 80,
+        "card_padding_horizontal": 50,
+        "button_padding_vertical": 10,
+        "button_padding_horizontal": 30,
+        "heading_margin_bottom": 12,
+        "text_margin_vertical": 32,
+        "highlight_margin_top": 20,
+        "highlight_title_margin": 20,
+        "mobile_gap": 30,
+        "mobile_padding_vertical": 60,
+        "mobile_padding_horizontal": 25,
+        "mobile_padding_vertical_small": 40,
+        "mobile_padding_horizontal_small": 20,
+        "mobile_text_size": 14,
+        "mobile_heading_center": false,
+        "mobile_text_center": false,
+        "mobile_highlight_center": false
       }
     },
     "warranty_showroom_wxWpzc": {
@@ -768,9 +857,10 @@
     "hero_banner_XEfMtT",
     "lowitsasuana_sec2_Upg9KT",
     "loowit_interior_section_KLQjFJ",
-    "hero_section_3KyRRJ",
-    "upgrade_options_eYJ8ex",
+    "loowit_way_features_n4qrGR",
+    "bespoke_section_yUMFMz",
     "lowitsuana_sec6_dqBgA3",
+    "showroom_section_JkHWGQ",
     "warranty_showroom_wxWpzc",
     "loowit_way_features_YzyENf",
     "customize_section_QUMXm4",
