@@ -3,7 +3,10 @@
      style="padding-top: {{ section.settings.padding_top }}px; 
             padding-bottom: {{ section.settings.padding_bottom }}px;
             padding-left: {{ section.settings.padding_horizontal }}px;
-            padding-right: {{ section.settings.padding_horizontal }}px;">
+            padding-right: {{ section.settings.padding_horizontal }}px;
+                align-content: center;
+
+            ">
   
   <div class="feature-hero" 
        style="background-image: {% if section.settings.background_image %}url({{ section.settings.background_image | img_url: 'master' }}){% else %}url('./assets/images/bespoke-upgrades-bg.webp'){% endif %};">
@@ -142,6 +145,8 @@
   .main-hero-section.bespoke-section {
     width: 100%;
     padding: 130px 50px 0;
+    display: flex;
+    justify-content: center;
   }
 
   .feature-hero {
@@ -152,6 +157,8 @@
     padding: 130px 50px;
     border-radius: 20px;
     overflow: hidden;
+    max-width: 1670px;
+    width: 100%;
   }
 
   .feature-section {

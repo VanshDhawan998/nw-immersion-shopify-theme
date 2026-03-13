@@ -1,0 +1,839 @@
+{%- comment -%} Journey Steps Section {%- endcomment -%}
+
+<section class="journey-section" style="
+  padding-top: 100px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+">
+  <div class="journey-container" style="max-width: {{ section.settings.container_width }}px;">
+    
+    {%- if section.settings.title != blank or section.settings.description != blank -%}
+      <div class="journey-header" style="
+        text-align: {{ section.settings.text_alignment }};
+        margin-bottom: {{ section.settings.header_margin_bottom }}px;
+      ">
+        {%- if section.settings.title != blank -%}
+          <h2 class="journey-title" style="
+            color: {{ section.settings.title_color }};
+            font-size: {{ section.settings.title_font_size }}px;
+            margin-bottom: {{ section.settings.title_margin_bottom }}px;
+          ">
+            {{ section.settings.title }}
+          </h2>
+        {%- endif -%}
+        
+        {%- if section.settings.description != blank -%}
+          <p class="journey-description" style="
+            color: {{ section.settings.description_color }};
+            font-size: {{ section.settings.description_font_size }}px;
+          ">
+            {{ section.settings.description }}
+          </p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="journey-grid" style="gap: {{ section.settings.grid_gap }}px;">
+        {%- for block in section.blocks -%}
+          {%- assign should_be_tall = false -%}
+          {%- if block.settings.is_tall_card and section.blocks.size <= 5 -%}
+            {%- assign should_be_tall = true -%}
+          {%- endif -%}
+          
+          <article class="step-card {% if should_be_tall %}step-card-tall{% endif %}" 
+                   {{ block.shopify_attributes }}
+                   style="
+                     background-color: {{ section.settings.card_bg_color }};
+                     border-radius: {{ section.settings.card_border_radius }}px;
+                     padding: {{ section.settings.card_padding_vertical }}px {{ section.settings.card_padding_horizontal }}px;
+                     {% if should_be_tall %}
+                       padding-top: {{ section.settings.tall_card_padding_top }}px;
+                       padding-bottom: {{ section.settings.tall_card_padding_bottom }}px;
+                     {% endif %}
+                   ">
+            
+            {%- if should_be_tall and block.settings.logo != blank -%}
+              <img class="step-logo"
+                   src="{{ block.settings.logo | image_url: width: 200 }}"
+                   alt="{{ block.settings.logo.alt | default: 'Step logo' }}"
+                   loading="lazy"
+                   width="{{ section.settings.logo_width }}"
+                   height="auto"
+                   style="width: {{ section.settings.logo_width }}px;" />
+            {%- endif -%}
+
+            <div class="step-top">
+              <div class="step-number" style="
+                color: {{ section.settings.step_number_color }};
+                font-size: {{ section.settings.step_number_font_size }}px;
+              ">
+                {{ block.settings.step_number }}
+              </div>
+              <div class="step-label" style="
+                color: {{ section.settings.step_label_color }};
+                font-size: {{ section.settings.step_label_font_size }}px;
+              ">
+                {{ block.settings.step_label | default: 'STEP' }}
+              </div>
+            </div>
+
+            {%- if block.settings.title != blank -%}
+              <h3 class="step-title" style="
+                color: {{ section.settings.step_title_color }};
+                font-size: {{ section.settings.step_title_font_size }}px;
+                margin-bottom: {{ section.settings.step_title_margin_bottom }}px;
+              ">
+                {{ block.settings.title }}
+              </h3>
+            {%- endif -%}
+
+            {%- if block.settings.description != blank -%}
+              <p class="step-desc" style="
+                color: {{ section.settings.step_desc_color }};
+                font-size: {{ section.settings.step_desc_font_size }}px;
+                line-height: {{ section.settings.step_desc_line_height }};
+              ">
+                {{ block.settings.description }}
+              </p>
+            {%- endif -%}
+
+            {%- if should_be_tall and block.settings.button_text != blank -%}
+              <div class="button-wrap" style="padding-top: {{ section.settings.button_margin_top }}px;">
+                <a class="journey-btn" 
+                   href="{{ block.settings.button_link | default: '#' }}"
+                   style="
+                     background-color: {{ section.settings.button_bg_color }};
+                     color: {{ section.settings.button_text_color }};
+                     min-width: {{ section.settings.button_min_width }}px;
+                     height: {{ section.settings.button_height }}px;
+                     padding: 0 {{ section.settings.button_padding_horizontal }}px;
+                     font-size: {{ section.settings.button_font_size }}px;
+                     border-radius: {{ section.settings.button_border_radius }}px;
+                   ">
+                  {{ block.settings.button_text }}
+                </a>
+              </div>
+            {%- endif -%}
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .journey-section {
+    width: 100%;
+  }
+
+  .journey-container {
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .journey-header {
+    margin-bottom: 50px;
+  }
+
+  .journey-title {
+    font-family: "ArticulatCF-Bold", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    margin: 0;
+  }
+
+  .journey-description {
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .journey-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr minmax(400px, 450px);
+    align-items: stretch;
+  }
+  
+  /* When there are 6+ cards, use a 3x2 grid layout */
+  .journey-grid:has(.step-card:nth-child(6)) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .step-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 218px;
+  }
+
+  .step-card-tall {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    min-height: 456px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .step-top {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    margin-bottom: 10px;
+  }
+
+  .step-number {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    line-height: 0.95;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+
+  .step-label {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    line-height: 1;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+  }
+
+  .step-title {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .step-desc {
+    font-family: 'Quando', Georgia, 'Times New Roman', serif;
+    margin: 0;
+    max-width: 95%;
+  }
+
+  .step-card-tall .step-desc {
+    max-width: 100%;
+  }
+
+  .step-logo {
+    position: absolute;
+    top: 34px;
+    right: 26px;
+    height: auto;
+    object-fit: contain;
+    max-width: 100%;
+  }
+
+  .button-wrap {
+    margin-top: auto;
+  }
+
+  .journey-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+
+  .journey-btn:hover {
+    background-color: #fff !important;
+    color: #546659 !important;
+    border-color: #546659;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 900px) {
+    .journey-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 16px !important;
+    }
+    
+    .step-card {
+      padding: 40px 30px !important;
+    }
+
+    .step-card-tall {
+      grid-column: 1 / -1 !important;
+      grid-row: auto !important;
+      min-height: auto !important;
+      padding: 40px 30px !important;
+    }
+
+    .step-number {
+      font-size: 50px !important;
+    }
+
+    .step-title {
+      font-size: 18px !important;
+    }
+
+    .step-desc {
+      font-size: 16px !important;
+    }
+
+    .step-logo {
+      width: 100px !important;
+      top: 30px !important;
+      right: 24px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .journey-container {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    .journey-title {
+      font-size: 24px !important;
+    }
+
+    .journey-description {
+      font-size: 14px !important;
+    }
+
+    .journey-grid {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+    }
+
+    .step-card,
+    .step-card-tall {
+      min-height: auto !important;
+      padding: 30px 20px !important;
+    }
+
+    .step-number {
+      font-size: 45px !important;
+    }
+
+    .step-title {
+      font-size: 17px !important;
+    }
+
+    .step-desc {
+      font-size: 15px !important;
+      line-height: 1.4 !important;
+    }
+
+    .step-logo {
+      width: 85px !important;
+      top: 20px !important;
+      right: 20px !important;
+    }
+
+    .journey-btn {
+      min-width: 150px !important;
+      height: 36px !important;
+      font-size: 11px !important;
+      padding: 0 18px !important;
+    }
+
+    .button-wrap {
+      padding-top: 20px !important;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .journey-container {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .step-card,
+    .step-card-tall {
+      padding: 24px 16px !important;
+    }
+
+    .journey-btn {
+      min-width: 140px !important;
+      font-size: 10px !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Journey Steps",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#f3f1ee"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 1200,
+      "max": 1800,
+      "step": 10,
+      "unit": "px",
+      "label": "Container Max Width",
+      "default": 1670
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Section Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Section Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Header Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Your Journey Into Heat And Stillness"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Bringing a sauna home shouldn't feel complicated. We walk with you through each step so you always know what comes next."
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Header Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#252220"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Font Size",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "title_margin_bottom",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Bottom Margin",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#2b1c14"
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Font Size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "header_margin_bottom",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Header Bottom Margin",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Grid & Card Settings"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#efe5d1"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Grid Gap",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_padding_vertical",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Card Vertical Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "card_padding_horizontal",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Card Horizontal Padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "tall_card_padding_top",
+      "min": 100,
+      "max": 220,
+      "step": 10,
+      "unit": "px",
+      "label": "Tall Card Top Padding",
+      "default": 180
+    },
+    {
+      "type": "range",
+      "id": "tall_card_padding_bottom",
+      "min": 60,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "label": "Tall Card Bottom Padding",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Step Content Settings"
+    },
+    {
+      "type": "color",
+      "id": "step_number_color",
+      "label": "Step Number Color",
+      "default": "#546659"
+    },
+    {
+      "type": "range",
+      "id": "step_number_font_size",
+      "min": 40,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Step Number Font Size",
+      "default": 60
+    },
+    {
+      "type": "color",
+      "id": "step_label_color",
+      "label": "Step Label Color",
+      "default": "#546659"
+    },
+    {
+      "type": "range",
+      "id": "step_label_font_size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Step Label Font Size",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "step_title_color",
+      "label": "Step Title Color",
+      "default": "#252220"
+    },
+    {
+      "type": "range",
+      "id": "step_title_font_size",
+      "min": 16,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Step Title Font Size",
+      "default": 19
+    },
+    {
+      "type": "range",
+      "id": "step_title_margin_bottom",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Step Title Bottom Margin",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "step_desc_color",
+      "label": "Step Description Color",
+      "default": "#1f1f1f"
+    },
+    {
+      "type": "range",
+      "id": "step_desc_font_size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Step Description Font Size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "step_desc_line_height",
+      "min": 1.2,
+      "max": 1.8,
+      "step": 0.1,
+      "label": "Step Description Line Height",
+      "default": 1.4
+    },
+    {
+      "type": "header",
+      "content": "Logo Settings"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 80,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo Width",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#556659"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_min_width",
+      "min": 160,
+      "max": 280,
+      "step": 10,
+      "unit": "px",
+      "label": "Button Min Width",
+      "default": 220
+    },
+    {
+      "type": "range",
+      "id": "button_height",
+      "min": 32,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Height",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "min": 16,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Horizontal Padding",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Font Size",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "button_margin_top",
+      "min": 20,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Top Margin",
+      "default": 28
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_number",
+          "label": "Step Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "step_label",
+          "label": "Step Label",
+          "default": "STEP"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "Step Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Step Description",
+          "default": "Step description text goes here."
+        },
+        {
+          "type": "checkbox",
+          "id": "is_tall_card",
+          "label": "Make this a tall card (spanning 2 rows)",
+          "default": false,
+          "info": "Check this for the final step card with logo and button"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo (for tall card only)",
+          "info": "Only displays if 'Make this a tall card' is checked"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text (for tall card only)",
+          "info": "Only displays if 'Make this a tall card' is checked"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link (for tall card only)",
+          "info": "Only displays if 'Make this a tall card' is checked"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Journey Steps",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "01",
+            "title": "Choose Your Loowit Online",
+            "description": "Select the Loowit model and upgrades you'd like. Everything is ready to order online, so your sauna journey can start right away."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "02",
+            "title": "Decide On Your Package Options",
+            "description": "Want a little extra help? We offer virtual and in-person consultations to walk through the options and ensure you're confident about your choice."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "03",
+            "title": "Secure Your Build With A Deposit",
+            "description": "A 25% deposit locks in your place on our build calendar. From here, your sauna begins to move into production."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "04",
+            "title": "Watch Your Sauna Take Shape 50% Payment",
+            "description": "As we build, we'll keep you informed at every stage. Cedar is cut, details are added, and your Loowit begins to look more like the retreat you've imagined."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_number": "05",
+            "title": "Delivery Day, Your Sauna Arrives",
+            "description": "The best part! Once your build is complete and final payment is made, we coordinate delivery and installation support. Soon after, you'll be stepping inside your own Loowit sauna.",
+            "is_tall_card": true,
+            "button_text": "ORDER MY LOOWIT SAUNA",
+            "button_link": "#"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

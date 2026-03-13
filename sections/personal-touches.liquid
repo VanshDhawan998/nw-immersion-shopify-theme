@@ -1,9 +1,8 @@
 <!-- Personal Touches Section -->
 <section class="personal-touches-section" 
          style="
-           background-color: {{ section.settings.background_color }};
-           padding-top: {{ section.settings.padding_top }}px;
-           padding-bottom: {{ section.settings.padding_bottom }}px;
+           margin: {{ section.settings.margin_top }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+           padding: {{ section.settings.section_padding_top }}px {{ section.settings.section_padding_right }}px {{ section.settings.section_padding_bottom }}px {{ section.settings.section_padding_left }}px;
          ">
   
   <!-- Main Content Container -->
@@ -43,7 +42,7 @@
       <div class="features-column">
         {% if section.blocks.size > 0 %}
           {% for block in section.blocks %}
-            <div class="feature-card" 
+            <div class="personal-feature-card" 
                  {{ block.shopify_attributes }}
                  style="
                    background-color: {{ section.settings.card_background_color }};
@@ -78,13 +77,14 @@
     min-height: auto;
     display: flex;
     align-items: center;
+    max-width:1670PX;
+    justify-self: center;
   }
 
   .personal-container {
     max-width: {{ section.settings.max_width | default: 1670 }}px;
     margin: 0 auto;
-    padding-left: {{ section.settings.padding_horizontal | default: 50 }}px;
-    padding-right: {{ section.settings.padding_horizontal | default: 50 }}px;
+    padding: {{ section.settings.container_padding_top }}px {{ section.settings.container_padding_right }}px {{ section.settings.container_padding_bottom }}px {{ section.settings.container_padding_left }}px;
     width: 100%;
   }
 
@@ -92,12 +92,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: {{ section.settings.column_gap | default: 70 }}px;
-    align-items: start;
+    align-items: center;
   }
 
   /* Left Column - Main Content */
   .main-content {
-    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .main-heading {
@@ -137,6 +139,7 @@
     white-space: nowrap;
     cursor: pointer;
     vertical-align: middle;
+    width: fit-content;
   }
 
   .cta-button:hover {
@@ -149,17 +152,18 @@
   .features-column {
     display: flex;
     flex-direction: column;
-    gap: {{ section.settings.card_gap | default: 45 }}px;
+    gap: {{ section.settings.card_gap | default: 60 }}px;
   }
 
-  .feature-card {
+  .personal-feature-card {
     background-color: {{ section.settings.card_background_color | default: '#fbefdb' }};
-    padding: {{ section.settings.card_padding | default: 24 }}px;
+    padding: {{ section.settings.card_padding | default: 1 }}px;
     border-radius: {{ section.settings.card_border_radius | default: 20 }}px;
     transition: transform 0.2s ease;
+    width: 100%;
   }
 
-  .feature-card:hover {
+  .personal-feature-card:hover {
     transform: translateY(-2px);
   }
 
@@ -183,15 +187,15 @@
   }
 
   /* Responsive Design */
-  @media (max-width: 992px) {
+    @media (max-width: 992px) {
     .personal-touches-section {
-      padding-top: {{ section.settings.padding_top | divided_by: 1.5 | round }}px;
-      padding-bottom: {{ section.settings.padding_bottom | divided_by: 1.5 | round }}px;
+      margin: {{ section.settings.margin_top | divided_by: 1.5 | round }}px {{ section.settings.margin_right }}px {{ section.settings.margin_bottom }}px {{ section.settings.margin_left }}px;
+      padding: {{ section.settings.section_padding_top | divided_by: 1.5 | round }}px {{ section.settings.section_padding_right }}px {{ section.settings.section_padding_bottom | divided_by: 1.5 | round }}px {{ section.settings.section_padding_left }}px;
     }
     
     .personal-container {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding: {{ section.settings.container_padding_top | divided_by: 1.5 | round }}px {{ section.settings.container_padding_right | divided_by: 2 | round }}px {{ section.settings.container_padding_bottom | divided_by: 1.5 | round }}px {{ section.settings.container_padding_left | divided_by: 2 | round }}px;
+     max-widthL 1670px;
     }
     
     .personal-layout {
@@ -333,6 +337,126 @@
       "max": 100,
       "step": 5,
       "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Section Margin Settings"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Section Top Margin (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "margin_right",
+      "label": "Section Right Margin (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Section Bottom Margin (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_left",
+      "label": "Section Left Margin (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section Padding Settings"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section Top Padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "section_padding_right",
+      "label": "Section Right Padding (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section Bottom Padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "section_padding_left",
+      "label": "Section Left Padding (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Container Padding Settings"
+    },
+    {
+      "type": "range",
+      "id": "container_padding_top",
+      "label": "Container Top Padding (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "container_padding_right",
+      "label": "Container Right Padding (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "container_padding_bottom",
+      "label": "Container Bottom Padding (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "container_padding_left",
+      "label": "Container Left Padding (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
     },
     {
       "type": "range",
@@ -495,7 +619,7 @@
       "min": 20,
       "max": 60,
       "step": 5,
-      "default": 45
+      "default": 60
     },
     {
       "type": "range",
@@ -504,7 +628,7 @@
       "min": 16,
       "max": 40,
       "step": 2,
-      "default": 24
+      "default": 40
     },
     {
       "type": "range",
