@@ -25,20 +25,37 @@
       {% if section.settings.image_position == 'left' %}
         <!-- Image Column First (Left) -->
         <div class="image-column">
-          {% if section.settings.image != blank %}
+          {% if section.settings.media_type == 'video' and section.settings.video != blank %}
+            <!-- Video Display -->
+            <video class="loowit-media loowit-video" 
+                   {% if section.settings.video_autoplay %}autoplay{% endif %}
+                   {% if section.settings.video_loop %}loop{% endif %}
+                   {% if section.settings.video_muted %}muted{% endif %}
+                   {% if section.settings.video_controls %}controls{% endif %}
+                   playsinline
+                   preload="metadata">
+              {% for source in section.settings.video.sources %}
+                <source src="{{ source.url }}" type="{{ source.mime_type }}">
+              {% endfor %}
+              <!-- Fallback text -->
+              <p>Your browser doesn't support HTML5 video.</p>
+            </video>
+          {% elsif section.settings.media_type == 'image' and section.settings.image != blank %}
+            <!-- Image Display -->
             {% assign alt_text = section.settings.image_alt_text | default: section.settings.main_heading %}
             <img src="{{ section.settings.image | img_url: 'master' }}" 
                  alt="{{ alt_text }}" 
-                 class="loowit-image"
+                 class="loowit-media loowit-image"
                  loading="lazy"
                  width="{{ section.settings.image.width }}"
                  height="{{ section.settings.image.height }}">
           {% else %}
-            <!-- Placeholder for Theme Editor -->
-            <div class="placeholder-image">
+            <!-- Media Placeholder for Theme Editor -->
+            <div class="placeholder-media">
               <svg width="100%" height="400" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="400" height="300" fill="#f5f5f5"/>
-                <text x="200" y="150" text-anchor="middle" fill="#999">Image Placeholder</text>
+                <text x="200" y="140" text-anchor="middle" fill="#999">Media Placeholder</text>
+                <text x="200" y="160" text-anchor="middle" fill="#999" font-size="12">(Image or Video)</text>
               </svg>
             </div>
           {% endif %}
@@ -49,16 +66,52 @@
           
           <!-- Dynamic Feature Blocks -->
           {% if section.blocks.size > 0 %}
-            {% for block in section.blocks %}
-              <div class="feature-block" {{ block.shopify_attributes }}>
-                {% if block.settings.feature_title != blank %}
-                  <h3 class="feature-title">{{ block.settings.feature_title }}</h3>
-                {% endif %}
-                {% if block.settings.feature_description != blank %}
-                  <p class="feature-description">{{ block.settings.feature_description }}</p>
-                {% endif %}
+            {% assign feature_blocks = section.blocks | where: 'type', 'feature' %}
+            {% assign card_blocks = section.blocks | where: 'type', 'card' %}
+            
+            <!-- Feature Blocks -->
+            {% if feature_blocks.size > 0 %}
+              {% for block in feature_blocks %}
+                <div class="feature-block" {{ block.shopify_attributes }}>
+                  {% if block.settings.feature_title != blank %}
+                    <h3 class="feature-title">{{ block.settings.feature_title }}</h3>
+                  {% endif %}
+                  {% if block.settings.feature_description != blank %}
+                    <p class="feature-description">{{ block.settings.feature_description }}</p>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            {% endif %}
+            
+            <!-- Card Blocks -->
+            {% if card_blocks.size > 0 %}
+              <div class="cards-grid">
+                {% for block in card_blocks %}
+                  <div class="card-block" {{ block.shopify_attributes }}>
+                    {% if block.settings.card_image != blank %}
+                      <div class="card-image">
+                        <img src="{{ block.settings.card_image | img_url: '400x300' }}" 
+                             alt="{{ block.settings.card_image_alt | default: block.settings.card_title }}" 
+                             loading="lazy">
+                      </div>
+                    {% endif %}
+                    <div class="card-content">
+                      {% if block.settings.card_title != blank %}
+                        <h4 class="card-title">{{ block.settings.card_title }}</h4>
+                      {% endif %}
+                      {% if block.settings.card_description != blank %}
+                        <p class="card-description">{{ block.settings.card_description }}</p>
+                      {% endif %}
+                      {% if block.settings.card_button_text != blank and block.settings.card_button_url != blank %}
+                        <a href="{{ block.settings.card_button_url }}" class="card-button">
+                          {{ block.settings.card_button_text }}
+                        </a>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endfor %}
               </div>
-            {% endfor %}
+            {% endif %}
           {% endif %}
 
           <!-- Call to Action Button -->
@@ -81,16 +134,52 @@
           
           <!-- Dynamic Feature Blocks -->
           {% if section.blocks.size > 0 %}
-            {% for block in section.blocks %}
-              <div class="feature-block" {{ block.shopify_attributes }}>
-                {% if block.settings.feature_title != blank %}
-                  <h3 class="feature-title">{{ block.settings.feature_title }}</h3>
-                {% endif %}
-                {% if block.settings.feature_description != blank %}
-                  <p class="feature-description">{{ block.settings.feature_description }}</p>
-                {% endif %}
+            {% assign feature_blocks = section.blocks | where: 'type', 'feature' %}
+            {% assign card_blocks = section.blocks | where: 'type', 'card' %}
+            
+            <!-- Feature Blocks -->
+            {% if feature_blocks.size > 0 %}
+              {% for block in feature_blocks %}
+                <div class="feature-block" {{ block.shopify_attributes }}>
+                  {% if block.settings.feature_title != blank %}
+                    <h3 class="feature-title">{{ block.settings.feature_title }}</h3>
+                  {% endif %}
+                  {% if block.settings.feature_description != blank %}
+                    <p class="feature-description">{{ block.settings.feature_description }}</p>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            {% endif %}
+            
+            <!-- Card Blocks -->
+            {% if card_blocks.size > 0 %}
+              <div class="cards-grid">
+                {% for block in card_blocks %}
+                  <div class="card-block" {{ block.shopify_attributes }}>
+                    {% if block.settings.card_image != blank %}
+                      <div class="card-image">
+                        <img src="{{ block.settings.card_image | img_url: '400x300' }}" 
+                             alt="{{ block.settings.card_image_alt | default: block.settings.card_title }}" 
+                             loading="lazy">
+                      </div>
+                    {% endif %}
+                    <div class="card-content">
+                      {% if block.settings.card_title != blank %}
+                        <h4 class="card-title">{{ block.settings.card_title }}</h4>
+                      {% endif %}
+                      {% if block.settings.card_description != blank %}
+                        <p class="card-description">{{ block.settings.card_description }}</p>
+                      {% endif %}
+                      {% if block.settings.card_button_text != blank and block.settings.card_button_url != blank %}
+                        <a href="{{ block.settings.card_button_url }}" class="card-button">
+                          {{ block.settings.card_button_text }}
+                        </a>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endfor %}
               </div>
-            {% endfor %}
+            {% endif %}
           {% endif %}
 
           <!-- Call to Action Button -->
@@ -110,20 +199,37 @@
 
         <!-- Image Column Second (Right) -->
         <div class="image-column">
-          {% if section.settings.image != blank %}
+          {% if section.settings.media_type == 'video' and section.settings.video != blank %}
+            <!-- Video Display -->
+            <video class="loowit-media loowit-video" 
+                   {% if section.settings.video_autoplay %}autoplay{% endif %}
+                   {% if section.settings.video_loop %}loop{% endif %}
+                   {% if section.settings.video_muted %}muted{% endif %}
+                   {% if section.settings.video_controls %}controls{% endif %}
+                   playsinline
+                   preload="metadata">
+              {% for source in section.settings.video.sources %}
+                <source src="{{ source.url }}" type="{{ source.mime_type }}">
+              {% endfor %}
+              <!-- Fallback text -->
+              <p>Your browser doesn't support HTML5 video.</p>
+            </video>
+          {% elsif section.settings.media_type == 'image' and section.settings.image != blank %}
+            <!-- Image Display -->
             {% assign alt_text = section.settings.image_alt_text | default: section.settings.main_heading %}
             <img src="{{ section.settings.image | img_url: 'master' }}" 
                  alt="{{ alt_text }}" 
-                 class="loowit-image"
+                 class="loowit-media loowit-image"
                  loading="lazy"
                  width="{{ section.settings.image.width }}"
                  height="{{ section.settings.image.height }}">
           {% else %}
-            <!-- Placeholder for Theme Editor -->
-            <div class="placeholder-image">
+            <!-- Media Placeholder for Theme Editor -->
+            <div class="placeholder-media">
               <svg width="100%" height="400" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="400" height="300" fill="#f5f5f5"/>
-                <text x="200" y="150" text-anchor="middle" fill="#999">Image Placeholder</text>
+                <text x="200" y="140" text-anchor="middle" fill="#999">Media Placeholder</text>
+                <text x="200" y="160" text-anchor="middle" fill="#999" font-size="12">(Image or Video)</text>
               </svg>
             </div>
           {% endif %}
@@ -234,20 +340,201 @@
     border-color: {{ section.settings.button_background_color | default: '#546659' }};
   }
 
-  /* Image Styles */
-  .loowit-image {
+  /* Media Styles (Image & Video) */
+  .loowit-media {
     width: 100%;
     height: 100%;
     border-radius: {{ section.settings.image_border_radius | default: 18 }}px;
-    object-fit: cover;
     max-height: {{ section.settings.image_max_height | default: 600 }}px;
   }
 
-  .placeholder-image svg {
+  .loowit-image {
+    object-fit: cover;
+  }
+
+  .loowit-video {
+    object-fit: cover;
+    background-color: #000;
+  }
+
+  .placeholder-media svg {
     border-radius: {{ section.settings.image_border_radius | default: 18 }}px;
   }
 
+  /* Cards Grid Styles */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: {{ section.settings.card_gap | default: 20 }}px;
+    margin-top: 30px;
+  }
+
+  .card-block {
+    background: {{ section.settings.card_background | default: '#F5F1E8' }};
+    border-radius: {{ section.settings.card_border_radius | default: 8 }}px;
+    padding: {{ section.settings.card_padding | default: 24 }}px;
+    border: 1px solid {{ section.settings.card_border_color | default: 'rgba(0,0,0,0.08)' }};
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card-block:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .card-image {
+    width: 100%;
+    height: {{ section.settings.card_image_height | default: 200 }}px;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .card-block:hover .card-image img {
+    transform: scale(1.05);
+  }
+
+  .card-content {
+    padding: {{ section.settings.card_padding | default: 24 }}px;
+  }
+
+  .card-title {
+    font-family: sans-serif;
+    font-size: {{ section.settings.card_title_size | default: 18 }}px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    color: {{ section.settings.heading_color | default: 'rgb(37, 34, 32)' }};
+  }
+
+  .card-description {
+    font-family: "Quando", serif;
+    font-size: {{ section.settings.card_text_size | default: 15 }}px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    color: {{ section.settings.text_color | default: 'rgb(37, 34, 32)' }};
+  }
+
+  .card-button {
+    display: inline-block;
+    background: {{ section.settings.card_button_background | default: '#546659' }};
+    color: {{ section.settings.card_button_text_color | default: '#ffffff' }};
+    padding: {{ section.settings.card_button_padding_vertical | default: 10 }}px {{ section.settings.card_button_padding_horizontal | default: 20 }}px;
+    border-radius: {{ section.settings.card_button_border_radius | default: 6 }}px;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-size: {{ section.settings.card_button_text_size | default: 14 }}px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid {{ section.settings.card_button_background | default: '#546659' }};
+  }
+
+  /* Cards Grid Styles */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: {{ section.settings.card_gap | default: 20 }}px;
+    margin-top: 30px;
+  }
+
+  .card-block {
+    background: {{ section.settings.card_background | default: '#F5F1E8' }};
+    border-radius: {{ section.settings.card_border_radius | default: 8 }}px;
+    padding: {{ section.settings.card_padding | default: 24 }}px;
+    border: 1px solid {{ section.settings.card_border_color | default: 'rgba(0,0,0,0.08)' }};
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card-block:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .card-image {
+    width: 100%;
+    height: {{ section.settings.card_image_height | default: 180 }}px;
+    overflow: hidden;
+    border-radius: {{ section.settings.card_border_radius | default: 8 }}px;
+    margin-bottom: 16px;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .card-block:hover .card-image img {
+    transform: scale(1.05);
+  }
+
+  .card-content {
+    /* No additional padding needed since card-block has padding */
+  }
+
+  .card-title {
+    font-family: sans-serif;
+    font-size: {{ section.settings.card_title_size | default: 18 }}px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    color: {{ section.settings.heading_color | default: 'rgb(37, 34, 32)' }};
+  }
+
+  .card-description {
+    font-family: "Quando", serif;
+    font-size: {{ section.settings.card_text_size | default: 15 }}px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    color: {{ section.settings.text_color | default: 'rgb(37, 34, 32)' }};
+  }
+
+  .card-button {
+    display: inline-block;
+    background: {{ section.settings.card_button_background | default: '#546659' }};
+    color: {{ section.settings.card_button_text_color | default: '#ffffff' }};
+    padding: {{ section.settings.card_button_padding_vertical | default: 8 }}px {{ section.settings.card_button_padding_horizontal | default: 16 }}px;
+    border-radius: {{ section.settings.card_button_border_radius | default: 4 }}px;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-size: {{ section.settings.card_button_text_size | default: 13 }}px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid {{ section.settings.card_button_background | default: '#546659' }};
+  }
+
+  .card-button:hover {
+    background: {{ section.settings.card_button_hover_background | default: '#ffffff' }};
+    color: {{ section.settings.card_button_hover_text_color | default: '#546659' }};
+    border-color: {{ section.settings.card_button_background | default: '#546659' }};
+  }
+    border-color: {{ section.settings.card_button_background | default: '#546659' }};
+  }
+
   /* Responsive Design */
+  @media (max-width: 768px) {
+    .cards-grid {
+      grid-template-columns: 1fr;
+      gap: {{ section.settings.card_gap | default: 20 | minus: 5 }}px;
+    }
+    
+    .card-title {
+      font-size: {{ section.settings.card_title_size | default: 18 | minus: 2 }}px;
+    }
+    
+    .card-description {
+      font-size: {{ section.settings.card_text_size | default: 15 | minus: 1 }}px;
+    }
+  }
+
   @media (max-width: 992px) {
     .loowit-layout {
       flex-direction: column;
@@ -328,18 +615,72 @@
     },
     {
       "type": "header",
-      "content": "Image"
+      "content": "Media Content"
+    },
+    {
+      "type": "select",
+      "id": "media_type",
+      "label": "Media Type",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "image"
     },
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Section Image"
+      "label": "Section Image",
+      "info": "Only used when Media Type is set to Image"
     },
     {
       "type": "text",
       "id": "image_alt_text",
       "label": "Image Alt Text",
-      "default": "Loowit Sauna"
+      "default": "Loowit Sauna",
+      "info": "Only used when Media Type is set to Image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Section Video",
+      "info": "Only used when Media Type is set to Video"
+    },
+    {
+      "type": "header",
+      "content": "Video Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_autoplay",
+      "label": "Autoplay Video",
+      "default": false,
+      "info": "Most browsers require videos to be muted to autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_loop",
+      "label": "Loop Video",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "video_muted",
+      "label": "Mute Video",
+      "default": true,
+      "info": "Required for autoplay in most browsers"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_controls",
+      "label": "Show Video Controls",
+      "default": true
     },
     {
       "type": "select",
@@ -544,25 +885,162 @@
     },
     {
       "type": "header",
-      "content": "Image Styling"
+      "content": "Media Styling"
     },
     {
       "type": "range",
       "id": "image_border_radius",
-      "label": "Image Border Radius (px)",
+      "label": "Media Border Radius (px)",
       "min": 0,
       "max": 30,
       "step": 1,
-      "default": 18
+      "default": 18,
+      "info": "Applies to both images and videos"
     },
     {
       "type": "range",
       "id": "image_max_height",
-      "label": "Image Max Height (px)",
+      "label": "Media Max Height (px)",
       "min": 400,
       "max": 800,
       "step": 10,
-      "default": 600
+      "default": 600,
+      "info": "Applies to both images and videos"
+    },
+    {
+      "type": "header",
+      "content": "Card Styling"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Card Gap (px)",
+      "min": 15,
+      "max": 50,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card Border Radius (px)",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "card_shadow",
+      "label": "Card Shadow CSS",
+      "default": "0 4px 12px rgba(0,0,0,0.1)",
+      "info": "CSS box-shadow property"
+    },
+    {
+      "type": "range",
+      "id": "card_image_height",
+      "label": "Card Image Height (px)",
+      "min": 150,
+      "max": 300,
+      "step": 10,
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card Content Padding (px)",
+      "min": 15,
+      "max": 40,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_title_size",
+      "label": "Card Title Size (px)",
+      "min": 16,
+      "max": 28,
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_text_size",
+      "label": "Card Text Size (px)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Card Button Styling"
+    },
+    {
+      "type": "color",
+      "id": "card_button_background",
+      "label": "Card Button Background",
+      "default": "#546659"
+    },
+    {
+      "type": "color",
+      "id": "card_button_text_color",
+      "label": "Card Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_button_hover_background",
+      "label": "Card Button Hover Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_button_hover_text_color",
+      "label": "Card Button Hover Text Color",
+      "default": "#546659"
+    },
+    {
+      "type": "range",
+      "id": "card_button_text_size",
+      "label": "Card Button Text Size (px)",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_button_padding_vertical",
+      "label": "Card Button Vertical Padding (px)",
+      "min": 5,
+      "max": 15,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "card_button_padding_horizontal",
+      "label": "Card Button Horizontal Padding (px)",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_button_border_radius",
+      "label": "Card Button Border Radius (px)",
+      "min": 0,
+      "max": 15,
+      "step": 1,
+      "default": 6
     }
   ],
   "blocks": [
@@ -583,11 +1061,55 @@
           "default": "Add your feature description here."
         }
       ]
+    },
+    {
+      "type": "card",
+      "name": "Card Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Card Image"
+        },
+        {
+          "type": "text",
+          "id": "card_image_alt",
+          "label": "Image Alt Text",
+          "default": "Card Image"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card Title",
+          "default": "Card Title"
+        },
+        {
+          "type": "textarea",
+          "id": "card_description",
+          "label": "Card Description",
+          "default": "Add your card description here."
+        },
+        {
+          "type": "text",
+          "id": "card_button_text",
+          "label": "Button Text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "card_button_url",
+          "label": "Button URL"
+        }
+      ]
     }
   ],
   "presets": [
     {
       "name": "Loowit Way Features",
+      "settings": {
+        "button_text": "See Who's Behind The Craft",
+        "button_url": "#"
+      },
       "blocks": [
         {
           "type": "feature",
@@ -622,6 +1144,60 @@
           "settings": {
             "feature_title": "Accessible Price Point, Built To Last",
             "feature_description": "Starting under $25,000, the Loowit offers lasting craftsmanship and wellness at a price point that makes owning a handcrafted sauna possible for more families."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "card_title": "Faster Delivery, Same Craft",
+            "card_description": "Skip the longer lead times of fully custom builds and bring your sauna home sooner."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "card_title": "Lower Cost Than Custom Builds",
+            "card_description": "Enjoy the experience of a handcrafted sauna at a price point that works for your lifestyle."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pre Built Sauna Cards",
+      "settings": {
+        "main_heading": "Why Choose A Pre Built Sauna?",
+        "main_description": "Sometimes convenience is the luxury. Pre-built saunas give you the craftsmanship you expect with a smoother, faster path to ownership.",
+        "button_text": "Find Us On The Map",
+        "button_url": "#",
+        "image_position": "right"
+      },
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "card_title": "Faster Delivery, Same Craft",
+            "card_description": "Skip the longer lead times of fully custom builds and bring your sauna home sooner."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "card_title": "DIY-Friendly Options For Every Space",
+            "card_description": "Choose between fully assembled models or DIY-friendly Sauna Kits you can put together with ease."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "card_title": "Lower Cost Than Custom Builds",
+            "card_description": "Enjoy the experience of a handcrafted sauna at a price point that works for your lifestyle."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "card_title": "Trusted Quality From NW Immersion And Partners",
+            "card_description": "From our Vancouver, WA workshop to carefully chosen suppliers, every sauna is built to last."
           }
         }
       ]
