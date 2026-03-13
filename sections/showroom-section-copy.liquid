@@ -45,14 +45,13 @@
   .showroom-section-{{ section.id }} .contact-section {
     width: 100%;
     max-width: 1670px;
-    margin: 0 auto;
     border-radius: {{ section.settings.border_radius }}px;
     overflow: hidden;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding: {{ section.settings.section_padding_top }}px {{ section.settings.section_padding_right }}px {{ section.settings.section_padding_bottom }}px {{ section.settings.section_padding_left }}px;
-    margin: {{ section.settings.section_margin_top }}px {{ section.settings.section_margin_right }}px {{ section.settings.section_margin_bottom }}px {{ section.settings.section_margin_left }}px;
+    margin: {{ section.settings.section_margin_top }}px auto {{ section.settings.section_margin_bottom }}px auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -109,7 +108,7 @@
       flex-direction: column;
       align-items: flex-start;
       padding: {{ section.settings.section_padding_top | times: 0.67 }}px {{ section.settings.section_padding_right | times: 0.5 }}px {{ section.settings.section_padding_bottom | times: 0.67 }}px {{ section.settings.section_padding_left | times: 0.5 }}px;
-      margin: {{ section.settings.section_margin_top | times: 0.67 }}px {{ section.settings.section_margin_right | times: 0.5 }}px {{ section.settings.section_margin_bottom | times: 0.67 }}px {{ section.settings.section_margin_left | times: 0.5 }}px;
+      margin: {{ section.settings.section_margin_top | times: 0.67 }}px auto {{ section.settings.section_margin_bottom | times: 0.67 }}px auto;
     }
 
     .showroom-section-{{ section.id }} .contact-content {
@@ -126,7 +125,7 @@
 
     .showroom-section-{{ section.id }} .contact-section {
       padding: {{ section.settings.section_padding_top | times: 0.5 }}px {{ section.settings.section_padding_right | times: 0.3 }}px {{ section.settings.section_padding_bottom | times: 0.5 }}px {{ section.settings.section_padding_left | times: 0.3 }}px;
-      margin: {{ section.settings.section_margin_top | times: 0.5 }}px {{ section.settings.section_margin_right | times: 0.3 }}px {{ section.settings.section_margin_bottom | times: 0.5 }}px {{ section.settings.section_margin_left | times: 0.3 }}px;
+      margin: {{ section.settings.section_margin_top | times: 0.5 }}px auto {{ section.settings.section_margin_bottom | times: 0.5 }}px auto;
     }
   }
 
@@ -142,7 +141,7 @@
 
     .showroom-section-{{ section.id }} .contact-section {
       padding: {{ section.settings.section_padding_top | times: 0.33 }}px {{ section.settings.section_padding_right | times: 0.2 }}px {{ section.settings.section_padding_bottom | times: 0.33 }}px {{ section.settings.section_padding_left | times: 0.2 }}px;
-      margin: {{ section.settings.section_margin_top | times: 0.33 }}px {{ section.settings.section_margin_right | times: 0.2 }}px {{ section.settings.section_margin_bottom | times: 0.33 }}px {{ section.settings.section_margin_left | times: 0.2 }}px;
+      margin: {{ section.settings.section_margin_top | times: 0.33 }}px auto {{ section.settings.section_margin_bottom | times: 0.33 }}px auto;
     }
 
     .showroom-section-{{ section.id }} .contact-content {
@@ -451,6 +450,94 @@
       "step": 5,
       "default": 70,
       "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Content Margin Settings"
+    },
+    {
+      "type": "range",
+      "id": "content_margin_top",
+      "label": "Content Top Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "content_margin_right",
+      "label": "Content Right Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "content_margin_bottom",
+      "label": "Content Bottom Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "content_margin_left",
+      "label": "Content Left Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Content Padding Settings"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_top",
+      "label": "Content Top Padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_right",
+      "label": "Content Right Padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_bottom",
+      "label": "Content Bottom Padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_left",
+      "label": "Content Left Padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
     },
     {
       "type": "range",
